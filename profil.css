@@ -57,3 +57,16 @@ header {
 #search {
     border-radius: 3px;
 }
+
+img {
+    border-radius: 50%;
+    height: 60px;
+}
+
+.fond {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.futuresSorties {}
