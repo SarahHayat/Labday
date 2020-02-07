@@ -41,10 +41,27 @@ header{
 }
 .fond {
     display: flex;
+    flex-direction: column;
     margin-left: 5%;
     margin-right: 5%;
-    padding: 10px 10px 10px 10px;
     background : #C4C4C4;
     border-radius: 38px;
     top: 195px;
+}
+.fond div {
+    padding: 10px 10px 10px 10px;
+}
+.contactTitle p {
+    font-size: 1.5em;
+}
+.contactTitle{
+    text-align: center;
+    background: #554F51;
+    color: white;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding: 0;
+}
+.contactTitle h2 {
+    font-size: 4em;
 }
