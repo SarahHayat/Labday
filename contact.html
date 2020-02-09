@@ -7,14 +7,13 @@
 </head>
 
 
-
 <body>
 <header class="header">
     <div class="menuHaut">
         <h1 id="title"> LabDay</h1>
         <input id="search" type="text" placeholder="recherche...">
-        <a  id="profil" href="profil.html"> Profil </a>
-        <a  id="connect" href="connect.html"> Connexion </a>
+        <a id="profil" href="profil.html"> Profil </a>
+        <a id="connect" href="connect.html"> Connexion </a>
     </div>
     <div class="menuBas">
         <a href="index.html"> Accueil</a>
@@ -27,16 +26,60 @@
 
 <section class="fond">
     <div class="contactTitle">
-        <h2>CONTACT</h2>
-        <p>Des questions? Remplissez le formulaire et nous vous repondrons du mieux possible</p>
+        <h2>Contactez-nous</h2>
+        <p>Des questions? Remplissez le formulaire et nous vous répondrons du mieux possible</p>
     </div>
-    <div>
-        <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-        <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
+    <div class="container">
+        <form action="action_page.php">
+            <div class="list">
+
+            </div>
+            <div>
+                <table>
+                    <label for="nCompte">Nom du compte:</label>
+                    <input type="text"
+                           id="nCompte"
+                           name="nCompte"
+                           required>
+
+                    <label for="email">Email:</label>
+                    <input type="email"
+                           name="email"
+                           id="email"
+                           required>
+
+                    <label for="question">Sujet:</label>
+                    <input type="text"
+                           name="question"
+                           id="question"
+                           required>git
+
+
+                    <label for="mdpCompte">Mot de passe:</label>
+                    <input type="password"
+                           id="mdpCompte"
+                           name="mdpCompte"
+                           required>
+                    <label for="cMdpCompte">Confirmation du mot de passe:</label>
+                    <input type="password"
+                           id="cMdpCompte"
+                           name="cMdpCompte"
+                           required>
+
+
+                </table>
+            </div>
+
+
+            <label for="subject">Ton message:</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+            <input type="submit" value="Envoyer ->">
+
+
+        </form>
     </div>
 </section>
-
-
 
 
 <footer>
