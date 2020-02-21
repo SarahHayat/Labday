@@ -39,8 +39,8 @@ header{
     height: 20px;
     font-size: large;
 }
+
 .fond {
-    display: flex;
     /*width: 91.66%;
     height: 70.01%;*/
     margin-left: 3% ;
@@ -75,6 +75,14 @@ header{
     border-radius: 8px;
     border: 1px ridge black;
 
+}
+
+.event {
+    justify-content: space-around;
+}
+
+.progress {
+    justify-content: right;
 }
 .f-50{
     flex-basis: 75%;
