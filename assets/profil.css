@@ -1,0 +1,94 @@
+body {
+
+}
+header{
+    margin: 10px 10px 10px 10px;
+}
+.menuHaut{
+    display: flex;
+    width: 100%;
+    height: 106px;
+    background : #C4C4C4;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.menuBas {
+    display: flex;
+    width: 100%;
+    height: 54px;
+    background : #554F51;
+    border-radius: 4px;
+    top : 109px;
+    align-items: center;
+    justify-content: space-around;
+}
+.menuHaut a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+
+}
+.menuBas a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: large;
+}
+#search {
+    height: 20px;
+    font-size: large;
+}
+
+.fond {
+    /*width: 91.66%;
+    height: 70.01%;*/
+    margin-left: 3% ;
+    margin-right: 3% ;
+    padding: 10px 10px 10px 10px;
+    background : #C4C4C4;
+    border-radius: 38px;
+    top: 195px;
+}
+.avatar{
+    background-color: #838383;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+.photo {
+    align-self: center;
+    margin-left: 10px;
+}
+.profil{
+    display: inline-flex;
+    flex-basis: 100%;
+
+}
+.info{
+    display: block;
+    align-self: center;
+}
+.info input{
+    height: 15px;
+    padding-left: 5px;
+    border-radius: 8px;
+    border: 1px ridge black;
+
+}
+
+.event {
+    justify-content: space-around;
+}
+
+.progress {
+    justify-content: right;
+}
+.f-50{
+    flex-basis: 75%;
+    margin-left: 20px;
+}
+.flex{
+    display: flex;
+    padding: 3px
+}

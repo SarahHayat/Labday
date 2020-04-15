@@ -1,53 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>Labday</title>
-    <link rel="stylesheet" href="profil.css" />
+    <link rel="stylesheet" href="assets/profil.css"/>
 </head>
 
 
-
 <body>
-    <header class="header">
-        <div class="menuHaut">
-            <h1 id="title"> Profil</h1>
-            <input id="search" type="text" placeholder="recherche...">
-            <a id="profil" href="profil.html"> Profil </a>
-            <a id="connect" href="connect.html"> Connexion </a>
+<header class="header">
+    <div class="menuHaut">
+        <h1 id="title"> LabDay</h1>
+        <input id="search" type="text" placeholder="recherche...">
+        <a id="profil" href="profil.html"> Profil </a>
+        <a id="connect" href="connect.html"> Connexion </a>
+    </div>
+    <div class="menuBas">
+        <a href="index.html"> Accueil</a>
+        <a href="sortieJour.html"> Sorties du jour</a>
+        <a href="sortiePrevues.html"> Sorties à prévoir</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+
+</header>
+
+<section class="fond">
+    <div class="profil">
+        <div class="avatar flex">
+            <div class="photo">
+                <img src="assets/images/rebelle.png" height="100px" width="100px">
+            </div>
         </div>
-        <div class="menuBas">
-            <a href="index.html"> Accueil</a>
-            <a href="sortieDuJour.html"> Sorties du jour</a>
-            <a href="sortiePrevues.html"> Sorties à prévoir</a>
-            <a href="entreprise.html"> Entreprise</a>
+        <div class="info">
+            <div class="flex">
+                <div class="f-50">
+                    <label>nom d'utilisateur:</label>
+                </div>
+                <div class="f-50">
+                    <input type="text" id="username">
+                </div>
+
+            </div>
+            <div class="flex">
+                <div class="f-50">
+                    <label>date de création:</label>
+                </div>
+                <div class="f-50">
+                    <input type="text" id="creation">
+                </div>
+
+            </div>
+
         </div>
+        <div class="progress">
+            <div class="f-50">
+                <label>niveau de validité:</label>
+            </div>
+            <progress id="jauge" min="0" max="100" value="50"></progress>
 
-    </header>
-
-    <section class="fond">
-        <div class="identité">
-            <img src="assets/img_avatar.png" alt="Avatar">
-            <p>Tchydemian Marie</p>
         </div>
-        <div class="anciennesSorties">
-            <p>Archives de mes sorties</p>
-        </div>
-        <div class="futuresSorties">
-            <p>Mes futures sorties</p>
-        </div>
-    </section>
+    </div>
 
-
-
-
-    <footer>
+    <div class="event flex">
         <div>
-
+            <div>
+                <h2>Archives</h2>
+            </div>
+            <div>
+                <p>Titre Evenement</p>
+                <p>Description</p>
+            </div>
         </div>
+        <div>
+            <div>
+                <h2>Evenements Futur</h2>
+            </div>
+            <div>
+                <p>Titre Evenement</p>
+                <p>Description</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    </footer>
+
+<footer>
+    <div>
+
+    </div>
+
+</footer>
 </body>
 
 
