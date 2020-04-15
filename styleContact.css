@@ -1,0 +1,122 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    margin: 10px 10px 10px 10px;
+}
+.menuHaut{
+    display: flex;
+    width: 100%;
+    height: 106px;
+    background : #C4C4C4;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.menuBas {
+    display: flex;
+    width: 100%;
+    height: 54px;
+    background : #554F51;
+    border-radius: 4px;
+    top : 109px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.menuHaut a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+
+}
+.menuBas a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: large;
+}
+#search {
+    height: 20px;
+    font-size: large;
+}
+.fond {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    background : #C4C4C4;
+    border-radius: 38px;
+    top: 195px;
+}
+.fond div {
+    padding: 20px 10px 10px 10px;
+}
+.contactTitle p {
+    font-size: 1.5em;
+    padding: 0 0 0 10px;
+}
+.contactTitle{
+    /*text-align: center;*/
+    background: #554F51;
+    color: white;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+}
+.contactTitle h2 {
+    font-size: 4em;
+    /*text-align: center;*/
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.container input[type=text],input[type=password],input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    overflow: hidden;
+    outline: 0;
+    font-size: 18px;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+    background-color: #554F51;
+    color: white;
+    /*padding: 12px 20px;*/
+    border: 1px solid black;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0 0 0 40px;
+    width: 20%;
+    height: 50px;
+    outline: 0;
+    font-size: 20px;
+    text-align: center;
+
+
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+    background-color: #C4C4C4;
+    border: 1px solid black;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-size: 18px;
+}
+textarea{
+
+}
