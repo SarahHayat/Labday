@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e775a3e3-a030-46b3-8f65-f54dcee0a1f5" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/controllers/bdd.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
@@ -10,6 +11,10 @@
       <change beforePath="$PROJECT_DIR$/sortieAPrevoir.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sortieAPrevoir.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sortieAPrevoir.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/sortieAPrevoir.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sortieDuJour.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/sortieDuJour.html" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/profil.html" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +37,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< Updated upstream
         <entry key="$PROJECT_DIR$" value="Sarah" />
+=======
+        <entry key="$PROJECT_DIR$" value="master" />
+>>>>>>> Stashed changes
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,7 +98,11 @@
       <workItem from="1582297811503" duration="2077000" />
       <workItem from="1586967119755" duration="279000" />
       <workItem from="1586967428446" duration="31000" />
+<<<<<<< Updated upstream
       <workItem from="1587923594216" duration="175000" />
+=======
+      <workItem from="1587923594216" duration="404000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -97,6 +110,7 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="144" y="79" key="MergeDialog" timestamp="1586967350666">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -117,5 +131,19 @@
       <screen x="-341" y="-1057" width="1920" height="1057" />
     </state>
     <state x="284" y="-822" key="search.everywhere.popup/0.23.1440.828/-341.-1057.1920.1057@-341.-1057.1920.1057" timestamp="1579269435103" />
+=======
+    <state x="144" y="79" key="MergeDialog" timestamp="1587923985486">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="144" y="79" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1587923985486" />
+    <state x="431" y="173" key="MultipleFileMergeDialog" timestamp="1587923993589">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="431" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1587923993589" />
+    <state x="466" y="170" key="git4idea.branch.GitSmartOperationDialog" timestamp="1587923936990">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="466" y="170" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900@0.0.1440.900" timestamp="1587923936990" />
+>>>>>>> Stashed changes
   </component>
 </project>
