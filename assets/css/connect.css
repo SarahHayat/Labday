@@ -57,7 +57,6 @@ form {
     padding-bottom: 10px;
 }
 
-/* Full-width inputs */
 .container input[type=text], .container input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -67,7 +66,7 @@ form {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+
 .container input[type=submit] {
     background-color: #53af57;
     color: white;
