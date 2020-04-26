@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e775a3e3-a030-46b3-8f65-f54dcee0a1f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/bdd.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/profil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/profil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sortieAPrevoir.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sortieAPrevoir.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sortieAPrevoir.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/sortieAPrevoir.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sortieDuJour.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/sortieDuJour.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +57,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/html" />
+      <recent name="$PROJECT_DIR$/assets/css" />
+    </key>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -68,7 +80,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="881a1919-4f16-47fe-9336-104be3052d63" name="Default Changelist" comment="" />
+      <changelist id="e775a3e3-a030-46b3-8f65-f54dcee0a1f5" name="Default Changelist" comment="" />
       <created>1579268781113</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -77,6 +89,7 @@
       <workItem from="1582297811503" duration="2077000" />
       <workItem from="1586967119755" duration="279000" />
       <workItem from="1586967428446" duration="31000" />
+      <workItem from="1587923594216" duration="175000" />
     </task>
     <servers />
   </component>
