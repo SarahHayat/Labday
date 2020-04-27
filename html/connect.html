@@ -23,23 +23,51 @@
     </div>
 
 </header>
+<div class="connect">
+    <div class="container">
+        <!-- zone de connexion -->
 
-<div class="container">
-    <!-- zone de connexion -->
+        <form action="verification.php" method="POST">
+            <h1>Connexion</h1>
 
-    <form action="verification.php" method="POST">
-        <h1>Connexion</h1>
+            <label><b>Nom d'utilisateur</b></label>
+            <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
-        <label><b>Nom d'utilisateur</b></label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+            <label><b>Mot de passe</b></label>
+            <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-        <label><b>Mot de passe</b></label>
-        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+            <input type="submit" id='submit' value='LOGIN' >
 
-        <input type="submit" id='submit' value='LOGIN' >
+        </form>
+    </div>
+    <div class="container">
+        <form action="nouveauCompte.php" method="post">
+            <h1> Creation nouveau utilisateur</h1>
+            <label><b>Nom</b></label>
+            <input type="text" placeholder="nom" name="nom" required>
+            <label><b>Prénom</b></label>
+            <input type="text" placeholder="prénom" name="prénom" required>
+            <label><b>Pseudo</b></label>
+            <input type="text" placeholder="pseudo" name="pseudo" required>
+            <label><b>Adresse postale</b></label>
+            <input type="text" placeholder="adresse" name="adresse" required>
+            <label><b>Mail</b></label>
+            <input type="email" placeholder="mail" name="mail" required>
+            <label><b>Numéro de téléphone</b></label>
+            <input type="number" placeholder="numéro de téléphone" name="telephone" required>
+            <label><b>Age</b></label>
+            <select name="age">
+                <option id="15-18" name="15-18">15-18</option>
+                <option id="18-25" name="18-25">18-25</option>
+                <option id="25-50" name="25-50">25-50</option>
+                <option id="50+" name="50+">50+</option>
+            </select>
 
-    </form>
+            <input type="submit" id='enregistrer' value='ENREGISTRER' >
+        </form>
+    </div>
 </div>
+
 
 </body>
 
