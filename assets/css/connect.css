@@ -1,3 +1,9 @@
+.connect {
+    display: flex;
+}
+.container {
+    align-self: center;
+}
 header{
     margin: 10px 10px 10px 10px;
 }
@@ -41,7 +47,7 @@ header{
 .container{
     width:450px;
     margin:0 auto;
-    margin-top:10%;
+    margin-top:5%;
 }
 /* Bordered form */
 form {
@@ -52,13 +58,12 @@ form {
     border-radius: 38px;
 }
 .container h1{
-    width: 38%;
+    text-align: center;
     margin: 0 auto;
     padding-bottom: 10px;
 }
 
-/* Full-width inputs */
-.container input[type=text], .container input[type=password] {
+.container input[type=text], .container input[type=password], .container input[type=email], .container input[type=number], .container input[type=date] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -67,7 +72,7 @@ form {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+
 .container input[type=submit] {
     background-color: #53af57;
     color: white;
