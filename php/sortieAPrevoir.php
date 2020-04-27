@@ -4,27 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Labday</title>
-    <link rel="stylesheet" href="../assets/css/sortieDuJour.css" />
+    <link rel="stylesheet" href="../assets/css/sortieAPrevoir.css" />
 </head>
 
 
 
 <body>
-    <header class="header">
-        <div class="menuHaut">
-            <h1 id="title"> Sorties du jour</h1>
-            <input id="search" type="text" placeholder="recherche...">
-            <a id="profil" href="profil.html"> Profil </a>
-            <a id="connect" href="connect.html"> Connexion </a>
-        </div>
-        <div class="menuBas">
-            <a href="index.html"> Accueil</a>
-            <a href="sortieDuJour.html"> Sorties du jour</a>
-            <a href="sortieAPrevoir.html"> Sorties à prévoir</a>
-            <a href="contact.html"> Contact</a>
-        </div>
+<?php
+require ("headerConnect.php")
 
-    </header>
+?>
 
     <section class="fond">
         <div class="filter">
