@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Labday</title>
+    <link rel="stylesheet" href="../assets/css/connect.css"/>
+</head>
+
+
+<body>
+<header class="header">
+    <div class="menuHaut">
+        <h1 id="title"> LabDay</h1>
+        <input id="search" type="text" placeholder="recherche...">
+        <a id="profil" href="profil.html"> Profil </a>
+        <a id="connect" href="connect.html"> Connexion </a>
+    </div>
+    <div class="menuBas">
+        <a href="index.html"> Accueil</a>
+        <a href="sortieDuJour.html"> Sorties du jour</a>
+        <a href="sortieAPrevoir.html"> Sorties à prévoir</a>
+        <a href="contact.html"> Contact</a>
+    </div>
+
+</header>
+
+<div class="container">
+    <!-- zone de connexion -->
+
+    <form action="verification.php" method="POST">
+        <h1>Connexion</h1>
+
+        <label><b>Nom d'utilisateur</b></label>
+        <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+
+        <label><b>Mot de passe</b></label>
+        <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+
+        <input type="submit" id='submit' value='LOGIN' >
+
+    </form>
+</div>
+
+</body>
+
+</html>
