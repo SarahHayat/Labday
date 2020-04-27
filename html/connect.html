@@ -17,8 +17,8 @@
     </div>
     <div class="menuBas">
         <a href="index.html"> Accueil</a>
-        <a href="sortieJour.html"> Sorties du jour</a>
-        <a href="sortiePrevues.html"> Sorties à prévoir</a>
+        <a href="sortieDuJour.html"> Sorties du jour</a>
+        <a href="sortieAPrevoir.html"> Sorties à prévoir</a>
         <a href="contact.html"> Contact</a>
     </div>
 
@@ -47,12 +47,21 @@
             <input type="text" placeholder="nom" name="nom" required>
             <label><b>Prénom</b></label>
             <input type="text" placeholder="prénom" name="prénom" required>
+            <label><b>Pseudo</b></label>
+            <input type="text" placeholder="pseudo" name="pseudo" required>
             <label><b>Adresse postale</b></label>
             <input type="text" placeholder="adresse" name="adresse" required>
             <label><b>Mail</b></label>
-            <input type="text" placeholder="mail" name="mail" required>
+            <input type="email" placeholder="mail" name="mail" required>
             <label><b>Numéro de téléphone</b></label>
-            <input type="text" placeholder="numéro de téléphone" name="telephone" required>
+            <input type="number" placeholder="numéro de téléphone" name="telephone" required>
+            <label><b>Age</b></label>
+            <select name="age">
+                <option id="15-18" name="15-18">15-18</option>
+                <option id="18-25" name="18-25">18-25</option>
+                <option id="25-50" name="25-50">25-50</option>
+                <option id="50+" name="50+">50+</option>
+            </select>
 
             <input type="submit" id='enregistrer' value='ENREGISTRER' >
         </form>
