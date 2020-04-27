@@ -1,3 +1,7 @@
+
+<?php
+session_start();
+?>
 <html>
 <body>
 
@@ -5,15 +9,10 @@
 </form>
 
 <?php
-require ("Account.php");
+
 require ("bdd.php");
-//if (!empty($_POST)){
-//    var_dump($_POST);
-//    $createaccount = new Account ($_POST["prenom"], $_POST["nom"], $_POST["date_naissance"], $_POST["adresse"],$_POST["code_postal"], $_POST["pays"], $_POST["telephone"], $_POST["mail"], $_POST["pseudo"],$_POST["mot_de_passe"]);
-//  //  echo "votre compte à été créer" .$createaccount->getPrenom()."";
-//}
+
 $prenom = $_POST["prenom"];
-$nom = $_POST["nom"];
 $nom = $_POST["nom"];
 $date_naissance = $_POST["date_naissance"];
 $adresse = $_POST["adresse"];
@@ -25,7 +24,7 @@ $pseudo = $_POST["pseudo"];
 $mot_de_passe = $_POST["mot_de_passe"];
 
 echo $pseudo;
-if(($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
+if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
     $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe)');
     $req->execute(array(
         'prenom' => $prenom,
@@ -43,17 +42,30 @@ if(($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isse
     echo "votre compte à été crée" ;
 }
 
-header('Location: ../html/index.html');
+$username = $_POST["username"];
+$password = $_POST["password"];
+
+$_SESSION["username"] = $username;
+
+$req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
+$req->execute(array(
+    'pseudo' => $username,
+    'password' => $password
+));
+
+$resultat = $req->fetch();
+
+if (!$resultat)
+{
+    header('Location: ../html/connect.php');
+}
+else
+{
+
+    header('Location: ../html/index.php');
+}
 
 ?>
 
-
-<form method="post" action="#">
-</form>
-
-<?php
-
-
-?>
 </body>
 </html>

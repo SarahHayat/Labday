@@ -8,26 +8,15 @@
 
 
 <body>
-<header class="header">
-    <div class="menuHaut">
-        <h1 id="title"> LabDay</h1>
-        <input id="search" type="text" placeholder="recherche...">
-        <a id="profil" href="profil.html"> Profil </a>
-        <a id="connect" href="connect.html"> Connexion </a>
-    </div>
-    <div class="menuBas">
-        <a href="index.html"> Accueil</a>
-        <a href="sortieDuJour.html"> Sorties du jour</a>
-        <a href="sortieAPrevoir.html"> Sorties à prévoir</a>
-        <a href="contact.html"> Contact</a>
-    </div>
+<?php
+require ("headerConnect.php")
 
-</header>
+?>
 <div class="connect">
     <div class="container">
         <!-- zone de connexion -->
 
-        <form action="verification.php" method="POST">
+        <form action="../controllers/request.php" method="POST">
             <h1>Connexion</h1>
 
             <label><b>Nom d'utilisateur</b></label>
