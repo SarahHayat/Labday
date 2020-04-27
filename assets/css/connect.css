@@ -1,3 +1,9 @@
+.connect {
+    display: flex;
+}
+.container {
+    align-self: center;
+}
 header{
     margin: 10px 10px 10px 10px;
 }
@@ -41,7 +47,7 @@ header{
 .container{
     width:450px;
     margin:0 auto;
-    margin-top:10%;
+    margin-top:5%;
 }
 /* Bordered form */
 form {
@@ -52,7 +58,7 @@ form {
     border-radius: 38px;
 }
 .container h1{
-    width: 38%;
+    text-align: center;
     margin: 0 auto;
     padding-bottom: 10px;
 }
