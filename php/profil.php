@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +12,15 @@
 
 <body>
 <?php
-require ("headerConnect.php")
+// echo "session username : " . $_SESSION['username'];
+
+if($_SESSION['username'] !== null){
+    require("headerProfil.php");
+}
+else{
+    require("headerConnect.php");
+
+}
 
 ?>
 
@@ -27,7 +38,7 @@ require ("headerConnect.php")
                     <label>nom d'utilisateur:</label>
                 </div>
                 <div class="f-50">
-                    <input type="text" id="username">
+                    <input type="text" id="username" value="<?php echo $_SESSION['username'] ?> ">
                 </div>
 
             </div>

@@ -45,7 +45,7 @@ if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &&
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$_SESSION["username"] = $username;
+
 
 $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
 $req->execute(array(
@@ -57,12 +57,12 @@ $resultat = $req->fetch();
 
 if (!$resultat)
 {
-    header('Location: ../html/connect.php');
+    header('Location: ../php/connect.php');
 }
 else
 {
-
-    header('Location: ../html/index.php');
+    $_SESSION['username'] = $username;
+    header('Location: ../php/index.php');
 }
 
 ?>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,7 +14,15 @@
 
 <body>
 <?php
-require ("headerConnect.php")
+// echo "session username : " . $_SESSION['username'];
+
+if($_SESSION['username'] !== null){
+    require("headerProfil.php");
+}
+else{
+    require("headerConnect.php");
+
+}
 
 ?>
 
