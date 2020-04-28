@@ -1,9 +1,9 @@
 .connect {
     display: flex;
 }
-.container {
-    align-self: center;
-}
+/*.container {*/
+/*    align-self: center;*/
+/*}*/
 
 .container{
     width:450px;

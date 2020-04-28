@@ -27,7 +27,7 @@ $name = $_SESSION['username'];
         $lieu = $_POST["lieux"];
 
 
-        if (isset($id_name) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu)) {
+        if (isset($id_name) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username'])) {
             $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu)');
             $req->execute(array(
                 'utilisateur' => $id_name,
@@ -37,10 +37,14 @@ $name = $_SESSION['username'];
                 'lieu' => $lieu,
 
             ));
+            header('location: ../php/index.php');
+
+        }else {
+            echo '<script> alert("Vous n\'êtes pas connecté ")</script>';
+            header('location: ../php/connect.php');
 
         }
 
-        header('location: ../php/index.php');
 
 
 ?>
