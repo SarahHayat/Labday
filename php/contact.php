@@ -14,7 +14,7 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if($_SESSION['username'] !== null){
+if(isset($_SESSION['username'])){
     require("headerProfil.php");
 }
 else{
