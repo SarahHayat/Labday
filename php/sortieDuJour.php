@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Labday</title>
-    <link rel="stylesheet" href="../assets/css/sortieDuJour.css" />
+    <link rel="stylesheet" href="../assets/css/sortie.css" />
 </head>
 
 
@@ -45,11 +45,13 @@ else{
                     <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                 </div>
                 <div class="pictureEvent">
-                    <h3 id="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                    <p><?php echo  "Par " . $donnees['pseudo'] . " le : " . $donnees['date_poste'] ; ?></p>
-                    <p><?php echo $donnees['description']; ?></p>
-                    <p><?php echo $donnees['date_evenement']; ?></p>
+                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                    <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                     <p><?php echo $donnees['lieu']; ?></p>
+                    <p><?php echo $donnees['date_evenement']; ?></p>
+                    <p class="description"><?php echo $donnees['description']; ?></p>
+
+
                 </div>
 
             </ul>
@@ -60,14 +62,6 @@ else{
     </section>
 
 
-
-
-    <footer class="footer">
-        <div>
-
-        </div>
-
-    </footer>
 </body>
 
 

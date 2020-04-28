@@ -46,7 +46,7 @@ else{
 
             <label><b>Type utilisateur</b></label></br>
 
-            <input type="radio" name="type_utilisateur" id="professionnel" value="professionnel">
+            <input type="radio" name="type_utilisateur" id="professionnel" value="professionnel" required>
             <label for="professionnel">professionnel</label>
 
             <input type="radio" name="type_utilisateur" id="particulier" value="particulier">

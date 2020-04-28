@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title >Labday</title>
-    <link rel="stylesheet" href="../assets/css/profil.css"/>
+    <link rel="stylesheet" href="../assets/css/index.css"/>
 </head>
 
 
@@ -26,7 +26,7 @@ else{
 
 
 ?>
-    <div>
+    <div class="create">
         <form action="creerEvent.php">
             <input type="submit" value="Creer un évenement" />
         </form>
@@ -42,15 +42,6 @@ else{
         </div>
     </section>
 
-
-
-
-    <footer>
-        <div>
-
-        </div>
-
-    </footer>
 </body>
 
 

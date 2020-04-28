@@ -37,7 +37,7 @@ $name = $_SESSION['username'];
                 'lieu' => $lieu,
 
             ));
-            header('location: ../php/index.php');
+            header('location: ../php/sortieDuJour.php');
 
         }else {
             echo '<script> alert("Vous n\'êtes pas connecté ")</script>';
