@@ -22,10 +22,13 @@ $telephone = $_POST["telephone"];
 $mail = $_POST["mail"];
 $pseudo = $_POST["pseudo"];
 $mot_de_passe = $_POST["mot_de_passe"];
+$ville = $_POST["ville"];
+$type_utilisateur = $_POST["type_utilisateur"];
 
 echo $pseudo;
+
 if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
-    $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe)');
+    $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
     $req->execute(array(
         'prenom' => $prenom,
         'nom' => $nom,
@@ -37,6 +40,9 @@ if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &&
         'mail' => $mail,
         'pseudo' => $pseudo,
         'mot_de_passe' => $mot_de_passe,
+        'type_utilisateur' => $type_utilisateur,
+        'ville' => $ville,
+
 
     ));
     echo "votre compte à été crée" ;

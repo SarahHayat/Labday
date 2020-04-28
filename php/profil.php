@@ -14,7 +14,7 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if($_SESSION['username'] !== null){
+if(isset($_SESSION['username'])){
     require("headerProfil.php");
 }
 else{
@@ -38,7 +38,7 @@ else{
                     <label>nom d'utilisateur:</label>
                 </div>
                 <div class="f-50">
-                    <input type="text" id="username" value="<?php echo $_SESSION['username'] ?> ">
+                    <input type="text" id="username" value="<?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?> ">
                 </div>
 
             </div>

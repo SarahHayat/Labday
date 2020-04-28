@@ -24,7 +24,7 @@ form {
     padding-bottom: 10px;
 }
 
-.container input[type=text], .container input[type=password], .container input[type=email], .container input[type=number], .container input[type=date] {
+.container input[type=text], .container input[type=password], .container input[type=email], .container input[type=number], .container input[type=date], .container option {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

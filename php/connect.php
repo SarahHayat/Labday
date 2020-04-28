@@ -14,7 +14,7 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if($_SESSION['username'] !== null){
+if(isset($_SESSION['username'])){
     require("headerProfil.php");
 }
 else{
@@ -43,6 +43,15 @@ else{
     <div class="container">
         <form action="../controllers/request.php" method="post">
             <h1> Creation nouveau utilisateur</h1>
+
+            <label><b>Type utilisateur</b></label></br>
+
+            <input type="radio" name="type_utilisateur" id="professionnel" value="professionnel">
+            <label for="professionnel">professionnel</label>
+
+            <input type="radio" name="type_utilisateur" id="particulier" value="particulier">
+            <label for="particulier">particulier</label></br>
+
             <label><b>Nom</b></label>
             <input type="text" placeholder="nom" name="nom" required>
 
@@ -58,6 +67,9 @@ else{
             <label><b>Code postale</b></label>
             <input type="number" placeholder="code postale" name="code_postale" required>
 
+            <label><b>Ville</b></label>
+            <input type="text" placeholder="ville" name="ville" required>
+
             <label><b>Pays</b></label>
             <input type="text" placeholder="pays" name="pays" required>
 
@@ -72,6 +84,8 @@ else{
 
             <label><b>Mot de passe</b></label>
             <input type="password" placeholder="mot de passe" name="mot_de_passe" required>
+
+
 
             <input type="submit" id='enregistrer' value='ENREGISTRER' >
         </form>
