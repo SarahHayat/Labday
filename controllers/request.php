@@ -1,77 +1,48 @@
 
 <?php
 session_start();
-?>
-<html>
-<body>
-
-<form method="post" action="#">
-</form>
-
-<?php
 
 require ("bdd.php");
 
-$prenom = $_POST["prenom"];
-$nom = $_POST["nom"];
-$date_naissance = $_POST["date_naissance"];
-$adresse = $_POST["adresse"];
-$code_postale = $_POST["code_postale"];
-$pays = $_POST["pays"];
-$telephone = $_POST["telephone"];
-$mail = $_POST["mail"];
-$pseudo = $_POST["pseudo"];
-$mot_de_passe = $_POST["mot_de_passe"];
-$ville = $_POST["ville"];
-$type_utilisateur = $_POST["type_utilisateur"];
 
-echo $pseudo;
+$name = $_SESSION['username'];
 
-if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
-    $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
-    $req->execute(array(
-        'prenom' => $prenom,
-        'nom' => $nom,
-        'date_naissance' => $date_naissance,
-        'adresse' => $adresse,
-        'code_postale' => $code_postale,
-        'pays' => $pays,
-        'telephone' => $telephone,
-        'mail' => $mail,
-        'pseudo' => $pseudo,
-        'mot_de_passe' => $mot_de_passe,
-        'type_utilisateur' => $type_utilisateur,
-        'ville' => $ville,
+        $req = $bdd->prepare('SELECT * from utilisateurs where pseudo = ":pseudo"');
+        $req->execute(array(
+            'pseudo' => $name
+        ));
+
+        $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $name . '"');
+        while ($donnees = $req->fetch()) {
+            $id_name = $donnees['id_utilisateur'];
+            $_SESSION['id_name'] = $id_name;
+        }
+
+        $req->closeCursor();
+        $_SESSION['id_name'] = $id_name;
+
+        $description = $_POST["description"];
+        $date_evenement = $_POST["date_evenement"];
+        $titre = $_POST["titre"];
+        $lieu = $_POST["lieux"];
 
 
-    ));
-    echo "votre compte à été crée" ;
-}
+        if (isset($id_name) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu)) {
+            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu)');
+            $req->execute(array(
+                'utilisateur' => $id_name,
+                'description' => $description,
+                'date_evenement' => $date_evenement,
+                'titre' => $titre,
+                'lieu' => $lieu,
 
-$username = $_POST["username"];
-$password = $_POST["password"];
+            ));
 
+        }
 
+        header('location: ../php/index.php');
 
-$req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
-$req->execute(array(
-    'pseudo' => $username,
-    'password' => $password
-));
-
-$resultat = $req->fetch();
-
-if (!$resultat)
-{
-    header('Location: ../php/connect.php');
-}
-else
-{
-    $_SESSION['username'] = $username;
-    header('Location: ../php/index.php');
-}
 
 ?>
-
 </body>
 </html>

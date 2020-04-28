@@ -37,7 +37,7 @@ else{
                         <img id="imgTree" src="../assets/images/arbre_icon.png" />
                     </div>
                     <div class="pictureEvent">
-                        <h3 id="titleOfEvent">Evenement 1</h3>
+                        <h3 id="titleOfEvent"><?php if(isset($_SESSION['titre_event'])) echo $_SESSION['titre_event'][0]; ?> </h3>
                         <p>Sortie au parc avec des milfs</p>
                         <p>date/heure</p>
                         <p>lieu</p>
