@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,21 +11,18 @@
 
 
 <body>
-<header class="header">
-    <div class="menuHaut">
-        <h1 id="title"> LabDay</h1>
-        <input id="search" type="text" placeholder="recherche...">
-        <a id="profil" href="profil.html"> Profil </a>
-        <a id="connect" href="connect.html"> Connexion </a>
-    </div>
-    <div class="menuBas">
-        <a href="index.html"> Accueil</a>
-        <a href="minichat.php"> Sorties du jour</a>
-        <a href="sortieAPrevoir.html"> Sorties à prévoir</a>
-        <a href="contact.html"> Contact</a>
-    </div>
+<?php
+// echo "session username : " . $_SESSION['username'];
 
-</header>
+if($_SESSION['username'] !== null){
+    require("headerProfil.php");
+}
+else{
+    require("headerConnect.php");
+
+}
+
+?>
 
 <section class="fond">
     <div class="contactTitle">
