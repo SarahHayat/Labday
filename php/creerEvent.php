@@ -30,7 +30,7 @@ else{
             <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
             <label>Date de l'évenement</label>
-            <input type="date" name="date_evenement" required>
+            <input type="datetime-local" name="date_evenement" required>
 
             <label><b>Titre</b></label>
             <input type="text" placeholder="titre" name="titre" required>

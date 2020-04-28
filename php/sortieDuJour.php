@@ -30,43 +30,32 @@ else{
         <div class="filter">
 
         </div>
-        <div class="listOfEvent">
-            <ol class="collectionEvent">
-                <ul class="collectionItem">
-                    <div class="pictureEvent">
-                        <img id="imgTree" src="../assets/images/arbre_icon.png" />
-                    </div>
-                    <div class="pictureEvent">
-                        <h3 id="titleOfEvent"><?php if(isset($_SESSION['titre_event'])) echo $_SESSION['titre_event'][0]; ?> </h3>
-                        <p>Sortie au parc avec des milfs</p>
-                        <p>date/heure</p>
-                        <p>lieu</p>
-                    </div>
-                </ul>
-                <ul class="collectionItem">
-                    <div class="pictureEvent">
-                        <img id="imgTree" src="../assets/images/arbre_icon.png" />
-                    </div>
-                    <div class="pictureEvent">
-                        <h3 id="titleOfEvent">Evenement 2</h3>
-                        <p>Sortie au parc avec des vielles</p>
-                        <p>date/heure</p>
-                        <p>lieu</p>
-                    </div>
+        <?php
+        require ("../controllers/bdd.php");
+        $reponse = $bdd->query('SELECT ut.pseudo , ev.* FROM evenements as ev left join utilisateurs as ut 
+        on ev.id_utilisateur= ut.id_utilisateur where DATE(ev.date_evenement)= DATE(NOW()) order by DATE(ev.date_evenement) ASC');
+        // On affiche chaque entrée une à une
+        while ($donnees = $reponse->fetch())
+        {
+        ?>
 
-                </ul>
-                <ul class="collectionItem">
-                    <div class="pictureEvent">
-                        <img id="imgTree" src="../assets/images/arbre_icon.png" />
-                    </div>
-                    <div class="pictureEvent">
-                        <h3 id="titleOfEvent">Evenement 2</h3>
-                        <p>Sortie au parc avec des godes ceintures</p>
-                        <p>date/heure</p>
-                        <p>lieu</p>
-                    </div>
-                </ul>
-            </ol>
+        <div class="listOfEvent">
+            <ul class="collectionItem">
+                <div class="pictureEvent">
+                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                </div>
+                <div class="pictureEvent">
+                    <h3 id="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                    <p><?php echo  "Par " . $donnees['pseudo'] . " le : " . $donnees['date_poste'] ; ?></p>
+                    <p><?php echo $donnees['description']; ?></p>
+                    <p><?php echo $donnees['date_evenement']; ?></p>
+                    <p><?php echo $donnees['lieu']; ?></p>
+                </div>
+
+            </ul>
+            <?php
+            }
+            ?>
         </div>
     </section>
 
