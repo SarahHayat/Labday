@@ -27,7 +27,7 @@ else{
     <div class="container">
         <!-- zone de connexion -->
 
-        <form action="../controllers/request.php" method="POST">
+        <form action="../controllers/connexion.php" method="POST">
             <h1>Connexion</h1>
 
             <label><b>Nom d'utilisateur</b></label>
