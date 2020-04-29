@@ -17,10 +17,10 @@ session_start();
 // echo "session username : " . $_SESSION['username'];
 
 if(isset($_SESSION['username'])){
-    require("headerProfil.php");
+    require("headerConnect.php");
 }
 else{
-    require("headerConnect.php");
+    require("headerDisconnect.php");
 
 }
 
@@ -50,6 +50,7 @@ else{
                     <p><?php echo $donnees['lieu']; ?></p>
                     <p><?php echo $donnees['date_evenement']; ?></p>
                     <p class="description"><?php echo $donnees['description']; ?></p>
+                    <a href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
 
 
                 </div>

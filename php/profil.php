@@ -15,10 +15,10 @@ session_start();
 // echo "session username : " . $_SESSION['username'];
 
 if(isset($_SESSION['username'])){
-    require("headerProfil.php");
+    require("headerConnect.php");
 }
 else{
-    require("headerConnect.php");
+    require("headerDisconnect.php");
 
 }
 
@@ -78,7 +78,7 @@ else{
                     <div class="listOfEvent">
                         <ul class="collectionItem">
                             <div class="pictureEvent">
-                                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                <img class="imgTree" src="../assets/images/arbre_icon.png"/>
                             </div>
                             <div class="pictureEvent">
                                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
@@ -90,6 +90,7 @@ else{
                     <?php
                 }
                 ?>
+            </div>
         </div>
             <div>
                 <div>
@@ -106,7 +107,7 @@ else{
                         <div class="listOfEvent">
                             <ul class="collectionItem">
                                 <div class="pictureEvent">
-                                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                    <img class="imgTree" src="../assets/images/arbre_icon.png"/>
                                 </div>
                                 <div class="pictureEvent">
                                     <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
@@ -118,6 +119,7 @@ else{
                         <?php
                     }
                     ?>
+                </div>
                 </div>
     </div>
 </section>
