@@ -87,6 +87,24 @@ echo $pseudo;
 
 // voir la note de karma d'un utilisateur
 
+$req = $bdd->prepare('SELECT note FROM karma WHERE id_utilisateur = :id_utilisateur');
+
+// inscription à un evenement
+
+$id_inscription = $_POST["id_inscription"];
+$id_utilisateur = $_POST["id_utilisateur"];
+$id_evenement = $_POST["id_evenement"];
+
+if(isset($id_inscription) && isset ($id_utilisateur) && isset ($id_evenement)){
+    $req = $bdd->prepare('INSERT INTO inscription_evenements (id_inscription, id_utilisateur, id_evenement) VALUES (:id_inscription, :id_utilisateur, :id_evenement)');
+    $req->execute(array(
+        'id_inscription' =>$id_inscription,
+        'id_utilisateur' =>$id_utilisateur,
+        'id_evenement' =>$id_evenement,
+    ));
+    echo "Vous vous êtes inscrit à un évènement" ;
+}
+?>
             $req = $bdd->prepare('SELECT note FROM karma WHERE id_utilisateur = :id_utilisateur');
 
 ?>
