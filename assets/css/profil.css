@@ -46,6 +46,23 @@ body {
 .progress {
     justify-content: right;
 }
+
+#imgTree {
+    width: 75px;
+    padding-right: 50px;
+    margin-top: 45%;
+}
+
+.titleOfEvent {
+    text-decoration: underline;
+}
+
+.collectionItem {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
 .f-50{
     flex-basis: 75%;
     margin-left: 20px;

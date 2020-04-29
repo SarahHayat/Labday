@@ -38,7 +38,6 @@ else{
     while ($donnees = $reponse->fetch())
     {
     ?>
-
     <div class="listOfEvent">
         <ul class="collectionItem">
             <div class="pictureEvent">
@@ -50,6 +49,7 @@ else{
                 <p><?php echo $donnees['lieu']; ?></p>
                 <p><?php echo $donnees['date_evenement']; ?></p>
                 <p class="description"><?php echo $donnees['description']; ?></p>
+                <a href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
 
 
             </div>
