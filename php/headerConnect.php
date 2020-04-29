@@ -12,7 +12,8 @@
         <input id="search" type="text" placeholder="recherche...">
         <a id="profil" href="profil.php"> Profil </a>
         <a id="deconnect" href="deconnect.php"> Deconnexion </a>
-        <h3><?php  echo $_SESSION['username'] ?></h3>
+        <h3><?php
+            if(isset($_SESSION['id_name']))echo $_SESSION['username'] ;?></h3>
 
     </div>
     <div class="menuBas">

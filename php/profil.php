@@ -40,6 +40,8 @@ else{
                 <div class="f-50">
                     <input type="text" id="username" value="<?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?> ">
                 </div>
+                <a href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer compte</a>
+
 
             </div>
             <div class="flex">

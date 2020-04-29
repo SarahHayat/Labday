@@ -16,7 +16,7 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['id_name'])){
     require("headerConnect.php");
 }
 else{

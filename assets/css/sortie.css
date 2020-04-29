@@ -34,10 +34,14 @@ body {}
 .collectionItem {
     display: flex;
     flex-direction: row;
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
+    border : 2px solid black;
+    border-radius: 38px;
+
 }
 
 .description {
     border: 1px solid black;
+
 }
