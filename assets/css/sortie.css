@@ -1,6 +1,7 @@
 body {}
 
 
+
 .fond {
     display: flex;
     margin-left: 5%;
@@ -19,15 +20,6 @@ body {}
     display: block;
 }
 
-.footer {
-    position: absolute;
-    width: 100%;
-    height: 67px;
-    left: 0px;
-    top: 957px;
-    background: #C4C4C4;
-    border-radius: 3px;
-}
 
 #imgTree {
     width: 75px;
@@ -35,9 +27,17 @@ body {}
     margin-top: 45%;
 }
 
+.titleOfEvent {
+    text-decoration: underline;
+}
+
 .collectionItem {
     display: flex;
     flex-direction: row;
     margin: 0;
     padding: 0;
+}
+
+.description {
+    border: 1px solid black;
 }

@@ -1,0 +1,27 @@
+
+.fond {
+    /*width: 91.66%;
+    height: 70.01%;*/
+    margin-left: 3% ;
+    margin-right: 3% ;
+    padding: 10px 10px 10px 10px;
+    background : #C4C4C4;
+    border-radius: 38px;
+    top: 195px;
+}
+
+.create input {
+    width: 50%;
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.create input:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}

@@ -23,21 +23,21 @@ else{
 }
 
 ?>
-<form action="../controllers/request.php" method="post">
-            <h1> Creation nouveau Evenement</h1>
+<form action="../controllers/request.php" method="post" class="container fond">
+    <h1> Creation nouveau Evenement</h1>
 
-            <label><b>Description</b></label></br>
-            <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
+    <label><b>Titre</b></label>
+    <input type="text" placeholder="titre" name="titre" required>
 
-            <label>Date de l'évenement</label>
-            <input type="datetime-local" name="date_evenement" required>
+    <label><b>Lieux</b></label>
+    <input type="text" placeholder="lieux" name="lieux" required>
 
-            <label><b>Titre</b></label>
-            <input type="text" placeholder="titre" name="titre" required>
+    <label>Date de l'évenement</label>
+    <input type="datetime-local" name="date_evenement" required>
 
-            <label><b>Lieux</b></label>
-            <input type="text" placeholder="lieux" name="lieux" required>
+    <label><b>Description</b></label></br>
+    <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
-            <input type="submit" id='enregistrer' value='ENREGISTRER' >
+    <input type="submit" id='enregistrer' value='ENREGISTRER' >
         </form>
 
