@@ -65,22 +65,60 @@ else{
     <div class="event flex">
         <div>
             <div>
-                <h2>Archives</h2>
+                <h2>Mes évenements</h2>
             </div>
             <div>
-                <p>Titre Evenement</p>
-                <p>Description</p>
-            </div>
+                <?php
+                require ("../controllers/bdd.php");
+                $reponse = $bdd->query('SELECT titre_evenement, date_poste, date_evenement FROM evenements where id_utilisateur ="' . $_SESSION['id_name'] . '"');
+                // On affiche chaque entrée une à une
+                while ($donnees = $reponse->fetch()) {
+                    ?>
+
+                    <div class="listOfEvent">
+                        <ul class="collectionItem">
+                            <div class="pictureEvent">
+                                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                            </div>
+                            <div class="pictureEvent">
+                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                <p><?php echo $donnees['date_evenement']; ?></p>
+
+                            </div>
+                        </ul>
+                    </div>
+                    <?php
+                }
+                ?>
         </div>
-        <div>
             <div>
-                <h2>Evenements Futur</h2>
-            </div>
-            <div>
-                <p>Titre Evenement</p>
-                <p>Description</p>
-            </div>
-        </div>
+                <div>
+                    <h2>Mes inscriptions</h2>
+                </div>
+                <div>
+                    <?php
+                    require ("../controllers/bdd.php");
+                    $reponse = $bdd->query('SELECT ie.* , e.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement where ie.id_utilisateur = "' . $_SESSION['id_name'] . '"');
+                    // On affiche chaque entrée une à une
+                    while ($donnees = $reponse->fetch()) {
+                        ?>
+
+                        <div class="listOfEvent">
+                            <ul class="collectionItem">
+                                <div class="pictureEvent">
+                                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                </div>
+                                <div class="pictureEvent">
+                                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                    <p><?php echo $donnees['date_evenement']; ?></p>
+
+                                </div>
+                            </ul>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
     </div>
 </section>
 
