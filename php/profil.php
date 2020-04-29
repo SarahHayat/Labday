@@ -86,6 +86,7 @@ else{
                                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                                 <p><?php echo $donnees['date_evenement']; ?></p>
                                 <a href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                                <a href="../controllers/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
 
 
                             </div>

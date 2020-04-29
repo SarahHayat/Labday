@@ -41,7 +41,7 @@ else{
         </form>
     </div>
     <div class="container">
-        <form action="../controllers/request.php" method="post">
+        <form action="../controllers/connexion.php" method="post">
             <h1> Creation nouveau utilisateur</h1>
 
             <label><b>Type utilisateur</b></label></br>

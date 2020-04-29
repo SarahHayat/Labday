@@ -40,8 +40,6 @@ echo "id user" . $_SESSION['id_name'];
 
 
 
-// supprimer un evenement
-            $req = $bdd->prepare('DELETE FROM evenement WHERE id_evenement = :id_evenement');
 
 //modifier un evenement
 
