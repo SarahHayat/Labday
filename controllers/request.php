@@ -20,40 +20,24 @@ echo "id user" . $_SESSION['id_name'];
         $lieu = $_POST["lieux"];
 
 
-        if (isset($id_name) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username'])) {
+        if (isset($_SESSION['id_name']) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username'])) {
             $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu)');
             $req->execute(array(
-                'utilisateur' => $id_name,
+                'utilisateur' => $_SESSION['id_name'],
                 'description' => $description,
                 'date_evenement' => $date_evenement,
                 'titre' => $titre,
                 'lieu' => $lieu,
 
             ));
-            header('location: ../php/sortieDuJour.php');
+            header('location: ../php/profil.php');
 
         }else {
             echo '<script> alert("Vous n\'êtes pas connecté ")</script>';
             header('location: ../php/connect.php');
 
-            if (!$resultat) {
-                header('Location: ../php/connect.php');
-            } else {
-                $_SESSION['username'] = $username;
-                header('Location: ../php/index.php');
-            }
         }
-//lister les évènement d'une personne
 
-            $titre_evenement = $_POST["titre_evenement"];
-            $date_poste = $_POST["date_poste"];
-
-            $req = $bdd->prepare('SELECT titre_evenement, date_poste FROM evenements where id_utilisateur = :id_utilisateur');
-            $req->execute(array(
-                'titre_evenement' => $titre_evenement,
-                'date_poste' => $date_poste
-
-            ));
 
 
 // supprimer un evenement

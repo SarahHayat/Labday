@@ -13,6 +13,8 @@ $req->execute(array(
 'id_evenement' =>$id_evenement,
 ));
 echo "Vous vous êtes inscrit à un évènement" ;
- header('Location: ../php/index.php');
+ header('Location: ../php/profil.php');
 }
+
+
 ?>

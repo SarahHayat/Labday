@@ -70,7 +70,8 @@ else{
             <div>
                 <?php
                 require ("../controllers/bdd.php");
-                $reponse = $bdd->query('SELECT titre_evenement, date_poste, date_evenement FROM evenements where id_utilisateur ="' . $_SESSION['id_name'] . '"');
+                $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
+        on ev.id_utilisateur= ut.id_utilisateur where ut.id_utilisateur = "'.$_SESSION['id_name'].'"');
                 // On affiche chaque entrée une à une
                 while ($donnees = $reponse->fetch()) {
                     ?>
@@ -82,7 +83,10 @@ else{
                             </div>
                             <div class="pictureEvent">
                                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                <p><?php echo $donnees['type_utilisateur']; ?></p>
                                 <p><?php echo $donnees['date_evenement']; ?></p>
+                                <a href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+
 
                             </div>
                         </ul>
@@ -99,7 +103,7 @@ else{
                 <div>
                     <?php
                     require ("../controllers/bdd.php");
-                    $reponse = $bdd->query('SELECT ie.* , e.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement where ie.id_utilisateur = "' . $_SESSION['id_name'] . '"');
+                    $reponse = $bdd->query('SELECT ie.* , e.*, u.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
                     // On affiche chaque entrée une à une
                     while ($donnees = $reponse->fetch()) {
                         ?>
@@ -111,7 +115,10 @@ else{
                                 </div>
                                 <div class="pictureEvent">
                                     <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                    <p><?php echo $donnees['type_utilisateur']; ?></p>
                                     <p><?php echo $donnees['date_evenement']; ?></p>
+                                    <a href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
+
 
                                 </div>
                             </ul>

@@ -32,7 +32,7 @@ else{
     </div>
     <?php
     require ("../controllers/bdd.php");
-    $reponse = $bdd->query('SELECT ut.pseudo , ev.* FROM evenements as ev left join utilisateurs as ut 
+    $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
         on ev.id_utilisateur= ut.id_utilisateur where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
     while ($donnees = $reponse->fetch())
@@ -46,6 +46,7 @@ else{
             <div class="pictureEvent">
                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                 <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
+                <p><?php echo $donnees['type_utilisateur']; ?></p>
                 <p><?php echo $donnees['lieu']; ?></p>
                 <p><?php echo $donnees['date_evenement']; ?></p>
                 <p class="description"><?php echo $donnees['description']; ?></p>
