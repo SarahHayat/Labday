@@ -1,4 +1,5 @@
-
+<?php
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,8 @@
         <h1 id="title"> LabDay</h1>
         <input id="search" type="text" placeholder="recherche...">
         <a id="profil" href="profil.php"> Profil </a>
-        <a id="connect" href="connect.php"> Connexion </a>
+        <a id="deconnect" href="deconnect.php"> Deconnexion </a>
+        <h3><?php  echo $_SESSION['username'] ?></h3>
 
     </div>
     <div class="menuBas">

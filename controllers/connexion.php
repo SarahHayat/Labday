@@ -2,6 +2,7 @@
 session_start();
 require ("bdd.php");
 
+
 $prenom = $_POST["prenom"];
 $nom = $_POST["nom"];
 $date_naissance = $_POST["date_naissance"];
@@ -56,7 +57,27 @@ header('Location: ../php/connect.php');
 }
 else
 {
-$_SESSION['username'] = $username;
+    /**
+     * recuperer l'id de l'utilisateur connecté
+     */
+
+
+
+
+    $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
+
+    while ($donnees = $req->fetch()) {
+        $id_name = $donnees['id_utilisateur'];
+        $_SESSION['id_name'] = $id_name;
+    }
+
+
+    $req->closeCursor();
+    $_SESSION['id_name'] = $id_name;
+
+    $_SESSION['username'] = $username;
 header('Location: ../php/index.php');
 }
+
+
 ?>

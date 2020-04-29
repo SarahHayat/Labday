@@ -4,6 +4,6 @@
 session_start();
 session_destroy();
 
-header('Location: '.$_SERVER['HTTP_REFERER']);
-require ("index.php");
+header('Location: index.php');
+
 ?>

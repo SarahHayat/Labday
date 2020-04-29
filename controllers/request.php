@@ -5,32 +5,9 @@ session_start();
 require ("bdd.php");
 
 
-$name = $_SESSION['username'];
-
-/**
- * recuperer l'id de l'utilisateur connecté
- */
-
-        $req = $bdd->prepare('SELECT * from utilisateurs where pseudo = ":pseudo"');
-        $req->execute(array(
-            'pseudo' => $name
-        ));
-
-echo $pseudo;
 
 
-
-        $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $name . '"');
-
-        while ($donnees = $req->fetch()) {
-            $id_name = $donnees['id_utilisateur'];
-            $_SESSION['id_name'] = $id_name;
-        }
-
-
-        $req->closeCursor();
-        $_SESSION['id_name'] = $id_name;
-
+echo "id user" . $_SESSION['id_name'];
 
 
 /**

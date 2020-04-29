@@ -15,10 +15,10 @@ session_start();
 // echo "session username : " . $_SESSION['username'];
 
 if(isset($_SESSION['username'])){
-    require("headerProfil.php");
+    require("headerConnect.php");
 }
 else{
-    require("headerConnect.php");
+    require("headerDisconnect.php");
 
 }
 

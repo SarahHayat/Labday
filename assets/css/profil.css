@@ -47,10 +47,20 @@ body {
     justify-content: right;
 }
 
-#imgTree {
+
+.f-50{
+    flex-basis: 75%;
+    margin-left: 20px;
+}
+.flex{
+    display: flex;
+    padding: 3px
+}
+.imgTree {
     width: 75px;
     padding-right: 50px;
     margin-top: 45%;
+
 }
 
 .titleOfEvent {
@@ -63,11 +73,4 @@ body {
     margin: 0;
     padding: 0;
 }
-.f-50{
-    flex-basis: 75%;
-    margin-left: 20px;
-}
-.flex{
-    display: flex;
-    padding: 3px
-}
+
