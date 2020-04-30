@@ -28,51 +28,51 @@ else{
 ?>
 
 <section class="fond">
-    <div class="profil">
-        <div class="avatar flex">
+    <div class="profil flex">
+        <div class="avatar ">
             <div class="photo">
                 <img src="../assets/images/rebelle.png" height="100px" width="100px">
-                <a href="../controllers/photo.php">changer de photo de profil</a>
+
+            </div>
+            <div class="modifier">
+                <a href="../controllers/photo.php">modifier photo</a>
             </div>
         </div>
+            <div class="flex event">
+                <div>
+                    <label>nom d'utilisateur : </label>
+                    <p> <?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?></p>
+                </div>
+                <div class="progress" >
+                    <div>
+                        <label>niveau de validité : </label>
+                    </div>
+                    <?php
+                    if (isset($_SESSION['id_name'])) {
+                        $req = $bdd->query('SELECT round(AVG(note)) as moyenne FROM karma where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                        while ($donnees = $req->fetch()) {
+                            $moyenne = $donnees['moyenne'];
+                        }
+                    }
 
-        <div class="info">
-            <div class="flex">
-                <div class="f-50">
-                    <label>nom d'utilisateur:  <?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?></label>
+                    ?>
+                    <progress id="jauge" min="0" max="10" value="<?php echo $moyenne ?>"></progress>
+
                 </div>
 <!--                <div class="f-50">-->
 <!--                    <input type="text" id="username" value="--><?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
 <!--                </div>-->
+                <div class="supp">
                 <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer compte</a>
-
+                </div>
 
             </div>
-
-        </div>
-        <div class="progress">
-            <div class="f-50">
-                <label>niveau de validité:</label>
-            </div>
-        <?php
-            if (isset($_SESSION['id_name'])) {
-                $req = $bdd->query('SELECT round(AVG(note)) as moyenne FROM karma where id_utilisateur= "' . $_SESSION['id_name'] . '"');
-                while ($donnees = $req->fetch()) {
-                    $moyenne = $donnees['moyenne'];
-                }
-            }
-
-        ?>
-            <progress id="jauge" min="0" max="10" value="<?php echo $moyenne ?>"></progress>
-
-        </div>
     </div>
 
+
+
+
     <div class="event">
-        <?php
-
-
-        ?>
        <form action="#" method="post">
         <select name="choix">
             <option value="default">Choix</option>

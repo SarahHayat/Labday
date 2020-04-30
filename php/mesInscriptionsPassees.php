@@ -26,6 +26,7 @@
                     </div>
                     <div class="pictureEvent">
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
                         <a class="inputListOfEvent" href="../controllers/karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur'];?>&amp;id_evenement=<?php echo $donnees['id_evenement']?>">noter</a>
