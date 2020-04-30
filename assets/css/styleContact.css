@@ -1,5 +1,6 @@
 body {
-
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
 }
 
 .fond {
@@ -7,7 +8,7 @@ body {
     flex-direction: column;
     margin-left: 5%;
     margin-right: 5%;
-    background : #C4C4C4;
+    background : rgba(23, 185, 163, 0.78) !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -20,7 +21,7 @@ body {
 }
 .contactTitle{
     /*text-align: center;*/
-    background: #554F51;
+    background: rgba(23, 185, 163, 0.78) !important;
     color: white;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
@@ -49,11 +50,10 @@ body {
 
 /* Style the submit button with a specific background color etc */
 input[type=submit] {
-    background-color: #554F51;
-    color: white;
+    background-color: #EBD1D3;
+    color: #008F8F;
     /*padding: 12px 20px;*/
-    border: 1px solid black;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
     margin: 0 0 0 40px;
     width: 20%;
