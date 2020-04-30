@@ -17,7 +17,9 @@ $ville = $_POST["ville"];
 $type_utilisateur = $_POST["type_utilisateur"];
 
 echo $pseudo;
-
+/**
+ * ajout d'un nouveau compte
+ */
 if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
     $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
     $req->execute(array(
@@ -43,6 +45,9 @@ $password = $_POST["password"];
 
 $_SESSION['username'] = $username;
 
+/**
+ * verification connexion
+ */
 $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
 $req->execute(array(
 'pseudo' => $username,
