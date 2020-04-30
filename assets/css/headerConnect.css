@@ -1,11 +1,16 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
+
 header{
-    margin: 10px 10px 10px 10px;
+    margin-bottom: 2%;
 }
 .menuHaut{
     display: flex;
     width: 100%;
     height: 106px;
-    background : #C4C4C4;
+    background : #EBD1D3 !important;
     border-radius: 3px;
     align-items: center;
     justify-content: space-around;
@@ -15,11 +20,10 @@ header{
     display: flex;
     width: 100%;
     height: 54px;
-    background : #554F51;
-    border-radius: 4px;
-    top : 109px;
+    background : rgba(23, 185, 163, 0.78) !important;
+    border-radius: 0px 0px 4px 4px;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
 }
 .menuHaut a{
     text-decoration: none;
@@ -32,6 +36,12 @@ header{
     color: whitesmoke;
     font-size: large;
 }
+
+.menuBas a:hover{
+    border-bottom: 1px solid white;
+    margin-bottom: 2px;
+}
+
 #search {
     height: 20px;
     font-size: large;

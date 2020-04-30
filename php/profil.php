@@ -40,7 +40,7 @@ else{
                 <div class="f-50">
                     <input type="text" id="username" value="<?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?> ">
                 </div>
-                <a href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer compte</a>
+                <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer compte</a>
 
 
             </div>
@@ -87,8 +87,8 @@ else{
                                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                                 <p><?php echo $donnees['date_evenement']; ?></p>
-                                <a href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
-                                <a href="../controllers/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
+                                <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                                <a class="inputListOfEvent" href="../controllers/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
 
 
                             </div>
@@ -120,7 +120,7 @@ else{
                                     <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                                     <p><?php echo $donnees['type_utilisateur']; ?></p>
                                     <p><?php echo $donnees['date_evenement']; ?></p>
-                                    <a href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
+                                    <a class="inputListOfEvent" href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
 
 
                                 </div>

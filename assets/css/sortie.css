@@ -1,13 +1,14 @@
-body {}
-
-
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
 
 .fond {
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
     padding: 10px 10px 10px 10px;
-    background: #C4C4C4;
+    background: rgba(23, 185, 163, 0.78) !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -36,12 +37,22 @@ body {}
     flex-direction: row;
     margin: 10px;
     padding: 10px;
-    border : 2px solid black;
-    border-radius: 38px;
 
 }
 
 .description {
     border: 1px solid black;
 
+}
+
+.inputListOfEvent {
+    background-color: #EBD1D3;
+    border: none;
+    color: #008F8F;
+    padding: 8px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
 }
