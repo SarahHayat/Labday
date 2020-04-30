@@ -37,15 +37,10 @@ echo "id user" . $_SESSION['id_name'];
             header('location: ../php/connect.php');
 
         }
+
 // voir la note de karma d'un utilisateur
 
 $req = $bdd->prepare('SELECT note FROM karma WHERE id_utilisateur = :id_utilisateur');
-
-
-
-/**
- * recuperer l'id évenement
- */
 
 
 ?>
