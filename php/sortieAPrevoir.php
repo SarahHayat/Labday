@@ -6,7 +6,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Labday</title>
+    <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/sortie.css" />
 </head>
 

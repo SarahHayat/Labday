@@ -1,11 +1,12 @@
 <?php
 session_start();
+require ("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Labday</title>
+    <title>ShareEventTogether - Profil</title>
     <link rel="stylesheet" href="../assets/css/profil.css"/>
 </head>
 
@@ -22,6 +23,8 @@ else{
 
 }
 
+
+
 ?>
 
 <section class="fond">
@@ -35,22 +38,13 @@ else{
         <div class="info">
             <div class="flex">
                 <div class="f-50">
-                    <label>nom d'utilisateur:</label>
+                    <label>nom d'utilisateur:  <?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?></label>
                 </div>
-                <div class="f-50">
-                    <input type="text" id="username" value="<?php if (isset($_SESSION['username']))echo $_SESSION['username'] ?> ">
-                </div>
+<!--                <div class="f-50">-->
+<!--                    <input type="text" id="username" value="--><?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
+<!--                </div>-->
                 <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer compte</a>
 
-
-            </div>
-            <div class="flex">
-                <div class="f-50">
-                    <label>date de création:</label>
-                </div>
-                <div class="f-50">
-                    <input type="text" id="creation">
-                </div>
 
             </div>
 
@@ -59,78 +53,53 @@ else{
             <div class="f-50">
                 <label>niveau de validité:</label>
             </div>
-            <progress id="jauge" min="0" max="100" value="50"></progress>
+        <?php
+            if (isset($_SESSION['id_name'])) {
+                $req = $bdd->query('SELECT round(AVG(note)) as moyenne FROM karma where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                while ($donnees = $req->fetch()) {
+                    $moyenne = $donnees['moyenne'];
+                }
+            }
+
+        ?>
+            <progress id="jauge" min="0" max="10" value="<?php echo $moyenne ?>"></progress>
 
         </div>
     </div>
 
     <div class="event flex">
+        <?php
+
+
+        ?>
+       <form action="#" method="post">
+        <select name="choix">
+            <option value="default">Choix</option>
+            <option value="mesEvent" > Mes Événements</option>
+            <option value="mesInscription">Mes inscriptions</option>
+            <option value="mesEventPassees">Mes inscriptions passées</option>
+        </select>
+           <input type="submit" name="submit" value="Entrer">
+       </form>
+
+
         <div>
-            <div>
-                <h2>Mes évenements</h2>
-            </div>
-            <div>
-                <?php
-                require ("../controllers/bdd.php");
-                $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur where ut.id_utilisateur = "'.$_SESSION['id_name'].'"');
-                // On affiche chaque entrée une à une
-                while ($donnees = $reponse->fetch()) {
-                    ?>
-
-                    <div class="listOfEvent">
-                        <ul class="collectionItem">
-                            <div class="pictureEvent">
-                                <img class="imgTree" src="../assets/images/arbre_icon.png"/>
-                            </div>
-                            <div class="pictureEvent">
-                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                                <p><?php echo $donnees['type_utilisateur']; ?></p>
-                                <p><?php echo $donnees['date_evenement']; ?></p>
-                                <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
-                                <a class="inputListOfEvent" href="../controllers/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
-
-
-                            </div>
-                        </ul>
-                    </div>
-                    <?php
+            <?php
+            if(isset($_POST['choix']) && $_POST['choix'] !== "default") {
+                if ($_POST['choix'] == "mesEvent") {
+                    include("mesEvents.php");
+                } else if ($_POST['choix'] == "mesInscription") {
+                    include("mesInscriptions.php");
+                } else if ($_POST['choix'] == "mesEventPassees") {
+                    include("mesInscriptionsPassees.php");
+                } else if ($_POST['choix'] == "default") {
+                    //
                 }
-                ?>
-            </div>
+            }
+            ?>
+
         </div>
-            <div>
-                <div>
-                    <h2>Mes inscriptions</h2>
-                </div>
-                <div>
-                    <?php
-                    require ("../controllers/bdd.php");
-                    $reponse = $bdd->query('SELECT ie.* , e.*, u.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
-                    // On affiche chaque entrée une à une
-                    while ($donnees = $reponse->fetch()) {
-                        ?>
 
-                        <div class="listOfEvent">
-                            <ul class="collectionItem">
-                                <div class="pictureEvent">
-                                    <img class="imgTree" src="../assets/images/arbre_icon.png"/>
-                                </div>
-                                <div class="pictureEvent">
-                                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                                    <p><?php echo $donnees['type_utilisateur']; ?></p>
-                                    <p><?php echo $donnees['date_evenement']; ?></p>
-                                    <a class="inputListOfEvent" href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
-
-
-                                </div>
-                            </ul>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-                </div>
     </div>
 </section>
 

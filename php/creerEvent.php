@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Labday</title>
+    <title>ShareEventTogether - create event</title>
     <link rel="stylesheet" href="../assets/css/connect.css"/>
 </head>
 

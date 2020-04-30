@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Labday</title>
+    <title>ShareEventTogether</title>
     <link rel="stylesheet" href="../assets/css/headerConnect.css"/>
 </head>
 <header class="header">
     <div class="menuHaut">
-        <h1 id="title"> LabDay</h1>
+        <h1 id="title"> ShareEventTogether</h1>
         <input id="search" type="text" placeholder="recherche...">
         <a id="connect" href="connect.php"> Connexion </a>
 

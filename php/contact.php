@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    <title>ShareEventTogether - Contact</title>
     <link rel="stylesheet" href="../assets/css/styleContact.css"/>
 </head>
 

@@ -2,7 +2,7 @@
 session_start();
 
 require ("bdd.php");
-
+$id_evenement = $_GET['id_evenement'];
 /**
  * supprimer evenement
  */
@@ -15,18 +15,7 @@ if(isset($id_evenement)) {
     header('Location: ../php/index.php');
 }
 
-/**
- * supprimer utilisateur
- */
-if(isset($_SESSION['id_name'])) {
-    $id_evenement = $_GET['id_evenement'];
-    $req = $bdd->prepare('DELETE FROM utilisateurs WHERE id_utilisateur = :id_utilisateur');
-    $req->execute(array(
-        'id_utilisateur' => $_SESSION['id_name'],
-    ));
-    session_destroy();
-    header('Location: ../php/connect.php');
-}
+?>
 
 
 

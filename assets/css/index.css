@@ -15,15 +15,17 @@ body {
 }
 
 .create input {
-    width: 50%;
     background-color: #EBD1D3;
     color: white;
-    padding: 14px 20px;
+    padding: 15px;
     border-radius: 5px;
-    justify-content: center;
-    margin: 8px 0;
     border: none;
     cursor: pointer;
+    width: 50%;
+    align-content: center;
+    display: block;
+    margin: auto;
+    margin-bottom: 2%;
 }
 
 .create input:hover {
