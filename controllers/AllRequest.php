@@ -2,10 +2,16 @@
 require("bdd.php");
 
 class AllRequest
+
 {
+
+    public function __construct()
+    {
+    }
 
     public function verifConnect($bdd)
     {
+
         $username = $_POST["username"];
         $password = $_POST["password"];
 

@@ -1,8 +1,16 @@
-<div>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEventTogether - Mes Évenements </title>
+    <link rel="stylesheet" href="../assets/css/sortie.css" />
+</head>
+<div class="evenement">
     <div>
         <h2>Mes évenements</h2>
     </div>
-    <div>
+    <div class="evenement">
         <?php
         require ("../controllers/bdd.php");
         $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
@@ -31,3 +39,4 @@
         }
         ?>
     </div>
+</div>

@@ -75,6 +75,10 @@ body {
     margin: 0;
     padding: 0;
 }
+.collectionItem ul {
+    justify-content: center;
+    margin-left: 50px;
+}
 
 .inputListOfEvent {
     background-color: #EBD1D3;
@@ -86,4 +90,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+.evenement{
+    margin-left: 200px;
 }

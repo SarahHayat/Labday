@@ -32,6 +32,7 @@ else{
         <div class="avatar flex">
             <div class="photo">
                 <img src="../assets/images/rebelle.png" height="100px" width="100px">
+                <a href="../controllers/photo.php">changer de photo de profil</a>
             </div>
         </div>
 
@@ -67,7 +68,7 @@ else{
         </div>
     </div>
 
-    <div class="event flex">
+    <div class="event">
         <?php
 
 
@@ -83,7 +84,7 @@ else{
        </form>
 
 
-        <div>
+        <div class="evenement">
             <?php
             if(isset($_POST['choix']) && $_POST['choix'] !== "default") {
                 if ($_POST['choix'] == "mesEvent") {

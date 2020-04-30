@@ -1,8 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEventTogether - Mes inscriptions Passées </title>
+    <link rel="stylesheet" href="../assets/css/sortie.css" />
+</head>
+
 <div>
     <div>
         <h2>Mes inscriptions Passées</h2>
     </div>
-    <div>
+    <div class="evenement">
         <?php
         require ("../controllers/bdd.php");
         $reponse = $bdd->query('SELECT ie.* , e.*, u.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < now()');
