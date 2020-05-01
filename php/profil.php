@@ -33,9 +33,9 @@ if (isset($_SESSION['username'])) {
                 if (isset($_SESSION['id_name'])) {
                     $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                     while ($donnees = $req->fetch()) {
-                        $moyenne = $donnees['url'];
+                        $url = $donnees['url'];
                         ?>
-                        <img src="<?php echo $moyenne ?>" height="100px" width="100px">
+                        <img src="<?php echo $url ?>" height="150px" width="150px">
                         <?php
                     }
                 }

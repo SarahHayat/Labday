@@ -99,9 +99,10 @@ p {
     display: inline-block;
     font-size: 14px;
 }
-.evenement{
-    margin-left: 200px;
+.evenement p {
+    margin: 10px;
 }
+
 
 input[type=submit] {
     background-color: #EBD1D3;
