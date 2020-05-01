@@ -1,8 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEventTogether - Mes inscriptions </title>
+    <link rel="stylesheet" href="../assets/css/sortie.css" />
+</head>
 <div>
     <div>
         <h2>Mes inscriptions</h2>
     </div>
-    <div>
+    <div class="evenement">
         <?php
         require ("../controllers/bdd.php");
         $reponse = $bdd->query('SELECT ie.* , e.*, u.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
@@ -17,6 +26,7 @@
                     </div>
                     <div class="pictureEvent">
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
                         <a class="inputListOfEvent" href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>

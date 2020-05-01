@@ -1,8 +1,16 @@
-<div>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEventTogether - Mes Évenements </title>
+    <link rel="stylesheet" href="../assets/css/sortie.css" />
+</head>
+<div class="evenement">
     <div>
         <h2>Mes évenements</h2>
     </div>
-    <div>
+    <div class="evenement">
         <?php
         require ("../controllers/bdd.php");
         $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
@@ -18,6 +26,7 @@
                     </div>
                     <div class="pictureEvent">
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
                         <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
@@ -31,3 +40,4 @@
         }
         ?>
     </div>
+</div>

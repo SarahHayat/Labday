@@ -1,3 +1,8 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
+
 .connect {
     display: flex;
 }
@@ -11,7 +16,7 @@
     margin-left: 3% ;
     margin-right: 3% ;
     padding: 30px;
-    background : #C4C4C4;
+    background : rgba(23, 185, 163, 0.78) !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -25,7 +30,7 @@
 form {
     width:100%;
     padding: 30px;
-    background-color: #C4C4C4;
+    background : rgba(23, 185, 163, 0.78) !important;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 38px;
 }
@@ -46,7 +51,7 @@ form {
 
 
 .container input[type=submit] {
-    background-color: #53af57;
+    background-color: #EBD1D3;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -56,6 +61,6 @@ form {
 }
 .container input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: #EBD1D3;
+    border: 1px solid #EBD1D3;
 }

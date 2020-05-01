@@ -14,22 +14,29 @@ body {
     top: 195px;
 }
 
-.avatar{
-    background-color: #EBD1D3;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
+.profil {
+    justify-content: space-around;
 }
+/*.avatar{*/
+/*    background-color: #EBD1D3;*/
+/*    height: 140px;*/
+/*    width: 140px;*/
+/*    border-radius: 50%;*/
+/*}*/
 .photo {
     align-self: center;
     margin-left: 10px;
 }
-.profil{
-    display: inline-flex;
-    flex-basis: 100%;
 
+.photo img {
+    border-radius: 80%;
 }
-.info{
+
+.avatar a {
+    margin : 10px;
+    font-size: small;
+}
+info{
     display: block;
     align-self: center;
 }
@@ -42,18 +49,19 @@ body {
 }
 
 .event {
+    min-width: 80%;
     justify-content: space-around;
+    align-items: center;
+}
+
+p {
+    margin : 0;
 }
 
 .progress {
     justify-content: right;
 }
 
-
-.f-50{
-    flex-basis: 75%;
-    margin-left: 20px;
-}
 .flex{
     display: flex;
     padding: 3px
@@ -75,6 +83,10 @@ body {
     margin: 0;
     padding: 0;
 }
+.collectionItem ul {
+    justify-content: center;
+    margin-left: 50px;
+}
 
 .inputListOfEvent {
     background-color: #EBD1D3;
@@ -87,3 +99,42 @@ body {
     display: inline-block;
     font-size: 14px;
 }
+.evenement p {
+    margin: 10px;
+}
+
+
+input[type=submit] {
+    background-color: #EBD1D3;
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #EBD1D3;
+    border: 1px solid #EBD1D3;
+}
+
+.modifier {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.photoProfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photoProfil {
+    border-radius: 50%;
+}
+
+form {
+    text-align: center;
+}
+

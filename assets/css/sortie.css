@@ -39,6 +39,10 @@ body {
     padding: 10px;
 
 }
+.collectionItem ul {
+    justify-content: center;
+    margin-left: 50px;
+}
 
 .description {
     border: 1px solid black;
@@ -55,4 +59,8 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+
+.evenement{
+   margin: auto;
 }

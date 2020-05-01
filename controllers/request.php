@@ -38,20 +38,9 @@ echo "id user" . $_SESSION['id_name'];
 
         }
 
-
-//modifier un evenement
-
-$req = $bdd->prepare('UPDATE evenement SET id_evenement = $id_evenement, id_utilisateur = $id_utilisateur, date_poste = $date_poste, description = $description, date_evenement = $date_evenement, titre_evenement = $titre_evenement, id_karma = $id_karma, lieu = $lieu');
-
 // voir la note de karma d'un utilisateur
 
 $req = $bdd->prepare('SELECT note FROM karma WHERE id_utilisateur = :id_utilisateur');
-
-
-
-/**
- * recuperer l'id évenement
- */
 
 
 ?>
