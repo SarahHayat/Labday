@@ -17,15 +17,19 @@ body {
 .profil {
     justify-content: space-around;
 }
-.avatar{
-    background-color: #EBD1D3;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-}
+/*.avatar{*/
+/*    background-color: #EBD1D3;*/
+/*    height: 140px;*/
+/*    width: 140px;*/
+/*    border-radius: 50%;*/
+/*}*/
 .photo {
     align-self: center;
     margin-left: 10px;
+}
+
+.photo img {
+    border-radius: 80%;
 }
 
 .avatar a {
@@ -119,3 +123,17 @@ input[type=submit]:hover {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.photoProfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photoProfil {
+    border-radius: 50%;
+}
+
+form {
+    text-align: center;
+}
+
