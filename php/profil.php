@@ -45,7 +45,7 @@ if (isset($_SESSION['username'])) {
 
             </div>
             <div class="modifier">
-                <a href="../controllers/photo.php">modifier photo</a>
+                <a href="photo.php">modifier photo</a>
             </div>
         </div>
         <div class="flex event">
