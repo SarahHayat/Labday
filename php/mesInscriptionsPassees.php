@@ -29,8 +29,14 @@
                         <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
-                        <a class="inputListOfEvent" href="../controllers/karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur'];?>&amp;id_evenement=<?php echo $donnees['id_evenement']?>">noter</a>
-
+                        <?php
+                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
+                            ?>
+                            <a class="inputListOfEvent"
+                               href="../controllers/karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur']; ?>&amp;id_evenement=<?php echo $donnees['id_evenement'] ?>">noter</a>
+                            <?php
+                        }
+                        ?>
 
                     </div>
                 </ul>

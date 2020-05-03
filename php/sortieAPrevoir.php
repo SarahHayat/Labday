@@ -26,10 +26,7 @@ else{
 
 ?>
 
-<section class="fond">
-    <div class="filter">
 
-    </div>
     <?php
     require ("../controllers/bdd.php");
     $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
@@ -45,13 +42,19 @@ else{
             </div>
             <div class="pictureEvent">
                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
+                <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                 <p><?php echo $donnees['lieu']; ?></p>
                 <p><?php echo $donnees['date_evenement']; ?></p>
                 <p class="description"><?php echo $donnees['description']; ?></p>
-                <a  class="inputListOfEvent" href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
-
+                <?php
+                if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
+                ?>
+                <a class="inputListOfEvent"
+                   href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement'];?>">s'inscrire</a>
+                <?php
+                }
+                ?>
 
             </div>
 

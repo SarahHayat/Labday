@@ -9,7 +9,10 @@
 <header class="header">
     <div class="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
-        <input id="search" type="text" placeholder="recherche...">
+        <form action="recherche.php" method="get">
+            <input type="search" name="search" placeholder="recherche...">
+            <input type="submit" value="valider">
+        </form>
         <a id="profil" href="profil.php"> Profil </a>
         <a id="deconnect" href="deconnect.php"> Deconnexion </a>
         <h3><?php
