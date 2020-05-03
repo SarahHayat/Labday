@@ -7,19 +7,17 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties à prévoir</title>
-    <link rel="stylesheet" href="../assets/css/sortie.css" />
+    <link rel="stylesheet" href="../assets/css/sortie.css"/>
 </head>
-
 
 
 <body>
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     require("headerConnect.php");
-}
-else{
+} else {
     require("headerDisconnect.php");
 
 }
@@ -27,13 +25,12 @@ else{
 ?>
 
 
-    <?php
-    require ("../controllers/bdd.php");
-    $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
+<?php
+require("../controllers/bdd.php");
+$reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
         on ev.id_utilisateur= ut.id_utilisateur where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
-    // On affiche chaque entrée une à une
-    while ($donnees = $reponse->fetch())
-    {
+// On affiche chaque entrée une à une
+while ($donnees = $reponse->fetch()) {
     ?>
     <div class="listOfEvent">
         <ul class="collectionItem">
@@ -49,20 +46,22 @@ else{
                 <p class="description"><?php echo $donnees['description']; ?></p>
                 <?php
                 if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
-                ?>
-                <a class="inputListOfEvent"
-                   href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement'];?>">s'inscrire</a>
-                <?php
+                    ?>
+                    <a class="inputListOfEvent"
+                       href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">
+                        s'inscrire </a>
+                    <?php
                 }
                 ?>
 
             </div>
 
         </ul>
-        <?php
-        }
-        ?>
+
     </div>
+    <?php
+}
+?>
 </section>
 
 </body>

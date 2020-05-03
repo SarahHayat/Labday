@@ -23,7 +23,7 @@ else{
 }
 
 ?>
-<form action="../controllers/request.php" method="post" class="container fond">
+<form action="../controllers/request.php" method="post" class="container fond creer">
     <h1> Creation nouveau Evenement</h1>
 
     <label><b>Titre</b></label>

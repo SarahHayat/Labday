@@ -30,7 +30,7 @@ else{
         <p>Des questions? Remplissez le formulaire et nous vous répondrons du mieux possible</p>
     </div>
     <div class="container">
-        <form action="action_page.php">
+        <form action="action_page.php" class="contact">
             <div class="list">
 
             </div>

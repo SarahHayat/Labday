@@ -9,7 +9,7 @@
 <header class="header">
     <div class="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
-        <form action="recherche.php" method="get">
+        <form action="recherche.php" method="get" class="search">
             <input type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">
         </form>

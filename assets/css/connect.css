@@ -27,7 +27,7 @@ body {
     margin-top:5%;
 }
 /* Bordered form */
-form {
+form .connexion .creer .contact {
     width:100%;
     padding: 30px;
     background : rgba(23, 185, 163, 0.78) !important;
@@ -64,3 +64,7 @@ form {
     color: #EBD1D3;
     border: 1px solid #EBD1D3;
 }
+.search {
+     height: 20px;
+     font-size: large;
+ }

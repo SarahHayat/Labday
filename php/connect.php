@@ -27,7 +27,7 @@ else{
     <div class="container">
         <!-- zone de connexion -->
 
-        <form action="../controllers/connexion.php" method="POST">
+        <form action="../controllers/connexion.php" method="POST" class="connexion">
             <h1>Connexion</h1>
 
             <label><b>Nom d'utilisateur</b></label>
@@ -41,7 +41,7 @@ else{
         </form>
     </div>
     <div class="container">
-        <form action="../controllers/connexion.php" method="post">
+        <form action="../controllers/connexion.php" method="post" class="creer">
             <h1> Creation nouveau utilisateur</h1>
 
             <label><b>Type utilisateur</b></label></br>
