@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mar. 28 avr. 2020 à 14:44
+-- Généré le :  lun. 04 mai 2020 à 09:54
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -36,10 +36,15 @@ CREATE TABLE `evenements` (
 --
 
 INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `lieu`) VALUES
-(1, 2, '2020-04-28 11:10:35', 'ksfjgbnodfbiq', '2020-06-04 00:00:00', 'titre 1', NULL, 'Pontoise'),
-(2, 1, '2020-04-28 11:45:28', 'kihkvjkgbhjk', '2020-12-12 00:00:00', 'titre 2', NULL, 'hjgcvb'),
-(3, 1, '2020-04-28 12:10:42', 'dhgbfv', '2020-07-07 00:00:00', 'titre 3', NULL, 'jhngbvc'),
-(4, 3, '2020-04-28 14:34:06', 'TEST ', '2020-04-28 15:50:00', 'TEST', NULL, 'TEST');
+(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris'),
+(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX'),
+(12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse'),
+(16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', NULL, 'Asnieres-sur-oise'),
+(17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise'),
+(18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise'),
+(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', NULL, 'Pontoise'),
+(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches'),
+(21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon');
 
 -- --------------------------------------------------------
 
@@ -53,6 +58,20 @@ CREATE TABLE `inscription_evenements` (
   `id_evenement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `inscription_evenements`
+--
+
+INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_evenement`) VALUES
+(31, 10, 12),
+(33, 10, 17),
+(35, 2, 18),
+(40, 11, 18),
+(41, 12, 16),
+(42, 12, 12),
+(43, 2, 19),
+(44, 2, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +83,41 @@ CREATE TABLE `karma` (
   `id_utilisateur` int(11) NOT NULL,
   `note` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `karma`
+--
+
+INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
+(1, 10, 8),
+(2, 10, 8),
+(3, 2, 3),
+(4, 2, 10),
+(6, 2, 10),
+(7, 10, 10),
+(8, 10, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `photo_utilisateurs`
+--
+
+CREATE TABLE `photo_utilisateurs` (
+  `id_photo` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `url` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `photo_utilisateurs`
+--
+
+INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
+(4, 10, '../assets/photoProfil/femme.jpg'),
+(14, 2, '../assets/photoProfil/homme.jpg'),
+(16, 3, '../assets/photoProfil/femme.jpg'),
+(17, 12, '../assets/photoProfil/femme.jpg');
 
 -- --------------------------------------------------------
 
@@ -93,10 +147,11 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postale`, `pays`, `telephone`, `mail`, `pseudo`, `mot_de_passe`, `type_utilisateur`, `ville`, `date_creation_utilisateur`) VALUES
-(1, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 1234567890, 'saraahyt@gmail.com', 'sarah.hayat', 'TEST', 'particulier', 'Asnieres-sur-oise', '2020-04-01 00:00:00'),
 (2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'professionnel', 'Pontoise', '2020-04-07 00:00:00'),
 (3, 'Marie', 'Tchydemian', '1998-08-06', 'rue de la gare', 95270, 'France', 1357908642, 'marie.tdm@gmail.com', 'marie.tdm', 'MARIE', 'particulier', 'Viarmes', '2020-04-17 00:00:00'),
-(6, 'Florent', 'Debuchy', '1997-04-04', '1 rue de eaubonne', 95400, 'France', 1234567890, 'flo.debuchy@gmail.com', 'floflo', 'FLOFLO', 'professionnel', 'Eaubonne', '2020-04-28 09:54:43');
+(10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'professionnel', 'Asnieres-sur-oise', '2020-04-30 10:03:31'),
+(11, 'Anga', 'Anga', '1992-03-03', '2 rue de beaumont', 95000, 'France', 1234565678, 'anga@gmail.com', 'Anga', 'ANGA', 'professionnel', 'Pontoise', '2020-04-30 13:52:03'),
+(12, 'Léna', 'Pancher', '1997-08-04', 'lenapancher@gmail.com', 95270, 'France', 987654321, 'lenapancher@gmail.com', 'lena', 'LENA', 'professionnel', 'Asnieres-sur-oise', '2020-04-30 20:54:22');
 
 --
 -- Index pour les tables déchargées
@@ -106,13 +161,29 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`,
 -- Index pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  ADD PRIMARY KEY (`id_evenement`);
+  ADD PRIMARY KEY (`id_evenement`),
+  ADD KEY `evenements_ibfk_1` (`id_utilisateur`);
+
+--
+-- Index pour la table `inscription_evenements`
+--
+ALTER TABLE `inscription_evenements`
+  ADD PRIMARY KEY (`id_inscription`),
+  ADD KEY `inscription_evenements_ibfk_1` (`id_utilisateur`);
 
 --
 -- Index pour la table `karma`
 --
 ALTER TABLE `karma`
-  ADD PRIMARY KEY (`id_karma`);
+  ADD PRIMARY KEY (`id_karma`),
+  ADD KEY `karma_ibfk_1` (`id_utilisateur`);
+
+--
+-- Index pour la table `photo_utilisateurs`
+--
+ALTER TABLE `photo_utilisateurs`
+  ADD PRIMARY KEY (`id_photo`),
+  ADD KEY `foreign_key_user_photo` (`id_utilisateur`);
 
 --
 -- Index pour la table `utilisateurs`
@@ -128,16 +199,56 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT pour la table `inscription_evenements`
+--
+ALTER TABLE `inscription_evenements`
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `photo_utilisateurs`
+--
+ALTER TABLE `photo_utilisateurs`
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `evenements`
+--
+ALTER TABLE `evenements`
+  ADD CONSTRAINT `evenements_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `inscription_evenements`
+--
+ALTER TABLE `inscription_evenements`
+  ADD CONSTRAINT `inscription_evenements_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `karma`
+--
+ALTER TABLE `karma`
+  ADD CONSTRAINT `karma_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `photo_utilisateurs`
+--
+ALTER TABLE `photo_utilisateurs`
+  ADD CONSTRAINT `foreign_key_user_photo` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
