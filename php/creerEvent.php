@@ -14,17 +14,25 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     require("headerConnect.php");
-}
-else{
+} else {
     require("headerDisconnect.php");
 
 }
 
 ?>
-<form action="../controllers/request.php" method="post" class="container fond creer">
+<form action="../controllers/createEvent.php" method="post" class="container fond creer">
     <h1> Creation nouveau Evenement</h1>
+
+    <label><b>Catégorie</b></label>
+    <select name="categorie">
+        <option>Selectionnez une catégorie</option>
+        <option value="1">Plein air</option>
+        <option value="2">Jeux de société</option>
+        <option value="3">Tourisme</option>
+        <option value="4">Soirée</option>
+    </select>
 
     <label><b>Titre</b></label>
     <input type="text" placeholder="titre" name="titre" required>
@@ -38,6 +46,6 @@ else{
     <label><b>Description</b></label></br>
     <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
-    <input type="submit" id='enregistrer' value='ENREGISTRER' >
-        </form>
+    <input type="submit" id='enregistrer' value='ENREGISTRER'>
+</form>
 

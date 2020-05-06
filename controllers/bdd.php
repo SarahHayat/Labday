@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Connexion à la base de donnée
+ */
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

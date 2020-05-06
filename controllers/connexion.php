@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("bdd.php");
+require("bdd.php");
 
 
 $prenom = $_POST["prenom"];
@@ -20,7 +20,7 @@ echo $pseudo;
 /**
  * ajout d'un nouveau compte
  */
-if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)){
+if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)) {
     $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
     $req->execute(array(
         'prenom' => $prenom,
@@ -38,7 +38,7 @@ if(isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &&
 
 
     ));
-    echo "votre compte à été crée" ;
+    echo "votre compte à été crée";
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -50,23 +50,18 @@ $_SESSION['username'] = $username;
  */
 $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
 $req->execute(array(
-'pseudo' => $username,
-'password' => $password
+    'pseudo' => $username,
+    'password' => $password
 ));
 
 $resultat = $req->fetch();
 
-if (!$resultat)
-{
-header('Location: ../php/connect.php');
-}
-else
-{
+if (!$resultat) {
+    header('Location: ../php/connect.php');
+} else {
     /**
      * recuperer l'id de l'utilisateur connecté
      */
-
-
 
 
     $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
@@ -81,7 +76,7 @@ else
     $_SESSION['id_name'] = $id_name;
 
     $_SESSION['username'] = $username;
-header('Location: ../php/index.php');
+    header('Location: ../php/index.php');
 }
 
 

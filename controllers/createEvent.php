@@ -6,10 +6,6 @@ require ("bdd.php");
 
 
 
-
-echo "id user" . $_SESSION['id_name'];
-
-
 /**
  * Creer un évenement
  */
@@ -18,16 +14,18 @@ echo "id user" . $_SESSION['id_name'];
         $date_evenement = $_POST["date_evenement"];
         $titre = $_POST["titre"];
         $lieu = $_POST["lieux"];
+        $categorie = $_POST['categorie'];
 
 
-        if (isset($_SESSION['id_name']) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username'])) {
-            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu)');
+        if (isset($_SESSION['id_name']) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username']) && isset($categorie)) {
+            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu, id_categorie) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu, :categorie)');
             $req->execute(array(
                 'utilisateur' => $_SESSION['id_name'],
                 'description' => $description,
                 'date_evenement' => $date_evenement,
                 'titre' => $titre,
                 'lieu' => $lieu,
+                'categorie' => $categorie,
 
             ));
             header('location: ../php/profil.php');
@@ -37,11 +35,6 @@ echo "id user" . $_SESSION['id_name'];
             header('location: ../php/connect.php');
 
         }
-
-// voir la note de karma d'un utilisateur
-
-$req = $bdd->prepare('SELECT note FROM karma WHERE id_utilisateur = :id_utilisateur');
-
 
 ?>
 

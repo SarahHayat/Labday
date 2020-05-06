@@ -1,17 +1,9 @@
-<!--SELECT *-->
-<!--FROM evenements as e-->
-<!--left join karma as k-->
-<!--on e.id_karma = k.id_karma-->
-<!--left join utilisateurs as u-->
-<!--on u.id_utilisateur = k.id_utilisateur-->
-<!--where e.id_evenement = 16-->
-
 <?php
 session_start();
 
 require("bdd.php");
 /**
- * ajouter note
+ * Reprend les éléments de l'événement
  */
 $id_evenement = $_GET['id_evenement'];
 $id_utilisateur = $_GET['id_utilisateur'];
@@ -28,12 +20,9 @@ while ($donnees = $reponse->fetch()) {
     $lieu = $donnees['lieu'];
 }
 
-
-//$description = $_POST['description'];
-//$date_evenement = $_POST['date_evenement'];
-//$titre_evenement = $_POST['titre_evenement'];
-//$lieu = $_POST['lieu'];
-
+/**
+ * Formulaire note
+ */
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -65,7 +54,9 @@ while ($donnees = $reponse->fetch()) {
     <input type="submit" id='enregistrer' value='ENREGISTRER'>
 </form>
 <?php
-
+/**
+ * Ajouter une note
+ */
 if (isset($_POST['note']) && isset($id_utilisateur)) {
     $req = $bdd->prepare('INSERT INTO karma(note, id_utilisateur) VALUES(:note, :id_utilisateur)');
     $req->execute(array(
