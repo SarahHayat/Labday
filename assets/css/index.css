@@ -6,10 +6,10 @@ body {
 .fond {
     /*width: 91.66%;
     height: 70.01%;*/
-    margin-left: 3% ;
-    margin-right: 3% ;
+    margin-left: 3%;
+    margin-right: 3%;
     padding: 10px 10px 10px 10px;
-    background : rgba(23, 185, 163, 0.78) !important;
+    background: rgba(23, 185, 163, 0.78) !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -32,4 +32,73 @@ body {
     background-color: white;
     color: #EBD1D3;
     border: 1px solid #EBD1D3;
+}
+
+div#slider {
+    width: 80%;
+    margin: auto;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+div#slider figure {
+    position: relative;
+    width: 400%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    text-align: left;
+}
+
+div#slider figure img {
+    width: 25%;
+    height: auto;
+    float: left;
+}
+
+div#slider {
+    width: 80%;
+    max-width: 1000px;
+    overflow: hidden
+}
+
+@keyframes slidy {
+    0% {
+        left: 0%;
+    }
+    20% {
+        left: 0%;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+}
+
+div#slider figure {
+    position: relative;
+    width: 400%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    left: 0;
+    text-align: left;
+    animation: 30s slidy infinite;
 }

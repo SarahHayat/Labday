@@ -23,6 +23,16 @@ else{
         require("headerDisconnect.php");
 
 }
+?>
+<div id="slider">
+    <figure>
+        <img src="../assets/images/jeu_societe.jpg" alt>
+        <img src="../assets/images/plein_air.png" alt>
+        <img src="../assets/images/tourisme.jpg" alt>
+        <img src="../assets/images/soiree.jpg" alt>
+    </figure>
+</div>
+<?php
 
 if(isset($_SESSION['username'])){
 ?>
