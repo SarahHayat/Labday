@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  lun. 04 mai 2020 à 09:54
+-- Généré le :  ven. 08 mai 2020 à 10:11
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -13,6 +13,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `ShareEventTogether`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_evenements`
+--
+
+CREATE TABLE `categorie_evenements` (
+  `id_categorie` int(11) NOT NULL,
+  `nom_categorie` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `categorie_evenements`
+--
+
+INSERT INTO `categorie_evenements` (`id_categorie`, `nom_categorie`) VALUES
+(1, 'plein air'),
+(2, 'jeux de société'),
+(3, 'tourisme'),
+(4, 'soirée');
 
 -- --------------------------------------------------------
 
@@ -28,23 +49,25 @@ CREATE TABLE `evenements` (
   `date_evenement` datetime NOT NULL,
   `titre_evenement` varchar(250) NOT NULL,
   `id_karma` int(11) DEFAULT NULL,
-  `lieu` varchar(255) DEFAULT NULL
+  `lieu` varchar(255) DEFAULT NULL,
+  `id_categorie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `evenements`
 --
 
-INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `lieu`) VALUES
-(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris'),
-(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX'),
-(12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse'),
-(16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', NULL, 'Asnieres-sur-oise'),
-(17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise'),
-(18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise'),
-(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', NULL, 'Pontoise'),
-(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches'),
-(21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon');
+INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `lieu`, `id_categorie`) VALUES
+(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris', 0),
+(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX', 0),
+(12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse', 0),
+(16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', NULL, 'Asnieres-sur-oise', 0),
+(17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise', 0),
+(18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise', 0),
+(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', NULL, 'Pontoise', 0),
+(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches', 0),
+(21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon', 0),
+(22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', NULL, 'Cergy', 2);
 
 -- --------------------------------------------------------
 
@@ -70,7 +93,8 @@ INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_ev
 (41, 12, 16),
 (42, 12, 12),
 (43, 2, 19),
-(44, 2, 10);
+(44, 2, 10),
+(45, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -158,6 +182,12 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`,
 --
 
 --
+-- Index pour la table `categorie_evenements`
+--
+ALTER TABLE `categorie_evenements`
+  ADD PRIMARY KEY (`id_categorie`);
+
+--
 -- Index pour la table `evenements`
 --
 ALTER TABLE `evenements`
@@ -196,16 +226,22 @@ ALTER TABLE `utilisateurs`
 --
 
 --
+-- AUTO_INCREMENT pour la table `categorie_evenements`
+--
+ALTER TABLE `categorie_evenements`
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
-  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
