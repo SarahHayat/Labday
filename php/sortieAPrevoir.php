@@ -30,7 +30,7 @@ require("../controllers/bdd.php");
 
 ?>
 
-<form action="filtre.php" method="post">
+<form action="filtre.php" method="post" class="filtre">
     <select name="categorie">
         <option value="1">Plein air</option>
         <option value="2">Jeux de société</option>
@@ -49,21 +49,24 @@ require("../controllers/bdd.php");
     <input type="submit" value="chercher">
 
 </form>
-
+<section class="fond">
 <?php
-$reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
+$reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut  
+        on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch()) {
-    ?>
+?>
     <div class="listOfEvent">
         <ul class="collectionItem">
             <div class="pictureEvent">
                 <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                <p><?php echo $donnees['nom_categorie']; ?></p>
             </div>
             <div class="pictureEvent">
                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                <p><?php echo "Par " ?> <b><a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                <p><?php echo "Par " ?> <b><a
+                                href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                    le : <b> <?php echo $donnees['date_poste'] ?></b></p>
                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                 <p><?php echo $donnees['lieu']; ?></p>
                 <p><?php echo $donnees['date_evenement']; ?></p>
@@ -84,8 +87,8 @@ while ($donnees = $reponse->fetch()) {
 
     </div>
     <?php
-}
-?>
+    }
+    ?>
 </section>
 
 </body>

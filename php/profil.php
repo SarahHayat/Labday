@@ -53,6 +53,18 @@ if (isset($_SESSION['username'])) {
                 <label>nom d'utilisateur : </label>
                 <p> <?php if (isset($_SESSION['username'])) echo $_SESSION['username'] ?></p>
             </div>
+            <div>
+                <label>type : </label>
+                <?php
+                if (isset($_SESSION['id_name'])) {
+                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                    while ($donnees = $req->fetch()) {
+                       echo '<p>' . $donnees['type_utilisateur'] . '</p>';
+                    }
+                }
+
+                ?>
+            </div>
             <div class="progress">
                 <div>
                     <label>niveau de validité : </label>

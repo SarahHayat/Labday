@@ -46,6 +46,7 @@ body {
 
 .description {
     border: 1px solid black;
+    padding: 5px;
 
 }
 
@@ -67,4 +68,5 @@ body {
 
 .filtre {
     text-align: center;
+    padding: 10px;
 }

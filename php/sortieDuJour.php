@@ -26,7 +26,7 @@ else{
 
 ?>
 
-<form action="filtre.php" method="post">
+<form action="filtre.php" method="post" class="filtre">
     <select name="categorie">
         <option value="1">Plein air</option>
         <option value="2">Jeux de société</option>
