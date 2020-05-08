@@ -27,6 +27,30 @@ if (isset($_SESSION['username'])) {
 
 <?php
 require("../controllers/bdd.php");
+
+?>
+
+<form action="filtre.php" method="post">
+    <select name="categorie">
+        <option value="1">Plein air</option>
+        <option value="2">Jeux de société</option>
+        <option value="3">Tourisme</option>
+        <option value="4">Soirée</option>
+    </select>
+
+    <input type="date" name="date_debut" placeholder="date de début">
+
+    <input type="date" name="date_fin" placeholder="date de fin">
+
+    <input type="text" name="localisation" placeholder="saisir une ville">
+
+    <input type="range" name="karma" min="0" max="10">
+
+    <input type="submit" value="chercher">
+
+</form>
+
+<?php
 $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
         on ev.id_utilisateur= ut.id_utilisateur where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
 // On affiche chaque entrée une à une
