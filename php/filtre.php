@@ -41,10 +41,10 @@ $karma = $_POST['karma'];
     <?php
     $req = $bdd->query('SELECT MIN(DATE(date_evenement)) as date_min, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
-    ?>
-    <input type="date" name="date_debut" value="<?php echo $donnees['date_min'];?>">
+        ?>
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_min']; ?>">
 
-    <input type="date" name="date_fin" value="<?php echo $donnees['date_max'];?>">
+        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>">
         <?php
     }
     ?>
@@ -62,60 +62,66 @@ $karma = $_POST['karma'];
 
         <?php
         if (isset($_SESSION['id_name']) || isset($categorie) || isset($date_debut) || isset($date_fin) || isset($karma)) {
-        $req = $bdd->query('SELECT * 
-FROM evenements as e 
-left join karma as k 
-on e.id_karma = k.id_karma 
-left join utilisateurs as u
-on u.id_utilisateur = e.id_utilisateur
-WHERE ((id_categorie ='.$categorie.' )
-AND (DATE(date_evenement) BETWEEN "'.$date_debut.'" AND "'.$date_fin.'") 
-AND (note >= '.$karma.'))');
+            $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*
+    FROM karma as k
+    left join utilisateurs as u
+    on k.id_utilisateur = u.id_utilisateur
+    left join evenements as e
+    on u.id_utilisateur = e.id_utilisateur
+    WHERE ( (id_categorie =' . $categorie . ' ) 
+    AND (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '"))
+    GROUP by k.id_utilisateur
+    HAVING (moyenne >= '.$karma.')');
 
-        if ($categorie == "NULL"){
-            $req = $bdd->query('SELECT * 
-FROM evenements as e 
-left join karma as k 
-on e.id_karma = k.id_karma 
-left join utilisateurs as u
-on u.id_utilisateur = e.id_utilisateur
-WHERE ( (DATE(date_evenement) BETWEEN "'.$date_debut.'" AND "'.$date_fin.'") 
-AND (note >= '.$karma.'))');
-        }
+            if ($categorie == "NULL") {
+                $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*
+    FROM karma as k
+    left join utilisateurs as u
+    on k.id_utilisateur = u.id_utilisateur
+    left join evenements as e
+    on u.id_utilisateur = e.id_utilisateur
+    WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '"))
+    GROUP by k.id_utilisateur
+    HAVING (moyenne >= '.$karma.')');
+            }
 
-        while ($donnees = $req->fetch()) {
+            while ($donnees = $req->fetch()) {
 
-            ?>
+                ?>
 
-            <div class="listOfEvent">
-                <ul class="collectionItem">
-                    <div class="pictureEvent">
-                        <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                    </div>
-                    <div class="pictureEvent">
+                <div class="listOfEvent">
+                    <ul class="collectionItem">
+                        <div class="pictureEvent">
+                            <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                        </div>
+                        <div class="pictureEvent">
 
-                        <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                        <p><?php echo "Par " ?> <b><a
-                                        href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                            le : <b> <?php echo $donnees['date_poste'] ?></b></p>
-                        <p><?php echo $donnees['type_utilisateur']; ?></p>
-                        <p><?php echo $donnees['lieu']; ?></p>
-                        <p><?php echo $donnees['date_evenement']; ?></p>
-                        <p class="description"><?php echo $donnees['description']; ?></p>
-                        <?php
-                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
-                            ?>
-                            <a class="inputListOfEvent"
-                               href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                            <p><?php echo "Par " ?> <b><a
+                                            href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                                le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                            <p><?php echo $donnees['type_utilisateur']; ?></p>
+                            <p><?php echo $donnees['lieu']; ?></p>
+                            <p><?php echo $donnees['date_evenement']; ?></p>
+                            <p class="description"><?php echo $donnees['description']; ?></p>
                             <?php
-                        }
-                        ?>
-                    </div>
-                </ul>
-            </div>
+                            $reponse = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur = "' . $_SESSION['id_name'] . '"');
+                            // On affiche chaque entrée une à une
+                            while ($donnees = $reponse->fetch()) {
+                                if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] || $donnees['type_utilisateur'] == "particulier") {
+                                    ?>
+                                    <a class="inputListOfEvent"
+                                       href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </ul>
+                </div>
 
-            <?php
-        }
+                <?php
+            }
         }
 
         ?>

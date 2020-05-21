@@ -43,9 +43,9 @@ require("../controllers/bdd.php");
     while ($donnees = $req->fetch()) {
 
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_min'];?>">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_min']; ?>">
 
-        <input type="date" name="date_fin" value="<?php echo $donnees['date_max'];?>">
+        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>">
         <?php
     }
     ?>
@@ -80,12 +80,15 @@ require("../controllers/bdd.php");
                     <p><?php echo $donnees['date_evenement']; ?></p>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
-                    if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
-                        ?>
-                        <a class="inputListOfEvent"
-                           href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">
-                            s'inscrire </a>
-                        <?php
+                    $reponse = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur = "' . $_SESSION['id_name'] . '"');
+                    // On affiche chaque entrée une à une
+                    while ($donnees = $reponse->fetch()) {
+                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] || $donnees['type_utilisateur'] == "particulier") {
+                            ?>
+                            <a class="inputListOfEvent"
+                               href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
+                            <?php
+                        }
                     }
                     ?>
 
