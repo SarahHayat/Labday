@@ -28,6 +28,7 @@ else{
 
 <form action="filtre.php" method="post" class="filtre">
     <select name="categorie">
+        <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
         <option value="2">Jeux de société</option>
         <option value="3">Tourisme</option>

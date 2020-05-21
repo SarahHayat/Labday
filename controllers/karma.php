@@ -8,9 +8,6 @@ require("bdd.php");
 $id_evenement = $_GET['id_evenement'];
 $id_utilisateur = $_GET['id_utilisateur'];
 
-
-echo "id event : " . $id_evenement;
-echo "id user : " . $id_utilisateur;
 $reponse = $bdd->query('SELECT * FROM evenements where id_evenement = "' . $id_evenement . '"');
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch()) {
@@ -64,6 +61,16 @@ if (isset($_POST['note']) && isset($id_utilisateur)) {
         'id_utilisateur' => $id_utilisateur,
 
     ));
+    $req = $bdd->query('SELECT id_karma FROM karma ORDER BY id_karma DESC LIMIT 1');
+    while ($donnees = $req->fetch()) {
+        $id_karma = $donnees['id_karma'];
+
+
+        $req = $bdd->query('UPDATE evenements SET id_karma= "' . $id_karma . '" WHERE id_evenement =  "' . $id_evenement . '"');
+
+        $req->closeCursor();
+    }
+
     header('Location: ../php/profil.php');
 }
 
