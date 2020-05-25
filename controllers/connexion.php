@@ -39,6 +39,15 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
 
     ));
     echo "votre compte à été crée";
+    $req = $bdd->query('SELECT * FROM utilisateurs WHERE pseudo ="' . $pseudo . '"');
+    while ($donnees = $req->fetch()) {
+        $new_id = $donnees['id_utilisateur'];
+    }
+    $req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id, :note)');
+    $req->execute(array(
+        'id' => $new_id,
+        'note' => 5,
+    ));
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
