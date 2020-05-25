@@ -76,12 +76,13 @@ $search = $_POST['localisation'];
     HAVING (moyenne >= '.$karma.')');
 
             if ($categorie == "NULL") {
-                $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*
+                $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*, ce.*
     FROM karma as k
     left join utilisateurs as u
     on k.id_utilisateur = u.id_utilisateur
     left join evenements as e
     on u.id_utilisateur = e.id_utilisateur
+    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
     WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
     AND UCASE(e.lieu) LIKE "%'.$search.'%")
     GROUP by k.id_utilisateur
@@ -96,6 +97,7 @@ $search = $_POST['localisation'];
                     <ul class="collectionItem">
                         <div class="pictureEvent">
                             <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                            <p><?php echo $donnees['nom_categorie']; ?></p>
                         </div>
                         <div class="pictureEvent">
 

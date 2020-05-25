@@ -14,7 +14,10 @@
     <div class="evenement">
         <?php
         require ("../controllers/bdd.php");
-        $reponse = $bdd->query('SELECT ie.* , e.*, u.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
+        $reponse = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement 
+    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
+    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
+    where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
         // On affiche chaque entrée une à une
         while ($donnees = $reponse->fetch()) {
             ?>
@@ -23,6 +26,8 @@
                 <ul class="collectionItem">
                     <div class="pictureEvent">
                         <img class="imgTree" src="../assets/images/arbre_icon.png"/>
+                        <p><?php echo $donnees['nom_categorie']; ?></p>
+
                     </div>
                     <div class="pictureEvent">
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>

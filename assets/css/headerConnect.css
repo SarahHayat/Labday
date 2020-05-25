@@ -5,8 +5,8 @@ body {
 
 header{
     margin-bottom: 2%;
-/*    position: fixed;
-    width: 100%;*/
+    /*position: fixed;*/
+    /*width: 100%;*/
 }
 .menuHaut{
     display: flex;
