@@ -73,7 +73,7 @@ else{
                     <p><?php echo $donnees['date_evenement']; ?></p>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
-                    if($donnees['id_utilisateur'] !== $_SESSION['id_name'] ) {
+                    if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier") {
                         ?>
                         <a class="inputListOfEvent"
                            href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>

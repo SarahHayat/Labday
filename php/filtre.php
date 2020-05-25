@@ -27,6 +27,7 @@ $date_debut = $_POST['date_debut'];
 $date_fin = $_POST['date_fin'];
 //$localisation = $_POST['$localisation'];
 $karma = $_POST['karma'];
+$search = $_POST['localisation'];
 
 
 ?>
@@ -69,7 +70,8 @@ $karma = $_POST['karma'];
     left join evenements as e
     on u.id_utilisateur = e.id_utilisateur
     WHERE ( (id_categorie =' . $categorie . ' ) 
-    AND (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '"))
+    AND (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
+    AND UCASE(e.lieu) LIKE "%'.$search.'%")
     GROUP by k.id_utilisateur
     HAVING (moyenne >= '.$karma.')');
 
@@ -80,7 +82,8 @@ $karma = $_POST['karma'];
     on k.id_utilisateur = u.id_utilisateur
     left join evenements as e
     on u.id_utilisateur = e.id_utilisateur
-    WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '"))
+    WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
+    AND UCASE(e.lieu) LIKE "%'.$search.'%")
     GROUP by k.id_utilisateur
     HAVING (moyenne >= '.$karma.')');
             }
@@ -105,15 +108,11 @@ $karma = $_POST['karma'];
                             <p><?php echo $donnees['date_evenement']; ?></p>
                             <p class="description"><?php echo $donnees['description']; ?></p>
                             <?php
-                            $reponse = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur = "' . $_SESSION['id_name'] . '"');
-                            // On affiche chaque entrée une à une
-                            while ($donnees = $reponse->fetch()) {
-                                if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] || $donnees['type_utilisateur'] == "particulier") {
+                            if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier") {
                                     ?>
                                     <a class="inputListOfEvent"
                                        href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
                                     <?php
-                                }
                             }
                             ?>
                         </div>

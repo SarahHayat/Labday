@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 08 mai 2020 à 10:11
+-- Généré le :  lun. 25 mai 2020 à 10:26
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -50,7 +50,7 @@ CREATE TABLE `evenements` (
   `titre_evenement` varchar(250) NOT NULL,
   `id_karma` int(11) DEFAULT NULL,
   `lieu` varchar(255) DEFAULT NULL,
-  `id_categorie` int(11) NOT NULL
+  `id_categorie` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -58,16 +58,18 @@ CREATE TABLE `evenements` (
 --
 
 INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `lieu`, `id_categorie`) VALUES
-(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris', 0),
-(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX', 0),
-(12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse', 0),
-(16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', NULL, 'Asnieres-sur-oise', 0),
-(17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise', 0),
-(18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise', 0),
-(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', NULL, 'Pontoise', 0),
-(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches', 0),
-(21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon', 0),
-(22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', NULL, 'Cergy', 2);
+(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris', NULL),
+(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX', NULL),
+(12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse', 4),
+(16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', NULL, 'Asnieres-sur-oise', NULL),
+(17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise', NULL),
+(18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise', NULL),
+(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', 22, 'Pontoise', NULL),
+(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches', NULL),
+(21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon', NULL),
+(22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', 4, 'Cergy', 2),
+(23, 10, '2020-05-21 11:04:01', 'soiree', '2020-05-21 11:05:00', 'soiree', 19, 'paris', 4),
+(24, 10, '2020-05-25 09:27:15', 'tour de la ville de tours', '2020-10-01 10:00:00', 'tour de la ville', NULL, 'Tours', 3);
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,9 @@ INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_ev
 (42, 12, 12),
 (43, 2, 19),
 (44, 2, 10),
-(45, 2, 10);
+(45, 2, 10),
+(46, 10, 20),
+(47, 2, 23);
 
 -- --------------------------------------------------------
 
@@ -119,7 +123,12 @@ INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
 (4, 2, 10),
 (6, 2, 10),
 (7, 10, 10),
-(8, 10, 10);
+(8, 10, 10),
+(9, 10, 7),
+(10, 10, 7),
+(11, 11, 10),
+(19, 10, 6),
+(22, 11, 8);
 
 -- --------------------------------------------------------
 
@@ -138,10 +147,10 @@ CREATE TABLE `photo_utilisateurs` (
 --
 
 INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
-(4, 10, '../assets/photoProfil/femme.jpg'),
 (14, 2, '../assets/photoProfil/homme.jpg'),
-(16, 3, '../assets/photoProfil/femme.jpg'),
-(17, 12, '../assets/photoProfil/femme.jpg');
+(17, 12, '../assets/photoProfil/femme.jpg'),
+(19, 10, '../assets/photoProfil/femme.jpg'),
+(20, 3, '../assets/photoProfil/femme.jpg');
 
 -- --------------------------------------------------------
 
@@ -235,25 +244,25 @@ ALTER TABLE `categorie_evenements`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
-  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
 --
 ALTER TABLE `photo_utilisateurs`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`

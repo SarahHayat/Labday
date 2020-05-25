@@ -45,6 +45,7 @@ $password = $_POST["password"];
 
 $_SESSION['username'] = $username;
 
+
 /**
  * verification connexion
  */
@@ -69,11 +70,15 @@ if (!$resultat) {
     while ($donnees = $req->fetch()) {
         $id_name = $donnees['id_utilisateur'];
         $_SESSION['id_name'] = $id_name;
+        $type = $donnees['type_utilisateur'];
+        $_SESSION['type_utilisateur'] = $type;
+
     }
 
 
     $req->closeCursor();
     $_SESSION['id_name'] = $id_name;
+    $_SESSION['type_utilisateur'] = $type;
 
     $_SESSION['username'] = $username;
     header('Location: ../php/index.php');
