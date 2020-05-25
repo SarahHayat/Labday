@@ -116,7 +116,23 @@ if (isset($_SESSION['username'])) {
                             <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                             <p><?php echo $donnees['type_utilisateur']; ?></p>
                             <p><?php echo $donnees['date_evenement']; ?></p>
-                            <a class="inputListOfEvent" href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+
+                            <?php
+                            $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                            $req->execute(array(
+                                'id_utilisateur' => $_SESSION['id_name'],
+                                'id_evenement' => $donnees['id_evenement'],
+                            ));
+
+                            $resultat = $req->fetch();
+                            if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
+                                ?>
+                                <a class="inputListOfEvent"
+                                   href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                                <?php
+                            }
+                            ?>
+<!--                            <a class="inputListOfEvent" href="../controllers/inscription.php?id_evenement= --><?php //echo $donnees['id_evenement']; ?><!--">s'inscrire</a>-->
 
 
 

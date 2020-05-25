@@ -82,8 +82,14 @@ require("../controllers/bdd.php");
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
 
-//
-                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier") {
+                    $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                    $req->execute(array(
+                        'id_utilisateur' => $_SESSION['id_name'],
+                        'id_evenement' => $donnees['id_evenement'],
+                    ));
+
+                    $resultat = $req->fetch();
+                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
 //                            ?>
                             <a class="inputListOfEvent"
                                href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
