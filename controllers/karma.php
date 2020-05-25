@@ -8,7 +8,9 @@ require("bdd.php");
 $id_evenement = $_GET['id_evenement'];
 $id_utilisateur = $_GET['id_utilisateur'];
 
-$reponse = $bdd->query('SELECT * FROM evenements where id_evenement = "' . $id_evenement . '"');
+$reponse = $bdd->query('SELECT e.*, ce.* FROM evenements as e left join categorie_evenements as ce
+on e.id_categorie = ce.id_categorie
+where id_evenement = "' . $id_evenement . '"');
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch()) {
     $description = $donnees['description'];
@@ -20,6 +22,8 @@ while ($donnees = $reponse->fetch()) {
 /**
  * Formulaire note
  */
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,6 +36,11 @@ while ($donnees = $reponse->fetch()) {
 
 <form action="#" method="post" class="container fond">
     <h1> Modification Evenement</h1>
+
+    <label><b>Catégorie</b></label>
+    <select name="categorie">
+        <option value="<?php echo $donnees['$id_categorie'] ?>"><?php echo $donnees['$nom_categorie'] ?></option>
+    </select>
 
     <label><b>Titre</b></label>
     <input type="text" placeholder="titre" name="titre_evenement" value="<?php echo $titre_evenement ?>" readonly>

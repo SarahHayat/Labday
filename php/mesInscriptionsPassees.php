@@ -36,7 +36,12 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
                         <?php
-                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name']) {
+                        $req = $bdd->prepare('SELECT id_karma, id_evenement FROM evenements WHERE id_evenement = :id_evenement AND id_karma IS NULL');
+                        $req->execute(array(
+                                'id_evenement' => $donnees['id_evenement'],
+                        ));
+                        $resultat = $req->fetch();
+                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $resultat) {
                             ?>
                             <a class="inputListOfEvent"
                                href="../controllers/karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur']; ?>&amp;id_evenement=<?php echo $donnees['id_evenement'] ?>">noter</a>

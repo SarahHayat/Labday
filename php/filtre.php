@@ -110,13 +110,13 @@ $search = $_POST['localisation'];
                             <p><?php echo $donnees['date_evenement']; ?></p>
                             <p class="description"><?php echo $donnees['description']; ?></p>
                             <?php
-                            $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-                            $req->execute(array(
+                            $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                            $reponse->execute(array(
                                 'id_utilisateur' => $_SESSION['id_name'],
                                 'id_evenement' => $donnees['id_evenement'],
                             ));
 
-                            $resultat = $req->fetch();
+                            $resultat = $reponse->fetch();
                             if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                                     ?>
                                     <a class="inputListOfEvent"

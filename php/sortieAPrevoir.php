@@ -63,6 +63,9 @@ require("../controllers/bdd.php");
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
+
+
+
     while ($donnees = $reponse->fetch()) {
         ?>
         <div class="listOfEvent">
@@ -87,7 +90,6 @@ require("../controllers/bdd.php");
                         'id_utilisateur' => $_SESSION['id_name'],
                         'id_evenement' => $donnees['id_evenement'],
                     ));
-
                     $resultat = $req->fetch();
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
 //                            ?>
