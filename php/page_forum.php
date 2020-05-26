@@ -57,7 +57,7 @@ while ($donnees = $reponse->fetch()) {
             ?>
             <div>
                 <label> Message :</label>
-                <textarea name="message"> Entrez votre message</textarea>
+                <textarea name="message" placeholder="Entrez votre message: "></textarea>
 
                 <input type="submit" value="Envoyer"/>
             </div>
