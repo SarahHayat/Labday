@@ -13,6 +13,7 @@ body {
     border-radius: 38px;
     top: 195px;
 }
+
 .fond1 {
     /*width: 91.66%;
     height: 70.01%;*/
@@ -23,7 +24,7 @@ body {
     border-radius: 38px;
     top: 195px;
     text-align: center;
-    margin-bottom:3% ;
+    margin-bottom: 3%;
     display: flex;
     justify-content: space-around;
 }
@@ -116,29 +117,104 @@ div#slider figure {
     text-align: left;
     animation: 30s slidy infinite;
 }
-#photo_best_user{
+
+#photo_best_user {
     width: 50px;
     height: 50px;
-    border-radius:50% ;
+    border-radius: 50%;
 }
-.align_best{
+
+.align_best {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+
 .align_best a {
     text-decoration: none;
     color: black;
     font-size: 1.5rem;
-    padding-left: 15px ;
+    padding-left: 15px;
 
 }
-.align_best img{
+
+.align_best img {
     padding-left: 15px;
 }
+
 .align_best p {
-   font-size: 1rem;
+    font-size: 1rem;
 }
-.align_best a:hover{
+
+.align_best a:hover {
     color: white;
+}
+
+.slideshow-container {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.slideshow-container img {
+    width: 75%;
+
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration: 2s;
+    transition: 5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
+.flex_column{
+    display: flex;
+    flex-direction: row;
+}
+#carte{
+    padding: 2%;
+    border: solid black 1px;
+    margin: 1%;
+    box-shadow: 4px 5px 7px 0 rgba(74,66,74,1);
+    border-radius: 10px;
 }
