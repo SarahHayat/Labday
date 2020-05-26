@@ -1,5 +1,7 @@
 <?php
 session_start();
+require("../controllers/bdd.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,28 +32,28 @@ else{
         <p>Des questions? Remplissez le formulaire et nous vous répondrons du mieux possible</p>
     </div>
     <div class="container">
-        <form action="action_page.php" class="contact">
+        <form action="emailEnvoi.php" class="contact" method="post">
             <div class="list">
 
             </div>
             <div>
                 <table>
-                    <label for="nCompte">Nom du compte:</label>
+                    <label for="pseudo">Pseudo:</label>
                     <input type="text"
-                           id="nCompte"
-                           name="nCompte"
+                           id="pseudo"
+                           name="pseudo"
                            required>
 
-                    <label for="email">Email:</label>
+                    <label for="mail">Email:</label>
                     <input type="email"
-                           name="email"
-                           id="email"
+                           name="mail"
+                           id="mail"
                            required>
 
-                    <label for="question">Sujet:</label>
+                    <label for="sujet">Sujet:</label>
                     <input type="text"
-                           name="question"
-                           id="question"
+                           name="sujet"
+                           id="sujet"
                            required>
 
 
@@ -71,8 +73,9 @@ else{
             </div>
 
 
-            <label for="subject">Ton message:</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <label for="message">Ton message:</label>
+            <textarea id="message" name="message" placeholder="Ecrivez un message.." style="height:200px"></textarea>
+
 
             <input type="submit" value="Envoyer ->">
 
