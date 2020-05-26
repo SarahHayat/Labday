@@ -97,7 +97,7 @@ $search = $_POST['localisation'];
                     <ul class="collectionItem">
                         <div class="pictureEvent">
                             <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                            <p><?php echo $donnees['nom_categorie']; ?></p>
+<!--                            <p>--><?php //echo $donnees['nom_categorie']; ?><!--</p>-->
                         </div>
                         <div class="pictureEvent">
 
