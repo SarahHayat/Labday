@@ -1,18 +1,28 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:8889
--- Généré le :  mar. 26 mai 2020 à 09:40
--- Version du serveur :  5.7.26
--- Version de PHP :  7.4.2
+-- Hôte : localhost
+-- Généré le :  mar. 26 mai 2020 à 10:34
+-- Version du serveur :  10.4.8-MariaDB
+-- Version de PHP :  7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `ShareEventTogether`
 --
+CREATE DATABASE IF NOT EXISTS `ShareEventTogether` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ShareEventTogether`;
 
 -- --------------------------------------------------------
 
@@ -20,6 +30,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `categorie_evenements`
 --
 
+DROP TABLE IF EXISTS `categorie_evenements`;
 CREATE TABLE `categorie_evenements` (
   `id_categorie` int(11) NOT NULL,
   `nom_categorie` varchar(100) NOT NULL
@@ -41,10 +52,11 @@ INSERT INTO `categorie_evenements` (`id_categorie`, `nom_categorie`) VALUES
 -- Structure de la table `evenements`
 --
 
+DROP TABLE IF EXISTS `evenements`;
 CREATE TABLE `evenements` (
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `date_poste` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_poste` datetime NOT NULL DEFAULT current_timestamp(),
   `description` text NOT NULL,
   `date_evenement` datetime NOT NULL,
   `titre_evenement` varchar(250) NOT NULL,
@@ -81,6 +93,7 @@ INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `descr
 -- Structure de la table `inscription_evenements`
 --
 
+DROP TABLE IF EXISTS `inscription_evenements`;
 CREATE TABLE `inscription_evenements` (
   `id_inscription` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -115,6 +128,7 @@ INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_ev
 -- Structure de la table `karma`
 --
 
+DROP TABLE IF EXISTS `karma`;
 CREATE TABLE `karma` (
   `id_karma` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -149,22 +163,34 @@ INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
 -- Structure de la table `messages`
 --
 
+DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id_message` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `message` text NOT NULL,
-  `id_sujet` int(11) NOT NULL
+  `id_sujet` int(11) NOT NULL,
+  `date_message` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `messages`
 --
 
-INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`) VALUES
-(3, 10, 'j\'aime les velos', 4),
-(4, 12, 'moi j\'aime pas', 4),
-(7, 12, 'test', 4),
-(8, 12, ' Entrez votre messatestge', 4);
+INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `date_message`) VALUES
+(3, 10, 'j\'aime les velos', 4, '2020-05-26 08:19:20'),
+(4, 12, 'moi j\'aime pas', 4, '2020-05-26 08:29:20'),
+(7, 12, 'test', 4, '2020-05-26 08:39:20'),
+(8, 12, ' Entrez votre messatestge', 4, '2020-05-26 08:49:20'),
+(9, 2, 'coucou', 4, '2020-05-26 08:59:20'),
+(10, 2, 'YO', 4, '2020-05-26 09:19:20'),
+(11, 2, ' Entrez votre message', 4, '2020-05-26 10:19:20'),
+(12, 2, 'zaeaze', 4, '2020-05-26 11:19:20'),
+(13, 2, 'prions', 4, '2020-05-26 12:19:20'),
+(14, 2, 'zaeazee', 4, '2020-05-26 13:19:20'),
+(15, 2, ' Entre', 4, '2020-05-26 14:19:20'),
+(16, 2, 'esperons', 4, '2020-05-26 15:19:20'),
+(17, 2, 'message', 4, '2020-05-26 10:32:10'),
+(18, 2, 'strval rip', 4, '2020-05-26 10:32:50');
 
 -- --------------------------------------------------------
 
@@ -172,6 +198,7 @@ INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`) V
 -- Structure de la table `photo_utilisateurs`
 --
 
+DROP TABLE IF EXISTS `photo_utilisateurs`;
 CREATE TABLE `photo_utilisateurs` (
   `id_photo` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -195,6 +222,7 @@ INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
 -- Structure de la table `sujets_forum`
 --
 
+DROP TABLE IF EXISTS `sujets_forum`;
 CREATE TABLE `sujets_forum` (
   `id_sujet` int(11) NOT NULL,
   `nom_sujet` varchar(100) NOT NULL,
@@ -214,6 +242,7 @@ INSERT INTO `sujets_forum` (`id_sujet`, `nom_sujet`, `id_utilisateur`) VALUES
 -- Structure de la table `utilisateurs`
 --
 
+DROP TABLE IF EXISTS `utilisateurs`;
 CREATE TABLE `utilisateurs` (
   `id_utilisateur` int(11) NOT NULL,
   `prenom` varchar(100) NOT NULL,
@@ -228,7 +257,7 @@ CREATE TABLE `utilisateurs` (
   `mot_de_passe` varchar(255) NOT NULL,
   `type_utilisateur` varchar(50) NOT NULL,
   `ville` varchar(200) NOT NULL,
-  `date_creation_utilisateur` datetime DEFAULT CURRENT_TIMESTAMP
+  `date_creation_utilisateur` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -334,7 +363,7 @@ ALTER TABLE `karma`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
@@ -394,3 +423,8 @@ ALTER TABLE `photo_utilisateurs`
 --
 ALTER TABLE `sujets_forum`
   ADD CONSTRAINT `sujets_forum_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
