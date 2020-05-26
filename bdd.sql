@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 26 mai 2020 à 10:34
+-- Généré le :  mar. 26 mai 2020 à 17:08
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -155,7 +155,8 @@ INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
 (23, 3, 8),
 (24, 13, 5),
 (25, 10, 7),
-(26, 10, 7);
+(26, 10, 7),
+(27, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,10 @@ INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `
 (15, 2, ' Entre', 4, '2020-05-26 14:19:20'),
 (16, 2, 'esperons', 4, '2020-05-26 15:19:20'),
 (17, 2, 'message', 4, '2020-05-26 10:32:10'),
-(18, 2, 'strval rip', 4, '2020-05-26 10:32:50');
+(18, 2, 'strval rip', 4, '2020-05-26 10:32:50'),
+(19, 2, 'Ceci est un test', 5, '2020-05-26 08:38:33'),
+(20, 2, 'first', 5, '2020-05-26 11:02:35'),
+(26, 2, 'ça marche !', 4, '2020-05-26 14:49:49');
 
 -- --------------------------------------------------------
 
@@ -214,7 +218,8 @@ INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
 (17, 12, '../assets/photoProfil/femme.jpg'),
 (20, 3, '../assets/photoProfil/femme.jpg'),
 (21, 13, '../assets/photoProfil/homme.jpg'),
-(22, 10, '../assets/photoProfil/femme_2.jpg');
+(22, 10, '../assets/photoProfil/femme_2.jpg'),
+(24, 11, '../assets/photoProfil/homme.jpg');
 
 -- --------------------------------------------------------
 
@@ -234,7 +239,8 @@ CREATE TABLE `sujets_forum` (
 --
 
 INSERT INTO `sujets_forum` (`id_sujet`, `nom_sujet`, `id_utilisateur`) VALUES
-(4, 'velo', 10);
+(4, 'velo', 10),
+(5, 'Test', 2);
 
 -- --------------------------------------------------------
 
@@ -270,7 +276,8 @@ INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`,
 (10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'professionnel', 'Asnieres-sur-oise', '2020-04-30 10:03:31'),
 (11, 'Anga', 'Anga', '1992-03-03', '2 rue de beaumont', 95000, 'France', 1234565678, 'anga@gmail.com', 'Anga', 'ANGA', 'professionnel', 'Pontoise', '2020-04-30 13:52:03'),
 (12, 'Léna', 'Pancher', '1997-08-04', 'lenapancher@gmail.com', 95270, 'France', 987654321, 'lenapancher@gmail.com', 'lena', 'LENA', 'particulier', 'Asnieres-sur-oise', '2020-04-30 20:54:22'),
-(13, 'William', 'Andrieu', '1999-02-04', '25 rue du douare', 95570, 'France', 987659856, 'william.andrieu@live.fr', 'william', 'william', 'particulier', 'Villaines', '2020-05-25 10:46:45');
+(13, 'William', 'Andrieu', '1999-02-04', '25 rue du douare', 95570, 'France', 987659856, 'william.andrieu@live.fr', 'william', 'william', 'particulier', 'Villaines', '2020-05-25 10:46:45'),
+(14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21');
 
 --
 -- Index pour les tables déchargées
@@ -357,31 +364,31 @@ ALTER TABLE `inscription_evenements`
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
 --
 ALTER TABLE `photo_utilisateurs`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `sujets_forum`
 --
 ALTER TABLE `sujets_forum`
-  MODIFY `id_sujet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_sujet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Contraintes pour les tables déchargées
