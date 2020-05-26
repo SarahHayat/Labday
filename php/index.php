@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "../controllers/bdd.php"
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,6 +25,32 @@ else{
 
 }
 ?>
+<div class="fond1">
+    <h3> MEILLEURS UTILISATEURS</h3>
+<?php
+$req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*, pu.url
+    FROM karma as k
+    left join utilisateurs as u
+    on k.id_utilisateur = u.id_utilisateur
+    left join evenements as e
+    on u.id_utilisateur = e.id_utilisateur
+    LEFT JOIN photo_utilisateurs as pu
+    ON u.id_utilisateur = pu.id_utilisateur
+    GROUP by k.id_utilisateur
+    ORDER by moyenne DESC LIMIT 3');
+$i=1;
+while($donnees = $req ->fetch()){
+    ?>
+    <div class="align_best">
+        <p><?php echo "#".$i ?></p>
+    <img src="<?php echo $donnees['url'] ?>" id="photo_best_user">
+    <a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a>
+    </div>
+    <?php
+    $i++;
+}
+?>
+</div>
 <div id="slider">
     <figure>
         <img src="../assets/images/jeu_societe.jpg" alt>
