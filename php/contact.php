@@ -16,10 +16,9 @@ require("../controllers/bdd.php");
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     require("headerConnect.php");
-}
-else{
+} else {
     require("headerDisconnect.php");
 
 }
@@ -32,7 +31,7 @@ else{
         <p>Des questions? Remplissez le formulaire et nous vous répondrons du mieux possible</p>
     </div>
     <div class="container">
-        <form action="emailEnvoi.php" class="contact" method="post">
+        <form action="#" class="contact" method="post">
             <div class="list">
 
             </div>
@@ -79,8 +78,33 @@ else{
 
             <input type="submit" value="Envoyer ->">
 
-
         </form>
+        <?php
+
+        $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
+        $donnees = $reponse->fetch();
+        if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte']) && isset($_POST['pseudo'])) {
+            if ($donnees['pseudo'] == $_POST['pseudo'] && $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
+                $from = $_POST['mail'];
+                $to = "shareeventtogether@gmail.com";
+                $subject = $_POST['sujet'];
+                $message = $_POST['message'];
+                $headers = "From: " . $from;
+                mail($to, $subject, $message, $headers);
+                ?>
+                <script>alert("<?php echo htmlspecialchars('Votre message à été envoyé !', ENT_QUOTES); ?>")</script>
+            <?php
+
+            }else {
+            ?>
+                <script>alert("<?php echo htmlspecialchars('Mail ou mot de passe incorrect, veuillez reesayer !', ENT_QUOTES); ?>")</script>
+                <?php
+            }
+        }
+        ?>
+
     </div>
 </section>
 
