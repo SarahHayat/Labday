@@ -48,15 +48,9 @@ if (isset($_SESSION['username'])) {
         <input type="submit" value="Envoyer">
     </form>
 </div>
-<?php
-require("footer.php");
-?>
-</body>
-</html>
+
 
 <?php
-
-
 if (isset($_POST['photo']) && isset($_SESSION['id_name'])) {
     /**
      * supprimer photo d'avant
@@ -75,6 +69,15 @@ if (isset($_POST['photo']) && isset($_SESSION['id_name'])) {
     ));
     header('Location: ../php/profil.php');
 }
+require("footer.php");
+?>
+</body>
+</html>
+
+<?php
+
+
+
 
 /**
  * mettre url dans photoProfil
