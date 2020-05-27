@@ -48,6 +48,11 @@ if (isset($_SESSION['username'])) {
         <input type="submit" value="Envoyer">
     </form>
 </div>
+<?php
+require("footer.php");
+?>
+</body>
+</html>
 
 <?php
 

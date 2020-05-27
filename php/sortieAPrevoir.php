@@ -109,7 +109,9 @@ require("../controllers/bdd.php");
     }
     ?>
 </section>
-
+<?php
+require("footer.php");
+?>
 </body>
 
 

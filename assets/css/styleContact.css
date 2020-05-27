@@ -1,6 +1,11 @@
 body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
+    padding-top: 13%;
+    position: relative;
+    padding-bottom: 10%;
+
+
 }
 
 .fond {

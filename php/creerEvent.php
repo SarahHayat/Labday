@@ -49,3 +49,9 @@ if (isset($_SESSION['username'])) {
     <input type="submit" id='enregistrer' value='ENREGISTRER'>
 </form>
 
+<?php
+require("footer.php");
+?>
+</body>
+</html>
+

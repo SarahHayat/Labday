@@ -104,7 +104,9 @@ if (isset($_SESSION['username'])) {
     </div>
 </section>
 
-
+<?php
+require("footer.php");
+?>
 </body>
 
 

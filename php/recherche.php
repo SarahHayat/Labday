@@ -81,6 +81,11 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
     </div>
 
 </section>
+<?php
+require("footer.php");
+?>
+</body>
+</html>
 
 <?php
 } else {

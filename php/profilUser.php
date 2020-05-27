@@ -137,3 +137,10 @@ if (isset($_SESSION['username'])) {
             ?>
         </div>
     </div>
+
+</section>
+<?php
+require("footer.php");
+?>
+</body>
+</html>

@@ -23,44 +23,48 @@ if (isset($_SESSION['username'])) {
 
 }
 
-$req = $bdd->query('SELECT nom_sujet FROM sujets_forum  WHERE id_sujet ="'.$_GET['id_sujet'].'" ');
+$req = $bdd->query('SELECT nom_sujet FROM sujets_forum  WHERE id_sujet ="' . $_GET['id_sujet'] . '" ');
 $donnees = $req->fetch();
 ?>
 <div class="fond">
     <a href="minichat.php"><< Retour</a>
 
     <div class="sujet">
-    <h3><?php echo $donnees['nom_sujet'] ?></h3>
-</div>
-<?php
-$reponse = $bdd->query('SELECT m.id_utilisateur, m.message, sf.nom_sujet, u.pseudo,m.date_message FROM sujets_forum as sf join messages as m on sf.id_sujet = m.id_sujet
-left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_sujet ="'.$_GET['id_sujet'].'" ');?>
+        <h3><?php echo $donnees['nom_sujet'] ?></h3>
+    </div>
+    <?php
+    $reponse = $bdd->query('SELECT m.id_utilisateur, m.message, sf.nom_sujet, u.pseudo,m.date_message FROM sujets_forum as sf join messages as m on sf.id_sujet = m.id_sujet
+left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_sujet ="' . $_GET['id_sujet'] . '" '); ?>
 
     <?php
-while ($donnees = $reponse->fetch()) {
-?>
+    while ($donnees = $reponse->fetch()) {
+    ?>
 
 
     <form method="post" action="reponseForum.php?id_sujet=<?php echo $_GET['id_sujet'] ?>">
 
 
-            <div class="listOfEvent">
-                    <div class="pictureEvent">
-                        <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>'. " Le " . $donnees['date_message'] ?></p>
-                        <p><?php echo $donnees['message']; ?></p>
+        <div class="listOfEvent">
+            <div class="pictureEvent">
+                <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " Le " . $donnees['date_message'] ?></p>
+                <p><?php echo $donnees['message']; ?></p>
 
-                    </div>
             </div>
+        </div>
 
 
-            <?php
-            }
-            ?>
-                <label> Message :</label>
-                <textarea name="message" placeholder="Entrez votre message: "></textarea>
+        <?php
+        }
+        ?>
+        <label> Message :</label>
+        <textarea name="message" placeholder="Entrez votre message: "></textarea>
 
-                <input type="submit" value="Envoyer"/>
-            </div>
-    </form>
+        <input type="submit" value="Envoyer"/>
 </div>
+</form>
+</div>
+<?php
+require("footer.php");
+?>
 </body>
+</html>

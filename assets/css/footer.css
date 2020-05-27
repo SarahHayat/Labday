@@ -1,0 +1,31 @@
+footer{
+    display: flex;
+    background-color: #EBD1D3;
+    margin-top: 3%;
+    justify-content: space-around;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+ul{
+    list-style: none;
+}
+
+.mail h3{
+    text-align: center;
+}
+
+.logo_reseaux ul{
+    display: flex;
+    padding: 0;
+    justify-content:  center;
+}
+
+.logo_reseaux li{
+    margin: 10px;
+}
+
+.reseaux h3 {
+    align-self: center;
+}

@@ -46,14 +46,14 @@ on sj.id_sujet = m.id_sujet
 GROUP BY sj.id_sujet
 ORDER BY `m`.`date_message` ASC LIMIT 10");
         // On affiche chaque entrée une à une
-        while ($donnees = $reponse->fetch() ) {
+        while ($donnees = $reponse->fetch()) {
 
         echo '<div class="container_sujet">';
         echo '<div class="sujet">';
         echo $donnees['nom_sujet'];
         echo '</div>';
         echo '<div class="pseudo">';
-        echo 'Par '. '<b>'.$donnees['pseudo'] .'</b>'.' le ' . $donnees['date_message'];
+        echo 'Par ' . '<b>' . $donnees['pseudo'] . '</b>' . ' le ' . $donnees['date_message'];
         echo '</div>';
         echo '<div class="contain_message">';
         echo '<div class="message">';
@@ -61,22 +61,25 @@ ORDER BY `m`.`date_message` ASC LIMIT 10");
         echo '</div>';
 
         ?>
-       <div class="right_div"> <a class="inputListOfEvent"
-           href="page_forum.php?id_sujet= <?php echo $donnees['id_sujet']; ?>">lire</a>
-       </div>
+        <div class="right_div"><a class="inputListOfEvent"
+                                  href="page_forum.php?id_sujet= <?php echo $donnees['id_sujet']; ?>">lire</a>
+        </div>
     </div>
     </div>
-        <?php
+    <?php
 
-}
-            $reponse->closeCursor(); // Termine le traitement de la requête
+    }
+    $reponse->closeCursor(); // Termine le traitement de la requête
 
-        ?>
+    ?>
 
     </div>
 </form>
 <?php
 
+require("footer.php");
+
 ?>
 <script src="../js/hideSujet.js"></script>
 </body>
+</html>

@@ -71,9 +71,9 @@ $search = $_POST['localisation'];
     on u.id_utilisateur = e.id_utilisateur
     WHERE ( (id_categorie =' . $categorie . ' ) 
     AND (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
-    AND UCASE(e.lieu) LIKE "%'.$search.'%")
+    AND UCASE(e.lieu) LIKE "%' . $search . '%")
     GROUP by k.id_utilisateur
-    HAVING (moyenne >= '.$karma.')');
+    HAVING (moyenne >= ' . $karma . ')');
 
             if ($categorie == "NULL") {
                 $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*, ce.*
@@ -84,9 +84,9 @@ $search = $_POST['localisation'];
     on u.id_utilisateur = e.id_utilisateur
     left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
     WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
-    AND UCASE(e.lieu) LIKE "%'.$search.'%")
+    AND UCASE(e.lieu) LIKE "%' . $search . '%")
     GROUP by k.id_utilisateur
-    HAVING (moyenne >= '.$karma.')');
+    HAVING (moyenne >= ' . $karma . ')');
             }
 
             while ($donnees = $req->fetch()) {
@@ -97,7 +97,7 @@ $search = $_POST['localisation'];
                     <ul class="collectionItem">
                         <div class="pictureEvent">
                             <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-<!--                            <p>--><?php //echo $donnees['nom_categorie']; ?><!--</p>-->
+                            <!--                            <p>--><?php //echo $donnees['nom_categorie']; ?><!--</p>-->
                         </div>
                         <div class="pictureEvent">
 
@@ -118,10 +118,10 @@ $search = $_POST['localisation'];
 
                             $resultat = $reponse->fetch();
                             if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
-                                    ?>
-                                    <a class="inputListOfEvent"
-                                       href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
-                                    <?php
+                                ?>
+                                <a class="inputListOfEvent"
+                                   href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                                <?php
                             }
                             ?>
                         </div>
@@ -137,4 +137,9 @@ $search = $_POST['localisation'];
     </div>
 
 </section>
+<?php
+require("footer.php");
+?>
+</body>
+</html>
 
