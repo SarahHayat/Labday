@@ -1,10 +1,9 @@
 body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
-    padding-top: 13%;
+    padding-top: 200px;
     position: relative;
-    padding-bottom: 10%;
-
+    padding-bottom: 300px;
 
 }
 
@@ -39,7 +38,7 @@ body {
     padding: 0 0 0 10px;
 }
 
-.container input[type=text],input[type=password],input[type=email], select, textarea {
+.container_contact input[type=text],input[type=password],input[type=email], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -54,7 +53,7 @@ body {
 }
 
 /* Style the submit button with a specific background color etc */
-input[type=submit] {
+.button_submit {
     background-color: #EBD1D3;
     color: #008F8F;
     /*padding: 12px 20px;*/
@@ -71,13 +70,13 @@ input[type=submit] {
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
-input[type=submit]:hover {
+.button_submit:hover {
     background-color: #C4C4C4;
     border: 1px solid black;
 }
 
 /* Add a background color and some padding around the form */
-.container {
+.container_contact {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     background-color: #f2f2f2;

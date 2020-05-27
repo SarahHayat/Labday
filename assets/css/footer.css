@@ -2,14 +2,24 @@ footer{
     display: flex;
     background-color: #EBD1D3;
     margin-top: 3%;
-    justify-content: space-around;
     bottom: 0;
     width: 100%;
     position: absolute;
+    flex-direction: column;
+    font-size: 10px;
+    padding-top: 20px;
 }
 
 ul{
     list-style: none;
+}
+.inline_display{
+    width: 100%;
+    display: inline-block;
+    height: auto;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 .mail h3{
@@ -28,4 +38,75 @@ ul{
 
 .reseaux h3 {
     align-self: center;
+}
+
+/**/
+
+.logo{
+    color:#FFF;
+    font-weight:700;
+    font-size:15px;
+}
+
+.address span , .menu span{
+    color: #FFF;
+    font-weight: bold;
+    border-bottom: 1px solid #c7c7c7;
+    padding:10px 0px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+.address li a , .menu li a{
+    color:#FFF;
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-size:14px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.address li, .menu li{
+    margin:10px 0;
+    list-style: none;
+}
+
+.address li a:hover , .menu li a:hover{
+    color: #da3e44;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.address .fa{
+    color: #da3e44;
+    margin-right: 10px;
+    font-size:18px;
+}
+.display_center{
+    margin-top: 10px;
+    padding-top:10px ;
+    text-align: center;
+    background-color: #008F8F;
+}
+span{
+    color: #008F8F;
+}
+
+.address{
+    height: auto;
+    align-self: center;
+}
+li{
+   display: flex;
+    align-items: center;
+
+}
+li a{
+    padding-left:10px ;
 }

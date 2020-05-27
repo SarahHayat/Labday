@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
         <h2>Contactez-nous</h2>
         <p>Des questions? Remplissez le formulaire et nous vous répondrons du mieux possible</p>
     </div>
-    <div class="container">
+    <div class="container_contact">
         <form action="#" class="contact" method="post">
             <div class="list">
 
@@ -76,7 +76,7 @@ if (isset($_SESSION['username'])) {
             <textarea id="message" name="message" placeholder="Ecrivez un message.." style="height:200px"></textarea>
 
 
-            <input type="submit" value="Envoyer ->">
+            <input type="submit" class="button_submit" value="Envoyer ->">
 
         </form>
         <?php

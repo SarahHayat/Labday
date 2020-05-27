@@ -1,9 +1,9 @@
 body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
-    padding-top: 13%;
+    padding-top: 150px;
     position: relative;
-    padding-bottom: 10%;
+    padding-bottom: 300px;
 
 }
 
@@ -25,26 +25,26 @@ body {
     top: 195px;
 }
 
-.container{
+.container_connect{
     width:450px;
     margin:0 auto;
     margin-top:5%;
 }
 /* Bordered form */
-form .connexion .creer .contact {
+form {
     width:100%;
     padding: 30px;
     background : rgba(23, 185, 163, 0.78) !important;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 38px;
 }
-.container h1{
+.container_connect h1{
     text-align: center;
     margin: 0 auto;
     padding-bottom: 10px;
 }
 
-.container input, textarea {
+.container_connect input, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -54,7 +54,7 @@ form .connexion .creer .contact {
 }
 
 
-.container input[type=submit] {
+.container_connect input[type=submit] {
     background-color: #EBD1D3;
     color: white;
     padding: 14px 20px;
@@ -63,7 +63,7 @@ form .connexion .creer .contact {
     cursor: pointer;
     width: 100%;
 }
-.container input[type=submit]:hover {
+.container_connect input[type=submit]:hover {
     background-color: white;
     color: #EBD1D3;
     border: 1px solid #EBD1D3;

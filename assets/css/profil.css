@@ -19,6 +19,8 @@ body {
     background : rgba(23, 185, 163, 0.78) !important;
     border-radius: 15px;
     top: 195px;
+    height: 800px;
+    width: auto;
 }
 
 .profil {
@@ -111,7 +113,7 @@ p {
 }
 
 
-input[type=submit] {
+.button_submit {
     background-color: #EBD1D3;
     color: white;
     padding: 10px 10px;
@@ -121,7 +123,7 @@ input[type=submit] {
     cursor: pointer;
 
 }
-input[type=submit]:hover {
+.button_submit:hover {
     background-color: white;
     color: #EBD1D3;
     border: 1px solid #EBD1D3;

@@ -59,7 +59,7 @@ body {
     padding: 0 0 0 10px;
 }
 
-.container input[type=text],input[type=password],input[type=email], select, textarea {
+.container_contact input[type=text],input[type=password],input[type=email], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -96,7 +96,7 @@ input[type=submit]:hover {
 }
 
 /* Add a background color and some padding around the form */
-.container {
+.container_contact {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     background-color: #f2f2f2;

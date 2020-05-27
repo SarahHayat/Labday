@@ -104,7 +104,7 @@ if (isset($_SESSION['username'])) {
                     <option value="mesInscription">Mes inscriptions</option>
                     <option value="mesEventPassees">Mes inscriptions passées</option>
                 </select>
-                <input type="submit" name="submit" value="Entrer">
+                <input class="button_submit" type="submit" name="submit" value="Entrer">
             </form>
 
 
