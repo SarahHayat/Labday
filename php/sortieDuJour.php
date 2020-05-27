@@ -7,19 +7,17 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties du jour</title>
-    <link rel="stylesheet" href="../assets/css/sortie.css" />
+    <link rel="stylesheet" href="../assets/css/sortie.css"/>
 </head>
-
 
 
 <body>
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     require("headerConnect.php");
-}
-else{
+} else {
     require("headerDisconnect.php");
 
 }
@@ -47,35 +45,39 @@ else{
 
 </form>
 
-    <section class="fond">
-        <div class="filter">
+<section class="fond">
+    <div class="filter">
 
-        </div>
-        <?php
-        require ("../controllers/bdd.php");
-        $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
+    </div>
+    <?php
+    require("../controllers/bdd.php");
+    $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
         on ev.id_utilisateur= ut.id_utilisateur  
         left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where ev.date_evenement= NOW() order by ev.date_evenement ASC');
-        // On affiche chaque entrée une à une
-        while ($donnees = $reponse->fetch())
-        {
-        ?>
+    // On affiche chaque entrée une à une
+    while ($donnees = $reponse->fetch())
+    {
+    ?>
 
-        <div class="listOfEvent">
-            <ul class="collectionItem">
-                <div class="pictureEvent">
-                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                    <p><?php echo $donnees['nom_categorie']; ?></p>
-                </div>
-                <div class="pictureEvent">
-                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                    <p><?php echo "Par " ?> <b><a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
-                    <p><?php echo $donnees['type_utilisateur']; ?></p>
-                    <p><?php echo $donnees['lieu']; ?></p>
-                    <p><?php echo $donnees['date_evenement']; ?></p>
-                    <p class="description"><?php echo $donnees['description']; ?></p>
-                    <?php
+    <div class="listOfEvent">
+        <ul class="collectionItem">
+            <div class="pictureEvent">
+                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                <p><?php echo $donnees['nom_categorie']; ?></p>
+            </div>
+            <div class="pictureEvent">
+                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                <p><?php echo "Par " ?> <b><a
+                                href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                    le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                <p><?php echo $donnees['type_utilisateur']; ?></p>
+                <p><?php echo $donnees['lieu']; ?></p>
+                <p><?php echo $donnees['date_evenement']; ?></p>
+                <p class="description"><?php echo $donnees['description']; ?></p>
+                <?php
+                if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
+
                     $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
                     $req->execute(array(
                         'id_utilisateur' => $_SESSION['id_name'],
@@ -90,16 +92,17 @@ else{
 
                         <?php
                     }
-                    ?>
+                }
+                ?>
 
-                </div>
+            </div>
 
-            </ul>
-            <?php
-            }
-            ?>
-        </div>
-    </section>
+        </ul>
+        <?php
+        }
+        ?>
+    </div>
+</section>
 
 
 </body>

@@ -80,28 +80,34 @@ if (isset($_SESSION['username'])) {
 
         </form>
         <?php
-
-        $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
-        $donnees = $reponse->fetch();
-        if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte']) && isset($_POST['pseudo'])) {
-            if ($donnees['pseudo'] == $_POST['pseudo'] && $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
-                ini_set('display_errors', 1);
-                error_reporting(E_ALL);
-                $from = $_POST['mail'];
-                $to = "shareeventtogether@gmail.com";
-                $subject = $_POST['sujet'];
-                $message = $_POST['message'];
-                $headers = "From: " . $from;
-                mail($to, $subject, $message, $headers);
-                ?>
-                <script>alert("<?php echo htmlspecialchars('Votre message à été envoyé !', ENT_QUOTES); ?>")</script>
-            <?php
-
-            }else {
-            ?>
-                <script>alert("<?php echo htmlspecialchars('Mail ou mot de passe incorrect, veuillez reesayer !', ENT_QUOTES); ?>")</script>
+        if (isset($_SESSION['id_name'])) {
+            $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
+            $donnees = $reponse->fetch();
+            if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte']) && isset($_POST['pseudo'])) {
+                if ($donnees['pseudo'] == $_POST['pseudo'] && $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
+                    ini_set('display_errors', 1);
+                    error_reporting(E_ALL);
+                    $from = $_POST['mail'];
+                    $to = "shareeventtogether@gmail.com";
+                    $subject = $_POST['sujet'];
+                    $message = $_POST['message'];
+                    $headers = "From: " . $from;
+                    mail($to, $subject, $message, $headers);
+                    ?>
+                    <script>alert("<?php echo ('Votre message à été envoyé !'); ?>")</script>
                 <?php
+
+                }else {
+                ?>
+                    <script>alert("<?php echo ('Mail ou mot de passe incorrect, veuillez reesayer !'); ?>")</script>
+                    <?php
+                }
             }
+        }else {
+                    ?>
+            <script>alert("<?php echo ("Vous n'êtes pas connecté !"); ?>")</script>
+            <?php
+//            header('Location : index.php');
         }
         ?>
 
