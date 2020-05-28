@@ -44,7 +44,7 @@ body {
     padding-bottom: 10px;
 }
 
-.container_connect input, textarea {
+.container_connect input, textarea, select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
