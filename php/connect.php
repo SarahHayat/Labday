@@ -71,7 +71,7 @@ else{
             <input type="text" placeholder="ville" name="ville" required>
 
             <label><b>Pays</b> <span class="obligatoire">*</span></label>
-            <input type="text" placeholder="pays" name="pays" required>
+            <select id="select_pays" name="pays"></select>
 
             <label><b>Mail</b> <span class="obligatoire">*</span></label>
             <input type="email" placeholder="mail" name="mail" required>
@@ -91,7 +91,7 @@ else{
         </form>
     </div>
 </div>
-
+<script src="../js/liste_deroulante.js"></script>
 <?php
 require("footer.php");
 ?>
