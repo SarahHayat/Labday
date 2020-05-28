@@ -14,10 +14,9 @@ session_start();
 <?php
 // echo "session username : " . $_SESSION['username'];
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     require("headerConnect.php");
-}
-else{
+} else {
     require("headerDisconnect.php");
 
 }
@@ -36,7 +35,7 @@ else{
             <label><b>Mot de passe</b></label>
             <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-            <input type="submit" id='submit' value='LOGIN' >
+            <input type="submit" id='submit' value='LOGIN'>
 
         </form>
     </div>
@@ -86,8 +85,21 @@ else{
             <input type="password" placeholder="mot de passe" name="mot_de_passe" required>
 
 
+            <input type="submit" id='enregistrer' value='ENREGISTRER'>
+            <script>
 
             <input type="submit" id='enregistrer' value='ENREGISTRER' onclick="confirmer()">
+                const enregistrer = document.getElementById("enregistrer"); // On recupere l'element du DOM
+
+
+                enregistrer.addEventListener("click", function () { // On ajoute un event de type click sur l'element du DOM enregistrer
+
+                    alert('Votre compte a bien été créer !');
+
+                });
+
+
+            </script>
         </form>
     </div>
 </div>
