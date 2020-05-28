@@ -179,11 +179,7 @@ div#slider figure {
     }
 }
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-    .text {
-        font-size: 11px
-    }
-}
+
 .flex_column{
     display: flex;
     flex-direction: row;
@@ -194,6 +190,15 @@ div#slider figure {
     margin: 1%;
     box-shadow: 4px 5px 7px 0 rgba(74,66,74,1);
     border-radius: 10px;
+}
+@media only screen and (max-width: 1024px) {
+    .flex_column{
+        display: flex;
+        flex-direction: column;
+    }
+    .create input{
+        font-size: 2rem;
+    }
 }
 
 

@@ -23,6 +23,7 @@ if (isset($_SESSION['username'])) {
 
 ?>
 <form action="../controllers/createEvent.php" method="post" class="container fond creer">
+    <a href="index.php"><< Retour</a>
     <h1> Creation nouveau Evenement</h1>
 
     <label><b>Catégorie</b></label>

@@ -4,6 +4,5 @@ for (var i = 0; i <tab.length; i++){
     var option_pays = document.createElement('option');
     option_pays.value = tab[i];
     option_pays.innerHTML += tab[i];
-    console.log(tab[i]);
     select_id.appendChild(option_pays);
 }
