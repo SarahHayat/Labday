@@ -57,7 +57,5 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
         ?>
     </div>
 </div>
-<?php
-require("footer.php");
-?>
+
 </html>

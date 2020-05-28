@@ -4,7 +4,7 @@ body {
     padding-top: 13%;
     position: relative;
     min-height: 1000px;
-    min-width: 1000px ;
+    /*min-width: 1000px ;*/
     padding-bottom: 10%;
 
 
@@ -21,6 +21,7 @@ body {
     top: 195px;
     height: 800px;
     width: auto;
+    overflow: scroll;
 }
 
 .profil {
@@ -63,8 +64,8 @@ info{
     align-items: center;
 }
 
-p {
-    margin : 0;
+.event p {
+    margin: 0;
 }
 
 .progress {

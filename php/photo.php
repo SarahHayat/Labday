@@ -74,16 +74,5 @@ require("footer.php");
 </body>
 </html>
 
-<?php
-
-
-
-
-/**
- * mettre url dans photoProfil
- */
-
-
-?>
 
 

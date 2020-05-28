@@ -31,7 +31,7 @@ body {
     margin-top:5%;
 }
 /* Bordered form */
-form {
+.container_connect form {
     width:100%;
     padding: 30px;
     background : rgba(23, 185, 163, 0.78) !important;

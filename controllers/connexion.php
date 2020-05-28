@@ -52,7 +52,7 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$_SESSION['username'] = $username;
+
 
 
 /**
@@ -67,11 +67,14 @@ $req->execute(array(
 $resultat = $req->fetch();
 
 if (!$resultat) {
-    header('Location: ../php/connect.php');
+   // header('Location: ../php/connect.php');
+    header('Location:' . $_SERVER['HTTP_REFERER']);
+
 } else {
     /**
      * recuperer l'id de l'utilisateur connecté
      */
+    $_SESSION['username'] = $username;
 
 
     $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
