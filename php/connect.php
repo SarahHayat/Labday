@@ -65,7 +65,7 @@ else{
             <input type="text" placeholder="adresse" name="adresse" required>
 
             <label><b>Code postale</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="code postale" name="code_postale" required>
+            <input type="number" placeholder="code postale" name="code_postale"  oninput="if(value.length>5)value=value.slice(0,5)" required>
 
             <label><b>Ville</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="ville" name="ville" required>
@@ -77,7 +77,7 @@ else{
             <input type="email" placeholder="mail" name="mail" required>
 
             <label><b>Numéro de téléphone</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="numéro de téléphone" name="telephone" required>
+            <input type="number" placeholder="numéro de téléphone" name="telephone"  oninput="if(value.length>10)value=value.slice(0,10)" required>
 
             <label><b>Date de naissance</b> <span class="obligatoire">*</span></label>
             <input type="date" id="date_naissance" name="date_naissance" min="1940-01-01" max="2018-12-31" required>
@@ -87,7 +87,7 @@ else{
 
 
 
-            <input type="submit" id='enregistrer' value='ENREGISTRER' >
+            <input type="submit" id='enregistrer' value='ENREGISTRER' onclick="confirmer()">
         </form>
     </div>
 </div>
@@ -95,6 +95,7 @@ else{
 <?php
 require("footer.php");
 ?>
+<script src="../js/securite.js"></script>
 </body>
 
 </html>
