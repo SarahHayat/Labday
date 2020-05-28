@@ -58,13 +58,14 @@ if (isset($_SESSION['username'])) {
             <input type="text" placeholder="prenom" name="prenom" required>
 
             <label><b>Pseudo</b> <span class="obligatoire">*</span></label>
-            <input type="text" placeholder="pseudo" name="pseudo" required>
+            <input type="text" id="pseudo" placeholder="pseudo" name="pseudo" required>
 
             <label><b>Adresse postale</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="adresse" name="adresse" required>
 
             <label><b>Code postale</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="code postale" name="code_postale"  oninput="if(value.length>5)value=value.slice(0,5)" required>
+            <input type="number" placeholder="code postale" name="code_postale"
+                   oninput="if(value.length>5)value=value.slice(0,5)" required>
 
             <label><b>Ville</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="ville" name="ville" required>
@@ -73,10 +74,11 @@ if (isset($_SESSION['username'])) {
             <select id="select_pays" name="pays"></select>
 
             <label><b>Mail</b> <span class="obligatoire">*</span></label>
-            <input type="email" placeholder="mail" name="mail" required>
+            <input type="email" id="mail" placeholder="mail" name="mail" required>
 
             <label><b>Numéro de téléphone</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="numéro de téléphone" name="telephone"  oninput="if(value.length>10)value=value.slice(0,10)" required>
+            <input type="number" placeholder="numéro de téléphone" name="telephone"
+                   oninput="if(value.length>10)value=value.slice(0,10)" required>
 
             <label><b>Date de naissance</b> <span class="obligatoire">*</span></label>
             <input type="date" id="date_naissance" name="date_naissance" min="1940-01-01" max="2018-12-31" required>
@@ -86,24 +88,25 @@ if (isset($_SESSION['username'])) {
 
 
             <input type="submit" id='enregistrer' value='ENREGISTRER'>
-            <script>
 
-            <input type="submit" id='enregistrer' value='ENREGISTRER' onclick="confirmer()">
-                const enregistrer = document.getElementById("enregistrer"); // On recupere l'element du DOM
-
-
-                enregistrer.addEventListener("click", function () { // On ajoute un event de type click sur l'element du DOM enregistrer
-
-                    alert('Votre compte a bien été créer !');
-
-                });
-
-
-            </script>
         </form>
     </div>
 </div>
 <script src="../js/liste_deroulante.js"></script>
+
+<script>
+    function http() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(xhttp.responseText);
+            }
+        };
+        xhttp.open("GET", 'http://localhost:8888/Labday/controllers/requete.php?mail="<?php echo $_POST['mail']?>"&pseudo="<?php echo $_POST['pseudo']?>"' );
+        xhttp.send();
+    }
+
+</script>
 <?php
 require("footer.php");
 ?>

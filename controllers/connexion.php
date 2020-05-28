@@ -20,7 +20,7 @@ $type_utilisateur = $_POST["type_utilisateur"];
  * ajout d'un nouveau compte
  */
 if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)) {
-    $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "'.$mail.'"');
+    $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
     if (!$reponse) {
         $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
         $req->execute(array(
@@ -36,14 +36,49 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
             'mot_de_passe' => $mot_de_passe,
             'type_utilisateur' => $type_utilisateur,
             'ville' => $ville,
-
-
         ));
+        ?>
+        <script>
+            const enregistrer = document.getElementById("enregistrer"); // On recupere l'element du DOM
+
+
+            enregistrer.addEventListener("click", function () { // On ajoute un event de type click sur l'element du DOM enregistrer
+
+                alert('Votre compte a bien été créer !');
+
+            });
+
+
+        </script>
+        <?php
+
     } else {
-
-        header('Location:' . $_SERVER['HTTP_REFERER']);
-
+        echo "else";
+        ?>
+<!--        <script>-->
+<!--            const mailElt = document.getElementById("mail");-->
+<!--            const pseudoElt = document.getElementById("pseudo");-->
+<!--    console.log(mailElt.val);-->
+<!--    console.log(pseudoElt.value);-->
+<!--            --><?php //echo "mail : " ?>
+//            console.log("mail : " + mailElt);
+//
+//            if (mailElt == <?php //echo "'".$mail."'" ?>//) {
+//                if (alert("mail déjà prit")) {
+//                   // window.location.href = '../php/connect.php';
+//                }
+//            } else if (pseudoElt == <?php //echo "'".$pseudo."'" ?>//) {
+//                if (alert("pseudo déjà prit")) {
+//                  //  window.location.href = '../php/connect.php';
+//                }
+//            }
+//           // window.location.href = '../php/connect.php';
+//
+//        </script>
+        <?php
     }
+}
+if (isset($donnees['id_utilisateur'])) {
     $req = $bdd->query('SELECT * FROM utilisateurs WHERE pseudo ="' . $pseudo . '"');
     while ($donnees = $req->fetch()) {
         $new_id = $donnees['id_utilisateur'];
@@ -54,6 +89,7 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
         'note' => 5,
     ));
 }
+
 $username = $_POST["username"];
 $password = $_POST["password"];
 
