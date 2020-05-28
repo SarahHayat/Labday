@@ -9,7 +9,6 @@ footer{
     font-size: 10px;
     padding-top: 20px;
 }
-
 ul{
     list-style: none;
 }
@@ -21,33 +20,26 @@ ul{
     font-weight: 700;
     text-decoration: underline;
 }
-
 .mail h3{
     text-align: center;
 }
-
 .logo_reseaux ul{
     display: flex;
     padding: 0;
     justify-content:  center;
 }
-
 .logo_reseaux li{
     margin: 10px;
 }
-
 .reseaux h3 {
     align-self: center;
 }
-
 /**/
-
 .logo{
     color:#FFF;
     font-weight:700;
     font-size:15px;
 }
-
 .address span , .menu span{
     color: #FFF;
     font-weight: bold;
@@ -58,7 +50,6 @@ ul{
     font-size: 16px;
     letter-spacing: 3px;
 }
-
 .address li a , .menu li a{
     color:#FFF;
     letter-spacing: 3px;
@@ -74,7 +65,6 @@ ul{
     margin:10px 0;
     list-style: none;
 }
-
 .address li a:hover , .menu li a:hover{
     color: #da3e44;
     -webkit-transition: all 1s ease-in-out;
@@ -82,7 +72,6 @@ ul{
     -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
-
 .address .fa{
     color: #da3e44;
     margin-right: 10px;
@@ -97,16 +86,15 @@ ul{
 span{
     color: #008F8F;
 }
-
 .address{
     height: auto;
     align-self: center;
 }
 li{
-   display: flex;
+    display: flex;
     align-items: center;
-
 }
 li a{
     padding-left:10px ;
 }
+

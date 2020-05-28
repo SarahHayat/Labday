@@ -4,23 +4,18 @@ require "../controllers/bdd.php"
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Accueil</title>
     <link rel="stylesheet" href="../assets/css/index.css"/>
 </head>
-
-
 <body>
 <?php
 // echo "session username : " . $_SESSION['username'];
-
 if (isset($_SESSION['id_name'])) {
     require("headerConnect.php");
 } else {
     require("headerDisconnect.php");
-
 }
 ?>
 <div class="fond1">
@@ -57,17 +52,13 @@ if (isset($_SESSION['id_name'])) {
 <!--        <img src="../assets/images/soiree.jpg" alt>-->
 <!--    </figure>-->
 <!--</div>-->
-
 <div class="slideshow-container">
-
     <div class="mySlides fade">
         <img src="../assets/images/jeu_societe.jpg">
     </div>
-
     <div class="mySlides fade">
         <img src="../assets/images/plein_air.png">
     </div>
-
     <div class="mySlides fade">
         <img src="../assets/images/tourisme.jpg">
     </div>
@@ -79,9 +70,7 @@ if (isset($_SESSION['id_name'])) {
     <span class="dot"></span>
     <span class="dot"></span>
 </div>
-
 <?php
-
 if (isset($_SESSION['username'])) {
     ?>
     <div class="create">
@@ -98,13 +87,13 @@ if (isset($_SESSION['username'])) {
 <section class="fond flex_column">
     <div id="carte">
         <p>QUI SOMMES-NOUS ? </p>
-        <p> Un groupe d’étudiant qui souhaite divertir les gens. Enfaite on aime faire des activités sympas et découvrir
+        <p> Un groupe d'étudiant qui souhaite divertir les gens. Enfaite on aime faire des activités sympas et découvrir
             de nouvelles choses. On a donc souhaité faire rencontrer les gens avec des activités, aider les gens à
             sortir autrement. </p>
     </div>
     <div id="carte">
         <p>POUR QUI ? </p>
-        <p> Ce site est accessible pour les professionnels de l’évènement comme pour les particuliers qui souhaitent
+        <p> Ce site est accessible pour les professionnels de l'évènement comme pour les particuliers qui souhaitent
             promouvoir des évènements ou simplement les utilisateurs qui souhaite participer. </p>
     </div>
     <div id="carte">
@@ -115,9 +104,7 @@ if (isset($_SESSION['username'])) {
             précédents. </p>
     </div>
 </section>
-
 </body>
-
 <script src="../js/index.js"></script>
 <?php
 require("footer.php");
