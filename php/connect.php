@@ -44,7 +44,7 @@ else{
         <form action="../controllers/connexion.php" method="post" class="creer">
             <h1> Creation nouveau utilisateur</h1>
 
-            <label><b>Type utilisateur</b></label></br>
+            <label><b>Type utilisateur</b> <span class="obligatoire">*</span></label></br>
 
             <input type="radio" name="type_utilisateur" id="professionnel" value="professionnel" required>
             <label for="professionnel">professionnel</label>
@@ -52,37 +52,37 @@ else{
             <input type="radio" name="type_utilisateur" id="particulier" value="particulier">
             <label for="particulier">particulier</label></br>
 
-            <label><b>Nom</b></label>
+            <label><b>Nom</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="nom" name="nom" required>
 
-            <label><b>Prénom</b></label>
+            <label><b>Prénom</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="prenom" name="prenom" required>
 
-            <label><b>Pseudo</b></label>
+            <label><b>Pseudo</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="pseudo" name="pseudo" required>
 
-            <label><b>Adresse postale</b></label>
+            <label><b>Adresse postale</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="adresse" name="adresse" required>
 
-            <label><b>Code postale</b></label>
+            <label><b>Code postale</b> <span class="obligatoire">*</span></label>
             <input type="number" placeholder="code postale" name="code_postale" required>
 
-            <label><b>Ville</b></label>
+            <label><b>Ville</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="ville" name="ville" required>
 
-            <label><b>Pays</b></label>
+            <label><b>Pays</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="pays" name="pays" required>
 
-            <label><b>Mail</b></label>
+            <label><b>Mail</b> <span class="obligatoire">*</span></label>
             <input type="email" placeholder="mail" name="mail" required>
 
-            <label><b>Numéro de téléphone</b></label>
-            <input type="number" placeholder="numéro de téléphone" name="telephone" required maxlength="10">
+            <label><b>Numéro de téléphone</b> <span class="obligatoire">*</span></label>
+            <input type="number" placeholder="numéro de téléphone" name="telephone" required>
 
-            <label><b>Date de naissance</b></label>
+            <label><b>Date de naissance</b> <span class="obligatoire">*</span></label>
             <input type="date" id="date_naissance" name="date_naissance" min="1940-01-01" max="2018-12-31" required>
 
-            <label><b>Mot de passe</b></label>
+            <label><b>Mot de passe</b> <span class="obligatoire">*</span></label>
             <input type="password" placeholder="mot de passe" name="mot_de_passe" required>
 
 

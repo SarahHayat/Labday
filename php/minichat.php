@@ -27,10 +27,10 @@ if (isset($_SESSION['username'])) {
 <form method="post" action="../controllers/minichat_post.php" class="fond">
     <input type="submit" id="button" value="Créer un sujet" class="button_sujet">
     <div id="chat">
-        <label><b>Sujet :</b></label>
+        <label><b>Sujet :</b> <span class="obligatoire">*</span></label>
         <input type="text" name="sujet" required>
         </br>
-        <label> Message :</label>
+        <label> Message : <span class="obligatoire">*</span></label>
         <textarea name="message" required> Entrez votre message</textarea>
         <input type="submit" value="Envoyer"/>
     </div>

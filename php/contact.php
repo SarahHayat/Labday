@@ -37,26 +37,26 @@ if (isset($_SESSION['username'])) {
             </div>
             <div>
                 <table>
-                    <label for="pseudo">Pseudo:</label>
+                    <label for="pseudo">Pseudo: </label>
                     <input type="text"
                            id="pseudo"
                            name="pseudo"
                            required>
 
-                    <label for="mail">Email:</label>
+                    <label for="mail">Email: <span class="obligatoire">*</span></label>
                     <input type="email"
                            name="mail"
                            id="mail"
                            required>
 
-                    <label for="sujet">Sujet:</label>
+                    <label for="sujet">Sujet: <span class="obligatoire">*</span></label>
                     <input type="text"
                            name="sujet"
                            id="sujet"
                            required>
 
 
-                    <label for="mdpCompte">Mot de passe:</label>
+                    <label for="mdpCompte">Mot de passe: </label>
                     <input type="password"
                            id="mdpCompte"
                            name="mdpCompte"
@@ -72,7 +72,7 @@ if (isset($_SESSION['username'])) {
             </div>
 
 
-            <label for="message">Ton message:</label>
+            <label for="message">Ton message: <span class="obligatoire">*</span></label>
             <textarea id="message" name="message" placeholder="Ecrivez un message.." style="height:200px"></textarea>
 
 
