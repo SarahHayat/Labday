@@ -34,16 +34,16 @@ if (isset($_SESSION['username'])) {
         <option value="4">Soirée</option>
     </select>
 
-    <label><b>Titre</b></label>
+    <label><b>Titre</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="titre" name="titre" required>
 
-    <label><b>Lieux</b></label>
+    <label><b>Lieux</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="lieux" name="lieux" required>
 
-    <label>Date de l'évenement</label>
+    <label>Date de l'évenement <span class="obligatoire">*</span></label>
     <input type="datetime-local" name="date_evenement" required>
 
-    <label><b>Description</b></label></br>
+    <label><b>Description</b> <span class="obligatoire">*</span></label></br>
     <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
     <input type="submit" id='enregistrer' value='ENREGISTRER'>
