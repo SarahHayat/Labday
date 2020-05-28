@@ -77,7 +77,7 @@ else{
             <input type="email" placeholder="mail" name="mail" required>
 
             <label><b>Numéro de téléphone</b></label>
-            <input type="number" placeholder="numéro de téléphone" name="telephone" required>
+            <input type="number" placeholder="numéro de téléphone" name="telephone" required maxlength="10">
 
             <label><b>Date de naissance</b></label>
             <input type="date" id="date_naissance" name="date_naissance" min="1940-01-01" max="2018-12-31" required>

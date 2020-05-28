@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])) {
                 if (isset($_SESSION['id_name'])) {
                     $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                     while ($donnees = $req->fetch()) {
-                       echo '<p>' . $donnees['type_utilisateur'] . '</p>';
+                        echo '<p>' . $donnees['type_utilisateur'] . '</p>';
                     }
                 }
 
@@ -86,9 +86,7 @@ if (isset($_SESSION['username'])) {
             <?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
             <!--                </div>-->
             <div class="supp">
-                <a class="inputListOfEvent"
-                   href="../controllers/supprimerEvent.php?id_evenement= <?php echo $_SESSION['username']; ?>">supprimer
-                    compte</a>
+                    <input type="submit" onclick="supprimer()" value="supprimer" id="supprimer">
             </div>
 
         </div>
@@ -133,6 +131,7 @@ if (isset($_SESSION['username'])) {
 <?php
 require("footer.php");
 ?>
+<script src="../js/securite.js"></script>
 </body>
 
 
