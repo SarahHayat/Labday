@@ -37,11 +37,6 @@ if (isset($_SESSION['username'])) {
             </div>
             <div>
                 <table>
-                    <label for="pseudo">Pseudo: </label>
-                    <input type="text"
-                           id="pseudo"
-                           name="pseudo"
-                           required>
 
                     <label for="mail">Email: <span class="obligatoire">*</span></label>
                     <input type="email"
@@ -56,12 +51,12 @@ if (isset($_SESSION['username'])) {
                            required>
 
 
-                    <label for="mdpCompte">Mot de passe: </label>
+                    <label for="mdpCompte">Mot de passe: <span class="obligatoire">*</span></label>
                     <input type="password"
                            id="mdpCompte"
                            name="mdpCompte"
                            required>
-                    <label for="cMdpCompte">Confirmation du mot de passe:</label>
+                    <label for="cMdpCompte">Confirmation du mot de passe:<span class="obligatoire">*</span></label>
                     <input type="password"
                            id="cMdpCompte"
                            name="cMdpCompte"
@@ -83,8 +78,8 @@ if (isset($_SESSION['username'])) {
         if (isset($_SESSION['id_name'])) {
             $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
             $donnees = $reponse->fetch();
-            if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte']) && isset($_POST['pseudo'])) {
-                if ($donnees['pseudo'] == $_POST['pseudo'] && $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
+            if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte'])) {
+                if ( $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
                     ini_set('display_errors', 1);
                     error_reporting(E_ALL);
                     $from = $_POST['mail'];

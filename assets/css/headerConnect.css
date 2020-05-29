@@ -28,6 +28,7 @@ header{
     border-radius: 0px 0px 4px 4px;
     justify-content: space-evenly;
     align-items: center;
+    border-bottom: solid white 2px;
 }
 .menuHaut a{
     text-decoration: none;
