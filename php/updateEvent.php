@@ -1,7 +1,14 @@
 <?php
 session_start();
 
-require("bdd.php");
+require("../controllers/bdd.php");
+
+if (isset($_SESSION['username'])) {
+    require("headerConnect.php");
+} else {
+    require("headerDisconnect.php");
+
+}
 
 /**
  * Récupere les élements de l'événement
@@ -80,5 +87,5 @@ if (isset($_POST['description']) && isset($_POST['date_evenement']) && isset($_P
     header('Location: ../php/profil.php');
 }
 
-
+require("footer.php");
 ?>

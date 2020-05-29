@@ -1,7 +1,19 @@
 <?php
 session_start();
 
-require("bdd.php");
+require("../controllers/bdd.php");
+
+
+// echo "session username : " . $_SESSION['username'];
+
+if (isset($_SESSION['username'])) {
+    require("headerConnect.php");
+} else {
+    require("headerDisconnect.php");
+
+}
+
+
 /**
  * Reprend les éléments de l'événement
  */
@@ -17,7 +29,7 @@ while ($donnees = $reponse->fetch()) {
     $date_evenement = $donnees['date_evenement'];
     $titre_evenement = $donnees['titre_evenement'];
     $lieu = $donnees['lieu'];
-}
+
 
 /**
  * Formulaire note
@@ -39,7 +51,7 @@ while ($donnees = $reponse->fetch()) {
 
     <label><b>Catégorie</b></label>
     <select name="categorie">
-        <option value="<?php echo $donnees['$id_categorie'] ?>"><?php echo $donnees['$nom_categorie'] ?></option>
+        <option value="<?php echo $donnees['$id_categorie'] ?>"><?php echo $donnees['nom_categorie'] ?></option>
     </select>
 
     <label><b>Titre</b></label>
@@ -60,6 +72,7 @@ while ($donnees = $reponse->fetch()) {
     <input type="submit" id='enregistrer' value='ENREGISTRER'>
 </form>
 <?php
+}
 /**
  * Ajouter une note
  */
@@ -78,6 +91,6 @@ if (isset($_POST['note']) && isset($id_utilisateur)) {
 
     header('Location: ../php/profil.php');
 }
-
+require("footer.php");
 ?>
 

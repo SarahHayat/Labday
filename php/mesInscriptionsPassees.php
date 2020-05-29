@@ -44,7 +44,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $resultat) {
                             ?>
                             <a class="inputListOfEvent"
-                               href="../controllers/karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur']; ?>&amp;id_evenement=<?php echo $donnees['id_evenement'] ?>">noter</a>
+                               href="karma.php?id_utilisateur=<?php echo $donnees['id_utilisateur']; ?>&amp;id_evenement=<?php echo $donnees['id_evenement'] ?>">noter</a>
                             <?php
                         }
                         ?>

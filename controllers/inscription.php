@@ -13,7 +13,7 @@ if (isset ($_SESSION['id_name']) && isset ($id_evenement)) {
         'id_utilisateur' => $_SESSION['id_name'],
         'id_evenement' => $id_evenement,
     ));
-    header('Location: ../php/profil.php');
+    header('Location: ../php/sortieAPrevoir.php');
 }
 
 

@@ -33,7 +33,7 @@
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
                         <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
-                        <a class="inputListOfEvent" href="../controllers/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
+                        <a class="inputListOfEvent" href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
 
 
                     </div>

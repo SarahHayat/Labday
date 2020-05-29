@@ -28,7 +28,6 @@ $karma = $_POST['karma'];
 $search = $_POST['localisation'];
 
 
-
 ?>
 <form action="#" method="post" class="filtre">
     <select name="categorie">
@@ -57,7 +56,7 @@ FROM evenements as e
 left join utilisateurs as u on e.id_utilisateur = u.id_utilisateur  
 left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
 WHERE ( (e.id_categorie =' . $categorie . ' ) 
-AND(DATE(date_evenement) = DATE(now())) AND (UCASE(e.lieu) LIKE "%'.$search.'%") AND u.karma >= "'.$karma.'") 
+AND(DATE(date_evenement) = DATE(now())) AND (UCASE(e.lieu) LIKE "%' . $search . '%") AND u.karma >= "' . $karma . '") 
 ORDER BY date_evenement ASC');
 
             if ($categorie == "NULL") {
@@ -65,10 +64,9 @@ ORDER BY date_evenement ASC');
 FROM evenements as e 
 left join utilisateurs as u on e.id_utilisateur = u.id_utilisateur  
 left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
-WHERE ( (DATE(date_evenement) = DATE(now())) AND (UCASE(e.lieu) LIKE "%'.$search.'%") AND u.karma >= "'.$karma.'") 
+WHERE ( (DATE(date_evenement) = DATE(now())) AND (UCASE(e.lieu) LIKE "%' . $search . '%") AND u.karma >= "' . $karma . '") 
 ORDER BY date_evenement ASC');
             }
-
 
 
             while ($donnees = $req->fetch()) {
@@ -80,13 +78,13 @@ ORDER BY date_evenement ASC');
                     <ul class="collectionItem">
                         <div class="pictureEvent">
                             <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                            <!--                            <p>--><?php //echo $donnees['nom_categorie']; ?><!--</p>-->
+                            <p><?php echo $donnees['nom_categorie']; ?></p>
                         </div>
                         <div class="pictureEvent">
 
                             <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                             <p><?php echo "Par " ?> <b><a
-                                        href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                                            href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
                                 le : <?php echo $donnees['date_poste'] ?></p>
                             <p><?php echo $donnees['type_utilisateur']; ?></p>
                             <p><?php echo $donnees['lieu']; ?></p>

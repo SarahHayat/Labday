@@ -14,7 +14,7 @@ if (isset($id_evenement)) {
     $req->execute(array(
         'id_evenement' => $id_evenement,
     ));
-    header('Location: ../php/index.php');
+    header('Location: ../php/profil.php');
 }
 
 ?>
