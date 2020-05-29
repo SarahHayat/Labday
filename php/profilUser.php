@@ -73,9 +73,9 @@ if (isset($_SESSION['username'])) {
                     <label>niveau de validité : </label>
                 </div>
                 <?php
-                    $req = $bdd->query('SELECT round(AVG(note)) as moyenne FROM karma where id_utilisateur= "' . $_GET['id_user'] . '"');
+                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                     while ($donnees = $req->fetch()) {
-                        $moyenne = $donnees['moyenne'];
+                        $moyenne = $donnees['karma'];
                 }
 
                 ?>

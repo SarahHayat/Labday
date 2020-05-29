@@ -94,19 +94,21 @@ if (isset($_SESSION['username'])) {
 </div>
 <script src="../js/liste_deroulante.js"></script>
 
-<script>
-    function http() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(xhttp.responseText);
-            }
-        };
-        xhttp.open("GET", 'http://localhost:8888/Labday/controllers/requete.php?mail="<?php echo $_POST['mail']?>"&pseudo="<?php echo $_POST['pseudo']?>"' );
-        xhttp.send();
-    }
-
-</script>
+<!--<script>-->
+<!--    function http() {-->
+<!--        var xhttp = new XMLHttpRequest();-->
+<!--        xhttp.onreadystatechange = function () {-->
+<!--            if (this.readyState == 4 && this.status == 200) {-->
+<!--                console.log(xhttp.responseText);-->
+<!--            }-->
+<!--        };-->
+<!--        xhttp.open("GET", 'http://localhost:8888/Labday/controllers/requete.php?mail="--><?php //echo $_POST['mail']?>
+<!--"&pseudo="
+<?php //echo $_POST['pseudo']?>//"' );
+<!--//        xhttp.send();-->
+<!--//    }-->
+<!--//-->
+<!--//</script>-->
 <?php
 require("footer.php");
 ?>

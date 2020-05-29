@@ -40,10 +40,10 @@ $search = $_POST['localisation'];
         <option value="4">Soirée</option>
     </select>
     <?php
-    $req = $bdd->query('SELECT MIN(DATE(date_evenement)) as date_min, MAX(DATE(date_evenement)) as date_max FROM evenements');
+    $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_min']; ?>">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>">
 
         <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>">
         <?php
@@ -62,52 +62,46 @@ $search = $_POST['localisation'];
     <div class="filter">
 
         <?php
-        if (isset($_SESSION['id_name']) || isset($categorie) || isset($date_debut) || isset($date_fin) || isset($karma)) {
-            $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*
-    FROM karma as k
-    left join utilisateurs as u
-    on k.id_utilisateur = u.id_utilisateur
-    left join evenements as e
-    on u.id_utilisateur = e.id_utilisateur
-    WHERE ( (id_categorie =' . $categorie . ' ) 
-    AND (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
-    AND UCASE(e.lieu) LIKE "%' . $search . '%")
-    GROUP by k.id_utilisateur
-    HAVING (moyenne >= ' . $karma . ')');
+ //       if (isset($_SESSION['id_name']) || isset($categorie) || isset($date_debut) || isset($date_fin) || isset($karma)) {
+            $req = $bdd->query('SELECT e.*,u.*, ce.* 
+FROM evenements as e 
+left join utilisateurs as u on e.id_utilisateur = u.id_utilisateur  
+left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
+WHERE ( (e.id_categorie =' . $categorie . ' ) 
+AND((DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")) 
+AND (UCASE(e.lieu) LIKE "%' . $search . '%") AND u.karma >= "' . $karma . '") 
+ORDER BY date_evenement ASC');
+
+
 
             if ($categorie == "NULL") {
-                $req = $bdd->query('SELECT round(AVG(note)) as moyenne, e.*,u.*, ce.*
-    FROM karma as k
-    left join utilisateurs as u
-    on k.id_utilisateur = u.id_utilisateur
-    left join evenements as e
-    on u.id_utilisateur = e.id_utilisateur
-    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
-    WHERE ( (DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")
-    AND UCASE(e.lieu) LIKE "%' . $search . '%")
-    GROUP by k.id_utilisateur
-    HAVING (moyenne >= ' . $karma . ')');
+                $req = $bdd->query('SELECT e.*,u.*, ce.* 
+FROM evenements as e 
+left join utilisateurs as u on e.id_utilisateur = u.id_utilisateur  
+left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
+WHERE ( ((DATE(date_evenement) BETWEEN "' . $date_debut . '" AND "' . $date_fin . '")) 
+AND (UCASE(e.lieu) LIKE "%'.$search.'%") AND u.karma >= "'.$karma.'") 
+ORDER BY date_evenement ASC');
             }
 
             while ($donnees = $req->fetch()) {
-
                 ?>
 
                 <div class="listOfEvent">
                     <ul class="collectionItem">
                         <div class="pictureEvent">
                             <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                            <!--                            <p>--><?php //echo $donnees['nom_categorie']; ?><!--</p>-->
+                                                        <p><?php echo $donnees['nom_categorie']; ?></p>
                         </div>
                         <div class="pictureEvent">
 
                             <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                             <p><?php echo "Par " ?> <b><a
                                             href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                                le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                                le : <?php echo $donnees['date_poste'] ?></p>
                             <p><?php echo $donnees['type_utilisateur']; ?></p>
                             <p><?php echo $donnees['lieu']; ?></p>
-                            <p><?php echo $donnees['date_evenement']; ?></p>
+                            <p><b><?php echo $donnees['date_evenement']; ?></b></p>
                             <p class="description"><?php echo $donnees['description']; ?></p>
                             <?php
                             $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
@@ -129,7 +123,7 @@ $search = $_POST['localisation'];
                 </div>
 
                 <?php
-            }
+ //           }
         }
 
         ?>

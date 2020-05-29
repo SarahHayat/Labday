@@ -30,7 +30,7 @@ require("../controllers/bdd.php");
 
 ?>
 
-<form action="filtre.php" method="post" class="filtre">
+<form action="filtreAPrevoir.php" method="post" class="filtre">
     <select name="categorie">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
@@ -39,11 +39,11 @@ require("../controllers/bdd.php");
         <option value="4">Soirée</option>
     </select>
     <?php
-    $req = $bdd->query('SELECT MIN(DATE(date_evenement)) as date_min, MAX(DATE(date_evenement)) as date_max FROM evenements');
+    $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
 
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_min']; ?>">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>">
 
         <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>">
         <?php
@@ -77,10 +77,10 @@ require("../controllers/bdd.php");
                     <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                     <p><?php echo "Par " ?> <b><a
                                     href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                        le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                        le : <?php echo $donnees['date_poste'] ?></p>
                     <p><?php echo $donnees['type_utilisateur']; ?></p>
                     <p><?php echo $donnees['lieu']; ?></p>
-                    <p><?php echo $donnees['date_evenement']; ?></p>
+                    <p> <b> <?php echo $donnees['date_evenement']; ?></b> </p>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
                     if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {

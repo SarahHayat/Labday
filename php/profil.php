@@ -71,9 +71,9 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <?php
                 if (isset($_SESSION['id_name'])) {
-                    $req = $bdd->query('SELECT round(AVG(note)) as moyenne FROM karma where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                     while ($donnees = $req->fetch()) {
-                        $moyenne = $donnees['moyenne'];
+                        $moyenne = $donnees['karma'];
                     }
                 }
 

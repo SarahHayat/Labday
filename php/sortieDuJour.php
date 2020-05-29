@@ -24,7 +24,7 @@ if (isset($_SESSION['username'])) {
 
 ?>
 
-<form action="filtre.php" method="post" class="filtre">
+<form action="filtreDuJour.php" method="post" class="filtre">
     <select name="categorie">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
@@ -32,10 +32,6 @@ if (isset($_SESSION['username'])) {
         <option value="3">Tourisme</option>
         <option value="4">Soirée</option>
     </select>
-
-    <input type="date" name="date_debut" placeholder="date de début">
-
-    <input type="date" name="date_fin" placeholder="date de fin">
 
     <input type="text" name="localisation" placeholder="saisir une ville">
 
@@ -51,10 +47,14 @@ if (isset($_SESSION['username'])) {
     </div>
     <?php
     require("../controllers/bdd.php");
-    $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur  
-        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
-        where ev.date_evenement= NOW() order by ev.date_evenement ASC');
+    $reponse = $bdd->query('SELECT * FROM evenements as ev 
+left join utilisateurs as ut 
+on ev.id_utilisateur= ut.id_utilisateur 
+left join categorie_evenements as ce 
+on ce.id_categorie = ev.id_categorie
+where DATE(ev.date_evenement) = DATE(NOW()) 
+order by ev.date_evenement ASC
+');
     // On affiche chaque entrée une à une
     while ($donnees = $reponse->fetch())
     {
@@ -70,10 +70,10 @@ if (isset($_SESSION['username'])) {
                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                 <p><?php echo "Par " ?> <b><a
                                 href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                    le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                    le :  <?php echo $donnees['date_poste'] ?></p>
                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                 <p><?php echo $donnees['lieu']; ?></p>
-                <p><?php echo $donnees['date_evenement']; ?></p>
+                <p><b><?php echo $donnees['date_evenement']; ?></b></p>
                 <p class="description"><?php echo $donnees['description']; ?></p>
                 <?php
                 if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {

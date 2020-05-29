@@ -70,15 +70,11 @@ if (isset($_POST['note']) && isset($id_utilisateur)) {
         'id_utilisateur' => $id_utilisateur,
 
     ));
-    $req = $bdd->query('SELECT id_karma FROM karma ORDER BY id_karma DESC LIMIT 1');
-    while ($donnees = $req->fetch()) {
-        $id_karma = $donnees['id_karma'];
 
-
-        $req = $bdd->query('UPDATE evenements SET id_karma= "' . $id_karma . '" WHERE id_evenement =  "' . $id_evenement . '"');
-
-        $req->closeCursor();
-    }
+    $requete =$bdd->query('SELECT ROUND(AVG(note)) as moyenne FROM karma WHERE id_utilisateur ="'.$id_utilisateur.'"');
+    $donnees= $requete->fetch();
+    $moyenne = $donnees['moyenne'];
+    $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$id_utilisateur.'"');
 
     header('Location: ../php/profil.php');
 }
