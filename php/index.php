@@ -21,16 +21,12 @@ if (isset($_SESSION['id_name'])) {
 <div class="fond1">
     <h3> MEILLEURS UTILISATEURS</h3>
     <?php
-    $req = $bdd->query('SELECT AVG(note) as moyenne, e.*,u.*, pu.url
-    FROM karma as k
-    left join utilisateurs as u
-    on k.id_utilisateur = u.id_utilisateur
-    left join evenements as e
-    on u.id_utilisateur = e.id_utilisateur
+    $req = $bdd->query('SELECT u.*, pu.url
+    FROM utilisateurs as u
     LEFT JOIN photo_utilisateurs as pu
     ON u.id_utilisateur = pu.id_utilisateur
-    GROUP by k.id_utilisateur
-    ORDER by moyenne DESC LIMIT 3');
+    GROUP BY u.id_utilisateur
+    ORDER by u.karma DESC LIMIT 3');
     $i = 1;
     while ($donnees = $req->fetch()) {
         ?>
