@@ -20,8 +20,10 @@ if (isset($_SESSION['username'])) {
     require("headerDisconnect.php");
 
 }
-
 ?>
+
+
+
 <div class="connect">
     <div class="container_connect">
         <!-- zone de connexion -->
@@ -58,14 +60,14 @@ if (isset($_SESSION['username'])) {
             <input type="text" placeholder="prenom" name="prenom" required>
 
             <label><b>Pseudo</b> <span class="obligatoire">*</span></label>
-            <input type="text" id="pseudo" placeholder="pseudo" name="pseudo" required>
+            <input type="text" id="pseudo" placeholder="pseudo" name="pseudo" onkeyup="isPseudoExist(this.value)" required>
+            <p><span id="txtpseudo"></span></p>
 
             <label><b>Adresse postale</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="adresse" name="adresse" required>
 
             <label><b>Code postale</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="code postale" name="code_postale"
-                   oninput="if(value.length>5)value=value.slice(0,5)" required>
+            <input type="number" placeholder="code postale" name="code_postale" oninput="if(value.length>5)value=value.slice(0,5)" required>
 
             <label><b>Ville</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="ville" name="ville" required>
@@ -74,7 +76,8 @@ if (isset($_SESSION['username'])) {
             <select id="select_pays" name="pays"></select>
 
             <label><b>Mail</b> <span class="obligatoire">*</span></label>
-            <input type="email" id="mail" placeholder="mail" name="mail" required>
+            <input type="email" id="mail" placeholder="mail" name="mail" required onkeyup="isMailExist(this.value)" >
+            <p><span id="txtmail"></span></p>
 
             <label><b>Numéro de téléphone</b> <span class="obligatoire">*</span></label>
             <input type="number" placeholder="numéro de téléphone" name="telephone"
@@ -90,29 +93,18 @@ if (isset($_SESSION['username'])) {
             <input type="submit" id='enregistrer' value='ENREGISTRER'>
 
         </form>
+
     </div>
 </div>
-<script src="../js/liste_deroulante.js"></script>
 
-<!--<script>-->
-<!--    function http() {-->
-<!--        var xhttp = new XMLHttpRequest();-->
-<!--        xhttp.onreadystatechange = function () {-->
-<!--            if (this.readyState == 4 && this.status == 200) {-->
-<!--                console.log(xhttp.responseText);-->
-<!--            }-->
-<!--        };-->
-<!--        xhttp.open("GET", 'http://localhost:8888/Labday/controllers/requete.php?mail="--><?php //echo $_POST['mail']?>
-<!--"&pseudo="
-<?php //echo $_POST['pseudo']?>//"' );
-<!--//        xhttp.send();-->
-<!--//    }-->
-<!--//-->
-<!--//</script>-->
+<script src="../js/liste_deroulante.js"></script>
+<script src="../js/securite.js"></script>
+
+
 <?php
 require("footer.php");
 ?>
-<script src="../js/securite.js"></script>
+
 </body>
 
 </html>

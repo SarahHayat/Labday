@@ -18,11 +18,40 @@ function confirmer() {
         if (alert("mail déjà prit")) {
             window.location.href = '../php/connect.php';
         }
-    }
-    else if (pseudoElt !== "") {
+    } else if (pseudoElt !== "") {
         if (alert("pseudo déjà prit")) {
             window.location.href = '../php/connect.php';
         }
     }
 
+}
+function isPseudoExist(pseudo) {
+    if (pseudo == "") {
+        document.getElementById("txtpseudo").innerHTML = "";
+        return;
+    } else{
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtpseudo").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?pseudo='+pseudo,true);
+        xmlhttp.send();
+    }
+}
+function isMailExist(mail) {
+    if (mail == "") {
+        document.getElementById("txtmail").innerHTML = "";
+        return;
+    } else{
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtmail").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?mail='+mail,true);
+        xmlhttp.send();
+    }
 }
