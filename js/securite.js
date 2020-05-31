@@ -10,21 +10,6 @@ function supprimer() {
     }
 }
 
-function confirmer() {
-    var mailElt = document.getElementById("mail");
-    var pseudoElt = document.getElementById("pseudo");
-
-    if (mailElt == mailElt) {
-        if (alert("mail déjà prit")) {
-            window.location.href = '../php/connect.php';
-        }
-    } else if (pseudoElt !== "") {
-        if (alert("pseudo déjà prit")) {
-            window.location.href = '../php/connect.php';
-        }
-    }
-
-}
 function isPseudoExist(pseudo) {
     if (pseudo == "") {
         document.getElementById("txtpseudo").innerHTML = "";

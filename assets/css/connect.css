@@ -10,6 +10,7 @@ body {
 .connect {
     display: flex;
 }
+
 /*.container {*/
 /*    align-self: center;*/
 /*}*/
@@ -17,28 +18,30 @@ body {
 .fond {
     /*width: 91.66%;
     height: 70.01%;*/
-    margin-left: 3% ;
-    margin-right: 3% ;
+    margin-left: 3%;
+    margin-right: 3%;
     padding: 30px;
-    background : rgba(23, 185, 163, 0.78) !important;
+    background: rgba(23, 185, 163, 0.78) !important;
     border-radius: 38px;
     top: 195px;
 }
 
-.container_connect{
-    width:450px;
-    margin:0 auto;
-    margin-top:5%;
+.container_connect {
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 5%;
 }
+
 /* Bordered form */
 .container_connect form {
-    width:100%;
+    width: 100%;
     padding: 30px;
-    background : rgba(23, 185, 163, 0.78) !important;
+    background: rgba(23, 185, 163, 0.78) !important;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 38px;
 }
-.container_connect h1{
+
+.container_connect h1 {
     text-align: center;
     margin: 0 auto;
     padding-bottom: 10px;
@@ -63,38 +66,41 @@ body {
     cursor: pointer;
     width: 100%;
 }
+
 .container_connect input[type=submit]:hover {
     background-color: white;
     color: #EBD1D3;
     border: 1px solid #EBD1D3;
 }
+
 .search {
-     height: 20px;
-     font-size: large;
- }
-input[type="radio"]{
+    height: 20px;
+    font-size: large;
+}
+
+input[type="radio"] {
     -webkit-appearance: none;
     position: relative;
     top: 10px;
-    outline:0;
+    outline: 0;
     background: white;
     height: 15px;
     width: 15px;
-    display:inline-block;
+    display: inline-block;
     padding: 0 0 0 0;
     border-radius: 12px;
     border: solid 2px;
 }
-input[type="radio"]:checked
-{
+
+input[type="radio"]:checked {
     background: black;
     height: 15px;
     width: 15px;
-    display:inline-block;
+    display: inline-block;
     padding: 0 0 0 0;
 }
 
-input[type="radio"]:checked::before{
+input[type="radio"]:checked::before {
     height: 15px;
     width: 15px;
     position: absolute;
@@ -105,16 +111,19 @@ input[type="radio"]:checked::before{
     line-height: 12px;
     color: white;
 }
-@media only screen and (max-width: 1024px){
-    .container_connect{
+
+@media only screen and (max-width: 1024px) {
+    .container_connect {
         width: 350px;
     }
+
     input[type="radio"] {
         border-radius: 18px;
         height: 20px;
         width: 20px;
         top: 10px;
     }
+
     input[type="radio"]:checked::before {
         height: 20px;
         width: 20px;
@@ -122,7 +131,8 @@ input[type="radio"]:checked::before{
         line-height: 14px;
 
     }
-    input[type="radio"]:checked{
+
+    input[type="radio"]:checked {
         height: 20px;
         width: 20px;
     }
@@ -133,6 +143,8 @@ input[type="radio"]:checked::before{
 form a {
     text-decoration: none;
     color: black;
-}form a:hover {
+}
+
+form a:hover {
     color: white;
- }
+}

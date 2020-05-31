@@ -20,7 +20,7 @@ $type_utilisateur = $_POST["type_utilisateur"];
  * ajout d'un nouveau compte
  */
 if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)) {
-    $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "'.$pseudo.'" OR mail = "'.$mail.'"');
+    $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
     $donnees = $reponse->fetch();
     if (!$donnees) {
         $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
@@ -39,6 +39,12 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
             'ville' => $ville,
 
         ));
+        ?>
+        <script>
+            alert("Votre compte à bien été crée, veuillez vous connecter");
+
+        </script>
+        <?php
         header('Location: ../php/index.php');
 
     } else {
@@ -46,19 +52,9 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
         header('Location: ../php/connect.php');
 
     }
+
 }
 
-if (isset($donnees['id_utilisateur'])) {
-    $req = $bdd->query('SELECT * FROM utilisateurs WHERE pseudo ="' . $pseudo . '"');
-    while ($donnees = $req->fetch()) {
-        $new_id = $donnees['id_utilisateur'];
-    }
-    $req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id, :note)');
-    $req->execute(array(
-        'id' => $new_id,
-        'note' => 5,
-    ));
-}
 
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -95,11 +91,22 @@ if (isset($username) && isset($password)) {
             $type = $donnees['type_utilisateur'];
             $_SESSION['type_utilisateur'] = $type;
 
+            echo " karma : " . $donnees['karma'] . " utilisateur : " . $donnees['id_utilisateur'];
+            if ($donnees['karma'] == 0) {
+
+                $req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id_utilisateur, :note)');
+                $req->execute(array(
+                    'id_utilisateur' => $id_name,
+                    'note' => 5,
+                ));
+            }
+            $requete = $bdd->query('SELECT ROUND(AVG(note)) as moyenne FROM karma WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
+            $donnees = $requete->fetch();
+            $moyenne = $donnees['moyenne'];
+            echo "moyenne : " . $moyenne;
+
+            $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
         }
-        $requete =$bdd->query('SELECT ROUND(AVG(note)) as moyenne FROM karma WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
-        $donnees= $requete->fetch();
-        $moyenne = $donnees['moyenne'];
-        $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
 
 
 
@@ -108,7 +115,7 @@ if (isset($username) && isset($password)) {
         $_SESSION['type_utilisateur'] = $type;
 
         $_SESSION['username'] = $username;
-        header('Location: ../php/index.php');
+          header('Location: ../php/index.php');
     }
 }
 
