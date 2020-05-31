@@ -1,27 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le :  mar. 26 mai 2020 à 17:08
--- Version du serveur :  10.4.8-MariaDB
--- Version de PHP :  7.3.10
+-- Hôte : localhost:8889
+-- Généré le :  Dim 31 mai 2020 à 20:29
+-- Version du serveur :  5.7.26
+-- Version de PHP :  7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `ShareEventTogether`
 --
-CREATE DATABASE IF NOT EXISTS `ShareEventTogether` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `ShareEventTogether` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `ShareEventTogether`;
 
 -- --------------------------------------------------------
@@ -56,7 +48,7 @@ DROP TABLE IF EXISTS `evenements`;
 CREATE TABLE `evenements` (
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `date_poste` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_poste` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `description` text NOT NULL,
   `date_evenement` datetime NOT NULL,
   `titre_evenement` varchar(250) NOT NULL,
@@ -70,22 +62,22 @@ CREATE TABLE `evenements` (
 --
 
 INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `lieu`, `id_categorie`) VALUES
-(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris', NULL),
+(8, 2, '2020-04-29 14:58:15', 'je donne des cours de maths pour les nuls', '2020-05-16 10:00:00', 'cours de maths', NULL, 'Paris', 1),
 (10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, 'BORDEAUX', NULL),
 (12, 2, '2020-04-29 16:40:54', 'pot de depart pour romain et marie', '2020-09-10 20:00:00', 'pot de depart de romain', NULL, 'Toulouse', 4),
 (16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', 25, 'Asnieres-sur-oise', NULL),
 (17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, 'Asnieres-sur-oise', NULL),
 (18, 2, '2020-04-30 12:07:59', 'COURS DE SAMBA', '2020-04-30 12:09:00', 'cours de samba', NULL, 'Asnieres-sur-oise', NULL),
-(19, 11, '2020-04-30 13:52:46', 'cours avec anga', '2020-05-08 16:00:00', 'Cours de code pour nul', 22, 'Pontoise', NULL),
-(20, 12, '2020-04-30 20:56:14', 'petit concert de mon groupe à luzarches au café Lutecia le 15 juillet à 20h00 ! \r\nvenez nombreux !', '2020-07-15 20:00:00', 'Concert', NULL, 'Lutecia Luzarches', NULL),
 (21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, 'Dijon', NULL),
 (22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', 4, 'Cergy', 2),
 (23, 10, '2020-05-21 11:04:01', 'soiree', '2020-05-21 11:05:00', 'soiree', 19, 'paris', 4),
 (24, 10, '2020-05-25 09:27:15', 'tour de la ville de tours', '2020-10-01 10:00:00', 'tour de la ville', NULL, 'Tours', 3),
 (25, 3, '2020-05-25 10:31:14', 'yoga en plein air', '2020-05-25 10:33:00', 'yoga', 23, 'BORDEAUX', 1),
-(26, 13, '2020-05-25 10:48:38', 'soiree bellote à marseille', '2020-05-28 21:00:00', 'bellote', NULL, 'MARSEILLE', 4),
-(27, 10, '2020-05-25 14:40:21', 'promenade chiens dans viarmes', '2020-05-25 14:42:00', 'promenade de chien', 26, 'viarmes', 1),
-(28, 13, '2020-05-25 14:57:55', 'jouer aux sims c\'est cool', '2020-05-31 15:00:00', 'Les sims 4', NULL, 'Angers', 2);
+(27, 10, '2020-05-25 14:40:21', 'promenade chiens dans viarmes c\'est cool !!', '2020-05-25 14:42:00', 'promenade de chien', 26, 'viarmes', 1),
+(29, 15, '2020-05-27 20:00:32', 'Bonjour, venez participer à mon jeu de sarbacane pour mon anniversaire ! Tout le monde est le bienvenue, plus on est de fou, plus on rit ! (n\'oubliez pas de m\'apporter un cadeau merciiii)', '2020-08-04 14:00:00', 'jeu de sarbacane ', NULL, 'paris', 1),
+(31, 10, '2020-05-29 11:10:11', 'soiree mousse a paris', '2020-05-29 12:06:00', 'soiree mousse', NULL, 'paris', 4),
+(32, 10, '2020-05-29 11:29:00', 'pique nique ', '2020-05-29 21:00:00', 'pique nique', NULL, 'parmain', 1),
+(33, 10, '2020-05-29 14:35:40', 'football', '2020-05-30 15:00:00', 'football', NULL, 'belgique', 1);
 
 -- --------------------------------------------------------
 
@@ -108,19 +100,19 @@ INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_ev
 (31, 10, 12),
 (33, 10, 17),
 (35, 2, 18),
-(40, 11, 18),
-(41, 12, 16),
-(42, 12, 12),
 (43, 2, 19),
 (44, 2, 10),
 (45, 2, 10),
 (46, 10, 20),
 (47, 2, 23),
-(48, 12, 25),
-(51, 12, 26),
-(52, 12, 24),
-(54, 13, 27),
-(55, 12, 28);
+(56, 10, 26),
+(57, 15, 26),
+(58, 15, 22),
+(59, 2, 31),
+(60, 2, 32),
+(61, 10, 29),
+(62, 15, 31),
+(63, 15, 32);
 
 -- --------------------------------------------------------
 
@@ -149,14 +141,19 @@ INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
 (8, 10, 10),
 (9, 10, 7),
 (10, 10, 7),
-(11, 11, 10),
 (19, 10, 6),
-(22, 11, 8),
 (23, 3, 8),
-(24, 13, 5),
 (25, 10, 7),
 (26, 10, 7),
-(27, 14, 5);
+(27, 14, 5),
+(28, 15, 5),
+(30, 2, 5),
+(31, 2, 5),
+(32, 2, 5),
+(33, 2, 5),
+(34, 10, 8),
+(40, 32, 5),
+(41, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +167,7 @@ CREATE TABLE `messages` (
   `id_utilisateur` int(11) NOT NULL,
   `message` text NOT NULL,
   `id_sujet` int(11) NOT NULL,
-  `date_message` datetime NOT NULL DEFAULT current_timestamp()
+  `date_message` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -179,9 +176,6 @@ CREATE TABLE `messages` (
 
 INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `date_message`) VALUES
 (3, 10, 'j\'aime les velos', 4, '2020-05-26 08:19:20'),
-(4, 12, 'moi j\'aime pas', 4, '2020-05-26 08:29:20'),
-(7, 12, 'test', 4, '2020-05-26 08:39:20'),
-(8, 12, ' Entrez votre messatestge', 4, '2020-05-26 08:49:20'),
 (9, 2, 'coucou', 4, '2020-05-26 08:59:20'),
 (10, 2, 'YO', 4, '2020-05-26 09:19:20'),
 (11, 2, ' Entrez votre message', 4, '2020-05-26 10:19:20'),
@@ -194,7 +188,12 @@ INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `
 (18, 2, 'strval rip', 4, '2020-05-26 10:32:50'),
 (19, 2, 'Ceci est un test', 5, '2020-05-26 08:38:33'),
 (20, 2, 'first', 5, '2020-05-26 11:02:35'),
-(26, 2, 'ça marche !', 4, '2020-05-26 14:49:49');
+(26, 2, 'ça marche !', 4, '2020-05-26 14:49:49'),
+(27, 15, ' est-tu un mange mort ? ', 6, '2020-05-27 20:03:20'),
+(28, 15, 'es*', 6, '2020-05-27 20:03:41'),
+(29, 15, 'j\'aime les pédales des vélos ', 4, '2020-05-27 20:06:37'),
+(30, 10, 'oui', 6, '2020-05-29 11:44:23'),
+(31, 10, 'j\'aime le code', 7, '2020-05-29 11:44:37');
 
 -- --------------------------------------------------------
 
@@ -215,11 +214,9 @@ CREATE TABLE `photo_utilisateurs` (
 
 INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
 (14, 2, '../assets/photoProfil/homme.jpg'),
-(17, 12, '../assets/photoProfil/femme.jpg'),
 (20, 3, '../assets/photoProfil/femme.jpg'),
-(21, 13, '../assets/photoProfil/homme.jpg'),
-(22, 10, '../assets/photoProfil/femme_2.jpg'),
-(24, 11, '../assets/photoProfil/homme.jpg');
+(30, 10, '../assets/photoProfil/femme.jpg'),
+(31, 15, '../assets/photoProfil/homme_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,7 +237,9 @@ CREATE TABLE `sujets_forum` (
 
 INSERT INTO `sujets_forum` (`id_sujet`, `nom_sujet`, `id_utilisateur`) VALUES
 (4, 'velo', 10),
-(5, 'Test', 2);
+(5, 'Test', 2),
+(6, 'harry potter', 15),
+(7, 'coding', 10);
 
 -- --------------------------------------------------------
 
@@ -263,21 +262,21 @@ CREATE TABLE `utilisateurs` (
   `mot_de_passe` varchar(255) NOT NULL,
   `type_utilisateur` varchar(50) NOT NULL,
   `ville` varchar(200) NOT NULL,
-  `date_creation_utilisateur` datetime DEFAULT current_timestamp()
+  `date_creation_utilisateur` datetime DEFAULT CURRENT_TIMESTAMP,
+  `karma` decimal(4,2) DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postale`, `pays`, `telephone`, `mail`, `pseudo`, `mot_de_passe`, `type_utilisateur`, `ville`, `date_creation_utilisateur`) VALUES
-(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'professionnel', 'Pontoise', '2020-04-07 00:00:00'),
-(3, 'Marie', 'Tchydemian', '1998-08-06', 'rue de la gare', 95270, 'France', 1357908642, 'marie.tdm@gmail.com', 'marie.tdm', 'MARIE', 'particulier', 'Viarmes', '2020-04-17 00:00:00'),
-(10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'professionnel', 'Asnieres-sur-oise', '2020-04-30 10:03:31'),
-(11, 'Anga', 'Anga', '1992-03-03', '2 rue de beaumont', 95000, 'France', 1234565678, 'anga@gmail.com', 'Anga', 'ANGA', 'professionnel', 'Pontoise', '2020-04-30 13:52:03'),
-(12, 'Léna', 'Pancher', '1997-08-04', 'lenapancher@gmail.com', 95270, 'France', 987654321, 'lenapancher@gmail.com', 'lena', 'LENA', 'particulier', 'Asnieres-sur-oise', '2020-04-30 20:54:22'),
-(13, 'William', 'Andrieu', '1999-02-04', '25 rue du douare', 95570, 'France', 987659856, 'william.andrieu@live.fr', 'william', 'william', 'particulier', 'Villaines', '2020-05-25 10:46:45'),
-(14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21');
+INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postale`, `pays`, `telephone`, `mail`, `pseudo`, `mot_de_passe`, `type_utilisateur`, `ville`, `date_creation_utilisateur`, `karma`) VALUES
+(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'particulier', 'Pontoise', '2020-04-07 00:00:00', '6.00'),
+(3, 'Marie', 'Tchydemian', '1998-08-06', 'rue de la gare', 95270, 'France', 1357908642, 'marie.tdm@gmail.com', 'marie.tdm', 'MARIE', 'particulier', 'Viarmes', '2020-04-17 00:00:00', '8.00'),
+(10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'particulier', 'Asnieres-sur-oise', '2020-04-30 10:03:31', '7.18'),
+(14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21', '0.00'),
+(15, 'Léna', 'Pancher', '1997-08-04', '49 bis grande rue', 95270, 'France', 648314973, 'lenapancher@gmail.com', 'lenouch', 'coucou', 'particulier', 'Asnières-sur-Oise', '2020-05-27 19:43:40', '5.00'),
+(32, 'test', 'test', '2018-12-02', 'test', 55555, 'Afghanistan', 987654321, 'test@test.com', 'test', 'test', 'particulier', 'test', '2020-05-31 15:35:35', '5.00');
 
 --
 -- Index pour les tables déchargées
@@ -336,7 +335,9 @@ ALTER TABLE `sujets_forum`
 -- Index pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  ADD PRIMARY KEY (`id_utilisateur`);
+  ADD PRIMARY KEY (`id_utilisateur`),
+  ADD UNIQUE KEY `mail` (`mail`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -352,43 +353,43 @@ ALTER TABLE `categorie_evenements`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
-  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
 --
 ALTER TABLE `photo_utilisateurs`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `sujets_forum`
 --
 ALTER TABLE `sujets_forum`
-  MODIFY `id_sujet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_sujet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Contraintes pour les tables déchargées
@@ -430,8 +431,3 @@ ALTER TABLE `photo_utilisateurs`
 --
 ALTER TABLE `sujets_forum`
   ADD CONSTRAINT `sujets_forum_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

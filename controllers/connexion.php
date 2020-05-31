@@ -92,7 +92,7 @@ if (isset($username) && isset($password)) {
             $_SESSION['type_utilisateur'] = $type;
 
             echo " karma : " . $donnees['karma'] . " utilisateur : " . $donnees['id_utilisateur'];
-            if ($donnees['karma'] == 0) {
+            if ($donnees['karma'] == 0.00) {
 
                 $req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id_utilisateur, :note)');
                 $req->execute(array(
@@ -100,12 +100,13 @@ if (isset($username) && isset($password)) {
                     'note' => 5,
                 ));
             }
-            $requete = $bdd->query('SELECT ROUND(AVG(note)) as moyenne FROM karma WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
+            $requete = $bdd->query('SELECT AVG(note) as moyenne FROM karma WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
             $donnees = $requete->fetch();
             $moyenne = $donnees['moyenne'];
             echo "moyenne : " . $moyenne;
 
             $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
+            header('Location: ../php/index.php');
         }
 
 
