@@ -40,3 +40,21 @@ function isMailExist(mail) {
         xmlhttp.send();
     }
 }
+
+function trier(ordre) {
+    if (ordre == "NULL") {
+        document.getElementById("trie").innerHTML = "";
+        console.log("null" + ordre);
+        return;
+    } else{
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("ordre" + ordre);
+                document.getElementById("trie").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?ordre='+ordre,true);
+        xmlhttp.send();
+    }
+}

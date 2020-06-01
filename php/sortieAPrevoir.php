@@ -38,6 +38,12 @@ require("../controllers/bdd.php");
         <option value="3">Tourisme</option>
         <option value="4">Soirée</option>
     </select>
+
+    <select name="tri" onchange="trier(this.value)">
+    <option value="NULL">Trier par :</option>
+    <option value="DESC">Date croissant</option>
+    <option value="ASC">Date décroissant</option>
+    </select>
     <?php
     $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
@@ -57,7 +63,7 @@ require("../controllers/bdd.php");
 
 </form>
 
-<section class="fond">
+<section class="fond" id="trie">
     <?php
     $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
@@ -80,7 +86,7 @@ require("../controllers/bdd.php");
                         le : <?php echo $donnees['date_poste'] ?></p>
                     <p><?php echo $donnees['type_utilisateur']; ?></p>
                     <p><?php echo $donnees['lieu']; ?></p>
-                    <p> <b> <?php echo $donnees['date_evenement']; ?></b> </p>
+                    <p><b> <?php echo $donnees['date_evenement']; ?></b></p>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
                     if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
@@ -108,6 +114,7 @@ require("../controllers/bdd.php");
         <?php
     }
     ?>
+<script src="../js/securite.js"></script>
 </section>
 <?php
 require("footer.php");
