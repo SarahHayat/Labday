@@ -27,13 +27,13 @@ if (isset($_GET['mail'])) {
 if (isset($_GET['ordre'])) {
     $ordre = $_GET['ordre'];
     if($ordre =='ASC') {
-        $req = $bdd->query('SELECT ut.pseudo, ut.type_utilisateur, ev.titre_evenement,ev.date_poste, ev.description,
+        $req = $bdd->query('SELECT ut.pseudo, ut.type_utilisateur,ev.id_utilisateur,  ev.titre_evenement,ev.date_poste, ev.description,
  ev.date_evenement, ev.lieu, ce.nom_categorie 
  FROM evenements as ev left join utilisateurs as ut on ev.id_utilisateur= ut.id_utilisateur 
  left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
  where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
     } else if($ordre == 'DESC'){
-        $req = $bdd->query('SELECT ut.pseudo, ut.type_utilisateur, ev.titre_evenement,ev.date_poste, ev.description,
+        $req = $bdd->query('SELECT ut.pseudo, ut.type_utilisateur,ev.id_utilisateur, ev.titre_evenement,ev.date_poste, ev.description,
  ev.date_evenement, ev.lieu, ce.nom_categorie 
  FROM evenements as ev left join utilisateurs as ut on ev.id_utilisateur= ut.id_utilisateur 
  left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
