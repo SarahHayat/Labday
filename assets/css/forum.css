@@ -37,7 +37,7 @@ body {
     border-radius: 38px;
     top: 195px;
 }
-.fond div {
+.fond div:not(.message) {
     padding: 20px 10px 10px 10px;
 }
 .contactTitle p {
@@ -125,10 +125,7 @@ justify-content: space-between;
 .right_div a:hover{
     color: white;
 }
-.sujet h3{
-    font-size: 2rem;
-    text-align: center;
-}
+
 .fond a{
     text-decoration: none;
     color: black;
@@ -136,3 +133,32 @@ justify-content: space-between;
 .fond a:hover{
     color: white;
 }
+
+input[type=search]{
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+#form_forum{
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    background: #EBD1D3;
+    border-radius: 10px;
+    padding: 10px 15px;
+    overflow-wrap: anywhere;
+    width: fit-content;
+}
+.sujet h3{
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px;
+}
+.sujet{
+border-top:solid black 1px ;
+border-bottom:solid black 1px ;
+}
+

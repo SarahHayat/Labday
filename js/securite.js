@@ -21,7 +21,7 @@ function isPseudoExist(pseudo) {
                 document.getElementById("txtpseudo").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?pseudo='+pseudo,true);
+        xmlhttp.open("GET",'../php/securiteForm.php?pseudo='+pseudo,true);
         xmlhttp.send();
     }
 }
@@ -36,7 +36,7 @@ function isMailExist(mail) {
                 document.getElementById("txtmail").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?mail='+mail,true);
+        xmlhttp.open("GET",'../php/securiteForm.php?mail='+mail,true);
         xmlhttp.send();
     }
 }
@@ -46,15 +46,17 @@ function trier(ordre) {
         document.getElementById("trie").innerHTML = "";
         console.log("null" + ordre);
         return;
-    } else{
+    } else
+        {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
+            console.log(this.readyState);
             if (this.readyState == 4 && this.status == 200) {
                 console.log("ordre" + ordre);
                 document.getElementById("trie").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET",'http://localhost:8888/Labday/php/securiteForm.php?ordre='+ordre,true);
+        xmlhttp.open("GET",'../php/securiteForm.php?ordre='+ordre,true);
         xmlhttp.send();
     }
 }

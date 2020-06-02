@@ -47,7 +47,7 @@ left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_su
         <div class="listOfEvent">
             <div class="pictureEvent">
                 <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " Le " . $donnees['date_message'] ?></p>
-                <p><?php echo $donnees['message']; ?></p>
+                <p class="message"><?php echo $donnees['message']; ?></p>
 
             </div>
         </div>

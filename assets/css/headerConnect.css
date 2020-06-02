@@ -29,6 +29,7 @@ header{
     justify-content: space-evenly;
     align-items: center;
     border-bottom: solid white 2px;
+
 }
 .menuHaut a{
     text-decoration: none;
@@ -47,8 +48,9 @@ header{
     margin-bottom: 2px;
 }
 
-search {
+.search {
     height: 20px;!important
     font-size: large;!important
 }
-
+#nav-scroll{
+}

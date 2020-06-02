@@ -24,11 +24,11 @@ if (isset($_SESSION['username'])) {
 
 ?>
 <div class="fond">
-<form action="rechercheForum.php" method="get">
+<form action="rechercheForum.php" method="get" >
     <input type="search" name="search_forum" placeholder="recherche...">
     <input type="submit" value="entrer">
 </form>
-<form method="post" action="../controllers/minichat_post.php">
+<form method="post" action="../controllers/minichat_post.php" id="form_forum">
     <input type="submit" id="button" value="Créer un sujet" class="button_sujet">
     <div id="chat">
         <label><b>Sujet :</b> <span class="obligatoire">*</span></label>
@@ -61,9 +61,7 @@ ORDER BY `m`.`date_message` DESC LIMIT 10");
         echo 'Par ' . '<b>' . $donnees['pseudo'] . '</b>' . ' le ' . $donnees['date_message'];
         echo '</div>';
         echo '<div class="contain_message">';
-        echo '<div class="message">';
-        echo $donnees['message'];
-        echo '</div>';
+        echo '<p class="message">'.$donnees['message'].'</p>';
 
         ?>
         <div class="right_div"><a class="inputListOfEvent"
