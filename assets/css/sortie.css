@@ -80,3 +80,8 @@ body {
     text-align: center;
     padding: 10px;
 }
+
+#mapid {
+    height: 300px;
+    width: 50%;
+}

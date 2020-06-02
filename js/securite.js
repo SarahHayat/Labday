@@ -51,9 +51,13 @@ function trier(ordre) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             console.log(this.readyState);
-            if (this.readyState == 4 && this.status == 200) {
-                console.log("ordre" + ordre);
-                document.getElementById("trie").innerHTML = this.responseText;
+            if (this.readyState == 3) {
+                if(this.status ==200){
+                    console.log("ordre" + ordre);
+                    document.getElementById("trie").innerHTML = this.responseText;
+                }else{
+                    console.log("else");
+                }
             }
         };
         xmlhttp.open("GET",'../php/securiteForm.php?ordre='+ordre,true);

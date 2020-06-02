@@ -8,10 +8,13 @@ session_start();
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/sortie.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+
 </head>
 
 
 <body>
+
 <?php
 // echo "session username : " . $_SESSION['username'];
 
@@ -29,8 +32,14 @@ if (isset($_SESSION['username'])) {
 require("../controllers/bdd.php");
 
 ?>
+<div id="mapid"></div>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="../js/mapping.js"></script>
+
 
 <form action="filtreAPrevoir.php" method="post" class="filtre">
+
+
     <select name="categorie">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
