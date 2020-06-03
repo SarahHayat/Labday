@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
     <input type="search" name="search_forum" placeholder="recherche...">
     <input type="submit" value="entrer">
 </form>
-<form method="post" action="../controllers/minichat_post.php" id="form_forum">
+<form method="post" action="../controllers/forum.php" id="form_forum">
     <input type="submit" id="button" value="Créer un sujet" class="button_sujet">
     <div id="chat">
         <label><b>Sujet :</b> <span class="obligatoire">*</span></label>

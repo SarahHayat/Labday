@@ -88,7 +88,7 @@ order by ev.date_evenement ASC
                     if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                         ?>
                         <a class="inputListOfEvent"
-                           href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                           href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
 
                         <?php
                     }

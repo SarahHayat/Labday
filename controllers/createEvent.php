@@ -32,7 +32,7 @@ require ("bdd.php");
 
         }else {
             echo '<script> alert("Vous n\'êtes pas connecté ")</script>';
-            header('location: ../php/connect.php');
+            header('location: ../php/connexion.php');
 
         }
 

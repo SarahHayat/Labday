@@ -49,7 +49,7 @@ if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) &
 
     } else {
 
-        header('Location: ../php/connect.php');
+        header('Location: ../php/connexion.php');
 
     }
 
@@ -73,7 +73,7 @@ if (isset($username) && isset($password)) {
     $resultat = $req->fetch();
 
     if (!$resultat) {
-        // header('Location: ../php/connect.php');
+        // header('Location: ../php/connexion.php');
         header('Location:' . $_SERVER['HTTP_REFERER']);
 
     } else {

@@ -25,7 +25,7 @@ class AllRequest
         $resultat = $req->fetch();
 
         if (!$resultat) {
-            header('Location: ../php/connect.php');
+            header('Location: ../php/connexion.php');
         } else {
             /**
              * recuperer l'id de l'utilisateur connecté
@@ -134,7 +134,7 @@ class AllRequest
 
         } else {
             echo '<script> alert("Vous n\'êtes pas connecté ")</script>';
-            header('location: ../php/connect.php');
+            header('location: ../php/connexion.php');
 
         }
     }
@@ -160,7 +160,7 @@ class AllRequest
                 'id_utilisateur' => $_SESSION['id_name'],
             ));
             session_destroy();
-            header('Location: ../php/connect.php');
+            header('Location: ../php/connexion.php');
         }
     }
 
