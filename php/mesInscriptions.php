@@ -34,7 +34,7 @@
                         <p><?php echo "Par " ?> <b><a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
-                        <a class="inputListOfEvent" href="../controllers/desinscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
+                        <a class="inputListOfEvent" href="../controllers/unsubscribe.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se désincrire</a>
 
 
                     </div>

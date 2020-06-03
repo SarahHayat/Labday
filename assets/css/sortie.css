@@ -85,3 +85,7 @@ body {
     height: 300px;
     width: 50%;
 }
+
+#map {
+    text-align: -webkit-center;
+}

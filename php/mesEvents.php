@@ -32,7 +32,7 @@
                         <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>
-                        <a class="inputListOfEvent" href="../controllers/supprimerEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                        <a class="inputListOfEvent" href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
                         <a class="inputListOfEvent" href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
 
 

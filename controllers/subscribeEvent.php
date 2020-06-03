@@ -1,7 +1,7 @@
 <?php
 session_start();
 /**
- * Création d'un événement
+ * Inscription événement
  */
 require("bdd.php");
 

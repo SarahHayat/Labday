@@ -66,7 +66,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
                         $resultat = $req->fetch();
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name']  && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                             ?>
-                            <a class="inputListOfEvent" href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                            <a class="inputListOfEvent" href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
                             <?php
                         }
                         ?>

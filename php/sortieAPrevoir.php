@@ -32,15 +32,18 @@ if (isset($_SESSION['username'])) {
 require("../controllers/bdd.php");
 
 ?>
-<div id="mapid"></div>
+<div id="map">
+<div id="mapid">
+</div>
+</div>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script src="../js/mapping.js"></script>
 
 
-<form action="filtreAPrevoir.php" method="post" class="filtre">
+<form method="post" class="filtre" onsubmit="return false;">
 
 
-    <select name="categorie">
+    <select name="categorie" id="categorie">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
         <option value="2">Jeux de société</option>
@@ -48,8 +51,9 @@ require("../controllers/bdd.php");
         <option value="4">Soirée</option>
     </select>
 
-    <select name="tri" onchange="trier(this.value)">
-    <option value="NULL">Trier par :</option>
+    <select name="ordre" id="ordre">
+// onchange="trier(this.value)"
+
     <option value="DESC">Date croissant</option>
     <option value="ASC">Date décroissant</option>
     </select>
@@ -58,17 +62,17 @@ require("../controllers/bdd.php");
     while ($donnees = $req->fetch()) {
 
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>"id="date_debut" >
 
-        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>">
+        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin">
         <?php
     }
     ?>
-    <input type="text" name="localisation" placeholder="saisir une ville">
+    <input type="text" name="lieu" placeholder="saisir une ville" id="lieu">
 
-    <input type="range" name="karma" min="0" max="10">
+    <input type="range" name="karma" min="0" max="10" id="karma">
 
-    <input type="submit" value="chercher">
+    <input type="submit" value="chercher" onclick="filtre()">
 
 </form>
 

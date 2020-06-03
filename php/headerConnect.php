@@ -14,14 +14,15 @@
             <input type="submit" value="valider">
         </form>
         <a id="profil" href="profil.php"> Profil </a>
-        <a id="deconnect" href="deconnect.php"> Deconnexion </a>
+        <a id="deconnect" href="logOut.php"> Deconnexion </a>
         <h3><?php
             if(isset($_SESSION['id_name']))echo $_SESSION['username'] ;?></h3>
 
     </div>
     <div class="menuBas" id="nav-scroll">
         <a href="index.php"> Accueil</a>
-        <a href="sortieDuJour.php"> Sorties du jour</a>
+<!--        <a href="sortieDuJour.php"> Sorties du jour</a>-->
+        <a href="minichat.php">Forum</a>
         <a href="sortieAPrevoir.php"> Sorties à prévoir</a>
         <a href="contact.php"> Contact</a>
     </div>
