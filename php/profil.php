@@ -95,31 +95,45 @@ if (isset($_SESSION['username'])) {
 
     <div>
         <div class="event">
-            <form action="#" method="post">
-                <select name="choix">
-                    <option value="default">Choix</option>
+                <select name="choix" onchange="myChoices(this.value)">
                     <option value="mesEvent"> Mes Événements</option>
                     <option value="mesInscription">Mes inscriptions</option>
                     <option value="mesEventPassees">Mes inscriptions passées</option>
                 </select>
-                <input class="button_submit" type="submit" name="submit" value="Entrer">
-            </form>
 
-
-            <div class="evenement">
+            <div id="evenement">
                 <?php
-                if (isset($_POST['choix']) && $_POST['choix'] !== "default") {
-                    if ($_POST['choix'] == "mesEvent") {
-                        include("mesEvents.php");
-                    } else if ($_POST['choix'] == "mesInscription") {
-                        include("mesInscriptions.php");
-                    } else if ($_POST['choix'] == "mesEventPassees") {
-                        include("mesInscriptionsPassees.php");
-                    } else if ($_POST['choix'] == "default") {
-                        //
-                    }
+                require ("../controllers/bdd.php");
+                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
+        on ev.id_utilisateur= ut.id_utilisateur 
+        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "'.$_SESSION['id_name'].'"');
+                // On affiche chaque entrée une à une
+                while ($donnees = $reponse->fetch()) {
+                    ?>
+
+                    <div class="listOfEvent">
+                        <ul class="collectionItem">
+                            <div class="pictureEvent">
+                                <img class="imgTree" src="../assets/images/arbre_icon.png"/>
+                                <p><?php echo $donnees['nom_categorie']; ?></p>
+
+                            </div>
+                            <div class="pictureEvent">
+                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
+                                <p><?php echo $donnees['type_utilisateur']; ?></p>
+                                <p><?php echo $donnees['date_evenement']; ?></p>
+                                <a class="inputListOfEvent" href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                                <a class="inputListOfEvent" href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
+
+
+                            </div>
+                        </ul>
+                    </div>
+                    <?php
                 }
                 ?>
+            </div>
 
             </div>
 

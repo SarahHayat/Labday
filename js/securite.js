@@ -41,29 +41,7 @@ function isMailExist(mail) {
     }
 }
 
-function trier(ordre) {
-    if (ordre == "NULL") {
-        document.getElementById("trie").innerHTML = "";
-        console.log("null" + ordre);
-        return;
-    } else
-        {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            console.log(this.readyState);
-            if (this.readyState == 3) {
-                if(this.status ==200){
-                    console.log("ordre" + ordre);
-                    document.getElementById("trie").innerHTML = this.responseText;
-                }else{
-                    console.log("else");
-                }
-            }
-        };
-        xmlhttp.open("GET",'../php/securiteForm.php?ordre='+ordre,true);
-        xmlhttp.send();
-    }
-}
+
 
 function filtre() {
 
@@ -93,5 +71,29 @@ function filtre() {
         };
         xmlhttp.open("GET",'../php/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
         xmlhttp.send();
+    }
+}
+
+function myChoices(choice) {
+    if (choice == "") {
+        document.getElementById("evenement").innerHTML = "";
+        console.log("null" + choice);
+        return;
+    } else
+    {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            console.log(this.readyState);
+            if (this.readyState == 3) {
+                if(this.status ==200){
+                    console.log("ordre" + choice);
+                    document.getElementById("evenement").innerHTML = this.responseText;
+                }else{
+                    console.log("else");
+                }
+            }
+        };
+        xmlhttp.open("GET",'../php/myChoices.php?choice='+choice,true);
+        xmlhttp.send();m
     }
 }

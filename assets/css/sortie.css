@@ -82,14 +82,9 @@ body {
 }
 
 #mapid {
-<<<<<<< Updated upstream
     height: 300px;
     width: 50%;
 }
-=======
-    height: 180px;
-}
->>>>>>> Stashed changes
 
 #map {
     text-align: -webkit-center;

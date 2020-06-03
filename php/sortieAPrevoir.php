@@ -8,14 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/sortie.css"/>
-<<<<<<< Updated upstream
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
 
-=======
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin=""/>
->>>>>>> Stashed changes
 </head>
 
 
@@ -44,13 +38,8 @@ require("../controllers/bdd.php");
 </div>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script src="../js/mapping.js"></script>
-
-=======
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
 <script type="text/javascript" src="../js/mapping.js"></script>
->>>>>>> Stashed changes
+
 
 <form method="post" class="filtre" onsubmit="return false;">
 
@@ -92,7 +81,7 @@ require("../controllers/bdd.php");
     <?php
     $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
-        where DATE(ev.date_evenement) > DATE(now()) order by DATE(ev.date_evenement) ASC');
+        where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
 
 
@@ -124,7 +113,7 @@ require("../controllers/bdd.php");
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
 //                            ?>
                             <a class="inputListOfEvent"
-                               href="../controllers/inscription.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
+                               href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
                             <?php
                         }
                     }

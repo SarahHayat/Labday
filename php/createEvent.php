@@ -48,7 +48,6 @@ if (isset($_SESSION['username'])) {
     <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
     <input type="submit" id='enregistrer' value='ENREGISTRER'>
-    <script>alert("<?php echo htmlspecialchars('Votre évènement a bien été créer !', ENT_QUOTES); ?>")</script>
 
 </form>
 

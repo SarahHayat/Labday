@@ -70,7 +70,7 @@ if (isset($_SESSION['id_name'])) {
 if (isset($_SESSION['username'])) {
     ?>
     <div class="create">
-        <form action="creerEvent.php">
+        <form action="createEvent.php">
             <input type="submit" value="Creer un évenement"/>
         </form>
         <form action="minichat.php">

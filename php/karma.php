@@ -76,11 +76,14 @@ while ($donnees = $reponse->fetch()) {
 /**
  * Ajouter une note
  */
+
+echo "id evenement : " . $id_evenement;
 if (isset($_POST['note']) && isset($id_utilisateur)) {
-    $req = $bdd->prepare('INSERT INTO karma(note, id_utilisateur) VALUES(:note, :id_utilisateur)');
+    $req = $bdd->prepare('INSERT INTO karma(note, id_utilisateur, id_evenement) VALUES(:note, :id_utilisateur, :id_evenement)');
     $req->execute(array(
         'note' => $_POST['note'],
         'id_utilisateur' => $id_utilisateur,
+        'id_evenement' => $id_evenement,
 
     ));
 
