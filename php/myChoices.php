@@ -1,6 +1,15 @@
 <?php
 session_start();
 require("../controllers/bdd.php");
+?>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>ShareEventTogether - Profil</title>
+        <link rel="stylesheet" href="../assets/css/sortie.css"/>
+    </head>
+<?php
 
 if (isset($_GET['choice'])) {
 

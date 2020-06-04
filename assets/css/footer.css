@@ -1,6 +1,6 @@
 footer{
     display: flex;
-    background-color: #EBD1D3;
+    background-color: #505050;
     margin-top: 3%;
     bottom: 0;
     width: 100%;
@@ -8,6 +8,7 @@ footer{
     flex-direction: column;
     font-size: 10px;
     padding-top: 20px;
+    color: whitesmoke;
 }
 ul{
     list-style: none;
@@ -35,12 +36,12 @@ ul{
     align-self: center;
 }
 .logo{
-    color:#FFF;
+    color:yellowgreen;
     font-weight:700;
     font-size:15px;
 }
 .address span , .menu span{
-    color: #FFF;
+    color: whitesmoke;
     font-weight: bold;
     border-bottom: 1px solid #c7c7c7;
     padding:10px 0px;
@@ -50,7 +51,7 @@ ul{
     letter-spacing: 3px;
 }
 .address li a , .menu li a{
-    color:#FFF;
+    color:whitesmoke;
     letter-spacing: 3px;
     text-decoration:none;
     font-size:14px;
@@ -80,11 +81,12 @@ ul{
     margin-top: 10px;
     padding-top:10px ;
     text-align: center;
-    background-color: #008F8F;
+    background-color: #505050;
 }
-span{
-    color: #008F8F;
+.menu span, .address span{
+    color: yellowgreen;
 }
+
 .address{
     height: auto;
     align-self: center;

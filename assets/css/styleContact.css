@@ -4,6 +4,7 @@ body {
     padding-top: 200px;
     position: relative;
     padding-bottom: 300px;
+    color: whitesmoke;
 
 }
 
@@ -12,7 +13,7 @@ body {
     flex-direction: column;
     margin-left: 5%;
     margin-right: 5%;
-    background : rgba(23, 185, 163, 0.78) !important;
+    background : #505050 !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -25,8 +26,8 @@ body {
 }
 .contactTitle{
     /*text-align: center;*/
-    background: rgba(23, 185, 163, 0.78) !important;
-    color: white;
+    background: linear-gradient(#505050, #6f6f6f);
+    color: whitesmoke;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 
@@ -54,8 +55,8 @@ body {
 
 /* Style the submit button with a specific background color etc */
 .button_submit {
-    background-color: #EBD1D3;
-    color: #008F8F;
+    background-color: yellowgreen;
+    color: whitesmoke;
     /*padding: 12px 20px;*/
     border-radius: 5px;
     cursor: pointer;
@@ -71,18 +72,16 @@ body {
 
 /* When moving the mouse over the submit button, add a darker green color */
 .button_submit:hover {
-    background-color: #C4C4C4;
-    border: 1px solid black;
+    background-color: #505050;
 }
 
 /* Add a background color and some padding around the form */
 .container_contact {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
-    background-color: #f2f2f2;
+    background: linear-gradient(#6f6f6f, #807f7f); !important;
+
     padding: 20px;
     font-size: 18px;
 }
-textarea{
 
-}

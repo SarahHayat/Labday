@@ -11,7 +11,7 @@ body {
     margin-left: 3%;
     margin-right: 3%;
     padding: 10px 10px 10px 10px;
-    background: rgba(23, 185, 163, 0.78) !important;
+    background: yellowgreen !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -21,7 +21,7 @@ body {
     margin-left: 3%;
     margin-right: 3%;
     padding: 10px 10px 10px 10px;
-    background: rgba(23, 185, 163, 0.78) !important;
+    background: yellowgreen !important;
     border-radius: 38px;
     top: 195px;
     text-align: center;
@@ -30,8 +30,8 @@ body {
     justify-content: space-around;
 }
 .create input {
-    background-color: #EBD1D3;
-    color: white;
+    background-color: yellowgreen;
+    color: whitesmoke;
     padding: 15px;
     border-radius: 5px;
     border: none;
@@ -43,9 +43,9 @@ body {
     margin-bottom: 2%;
 }
 .create input:hover {
-    background-color: white;
-    color: #EBD1D3;
-    border: 1px solid #EBD1D3;
+    background-color: #505050;
+    color: whitesmoke;
+    border: 1px solid #505050;
 }
 div#slider {
     width: 80%;
@@ -110,6 +110,9 @@ div#slider figure {
     text-align: left;
     animation: 30s slidy infinite;
 }
+.fond1 h3{
+    color: whitesmoke;
+}
 #photo_best_user {
     width: 50px;
     height: 50px;
@@ -119,10 +122,11 @@ div#slider figure {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color: whitesmoke;
 }
 .align_best a {
     text-decoration: none;
-    color: black;
+    color: whitesmoke;
     font-size: 1.5rem;
     padding-left: 15px;
 }
@@ -133,7 +137,7 @@ div#slider figure {
     font-size: 1rem;
 }
 .align_best a:hover {
-    color: white;
+    color: #505050;
 }
 .slideshow-container {
     text-align: center;

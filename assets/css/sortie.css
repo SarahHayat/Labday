@@ -6,6 +6,7 @@ body {
     min-width: 1000px ;
     position: relative;
     padding-bottom: 200px;
+    color: whitesmoke;
 
 
 }
@@ -15,7 +16,7 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     padding: 10px 10px 10px 10px;
-    background: rgba(23, 185, 163, 0.78) !important;
+    background: #505050 !important;
     border-radius: 38px;
     top: 195px;
     height: 800px;
@@ -31,7 +32,6 @@ body {
     display: block;
 }
 
-
 #imgTree {
     width: 75px;
     padding-right: 50px;
@@ -39,7 +39,9 @@ body {
 }
 
 .titleOfEvent {
-    text-decoration: underline;
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 5px;
 }
 
 .collectionItem {
@@ -55,15 +57,17 @@ body {
 }
 
 .description {
-    border: 1px solid black;
+    background-color: yellowgreen;
     padding: 5px;
+    color: whitesmoke;
+    border-radius: 20px;
 
 }
 
 .inputListOfEvent {
-    background-color: #EBD1D3;
+    background-color: yellowgreen;
     border: none;
-    color: #008F8F;
+    color: #505050;
     padding: 8px 20px;
     text-align: center;
     border-radius: 5px;
@@ -79,6 +83,11 @@ body {
 .filtre {
     text-align: center;
     padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: yellowgreen;
 }
 
 #mapid {

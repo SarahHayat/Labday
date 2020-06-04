@@ -4,6 +4,7 @@ body {
     padding-top: 200px;
     position: relative;
     padding-bottom: 350px;
+    color: whitesmoke;
 
 }
 
@@ -21,7 +22,7 @@ body {
     margin-left: 3%;
     margin-right: 3%;
     padding: 30px;
-    background: rgba(23, 185, 163, 0.78) !important;
+    background: #505050 !important;
     border-radius: 38px;
     top: 195px;
 }
@@ -36,7 +37,7 @@ body {
 .container_connect form {
     width: 100%;
     padding: 30px;
-    background: rgba(23, 185, 163, 0.78) !important;
+    background: #505050 !important;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 38px;
 }
@@ -58,8 +59,8 @@ body {
 
 
 .container_connect input[type=submit] {
-    background-color: #EBD1D3;
-    color: white;
+    background-color: yellowgreen;
+    color: whitesmoke;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -68,9 +69,9 @@ body {
 }
 
 .container_connect input[type=submit]:hover {
-    background-color: white;
-    color: #EBD1D3;
-    border: 1px solid #EBD1D3;
+    background-color: whitesmoke;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
 }
 
 .search {
@@ -83,7 +84,7 @@ input[type="radio"] {
     position: relative;
     top: 10px;
     outline: 0;
-    background: white;
+    background: whitesmoke;
     height: 15px;
     width: 15px;
     display: inline-block;
@@ -109,7 +110,7 @@ input[type="radio"]:checked::before {
     font-size: 14px;
     text-align: center;
     line-height: 12px;
-    color: white;
+    color: whitesmoke;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -147,4 +148,8 @@ form a {
 
 form a:hover {
     color: white;
+}
+
+#select_pays::-moz-selection {
+    background-color: yellowgreen;
 }

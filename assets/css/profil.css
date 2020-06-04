@@ -6,6 +6,7 @@ body {
     min-height: 1000px;
     /*min-width: 1000px ;*/
     padding-bottom: 10%;
+    color: whitesmoke;
 
 
 }
@@ -16,7 +17,7 @@ body {
     margin-left: 3% ;
     margin-right: 3%;
     padding: 10px 10px 10px 10px;
-    background : rgba(23, 185, 163, 0.78) !important;
+    background : #505050 !important;
     border-radius: 15px;
     top: 195px;
     height: 800px;
@@ -45,6 +46,7 @@ body {
 .avatar a {
     margin : 10px;
     font-size: small;
+    color: yellowgreen;
 }
 info{
     display: block;
@@ -99,9 +101,9 @@ info{
 }
 
 .inputListOfEvent {
-    background-color: #EBD1D3;
+    background-color: yellowgreen;
     border: none;
-    color: #008F8F;
+    color: #505050;
     padding: 8px 20px;
     text-align: center;
     border-radius: 5px;
@@ -115,8 +117,8 @@ info{
 
 
 .button_submit {
-    background-color: #EBD1D3;
-    color: white;
+    background-color: yellowgreen;
+    color: whitesmoke;
     padding: 10px 10px;
     margin: 8px 0;
     border: none;
@@ -125,9 +127,9 @@ info{
 
 }
 .button_submit:hover {
-    background-color: white;
-    color: #EBD1D3;
-    border: 1px solid #EBD1D3;
+    background-color: whitesmoke;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
 }
 
 .modifier {

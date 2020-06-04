@@ -3,52 +3,31 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/sortie.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
-
 </head>
-
-
 <body>
-
 <?php
 // echo "session username : " . $_SESSION['username'];
-
 if (isset($_SESSION['username'])) {
     require("headerConnect.php");
 } else {
     require("headerDisconnect.php");
-
 }
-
 ?>
-
-
 <?php
 require("../controllers/bdd.php");
-
 ?>
 <div id="map">
-<div id="mapid">
-</div>
+    <div id="mapid">
+    </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-<script src="../js/mapping.js"></script>
-
-=======
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
 <script type="text/javascript" src="../js/mapping.js"></script>
->>>>>>> Stashed changes
-
 <form method="post" class="filtre" onsubmit="return false;">
-
-
     <select name="categorie" id="categorie">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
@@ -56,40 +35,30 @@ require("../controllers/bdd.php");
         <option value="3">Tourisme</option>
         <option value="4">Soirée</option>
     </select>
-
     <select name="ordre" id="ordre">
-// onchange="trier(this.value)"
-
-    <option value="DESC">Date croissant</option>
-    <option value="ASC">Date décroissant</option>
+        // onchange="trier(this.value)"
+        <option value="DESC">Date croissant</option>
+        <option value="ASC">Date décroissant</option>
     </select>
     <?php
     $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
-
         ?>
         <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>"id="date_debut" >
-
         <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin">
         <?php
     }
     ?>
     <input type="text" name="lieu" placeholder="saisir une ville" id="lieu">
-
     <input type="range" name="karma" min="0" max="10" id="karma">
-
     <input type="submit" value="chercher" onclick="filtre()">
-
 </form>
-
 <section class="fond" id="trie">
     <?php
     $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
-
-
     while ($donnees = $reponse->fetch()) {
         ?>
         <div class="listOfEvent">
@@ -124,21 +93,16 @@ require("../controllers/bdd.php");
                     }
                     //
                     ?>
-
                 </div>
-
             </ul>
-
         </div>
         <?php
     }
     ?>
-<script src="../js/securite.js"></script>
+    <script src="../js/securite.js"></script>
 </section>
 <?php
 require("footer.php");
 ?>
 </body>
-
-
 </html>
