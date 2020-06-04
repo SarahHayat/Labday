@@ -71,9 +71,11 @@ a {
 
 .description {
     background-color: yellowgreen;
-    padding: 5px;
+    padding: 10px;
     color: whitesmoke;
     border-radius: 20px;
+    width: fit-content;
+    width: 88%;
 
 }
 
@@ -89,27 +91,43 @@ a {
     display: flex;
     padding: 3px
 }
-.imgTree {
-    width: 75px;
-    padding-right: 50px;
-    margin-top: 45%;
+#imgTree {
+    width: 150px;
+}
+.pictureEvent1 {
+    width: 25%;
+    text-align: -webkit-center;
+
+}
+.pictureEvent{
+    width: 75%;
+
 
 }
 
 .titleOfEvent {
-    text-decoration: underline;
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 5px;
+    font-size: 2rem;
+    width: 80%;
+    text-align: center;
+    font-family: cursive;
+    text-transform: uppercase;
 }
 
 .collectionItem {
     display: flex;
     flex-direction: row;
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+
 }
 .collectionItem ul {
     justify-content: center;
-    margin-left: 50px;
 }
+
 
 .inputListOfEvent {
     background-color: yellowgreen;
@@ -124,6 +142,11 @@ a {
 }
 .evenement p {
     margin: 10px;
+}
+
+.event{
+    text-align: -webkit-center;
+
 }
 
 
