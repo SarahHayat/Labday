@@ -6,6 +6,8 @@
     <title>ShareEventTogether</title>
     <link rel="stylesheet" href="../assets/css/headerConnect.css"/>
 </head>
+<div style="margin-bottom: 14%">
+</div>
 <header class="header">
     <div class="menuHaut" id="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>

@@ -25,6 +25,7 @@ if (isset($_SESSION['username'])) {
 
 
 <div class="connect">
+
     <div class="container_connect">
         <!-- zone de connexion -->
 
