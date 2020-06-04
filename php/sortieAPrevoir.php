@@ -45,7 +45,7 @@ require("../controllers/bdd.php");
     $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>"id="date_debut" >
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>" id="date_debut">
         <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin">
         <?php
     }
@@ -65,7 +65,7 @@ require("../controllers/bdd.php");
 
         <div class="listOfEvent">
             <div class="centerH3">
-            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
             </div>
             <ul class="collectionItem">
 
@@ -75,12 +75,12 @@ require("../controllers/bdd.php");
                 </div>
                 <div class="pictureEvent">
                     <div class="gauche">
-                    <p><?php echo "Par " ?> <b><a
-                                    href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                        le : <?php echo $donnees['date_poste'] ?></p>
-                    <p><?php echo $donnees['type_utilisateur']; ?></p>
-                    <p><?php echo $donnees['lieu']; ?></p>
-                    <p><b> <?php echo $donnees['date_evenement']; ?></b></p>
+                        <p><?php echo "Par " ?> <b><a
+                                        href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                            le : <?php echo $donnees['date_poste'] ?></p>
+                        <p><?php echo $donnees['type_utilisateur']; ?></p>
+                        <p><?php echo $donnees['lieu']; ?></p>
+                        <p><b> <?php echo $donnees['date_evenement']; ?></b></p>
                     </div>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
@@ -95,12 +95,25 @@ require("../controllers/bdd.php");
 //                            ?>
                             <a class="inputListOfEvent"
                                href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
-                            <a class="inputListOfEvent"
-                               href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">Ajouter à mes favoris </a>
-
                             <?php
+                            $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                            $reponse->execute(array(
+                                'id_evenement' => $donnees['id_evenement'],
+                                'id_utilisateur' => $_SESSION['id_name']
+                            ));
+                            $mesDonnees = $reponse->fetch();
+                            if (!$mesDonnees) {
+                                ?>
+                                <a class="inputListOfEvent"
+                                   href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">Ajouter
+                                    à
+                                    mes favoris </a>
+
+                                <?php
+                            }
                         }
                     }
+
                     //
                     ?>
                 </div>

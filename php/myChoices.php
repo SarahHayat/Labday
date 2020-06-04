@@ -32,6 +32,11 @@ left join evenements as e on ie.id_evenement = e.id_evenement
 LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
 left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
 where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < now()');
+    } else if ($_GET['choice'] == "mesFavoris") {
+        $sql = $bdd->query('SELECT f.* , e.*, u.*, ce.* FROM favoris as f left join evenements as e on f.id_evenement = e.id_evenement 
+    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
+    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
+    where f.id_utilisateur ="' . $_SESSION['id_name'] . '"');
     }
     while ($donnees = $sql->fetch()) {
         ?>
@@ -57,7 +62,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                            href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                         <?php
                     } else if ($_GET['choice'] == "mesEventPassees") {
-                        $req = $bdd->prepare('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "'.$donnees['id_evenement'].'"');
+                        $req = $bdd->prepare('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
                         $req->execute(array(
                             'id_evenement' => $donnees['id_evenement'],
                         ));
@@ -74,6 +79,16 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                            href="../controllers/unsubscribe.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">se
                             désincrire</a>
                         <?php
+                    } else if ($_GET['choice'] == "mesFavoris") {
+                        $req = $bdd->query('SELECT * FROM favoris WHERE id_evenement = "' . $donnees['id_evenement'] . '" AND id_utilisateur ="'.$_SESSION['id_name'].'"');
+                        $resultat = $req->fetch();
+                        if ($resultat) {
+                            ?>
+                            <a class="inputListOfEvent"
+                               href="../controllers/enleverFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
+                                favoris</a>
+                            <?php
+                        }
                     }
                     ?>
 
