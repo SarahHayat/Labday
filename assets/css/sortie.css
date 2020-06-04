@@ -33,15 +33,27 @@ body {
 }
 
 #imgTree {
-    width: 75px;
-    padding-right: 50px;
-    margin-top: 45%;
+    width: 200px;
 }
+.pictureEvent1 {
+    width: 25%;
+    text-align: -webkit-center;
 
+}
+.pictureEvent{
+    width: 75%;
+    text-align: -webkit-center;
+
+}
 .titleOfEvent {
     border-bottom: solid 1px yellowgreen;
     border-top: solid 1px yellowgreen;
     padding: 5px;
+    font-size: 4rem;
+    width: 80%;
+    text-align: center;
+    font-family: cursive;
+    text-transform: uppercase;
 }
 
 .collectionItem {
@@ -49,11 +61,11 @@ body {
     flex-direction: row;
     margin: 10px;
     padding: 10px;
+    justify-content: center;
 
 }
 .collectionItem ul {
     justify-content: center;
-    margin-left: 50px;
 }
 
 .description {
@@ -95,6 +107,10 @@ a {
     width: 50%;
 }
 
-#map {
+#map, .centerH3{
     text-align: -webkit-center;
+}
+
+.gauche{
+    text-align: left;
 }
