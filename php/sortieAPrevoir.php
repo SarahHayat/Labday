@@ -21,6 +21,7 @@ if (isset($_SESSION['username'])) {
 <?php
 require("../controllers/bdd.php");
 ?>
+
 <div id="map">
     <div id="mapid">
     </div>

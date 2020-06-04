@@ -1,14 +1,7 @@
 body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
-    padding-top: 13%;
-    position: relative;
-    min-height: 1000px;
-    /*min-width: 1000px ;*/
-    padding-bottom: 10%;
     color: whitesmoke;
-
-
 }
 
 .fond {
@@ -64,6 +57,24 @@ info{
     min-width: 80%;
     justify-content: space-around;
     align-items: center;
+}
+
+.titleOfEvent {
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 10px;
+}
+a {
+    text-decoration: none;
+    color: yellowgreen;
+}
+
+.description {
+    background-color: yellowgreen;
+    padding: 5px;
+    color: whitesmoke;
+    border-radius: 20px;
+
 }
 
 .event p {

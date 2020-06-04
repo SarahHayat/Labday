@@ -51,7 +51,7 @@ function filtre() {
     var date_fin = document.getElementById("date_fin").value;
     var lieu = document.getElementById("lieu").value;
     var karma = document.getElementById("karma").value;
-    if (ordre == "NULL") {
+    if (karma == "NULL") {
         document.getElementById("trie").innerHTML = this.reponseText;
         console.log("null" + ordre);
         return;
