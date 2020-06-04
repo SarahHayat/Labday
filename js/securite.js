@@ -9,6 +9,21 @@ function supprimer() {
         btn_supprimer.href = "profil.php";
     }
 }
+/*
+
+function supprimerEvent(){
+    var btn_supprimerEvent = document.getElementById("supprimerEvent");
+    console.log("test : " + btn_supprimerEvent);
+    if (confirm("Vous désirez vraiment supprimer votre événement ?")) {
+        console.log("oui")
+        window.location.href = '../controllers/deleteEvent.php';
+    } else {
+        console.log("non")
+
+        btn_supprimer.href = "profil.php";
+    }
+}
+*/
 
 function isPseudoExist(pseudo) {
     if (pseudo == "") {
@@ -94,6 +109,6 @@ function myChoices(choice) {
             }
         };
         xmlhttp.open("GET",'../php/myChoices.php?choice='+choice,true);
-        xmlhttp.send();m
+        xmlhttp.send();
     }
 }

@@ -56,8 +56,8 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                     if ($_GET['choice'] == "mesEvent") {
                         ?>
 
-                        <a class="inputListOfEvent"
-                           href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                        <a class="inputListOfEvent" id="supprimerEvent"
+                           href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?> ">supprimer</a>
                         <a class="inputListOfEvent"
                            href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                         <?php
@@ -96,6 +96,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                 </div>
             </ul>
         </div>
+        <script src="../js/securite.js"></script>
         <?php
     }
 }

@@ -56,7 +56,8 @@ require("../controllers/bdd.php");
 </form>
 <section class="fond" id="trie">
     <?php
-    $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut  
+    $reponse = $bdd->query('SELECT ut.* , ev.titre_evenement, ev.id_utilisateur,  ev.lieu,  ev.date_evenement,DATE(ev.date_poste) as date_poste
+ ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
