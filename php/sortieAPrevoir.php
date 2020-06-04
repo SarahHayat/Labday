@@ -56,64 +56,67 @@ require("../controllers/bdd.php");
 </form>
 <section class="fond" id="trie">
     <?php
-    $reponse = $bdd->query('SELECT ut.* , ev.titre_evenement, ev.id_utilisateur,  ev.lieu,  ev.date_evenement,DATE(ev.date_poste) as date_poste
+    $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.lieu,  ev.date_evenement,DATE(ev.date_poste) as date_poste
  ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
-    while ($donnees = $reponse->fetch()) {
+    $donnees = $reponse->fetchAll();
+    for ($i = 0; $i< sizeof($donnees); $i++) {
         ?>
 
         <div class="listOfEvent">
             <div class="centerH3">
-                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
             </div>
             <ul class="collectionItem">
-
                 <div class="pictureEvent1">
                     <img id="imgTree" src="../assets/images/arbre_icon.png"/>
-                    <p><?php echo $donnees['nom_categorie']; ?></p>
+                    <p><?php echo $donnees[$i]['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">
                     <div class="gauche">
                         <p><?php echo "Par " ?> <b><a
-                                        href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                            le : <?php echo $donnees['date_poste'] ?></p>
-                        <p><?php echo $donnees['type_utilisateur']; ?></p>
-                        <p><?php echo $donnees['lieu']; ?></p>
-                        <p><b> <?php echo $donnees['date_evenement']; ?></b></p>
+                                        href="profilUser.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
+                            le : <?php echo $donnees[$i]['date_poste'] ?></p>
+                        <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
+                        <p><?php echo $donnees[$i]['lieu']; ?></p>
+                        <p><b> <?php echo $donnees[$i]['date_evenement']; ?></b></p>
                     </div>
-                    <p class="description"><?php echo $donnees['description']; ?></p>
+                    <p class="description"><?php echo $donnees[$i]['description']; ?></p>
+
                     <?php
-                    if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
+                    if (isset($_SESSION['id_name']) && isset($donnees[$i]['id_evenement'])) {
                         $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
                         $req->execute(array(
                             'id_utilisateur' => $_SESSION['id_name'],
-                            'id_evenement' => $donnees['id_evenement'],
+                            'id_evenement' => $donnees[$i]['id_evenement'],
                         ));
                         $resultat = $req->fetch();
-                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
+                        if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
 //                            ?>
                             <a class="inputListOfEvent"
-                               href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
+                               href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees[$i]['id_evenement']; ?>">s'inscrire </a>
                             <?php
-                            $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-                            $reponse->execute(array(
-                                'id_evenement' => $donnees['id_evenement'],
-                                'id_utilisateur' => $_SESSION['id_name']
-                            ));
-                            $mesDonnees = $reponse->fetch();
-                            if (!$mesDonnees) {
-                                ?>
-                                <a class="inputListOfEvent"
-                                   href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">Ajouter
-                                    à
-                                    mes favoris </a>
-
-                                <?php
-                            }
                         }
                     }
+
+                    $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                    $reponse->execute(array(
+                        'id_evenement' => $donnees[$i]['id_evenement'],
+                        'id_utilisateur' => $_SESSION['id_name']
+                    ));
+                    $mesDonnees = $reponse->fetch();
+                    if (!$mesDonnees) {
+                        ?>
+                        <a class="inputListOfEvent"
+                           href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees[$i]['id_evenement']; ?>">Ajouter
+                            à
+                            mes favoris </a>
+
+                        <?php
+                    }
+
 
                     //
                     ?>

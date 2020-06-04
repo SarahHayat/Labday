@@ -86,7 +86,7 @@ if (isset($_SESSION['username'])) {
             <?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
             <!--                </div>-->
             <div class="supp">
-                    <input type="submit" onclick="supprimer()" value="supprimer" id="supprimer">
+                <input type="submit" onclick="supprimer()" value="supprimer" id="supprimer">
             </div>
 
         </div>
@@ -95,38 +95,42 @@ if (isset($_SESSION['username'])) {
 
     <div>
         <div class="event">
-                <select name="choix" onchange="myChoices(this.value)">
-                    <option value="mesEvent"> Mes Événements</option>
-                    <option value="mesInscription">Mes inscriptions</option>
-                    <option value="mesFavoris">Mes favoris</option>
-                    <option value="mesEventPassees">Mes inscriptions passées</option>
-                </select>
+            <select name="choix" onchange="myChoices(this.value)">
+                <option value="mesEvent"> Mes Événements</option>
+                <option value="mesInscription">Mes inscriptions</option>
+                <option value="mesFavoris">Mes favoris</option>
+                <option value="mesEventPassees">Mes inscriptions passées</option>
+            </select>
 
             <div id="evenement">
                 <?php
-                require ("../controllers/bdd.php");
+                require("../controllers/bdd.php");
                 $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
         on ev.id_utilisateur= ut.id_utilisateur 
-        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "'.$_SESSION['id_name'].'"');
+        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
                 // On affiche chaque entrée une à une
                 while ($donnees = $reponse->fetch()) {
                     ?>
 
                     <div class="listOfEvent">
+                        <div class="centerH3">
+                            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        </div>
                         <ul class="collectionItem">
-                            <div class="pictureEvent">
-                                <img class="imgTree" src="../assets/images/arbre_icon.png"/>
+                            <div class="pictureEvent1">
+                                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                                 <p><?php echo $donnees['nom_categorie']; ?></p>
-
                             </div>
                             <div class="pictureEvent">
-                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                                <p><?php echo  "Par " . '<b>'. $donnees['pseudo'] .'</b>'. " le : " . '<b>'. $donnees['date_poste'].'</b>' ; ?></p>
-                                <p><?php echo $donnees['type_utilisateur']; ?></p>
-                                <p><?php echo $donnees['date_evenement']; ?></p>
-                                <a class="inputListOfEvent" href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
-                                <a class="inputListOfEvent" href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
-
+                                <div class="gauche">
+                                    <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
+                                    <p><?php echo $donnees['type_utilisateur']; ?></p>
+                                    <p><?php echo $donnees['date_evenement']; ?></p>
+                                    <a class="inputListOfEvent"
+                                       href="../controllers/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                                    <a class="inputListOfEvent"
+                                       href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
+                                </div>
 
                             </div>
                         </ul>
@@ -136,10 +140,10 @@ if (isset($_SESSION['username'])) {
                 ?>
             </div>
 
-            </div>
-
-
         </div>
+
+
+    </div>
 </section>
 <?php
 require("footer.php");

@@ -41,17 +41,21 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
     while ($donnees = $sql->fetch()) {
         ?>
         <div class="listOfEvent">
+            <div class="centerH3">
+                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+            </div>
             <ul class="collectionItem">
-                <div class="pictureEvent">
-                    <img class="imgTree" src="../assets/images/arbre_icon.png"/>
+                <div class="pictureEvent1">
+                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                     <p><?php echo $donnees['nom_categorie']; ?></p>
 
                 </div>
                 <div class="pictureEvent">
-                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                    <div class="gauche">
                     <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
                     <p><?php echo $donnees['type_utilisateur']; ?></p>
                     <p><?php echo $donnees['date_evenement']; ?></p>
+                    </div>
                     <?php
                     if ($_GET['choice'] == "mesEvent") {
                         ?>
@@ -62,10 +66,8 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                            href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                         <?php
                     } else if ($_GET['choice'] == "mesEventPassees") {
-                        $req = $bdd->prepare('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
-                        $req->execute(array(
-                            'id_evenement' => $donnees['id_evenement'],
-                        ));
+                        $req = $bdd->query('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
+
                         $resultat = $req->fetch();
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && !$resultat) {
                             ?>
@@ -80,7 +82,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                             désincrire</a>
                         <?php
                     } else if ($_GET['choice'] == "mesFavoris") {
-                        $req = $bdd->query('SELECT * FROM favoris WHERE id_evenement = "' . $donnees['id_evenement'] . '" AND id_utilisateur ="'.$_SESSION['id_name'].'"');
+                        $req = $bdd->query('SELECT * FROM favoris WHERE id_evenement = "' . $donnees['id_evenement'] . '" AND id_utilisateur ="' . $_SESSION['id_name'] . '"');
                         $resultat = $req->fetch();
                         if ($resultat) {
                             ?>
