@@ -38,8 +38,14 @@ if (isset($_SESSION['username'])) {
     <label><b>Titre</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="titre" name="titre" required>
 
-    <label><b>Lieux</b> <span class="obligatoire">*</span></label>
-    <input type="text" placeholder="lieux" name="lieux" required>
+    <label><b>Adresse</b> <span class="obligatoire">*</span></label>
+    <input type="text" placeholder="adresse (N°, rue)" name="adresse" id="adresse" required>
+
+    <label><b>Code Postale</b> <span class="obligatoire">*</span></label>
+    <input type="text" placeholder="(ex: 95000)" name="code_postale" id="code_postale" required>
+
+    <label><b>Commune</b> <span class="obligatoire">*</span></label>
+    <input type="text" placeholder="ville" name="commune" id="commune" required>
 
     <label>Date de l'évenement <span class="obligatoire">*</span></label>
     <input type="datetime-local" name="date_evenement" required>
@@ -54,6 +60,8 @@ if (isset($_SESSION['username'])) {
 <?php
 require("footer.php");
 ?>
+
+<script src="../js/mapping.js"></script>
 </body>
 </html>
 
