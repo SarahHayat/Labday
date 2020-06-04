@@ -22,7 +22,7 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>
-<form action="../controllers/createEvent.php" method="post" class="container_connect fond">
+<form id="create-event-form" action="../controllers/createEvent.php" method="post" class="container_connect fond">
     <a href="index.php"><< Retour</a>
     <h1> Creation nouveau Evenement</h1>
 
@@ -53,7 +53,12 @@ if (isset($_SESSION['username'])) {
     <label><b>Description</b> <span class="obligatoire">*</span></label></br>
     <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
 
-    <input type="submit" id='enregistrer' value='ENREGISTRER'>
+
+    <input type="hidden" name="x" id="coordinates-x">
+    <input type="hidden" name="y" id="coordinates-y">
+    <div id='enregistrer' onclick="sendGeocodage()">
+        <span>ENREGISTRER</span>
+    </div>
 
 </form>
 

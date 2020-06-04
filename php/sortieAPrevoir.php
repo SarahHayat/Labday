@@ -29,14 +29,14 @@ require("../controllers/bdd.php");
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script type="text/javascript" src="../js/mapping.js"></script>
 <form method="post" class="filtre" onsubmit="return false;">
-    <select name="categorie" id="categorie">
+    <select name="categorie" id="categorie" class="filtre-container">
         <option value="NULL">Choisir une categorie</option>
         <option value="1">Plein air</option>
         <option value="2">Jeux de société</option>
         <option value="3">Tourisme</option>
         <option value="4">Soirée</option>
     </select>
-    <select name="ordre" id="ordre">
+    <select name="ordre" id="ordre" class="filtre-container">
         // onchange="trier(this.value)"
         <option value="DESC">Date croissant</option>
         <option value="ASC">Date décroissant</option>
@@ -45,14 +45,14 @@ require("../controllers/bdd.php");
     $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>" id="date_debut">
-        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>" id="date_debut" class="filtre-container">
+        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin" class="filtre-container">
         <?php
     }
     ?>
-    <input type="text" name="lieu" placeholder="saisir une ville" id="lieu">
-    <input type="range" name="karma" min="0" max="10" id="karma">
-    <input type="submit" value="chercher" onclick="filtre()">
+    <input type="text" name="lieu" placeholder="saisir une ville" id="lieu" class="filtre-container">
+    <input type="range" name="karma" min="0" max="10" id="karma" class="filtre-container">
+    <input type="submit" value="chercher" onclick="filtre()" class="filtre-container">
 </form>
 <section class="fond" id="trie">
     <?php

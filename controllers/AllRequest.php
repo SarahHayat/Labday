@@ -5,10 +5,14 @@ class AllRequest
 
 {
 
+
+
     public function __construct()
     {
     }
-
+    public function selectFromBdd($bdd, $table,$champs, $value){
+        return $bdd->query("SELECT * FROM ".$table." WHERE ".$champs."  =  ".$value);
+    }
     public function verifConnect($bdd)
     {
 
@@ -31,7 +35,8 @@ class AllRequest
              * recuperer l'id de l'utilisateur connecté
              */
 
-            $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
+
+            $req = $this->selectFromBdd($bdd, "utilisateurs","pseudo", $_SESSION['username']);
 
             while ($donnees = $req->fetch()) {
                 $id_name = $donnees['id_utilisateur'];
@@ -169,7 +174,7 @@ class AllRequest
         $id_evenement = $_GET['id_evenement'];
 
 
-        $reponse = $bdd->query('SELECT * FROM evenements where id_evenement = "' . $id_evenement . '"');
+        $reponse = $this->selectFromBdd($bdd,"evenements","id_evenement", $id_evenement);
         // On affiche chaque entrée une à une
         while ($donnees = $reponse->fetch()) {
             $description = $donnees['description'];

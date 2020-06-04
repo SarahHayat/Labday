@@ -112,3 +112,7 @@ a {
 .gauche{
     text-align: left;
 }
+
+.filtre-container{
+    padding: 5px;
+}
