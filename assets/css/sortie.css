@@ -1,15 +1,10 @@
 body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
-    padding-top: 13%;
-    min-height: 1000px;
-    min-width: 1000px ;
-    position: relative;
-    padding-bottom: 200px;
     color: whitesmoke;
 
-
 }
+
 
 .fond {
     display: flex;
@@ -41,7 +36,7 @@ body {
 .titleOfEvent {
     border-bottom: solid 1px yellowgreen;
     border-top: solid 1px yellowgreen;
-    padding: 5px;
+    padding: 10px;
 }
 
 .collectionItem {
