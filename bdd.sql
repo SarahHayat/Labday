@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  jeu. 04 juin 2020 à 09:39
+-- Généré le :  jeu. 04 juin 2020 à 11:45
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -77,10 +77,29 @@ INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `descr
 (29, 15, '2020-05-27 20:00:32', 'Bonjour, venez participer à mon jeu de sarbacane pour mon anniversaire ! Tout le monde est le bienvenue, plus on est de fou, plus on rit ! (n\'oubliez pas de m\'apporter un cadeau merciiii)', '2020-08-04 14:00:00', 'jeu de sarbacane ', NULL, 'paris', 1),
 (31, 10, '2020-05-29 11:10:11', 'soiree mousse a paris', '2020-05-29 12:06:00', 'soiree mousse', NULL, 'paris', 4),
 (32, 10, '2020-05-29 11:29:00', 'pique nique ', '2020-05-29 21:00:00', 'pique nique', NULL, 'parmain', 1),
-(33, 10, '2020-05-29 14:35:40', 'football', '2020-05-30 15:00:00', 'football', NULL, 'belgique', 1),
-(34, 10, '2020-06-03 11:18:53', 'test soiree', '2020-06-18 14:20:00', 'test soiree', NULL, 'paris', 4),
-(35, 32, '2020-06-03 16:17:17', 'voyage', '2020-06-03 16:19:00', 'voyage France', NULL, 'Paris', 3),
-(36, 32, '2020-06-03 16:31:20', 'Plein Air', '2020-06-03 16:33:00', 'Plein Air', NULL, 'Marseille', 1);
+(33, 10, '2020-05-29 14:35:40', 'football', '2020-05-30 15:00:00', 'football', NULL, 'belgique', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favoris`
+--
+
+DROP TABLE IF EXISTS `favoris`;
+CREATE TABLE `favoris` (
+  `id_favoris` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_evenement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `favoris`
+--
+
+INSERT INTO `favoris` (`id_favoris`, `id_utilisateur`, `id_evenement`) VALUES
+(66, 3, 22),
+(67, 3, 22),
+(68, 3, 12);
 
 -- --------------------------------------------------------
 
@@ -106,14 +125,16 @@ INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_ev
 (43, 2, 19),
 (44, 2, 10),
 (45, 2, 10),
+(46, 10, 20),
 (47, 2, 23),
+(56, 10, 26),
+(57, 15, 26),
 (58, 15, 22),
 (59, 2, 31),
 (60, 2, 32),
+(61, 10, 29),
 (62, 15, 31),
-(63, 15, 32),
-(64, 10, 35),
-(65, 10, 36);
+(63, 15, 32);
 
 -- --------------------------------------------------------
 
@@ -125,43 +146,36 @@ DROP TABLE IF EXISTS `karma`;
 CREATE TABLE `karma` (
   `id_karma` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `note` int(11) NOT NULL,
-  `id_evenement` int(11) DEFAULT NULL
+  `note` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `karma`
 --
 
-INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`, `id_evenement`) VALUES
-(1, 10, 8, NULL),
-(2, 10, 8, NULL),
-(3, 2, 3, NULL),
-(4, 2, 10, NULL),
-(6, 2, 10, NULL),
-(7, 10, 10, NULL),
-(8, 10, 10, NULL),
-(9, 10, 7, NULL),
-(10, 10, 7, NULL),
-(19, 10, 6, NULL),
-(23, 3, 8, NULL),
-(25, 10, 7, NULL),
-(26, 10, 7, NULL),
-(27, 14, 5, NULL),
-(28, 15, 5, NULL),
-(30, 2, 5, NULL),
-(31, 2, 5, NULL),
-(32, 2, 5, NULL),
-(33, 2, 5, NULL),
-(34, 10, 8, NULL),
-(40, 32, 5, NULL),
-(41, 10, 1, NULL),
-(42, 14, 5, NULL),
-(43, 32, 5, NULL),
-(44, 32, 5, NULL),
-(45, 32, 5, NULL),
-(46, 32, 10, 35),
-(48, 32, 2, 36);
+INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`) VALUES
+(1, 10, 8),
+(2, 10, 8),
+(3, 2, 3),
+(4, 2, 10),
+(6, 2, 10),
+(7, 10, 10),
+(8, 10, 10),
+(9, 10, 7),
+(10, 10, 7),
+(19, 10, 6),
+(23, 3, 8),
+(25, 10, 7),
+(26, 10, 7),
+(27, 14, 5),
+(28, 15, 5),
+(30, 2, 5),
+(31, 2, 5),
+(32, 2, 5),
+(33, 2, 5),
+(34, 10, 8),
+(40, 32, 5),
+(41, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -224,8 +238,7 @@ INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
 (14, 2, '../assets/photoProfil/homme.jpg'),
 (20, 3, '../assets/photoProfil/femme.jpg'),
 (30, 10, '../assets/photoProfil/femme.jpg'),
-(31, 15, '../assets/photoProfil/homme_2.jpg'),
-(32, 32, '../assets/photoProfil/homme.jpg');
+(31, 15, '../assets/photoProfil/homme_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -280,10 +293,10 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postale`, `pays`, `telephone`, `mail`, `pseudo`, `mot_de_passe`, `type_utilisateur`, `ville`, `date_creation_utilisateur`, `karma`) VALUES
-(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'particulier', 'Pontoise', '2020-04-07 00:00:00', '6.14'),
+(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'particulier', 'Pontoise', '2020-04-07 00:00:00', '6.00'),
 (3, 'Marie', 'Tchydemian', '1998-08-06', 'rue de la gare', 95270, 'France', 1357908642, 'marie.tdm@gmail.com', 'marie.tdm', 'MARIE', 'particulier', 'Viarmes', '2020-04-17 00:00:00', '8.00'),
 (10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'particulier', 'Asnieres-sur-oise', '2020-04-30 10:03:31', '7.18'),
-(14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21', '5.00'),
+(14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21', '0.00'),
 (15, 'Léna', 'Pancher', '1997-08-04', '49 bis grande rue', 95270, 'France', 648314973, 'lenapancher@gmail.com', 'lenouch', 'coucou', 'particulier', 'Asnières-sur-Oise', '2020-05-27 19:43:40', '5.00'),
 (32, 'test', 'test', '2018-12-02', 'test', 55555, 'Afghanistan', 987654321, 'test@test.com', 'test', 'test', 'particulier', 'test', '2020-05-31 15:35:35', '5.00');
 
@@ -305,6 +318,13 @@ ALTER TABLE `evenements`
   ADD KEY `evenements_ibfk_1` (`id_utilisateur`);
 
 --
+-- Index pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD PRIMARY KEY (`id_favoris`),
+  ADD KEY `favoris` (`id_utilisateur`);
+
+--
 -- Index pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
@@ -316,8 +336,7 @@ ALTER TABLE `inscription_evenements`
 --
 ALTER TABLE `karma`
   ADD PRIMARY KEY (`id_karma`),
-  ADD KEY `karma_ibfk_1` (`id_utilisateur`),
-  ADD KEY `id_evenement` (`id_evenement`);
+  ADD KEY `karma_ibfk_1` (`id_utilisateur`);
 
 --
 -- Index pour la table `messages`
@@ -363,19 +382,25 @@ ALTER TABLE `categorie_evenements`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  MODIFY `id_favoris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
-  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `messages`
@@ -387,7 +412,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
 --
 ALTER TABLE `photo_utilisateurs`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `sujets_forum`
@@ -412,6 +437,12 @@ ALTER TABLE `evenements`
   ADD CONSTRAINT `evenements_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD CONSTRAINT `favoris` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
@@ -421,8 +452,7 @@ ALTER TABLE `inscription_evenements`
 -- Contraintes pour la table `karma`
 --
 ALTER TABLE `karma`
-  ADD CONSTRAINT `karma_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `karma_ibfk_2` FOREIGN KEY (`id_evenement`) REFERENCES `evenements` (`id_evenement`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `karma_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `messages`
