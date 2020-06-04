@@ -62,20 +62,26 @@ require("../controllers/bdd.php");
     // On affiche chaque entrée une à une
     while ($donnees = $reponse->fetch()) {
         ?>
+
         <div class="listOfEvent">
+            <div class="centerH3">
+            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+            </div>
             <ul class="collectionItem">
-                <div class="pictureEvent">
+
+                <div class="pictureEvent1">
                     <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                     <p><?php echo $donnees['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">
-                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                    <div class="gauche">
                     <p><?php echo "Par " ?> <b><a
                                     href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
                         le : <?php echo $donnees['date_poste'] ?></p>
                     <p><?php echo $donnees['type_utilisateur']; ?></p>
                     <p><?php echo $donnees['lieu']; ?></p>
                     <p><b> <?php echo $donnees['date_evenement']; ?></b></p>
+                    </div>
                     <p class="description"><?php echo $donnees['description']; ?></p>
                     <?php
                     if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
