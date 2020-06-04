@@ -88,6 +88,9 @@ require("../controllers/bdd.php");
 //                            ?>
                             <a class="inputListOfEvent"
                                href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
+                            <a class="inputListOfEvent"
+                               href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">Ajouter à mes favoris </a>
+
                             <?php
                         }
                     }

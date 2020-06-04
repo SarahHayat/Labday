@@ -98,6 +98,7 @@ if (isset($_SESSION['username'])) {
                 <select name="choix" onchange="myChoices(this.value)">
                     <option value="mesEvent"> Mes Événements</option>
                     <option value="mesInscription">Mes inscriptions</option>
+                    <option value="mesFavoris">Mes favoris</option>
                     <option value="mesEventPassees">Mes inscriptions passées</option>
                 </select>
 
