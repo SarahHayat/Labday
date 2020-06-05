@@ -41,8 +41,8 @@ if (isset($_SESSION['username'])) {
     <label><b>Adresse</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="adresse (N°, rue)" name="adresse" id="adresse" required>
 
-    <label><b>Code Postale</b> <span class="obligatoire">*</span></label>
-    <input type="text" placeholder="(ex: 95000)" name="code_postale" id="code_postale" required>
+    <label><b>Code Postal</b> <span class="obligatoire">*</span></label>
+    <input type="text" placeholder="(ex: 95000)" name="code_postal" id="code_postal" required>
 
     <label><b>Commune</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="ville" name="commune" id="commune" required>
@@ -56,7 +56,10 @@ if (isset($_SESSION['username'])) {
 
     <input type="hidden" name="x" id="coordinates-x">
     <input type="hidden" name="y" id="coordinates-y">
-    <div id='enregistrer' onclick="sendGeocodage()">
+<!--    --><?php
+//    $req = $bdd->query('SELECT x, y FROM evenements order by id_evenement DESC LIMIT 1');
+//    ?>
+    <div id='enregistrer' onclick="sendGeocodage(); map()">
         <span>ENREGISTRER</span>
     </div>
 
@@ -66,7 +69,7 @@ if (isset($_SESSION['username'])) {
 require("footer.php");
 ?>
 
-<script src="../js/mapping.js"></script>
+<script src="../js/geocodage.js"></script>
 </body>
 </html>
 

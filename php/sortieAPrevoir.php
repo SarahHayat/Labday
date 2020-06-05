@@ -20,10 +20,11 @@ if (isset($_SESSION['username'])) {
 ?>
 <?php
 require("../controllers/bdd.php");
-?>
 
+
+?>
 <div id="map">
-    <div id="mapid">
+    <div id="mapid" >
     </div>
 </div>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -45,8 +46,10 @@ require("../controllers/bdd.php");
     $req = $bdd->query('SELECT ADDDATE(DATE(now()), 1) as date_now, MAX(DATE(date_evenement)) as date_max FROM evenements');
     while ($donnees = $req->fetch()) {
         ?>
-        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>" id="date_debut" class="filtre-container">
-        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin" class="filtre-container">
+        <input type="date" name="date_debut" value="<?php echo $donnees['date_now']; ?>" id="date_debut"
+               class="filtre-container">
+        <input type="date" name="date_fin" value="<?php echo $donnees['date_max']; ?>" id="date_fin"
+               class="filtre-container">
         <?php
     }
     ?>
@@ -56,13 +59,13 @@ require("../controllers/bdd.php");
 </form>
 <section class="fond" id="trie">
     <?php
-    $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.lieu,  ev.date_evenement,DATE(ev.date_poste) as date_poste
+    $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
  ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut  
         on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie 
         where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
     $donnees = $reponse->fetchAll();
-    for ($i = 0; $i< sizeof($donnees); $i++) {
+    for ($i = 0; $i < sizeof($donnees); $i++) {
         ?>
 
         <div class="listOfEvent">
@@ -80,7 +83,7 @@ require("../controllers/bdd.php");
                                         href="profilUser.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
                             le : <?php echo $donnees[$i]['date_poste'] ?></p>
                         <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
-                        <p><?php echo $donnees[$i]['lieu']; ?></p>
+                        <p><?php echo $donnees[$i]['commune'] . " " . $donnees[$i]['code_postal']; ?></p>
                         <p><b> <?php echo $donnees[$i]['date_evenement']; ?></b></p>
                     </div>
                     <p class="description"><?php echo $donnees[$i]['description']; ?></p>
