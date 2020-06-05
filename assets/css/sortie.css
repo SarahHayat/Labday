@@ -2,6 +2,8 @@ body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
     color: whitesmoke;
+    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/test.png) no-repeat fixed;
+    background-size: cover;
 
 }
 
@@ -11,7 +13,6 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     padding: 10px 10px 10px 10px;
-    background: #505050 !important;
     border-radius: 38px;
     top: 195px;
     height: 800px;

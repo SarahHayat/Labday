@@ -9,7 +9,6 @@
 
 <header class="header">
     <div class="menuHaut" id="menuHaut">
-        <h1 id="title"> ShareEventTogether</h1>
         <form action="recherche.php" method="get" class="search">
             <input class="input-search" type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">
@@ -28,24 +27,27 @@
 <!--        <a href="contact.php"> Contact</a>-->
 <!--    </div>-->
 
-<script type="text/javascript">
-   let lastSrollTop = 0;
-/*
-   navbar = document.getElementById('nav-scroll');
-*/
-   menuHaut = document.getElementById('menuHaut');
-   window.addEventListener("scroll", function () {
-       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-       if (scrollTop > lastSrollTop){
-           /* navbar.style.display="none";*/
-            menuHaut.style.background = "grey";
-       }else {
-         /*  navbar.style.display="flex";*/
-           menuHaut.style.background = "none";
-
-       }
-       lastSrollTop = scrollTop;
-   })
-</script>
+<!--<script type="text/javascript">-->
+<!--   let lastSrollTop = 0;-->
+<!--/*-->
+<!--   navbar = document.getElementById('nav-scroll');-->
+<!--*/-->
+<!--   menuHaut = document.getElementById('menuHaut');-->
+<!--   window.addEventListener("scroll", function () {-->
+<!--       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;-->
+<!--       if (scrollTop > lastSrollTop){-->
+<!--           /* navbar.style.display="none";*/-->
+<!--            menuHaut.style.background = "linear-gradient(120deg, rgba(113,113,113,0.2),rgba(113,113,113,0.7))";-->
+<!--       }else {-->
+<!--         /*  navbar.style.display="flex";*/-->
+<!--           menuHaut.style.background = "none";-->
+<!---->
+<!--       }-->
+<!--       lastSrollTop = scrollTop;-->
+<!--   })-->
+<!--</script>-->
 </header>
+<div style=" margin-bottom: 150px;">
+
+</div>
 </html>

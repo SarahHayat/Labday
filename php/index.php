@@ -10,6 +10,26 @@ require "../controllers/bdd.php"
     <link rel="stylesheet" href="../assets/css/index.css"/>
 </head>
 <body>
+
+<section class="body">
+    <div class="margin_left">
+    <p class="margin_left">ShareEventTogether</p>
+    <div class="margin_right1" id="display">
+        <ul>
+        <li><a>Menu</a></li>
+            <ul id="display_none">
+                <li><a href=index.php>Accueil</a></li>
+                <li><a href="minichat.php">Forum</a></li>
+                <li><a href="sortieAPrevoir.php"> Sorties</a></li>
+                <li><a href="contact.php"> Contact</a></li>
+            </ul>
+
+
+        </ul>
+    </div>
+    </div>
+
+</section>
 <?php
 // echo "session username : " . $_SESSION['username'];
 if (isset($_SESSION['id_name'])) {
@@ -18,6 +38,7 @@ if (isset($_SESSION['id_name'])) {
     require("headerDisconnect.php");
 }
 ?>
+<section class="no_back">
 <div class="fond1">
     <h3> MEILLEURS UTILISATEURS</h3>
     <?php
@@ -48,24 +69,26 @@ if (isset($_SESSION['id_name'])) {
 <!--        <img src="../assets/images/soiree.jpg" alt>-->
 <!--    </figure>-->
 <!--</div>-->
-<div class="slideshow-container">
-    <div class="mySlides fade">
-        <img src="../assets/images/jeu_societe.jpg">
-    </div>
-    <div class="mySlides fade">
-        <img src="../assets/images/plein_air.png">
-    </div>
-    <div class="mySlides fade">
-        <img src="../assets/images/tourisme.jpg">
-    </div>
-    <div class="mySlides fade">
-        <img src="../assets/images/soiree.jpg">
-    </div>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div>
+
+
+<!--<div class="slideshow-container">-->
+<!--    <div class="mySlides fade">-->
+<!--        <img src="../assets/images/jeu_societe.jpg">-->
+<!--    </div>-->
+<!--    <div class="mySlides fade">-->
+<!--        <img src="../assets/images/plein_air.png">-->
+<!--    </div>-->
+<!--    <div class="mySlides fade">-->
+<!--        <img src="../assets/images/tourisme.jpg">-->
+<!--    </div>-->
+<!--    <div class="mySlides fade">-->
+<!--        <img src="../assets/images/soiree.jpg">-->
+<!--    </div>-->
+<!--    <span class="dot"></span>-->
+<!--    <span class="dot"></span>-->
+<!--    <span class="dot"></span>-->
+<!--    <span class="dot"></span>-->
+<!--</div>-->
 <?php
 if (isset($_SESSION['username'])) {
     ?>
@@ -98,8 +121,11 @@ if (isset($_SESSION['username'])) {
             précédents. </p>
     </div>
 </section>
+</section>
 </body>
 <script src="../js/index.js"></script>
+<script src="../js/displayNone.js"></script>
+
 <?php
 require("footer.php");
 ?>

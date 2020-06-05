@@ -9,9 +9,20 @@ require('../controllers/bdd.php');
     <title>ShareEventTogether - Contact</title>
     <link rel="stylesheet" href="../assets/css/forum.css"/>
 </head>
+<section class="body">
+    <div class="margin_right1">
+        <a href="index.php">Accueil</a>
+        <a href="minichat.php">Forum</a>
+        <a href="sortieAPrevoir.php"> Sorties à prévoir</a>
+        <a href="contact.php"> Contact</a>
+    </div>
+
+    <p class="margin_left">ShareEventTogether</p>
+</section>
+<body>
 
 
-<div>
+<div class="fond">
 <?php
 // echo "session username : " . $_SESSION['username'];
 
@@ -23,7 +34,7 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>
-<div class="fond">
+<div>
 <form action="rechercheForum.php" method="get" >
     <input type="search" name="search_forum" placeholder="recherche...">
     <input type="submit" value="entrer">
@@ -40,7 +51,7 @@ if (isset($_SESSION['username'])) {
     </div>
 
 
-    <div class="reponse">
+    <div>
         <?php
 
         $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj 
@@ -79,12 +90,14 @@ ORDER BY `m`.`date_message` DESC LIMIT 10");
     </div>
 </form>
 </div>
+
 </body>
+
 <?php
 
 require("footer.php");
 
 ?>
 <script src="../js/hideSujet.js"></script>
-</body>
+
 </html>
