@@ -10,7 +10,7 @@
 <header class="header">
     <div class="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
-        <input id="search" type="text" placeholder="recherche...">
+        <input id="search" type="text" class="input-search"  placeholder="recherche...">
         <a id="connect" href="connexion.php"> Connexion </a>
 
     </div>

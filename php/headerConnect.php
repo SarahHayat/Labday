@@ -12,7 +12,7 @@
     <div class="menuHaut" id="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
         <form action="recherche.php" method="get" class="search">
-            <input type="search" name="search" placeholder="recherche...">
+            <input class="input-search" type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">
         </form>
         <a id="profil" href="profil.php"> Profil </a>

@@ -73,6 +73,8 @@ function filtre() {
     } else
     {
         var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET",'../php/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
+        xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
             console.log(this.readyState);
             if (this.readyState == 4) {
@@ -84,8 +86,6 @@ function filtre() {
                 }
             }
         };
-        xmlhttp.open("GET",'../php/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
-        xmlhttp.send();
     }
 }
 
