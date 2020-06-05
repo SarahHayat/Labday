@@ -14,7 +14,7 @@ body {
     margin-right: 5%;
     padding: 3%;
     background: #505050 !important;
-    border-radius: 38px;
+    border-radius: 15px;
     top: 195px;
 }
 .button_sujet input{
@@ -33,7 +33,7 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     background : #505050 !important;
-    border-radius: 38px;
+    border-radius: 15px;
     top: 195px;
 }
 .fond div:not(.message) {

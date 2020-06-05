@@ -18,7 +18,7 @@
         <a href="index.php"> Accueil</a>
 <!--        <a href="sortieDuJour.php"> Sorties du jour</a>-->
         <a href="minichat.php">Forum</a>
-        <a href="sortieAPrevoir.php"> Sorties à prévoir</a>
+        <a href="sortieAPrevoir.php"> Sorties</a>
         <a href="contact.php"> Contact</a>
     </div>
 

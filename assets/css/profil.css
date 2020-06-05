@@ -7,8 +7,8 @@ body {
 .fond {
     /*width: 91.66%;
     height: 70.01%;*/
-    margin-left: 3% ;
-    margin-right: 3%;
+    margin-left: 5% ;
+    margin-right: 5%;
     padding: 10px 10px 10px 10px;
     background : #505050 !important;
     border-radius: 15px;
@@ -104,6 +104,10 @@ a {
 
 
 }
+.centerH3{
+    text-align: -webkit-center;
+}
+
 
 .titleOfEvent {
     border-bottom: solid 1px yellowgreen;
@@ -122,7 +126,6 @@ a {
     margin: 10px;
     padding: 10px;
     justify-content: center;
-
 }
 .collectionItem ul {
     justify-content: center;
@@ -143,12 +146,6 @@ a {
 .evenement p {
     margin: 10px;
 }
-
-.event{
-    text-align: -webkit-center;
-
-}
-
 
 .button_submit {
     background-color: yellowgreen;
@@ -178,6 +175,10 @@ a {
 
 .photoProfil {
     border-radius: 50%;
+}
+
+.gauche p{
+    padding: 5px;
 }
 
 form {
