@@ -4,8 +4,8 @@
 
 var mapTab = [
     ["maison",49.1374,2.32753],
-    ["a coté",49.5498,4.32746]
-];
+    ["a coté",49.2360,2.42746]
+    ];
 var mymap = L.map('mapid').setView([49.1374, 2.32753], 13);
 for (var i = 0; i < mapTab.length; i++) {
     marker = new L.marker([mapTab[i][1],mapTab[i][2]])

@@ -41,7 +41,8 @@ while ($donnees = $reponse->fetch()) {
 </head>
 
 
-<form action="#" method="post" class="container fond">
+<form action="#" method="post" class="container fond container_connect">
+    <a href="profil.php"><< Retour</a>
     <h1> Modification Evenement</h1>
 
     <label><b>Catégorie</b></label>

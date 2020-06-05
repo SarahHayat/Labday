@@ -14,7 +14,6 @@ require("../controllers/bdd.php");
 <body>
 
 <?php
-// echo "session username : " . $_SESSION['username'];
 
 if (isset($_SESSION['username'])) {
     require("headerConnect.php");
@@ -31,12 +30,12 @@ if (isset($_SESSION['username'])) {
         <div class="avatar ">
             <div class="photo">
                 <?php
-                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '" LIMIT 1');
-                    while ($donnees = $req->fetch()) {
-                        $url = $donnees['url'];
-                        ?>
-                        <img src="<?php echo $url ?>" height="150px" width="150px">
-                        <?php
+                $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '" LIMIT 1');
+                while ($donnees = $req->fetch()) {
+                    $url = $donnees['url'];
+                    ?>
+                    <img src="<?php echo $url ?>" height="150px" width="150px">
+                    <?php
                 }
 
                 ?>
@@ -48,12 +47,12 @@ if (isset($_SESSION['username'])) {
             <div>
                 <label>nom d'utilisateur : </label>
                 <?php
-                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
-                    while ($donnees = $req->fetch()) {
-                        ?>
+                $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
+                while ($donnees = $req->fetch()) {
+                    ?>
 
-                        <p> <?php echo $donnees['pseudo'] ?></p>
-                        <?php
+                    <p> <?php echo $donnees['pseudo'] ?></p>
+                    <?php
                 }
 
                 ?>
@@ -61,9 +60,9 @@ if (isset($_SESSION['username'])) {
             <div>
                 <label>type : </label>
                 <?php
-                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
-                    while ($donnees = $req->fetch()) {
-                        echo '<p>' . $donnees['type_utilisateur'] . '</p>';
+                $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
+                while ($donnees = $req->fetch()) {
+                    echo '<p>' . $donnees['type_utilisateur'] . '</p>';
                 }
 
                 ?>
@@ -73,9 +72,9 @@ if (isset($_SESSION['username'])) {
                     <label>niveau de validité : </label>
                 </div>
                 <?php
-                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
-                    while ($donnees = $req->fetch()) {
-                        $moyenne = $donnees['karma'];
+                $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
+                while ($donnees = $req->fetch()) {
+                    $moyenne = $donnees['karma'];
                 }
 
                 ?>
@@ -99,16 +98,19 @@ if (isset($_SESSION['username'])) {
                 ?>
 
                 <div class="listOfEvent">
+                    <div class="centerH3">
+                        <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement'];?> </h3>
+                    </div>
                     <ul class="collectionItem">
-                        <div class="pictureEvent">
-                            <img class="imgTree" src="../assets/images/arbre_icon.png"/>
+                        <div class="pictureEvent1">
+                            <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                         </div>
                         <div class="pictureEvent">
-                            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                            <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
-                            <p><?php echo $donnees['type_utilisateur']; ?></p>
-                            <p><?php echo $donnees['date_evenement']; ?></p>
-
+                            <div class="gauche">
+                                <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
+                                <p><?php echo $donnees['type_utilisateur']; ?></p>
+                                <p><?php echo $donnees['date_evenement']; ?></p>
+                            </div>
                             <?php
                             if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
                                 $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');

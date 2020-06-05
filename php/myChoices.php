@@ -52,9 +52,10 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                 </div>
                 <div class="pictureEvent">
                     <div class="gauche">
-                    <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
-                    <p><?php echo $donnees['type_utilisateur']; ?></p>
-                    <p><?php echo $donnees['date_evenement']; ?></p>
+                        <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . $donnees['date_poste'] . '</b>'; ?></p>
+                        <p><?php echo $donnees['type_utilisateur']; ?></p>
+                        <p><?php echo $donnees['commune'] . " " . $donnees['code_postal']; ?></p>
+                        <p><b><?php echo $donnees['date_evenement']; ?></b></p>
                     </div>
                     <?php
                     if ($_GET['choice'] == "mesEvent") {

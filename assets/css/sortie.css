@@ -12,7 +12,7 @@ body {
     margin-right: 5%;
     padding: 10px 10px 10px 10px;
     background: #505050 !important;
-    border-radius: 38px;
+    border-radius: 15px;
     top: 195px;
     height: 800px;
     width: auto;
@@ -111,6 +111,9 @@ a {
 
 .gauche{
     text-align: left;
+}
+.gauche p{
+    padding: 5px;
 }
 
 .filtre-container{

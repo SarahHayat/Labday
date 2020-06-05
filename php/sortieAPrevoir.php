@@ -23,6 +23,7 @@ require("../controllers/bdd.php");
 
 
 ?>
+<section class="fond" id="trie">
 <div id="map">
     <div id="mapid" >
     </div>
@@ -57,7 +58,7 @@ require("../controllers/bdd.php");
     <input type="range" name="karma" min="0" max="10" id="karma" class="filtre-container">
     <input type="submit" value="chercher" onclick="filtre()" class="filtre-container">
 </form>
-<section class="fond" id="trie">
+
     <?php
     $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
  ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut  
@@ -110,7 +111,7 @@ require("../controllers/bdd.php");
                         'id_utilisateur' => $_SESSION['id_name']
                     ));
                     $mesDonnees = $reponse->fetch();
-                    if (!$mesDonnees) {
+                    if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] &&!$resultat && !$mesDonnees) {
                         ?>
                         <a class="inputListOfEvent"
                            href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees[$i]['id_evenement']; ?>">Ajouter
