@@ -22,8 +22,6 @@ function sendGeocodage() {
             let coordinates = response.features[0].geometry.coordinates;
             document.getElementById("coordinates-x").value = coordinates[0];
             document.getElementById("coordinates-y").value = coordinates[1];
-            console.log("coordonee 0 : " + coordinates[0]);
-            console.log("coordonee 1 : " + coordinates[1]);
             document.getElementById("create-event-form").submit();
 
         }
