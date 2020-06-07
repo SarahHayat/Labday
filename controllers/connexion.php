@@ -82,7 +82,6 @@ if (isset($username) && isset($password)) {
          */
         $_SESSION['username'] = $username;
 
-
         $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
 
         while ($donnees = $req->fetch()) {

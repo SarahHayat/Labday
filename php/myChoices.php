@@ -2,13 +2,13 @@
 session_start();
 require("../controllers/bdd.php");
 ?>
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>ShareEventTogether - Profil</title>
-        <link rel="stylesheet" href="../assets/css/sortie.css"/>
-    </head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEventTogether - Profil</title>
+    <link rel="stylesheet" href="../assets/css/sortie.css"/>
+</head>
 <?php
 
 if (isset($_GET['choice'])) {
@@ -91,6 +91,20 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                                href="../controllers/enleverFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
                                 favoris</a>
                             <?php
+                            if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
+                                $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                                $req->execute(array(
+                                    'id_utilisateur' => $_SESSION['id_name'],
+                                    'id_evenement' => $donnees['id_evenement'],
+                                ));
+                                $resultat = $req->fetch();
+                                if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
+                                    //                            ?>
+                                    <a class="inputListOfEvent"
+                                       href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire </a>
+                                    <?php
+                                }
+                            }
                         }
                     }
                     ?>
@@ -99,7 +113,8 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                 </div>
             </ul>
         </div>
-        <script src="../js/securite.js"></script>
         <?php
     }
 }
+?>
+<script src="../js/securite.js"></script>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-require "../controllers/bdd.php"
+require "../controllers/bdd.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
