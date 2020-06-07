@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Sorties du jour</title>
-    <link rel="stylesheet" href="../assets/css/sortie.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 
 
@@ -69,7 +69,7 @@ order by ev.date_evenement ASC
             <div class="pictureEvent">
                 <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
                 <p><?php echo "Par " ?> <b><a
-                                href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                                href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
                     le : <?php echo $donnees['date_poste'] ?></p>
                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                 <p><?php echo $donnees['lieu']; ?></p>

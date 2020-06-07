@@ -34,7 +34,7 @@ if (isset($_SESSION['id_name'])) {
         <div class="align_best">
             <p><?php echo "#" . $i ?></p>
             <img src="<?php echo $donnees['url'] ?>" id="photo_best_user">
-            <a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a>
+            <a href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a>
         </div>
         <?php
         $i++;

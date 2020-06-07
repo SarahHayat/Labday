@@ -11,7 +11,7 @@
 <header class="header">
     <div class="menuHaut" id="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
-        <form action="recherche.php" method="get" class="search">
+        <form action="searchHeader.php" method="get" class="search">
             <input class="input-search" type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">
         </form>
@@ -24,8 +24,8 @@
     <div class="menuBas" id="nav-scroll">
         <a href="index.php"> Accueil</a>
 <!--        <a href="sortieDuJour.php"> Sorties du jour</a>-->
-        <a href="minichat.php">Forum</a>
-        <a href="sortieAPrevoir.php"> Sorties</a>
+        <a href="createForum.php">Forum</a>
+        <a href="events.php"> Sorties</a>
         <a href="contact.php"> Contact</a>
     </div>
 <script type="text/javascript">

@@ -7,7 +7,7 @@ require("../controllers/bdd.php");
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Profil</title>
-    <link rel="stylesheet" href="../assets/css/sortie.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 <?php
 
@@ -88,7 +88,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                         if ($resultat) {
                             ?>
                             <a class="inputListOfEvent"
-                               href="../controllers/enleverFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
+                               href="../controllers/deleteFavorite.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
                                 favoris</a>
                             <?php
                             if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
@@ -117,4 +117,4 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
     }
 }
 ?>
-<script src="../js/securite.js"></script>
+<script src="../js/security.js"></script>

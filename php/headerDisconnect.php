@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,16 +9,19 @@
 <header class="header">
     <div class="menuHaut">
         <h1 id="title"> ShareEventTogether</h1>
-        <input id="search" type="text" class="input-search"  placeholder="recherche...">
-        <a id="connect" href="connexion.php"> Connexion </a>
+        <form action="searchHeader.php" method="get" class="search">
+            <input id="search" type="text" class="input-search" placeholder="recherche...">
+            <input type="submit" value="valider">
+            <a id="connect" href="connexion.php"> Connexion </a>
+        </form>
 
     </div>
     <div class="menuBas">
         <a href="index.php"> Accueil</a>
-<!--        <a href="sortieDuJour.php"> Sorties du jour</a>-->
-        <a href="minichat.php">Forum</a>
-        <a href="sortieAPrevoir.php"> Sorties</a>
-        <a href="contact.php"> Contact</a>
+        <!--        <a href="sortieDuJour.php"> Sorties du jour</a>-->
+        <a href="createForum.php">Forum</a>
+        <a href="events.php"> Sorties</a>
+        <!--         <a href="contact.php"> Contact</a>-->
     </div>
 
 </header>

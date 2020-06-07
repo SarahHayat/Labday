@@ -45,7 +45,7 @@ if (isset($_SESSION['username'])) {
 
             </div>
             <div class="modifier">
-                <a href="photo.php">modifier photo</a>
+                <a href="profilPicture.php">modifier photo</a>
             </div>
         </div>
         <div class="flex event">
@@ -148,7 +148,7 @@ if (isset($_SESSION['username'])) {
 <?php
 require("footer.php");
 ?>
-<script src="../js/securite.js"></script>
+<script src="../js/security.js"></script>
 </body>
 
 

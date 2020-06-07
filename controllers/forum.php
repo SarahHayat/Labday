@@ -24,4 +24,4 @@ $id_sujet = $donnees['id_sujet'];
         'id_sujet' => $id_sujet,
     ));
 
-header('Location: ../php/minichat.php');
+header('Location: ../php/createForum.php');

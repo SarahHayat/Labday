@@ -42,13 +42,13 @@ if (isset($_SESSION['username'])) {
     <input type="text" placeholder="adresse (N°, rue)" name="adresse" id="adresse" required>
 
     <label><b>Code Postal</b> <span class="obligatoire">*</span></label>
-    <input type="text" placeholder="(ex: 95000)" name="code_postal" id="code_postal" required>
+    <input type="text" placeholder="(ex: 95000)" name="code_postal" id="code_postal" maxlength="5" required>
 
     <label><b>Commune</b> <span class="obligatoire">*</span></label>
     <input type="text" placeholder="ville" name="commune" id="commune" required>
 
     <label>Date de l'évenement <span class="obligatoire">*</span></label>
-    <input type="datetime-local" name="date_evenement" required>
+    <input type="datetime-local" name="date_evenement"  required>
 
     <label><b>Description</b> <span class="obligatoire">*</span></label></br>
     <textarea name="description" placeholder="Décrire votre évenement" required></textarea>
