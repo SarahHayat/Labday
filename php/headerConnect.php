@@ -9,6 +9,7 @@
 
 <header class="header">
     <div class="menuHaut" id="menuHaut">
+        
         <form action="recherche.php" method="get" class="search">
             <input class="input-search" type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">

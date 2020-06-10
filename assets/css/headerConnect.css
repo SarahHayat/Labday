@@ -9,8 +9,7 @@ header{
     width: 100%;
     top: 0;
     z-index: 10000;
-    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/test.png) no-repeat fixed;
-    background-size: cover;
+
 }
 h1 {
     color: yellowgreen;
