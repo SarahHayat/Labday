@@ -10,18 +10,23 @@ require "../controllers/bdd.php"
     <link rel="stylesheet" href="../assets/css/index.css"/>
 </head>
 <body>
-
+<div style="display: flex; flex-direction: row">
+    <div style="background: #FFD700;" id="menu-none">
+        <p>test</p>
+    </div>
+<div>
 <section class="body">
     <div class="margin_left">
         <p class="margin_left">ShareEventTogether</p>
         <div class="margin_right1" id="display">
             <ul>
                 <li><a>Menu</a></li>
-                <ul id="display_none">
+                <ul>
                     <li><a href=index.php>Accueil</a></li>
                     <li><a href="minichat.php">Forum</a></li>
                     <li><a href="sortieAPrevoir.php"> Sorties</a></li>
                     <li><a href="contact.php"> Contact</a></li>
+
                 </ul>
             </ul>
         </div>
@@ -175,6 +180,8 @@ if (isset($_SESSION['id_name'])) {
     </div>
 </section>
 </section>
+</div>
+</div>
 </body>
 <script src="../js/index.js"></script>
 <script src="../js/displayNone.js"></script>

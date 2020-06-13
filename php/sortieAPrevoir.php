@@ -8,6 +8,7 @@ session_start();
     <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/sortie.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Arbutus Slab' rel='stylesheet'>
 </head>
 <body>
 <?php
@@ -69,15 +70,16 @@ require("../controllers/bdd.php");
         ?>
 
         <div class="listOfEvent">
-            <div class="centerH3">
-                <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
+            <div class="titleOfEvent1">
             </div>
+            <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
             <ul class="collectionItem">
                 <div class="pictureEvent1">
                     <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                     <p><?php echo $donnees[$i]['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">
+                    <div style="display: flex; text-align: right">
                     <div class="gauche">
                         <p><?php echo "Par " ?> <b><a
                                         href="profilUser.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
@@ -85,6 +87,11 @@ require("../controllers/bdd.php");
                         <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
                         <p><?php echo $donnees[$i]['commune'] . " " . $donnees[$i]['code_postal']; ?></p>
                         <p><b> <?php echo $donnees[$i]['date_evenement']; ?></b></p>
+
+                    </div>
+                    <div class="centerH3">
+                        <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
+                    </div>
                     </div>
                     <p class="description"><?php echo $donnees[$i]['description']; ?></p>
 
@@ -124,6 +131,7 @@ require("../controllers/bdd.php");
                     //
                     ?>
                 </div>
+            </div>
             </ul>
         </div>
         <?php

@@ -1,12 +1,15 @@
 body {
-    margin:0 0 0 0!important;
+    margin:0 !important;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
     color: whitesmoke;
     background: url(../images/test.jpg) no-repeat fixed;
     background-size: cover;
 }
-#display_none{
-    visibility: hidden ;
+#menu-none{
+visibility: hidden;
+    width: 0;
+transition: width 0.5s ,visibility 0.3s;
 }
 
 
@@ -80,7 +83,7 @@ img{
     text-align: center;
     flex-direction: column;
     padding: 2vw;
-    margin-bottom: 50%;
+    margin-bottom: 20%;
 }
 
 .margin_left {
