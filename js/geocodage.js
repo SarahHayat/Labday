@@ -8,15 +8,13 @@ function sendGeocodage() {
     url.searchParams.append("q", adresse);
     url.searchParams.append("postcode", codePostal);
     url.searchParams.append("city", commune);
-    //   console.log("url = ", url);
-    console.log("test apres url");
+
 
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", url.href);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
-        console.log("this.readyState = ", this.readyState);
         if (this.readyState === 4 && this.status === 200) {
             let response = JSON.parse(xmlhttp.responseText);
             let coordinates = response.features[0].geometry.coordinates;

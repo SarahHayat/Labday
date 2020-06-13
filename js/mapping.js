@@ -1,13 +1,21 @@
 // var x = document.getElementById("coordinates-x").value;
 // var y = document.getElementById("coordinates-y").value;
-var mapTab = [
-    ["maison",49.1374,2.32753],
-    ["a coté",49.2198,2.38746]
-];
+function coordonnee(){
+
+
+    //var elt= document.getElementById('tabMap').value;
+
+    //var data = JSON.parse(elt)
+
+
+   // console.log("tab elt : " , data);
+
+var mapTab = dataPhp[0];
+
 var mymap = L.map('mapid').setView([49.1374, 2.32753], 13);
 for (var i = 0; i < mapTab.length; i++) {
-    marker = new L.marker([mapTab[i][1],mapTab[i][2]])
-        .bindPopup(mapTab[i][0])
+    marker = new L.marker([mapTab[i].x,mapTab[i].y])
+        .bindPopup(mapTab[i].titre_evenement)
         .addTo(mymap);
 }
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -18,3 +26,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1Ijoic2hhcmVldmVudCIsImEiOiJja2F4d2pvcmQwOGZ1MnFwNnQ0OTluMWQyIn0.YJ8RW6Z5-A-J3ttr38YiGQ'
 }).addTo(mymap);
+}
+
+coordonnee()

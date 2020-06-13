@@ -101,6 +101,7 @@ if (isset($_SESSION['username'])) {
 </section>
 </body>
 <script src="../js/index.js"></script>
+<script src="../js/mapping.js"></script>
 <?php
 require("footer.php");
 ?>

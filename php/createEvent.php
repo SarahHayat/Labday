@@ -1,5 +1,6 @@
 <?php
 session_start();
+require ("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,8 +58,9 @@ if (isset($_SESSION['username'])) {
     <input type="hidden" name="x" id="coordinates-x">
     <input type="hidden" name="y" id="coordinates-y">
 <!--    --><?php
-//    $req = $bdd->query('SELECT x, y FROM evenements order by id_evenement DESC LIMIT 1');
+
 //    ?>
+
     <div id='enregistrer' onclick="sendGeocodage(); map()">
         <span>ENREGISTRER</span>
     </div>
@@ -70,6 +72,7 @@ require("footer.php");
 ?>
 
 <script src="../js/geocodage.js"></script>
+
 </body>
 </html>
 

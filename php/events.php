@@ -1,5 +1,6 @@
 <?php
 session_start();
+require ("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,6 +9,8 @@ session_start();
     <title>ShareEventTogether - Sorties à prévoir</title>
     <link rel="stylesheet" href="../assets/css/events.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 </head>
 <body>
 <?php
@@ -17,12 +20,18 @@ if (isset($_SESSION['username'])) {
 } else {
     require("headerDisconnect.php");
 }
-?>
-<?php
-require("../controllers/bdd.php");
 
+$req = $bdd->query('SELECT  titre_evenement, x, y FROM evenements');
+$tabMap = array();
+while ($donnee = $req->fetchAll()){
+
+    array_push($tabMap, $donnee);
+}
 
 ?>
+<script>
+    var dataPhp= <?php echo json_encode($tabMap); ?>
+</script>
 
     <div id="map">
         <div id="mapid">
