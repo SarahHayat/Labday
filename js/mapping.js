@@ -1,21 +1,12 @@
-// var x = document.getElementById("coordinates-x").value;
-// var y = document.getElementById("coordinates-y").value;
+
 function coordonnee(){
-
-
-    //var elt= document.getElementById('tabMap').value;
-
-    //var data = JSON.parse(elt)
-
-
-   // console.log("tab elt : " , data);
 
 var mapTab = dataPhp[0];
 
 var mymap = L.map('mapid').setView([49.1374, 2.32753], 13);
 for (var i = 0; i < mapTab.length; i++) {
     marker = new L.marker([mapTab[i].x,mapTab[i].y])
-        .bindPopup(mapTab[i].titre_evenement)
+        .bindPopup(`<a href=\"detailsEvent.php?id_evenement=${mapTab[i].id_evenement}\"> ${mapTab[i].titre_evenement} </a>`)
         .addTo(mymap);
 }
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
