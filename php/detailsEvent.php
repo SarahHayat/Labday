@@ -65,7 +65,7 @@ $id_evenement =$_GET['id_evenement'];
                             'id_utilisateur' => $_SESSION['id_name']
                         ));
                         $mesDonnees = $reponse->fetch();
-                        if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] && !$resultat && !$mesDonnees) {
+                        if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] && !$resultat && !$mesDonnees && $_SESSION['type_utilisateur'] == "particulier") {
                             ?>
                             <a class="inputListOfEvent"
                                href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees[$i]['id_evenement']; ?>">Ajouter
