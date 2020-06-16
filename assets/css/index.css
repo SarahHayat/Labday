@@ -9,10 +9,61 @@ body {
 #menu-none{
 visibility: hidden;
     width: 0;
-transition: width 0.5s ,visibility 0.3s;
+transition: width 0.5s ,visibility 0.2s;
 }
+.menu-div{
+    border-bottom: solid black 1px;
+    padding-top: 7%;
+    padding-bottom: 2% ;
+}
+.menu-div a{
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    color: black;
+}
+.menu-div .photo{
+    text-align: center;
+}
+.photo {
+    align-self: center;
+    margin-left: 10px;
+}
+.menu-div-bas{
+    text-align: center;
+}
+.menu-div-bas p{
+    font-size: 2rem;
+}
+.menu-div-bas ul {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    text-align:center;
+}
+.menu-div-bas li {
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10%;
 
+}
+.menu-div-bas li a {
 
+    width:100%;
+    color:white;
+    text-decoration:none;
+    padding-top: 10%;
+    padding-bottom: 10%;
+
+}
+.menu-div-bas li a:hover {
+    color:#FFD700;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    border-radius: 10px;
+}
+.photo img {
+    border-radius: 80%;
+}
 #display ul {
     margin:0;
     padding:0;
@@ -46,6 +97,8 @@ html {
     display: block;
     transition: all 1s;
     margin-bottom: 50%;
+    height: 95vh;
+    margin-right: 2%;
 }
 
 .hide {
@@ -68,7 +121,7 @@ html {
 }
 
 
-img{
+.img_arrow img{
     width: 50px;
 }
 .section2{
@@ -356,7 +409,7 @@ background:linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3)),
     z-index: 1000;
     width: 100%;
     height: 200px;
-    transition: 0.5s;
+    transition: 0.7s;
     text-align: right;
 }
 .test_container .test_card .test_title h2{
@@ -373,8 +426,7 @@ background:linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3)),
     width: 80%;
     height: 100px;
     text-align: center;
-    transition: 0.5s;
-    z-index: 10;
+    transition: 0.2s;
     visibility: hidden;
     padding-left: 20px;
 }
