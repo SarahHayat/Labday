@@ -10,7 +10,7 @@ $id_evenement =$_GET['id_evenement'];
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ShareEventTogether - Sorties à prévoir</title>
+    <title>ShareEventTogether - Sorties</title>
     <link rel="stylesheet" href="../assets/css/events.css"/>
     <?php
     $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
