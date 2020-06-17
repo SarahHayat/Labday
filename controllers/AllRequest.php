@@ -3,7 +3,7 @@ require("bdd.php");
 
 class AllRequest
 
-{
+{ 
     public $bdd = null;
 
 
