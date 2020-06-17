@@ -2,12 +2,11 @@ body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
     color: whitesmoke;
-    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/plein_air.png) no-repeat fixed;
+    background: url(../images/test.jpg) no-repeat fixed;
     background-size: cover;
 }
 .body{
-    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/plein_air.png) no-repeat fixed;
-    background-size: cover;
+
     height: 100vh;
     box-sizing: border-box;
     display: flex;

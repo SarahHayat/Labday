@@ -12,65 +12,14 @@ require "../controllers/bdd.php"
 <body>
 
 <div style="display: flex; flex-direction: row">
-    <div style="background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));" id="menu-none">
-        <section style="position: -webkit-sticky;position: sticky;top: 0;">
-        <div class="menu-div" id="menu-div">
-            <div class="photo">
-                <?php
-                if (isset($_SESSION['id_name'])) {
-                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
-                    while ($donnees = $req->fetch()) {
-                        $url = $donnees['url'];
-                        ?>
-                        <img src="<?php echo $url ?>" height="70%" width="70%">
-                        <?php
-                    }
-                }
+    <?php
+    if (isset($_SESSION['username'])) {
+    require("headerConnect.php");
+    } else {
+    require("headerDisconnect.php");
 
-                ?>
-
-
-                <h3><?php
-                    if (isset($_SESSION['id_name'])) echo $_SESSION['username']; ?></h3>
-
-                <a id="profil" href="profil.php"> Profil </a>
-                <a id="deconnect" href="logOut.php"> Deconnexion </a>
-
-            </div>
-        </div>
-            <form action="recherche.php" method="get" class="search" style="text-align: center;margin-top: 7%">
-                <input class="input-search" type="search" name="search" placeholder="recherche...">
-                <input type="submit" value="valider">
-            </form>
-        <div class="menu-div-bas">
-            <p>MENU</p>
-            <ul>
-                <li><a href=index.php>Accueil</a></li>
-                <li><a href="minichat.php">Forum</a></li>
-                <li><a href="sortieAPrevoir.php"> Sorties</a></li>
-                <li><a href="contact.php"> Contact</a></li>
-
-            </ul>
-            </ul>
-        </div>
-
-
-        </section>
-    </div>
-
-
-    <div id="display" style="background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));height: fit-content;position: -webkit-sticky;position: sticky;top: 0;">
-        <ul>
-            <li><a>Menu --></a></li>
-            <!--                <ul>-->
-            <!--                    <li><a href=index.php>Accueil</a></li>-->
-            <!--                    <li><a href="minichat.php">Forum</a></li>-->
-            <!--                    <li><a href="sortieAPrevoir.php"> Sorties</a></li>-->
-            <!--                    <li><a href="contact.php"> Contact</a></li>-->
-            <!---->
-            <!--                </ul>-->
-        </ul>
-    </div>
+    }
+    ?>
     <div style="width: 100%;">
         <section class="body">
             <div class="margin_left">
@@ -246,7 +195,7 @@ require "../controllers/bdd.php"
 </div>
 </body>
 <script src="../js/index.js"></script>
-<script src="../js/displayNone.js"></script>
+
 <script src="../js/scroll.js"></script>
 
 <?php
