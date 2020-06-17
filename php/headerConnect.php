@@ -34,7 +34,7 @@ include ("../controllers/bdd.php")
 
                 </div>
             </div>
-            <form action="recherche.php" method="get" class="search" style="text-align: center;margin-top: 7%">
+            <form action="searchHeader.php" method="get" class="search" style="text-align: center;margin-top: 7%">
                 <input class="input-search" type="search" name="search" placeholder="recherche...">
                 <input type="submit" value="valider">
             </form>
@@ -42,8 +42,8 @@ include ("../controllers/bdd.php")
                 <p>MENU</p>
                 <ul>
                     <li><a href=index.php>Accueil</a></li>
-                    <li><a href="minichat.php">Forum</a></li>
-                    <li><a href="sortieAPrevoir.php"> Sorties</a></li>
+                    <li><a href="createForum.php">Forum</a></li>
+                    <li><a href="events.php"> Sorties</a></li>
                     <li><a href="contact.php"> Contact</a></li>
 
                 </ul>
@@ -67,4 +67,3 @@ include ("../controllers/bdd.php")
 </html>
 <script src="../js/index.js"></script>
 <script src="../js/displayNone.js"></script>
-<script src="../js/scroll.js"></script>

@@ -92,7 +92,7 @@ if ($donnees) {
                 <div class="pictureEvent">
                     <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
                     <p><?php echo "Par " ?> <b><a
-                                    href="profilUser.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
+                                    href="userProfil.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
                         le : <?php echo $donnees[$i]['date_poste'] ?></p>
                     <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
                     <p><?php echo $donnees[$i]['lieu']; ?></p>

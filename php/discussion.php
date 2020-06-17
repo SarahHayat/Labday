@@ -27,7 +27,7 @@ $req = $bdd->query('SELECT nom_sujet FROM sujets_forum  WHERE id_sujet ="' . $_G
 $donnees = $req->fetch();
 ?>
 <div class="fond">
-    <a href="minichat.php"><< Retour</a>
+    <a href="createForum.php"><< Retour</a>
 
     <div class="sujet">
         <h3><?php echo $donnees['nom_sujet'] ?></h3>
@@ -41,7 +41,7 @@ left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_su
     ?>
 
 
-    <form method="post" action="reponseForum.php?id_sujet=<?php echo $_GET['id_sujet'] ?>">
+    <form method="post" action="replayDiscussion.php?id_sujet=<?php echo $_GET['id_sujet'] ?>">
 
 
         <div class="listOfEvent">
