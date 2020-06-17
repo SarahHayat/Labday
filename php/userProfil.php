@@ -7,11 +7,12 @@ require("../controllers/bdd.php");
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Profil</title>
-    <link rel="stylesheet" href="../assets/css/profil.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 
 
 <body>
+<div style="display: flex; flex-direction: row">
 
 <?php
 
@@ -45,24 +46,33 @@ if (isset($_SESSION['username'])) {
         </div>
         <div class="flex event">
             <div>
-                <label>nom d'utilisateur : </label>
                 <?php
                 $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                 while ($donnees = $req->fetch()) {
                     ?>
 
+<<<<<<< HEAD:php/profilUser.php
                     <p> <?php echo $donnees['pseudo'] ?></p>
                     <?php
+=======
+                        <p> nom d'utilisateur : <?php echo $donnees['pseudo'] ?></p>
+                        <?php
+>>>>>>> devCSS:php/userProfil.php
                 }
 
                 ?>
             </div>
             <div>
-                <label>type : </label>
                 <?php
+<<<<<<< HEAD:php/profilUser.php
                 $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                 while ($donnees = $req->fetch()) {
                     echo '<p>' . $donnees['type_utilisateur'] . '</p>';
+=======
+                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
+                    while ($donnees = $req->fetch()) {
+                        echo  '<p> type : ' . $donnees['type_utilisateur'] . '</p>';
+>>>>>>> devCSS:php/userProfil.php
                 }
 
                 ?>
@@ -91,13 +101,15 @@ if (isset($_SESSION['username'])) {
         <div class="evenement">
             <?php
             require("../controllers/bdd.php");
-            $reponse = $bdd->query('SELECT ut.* , ev.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur where ut.id_utilisateur = "' . $_GET['id_user'] . '"');
+            $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
+        on ev.id_utilisateur= ut.id_utilisateur 
+        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_GET['id_user'] . '"');
             // On affiche chaque entrée une à une
             while ($donnees = $reponse->fetch()) {
                 ?>
 
                 <div class="listOfEvent">
+<<<<<<< HEAD:php/profilUser.php
                     <div class="centerH3">
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement'];?> </h3>
                     </div>
@@ -111,6 +123,22 @@ if (isset($_SESSION['username'])) {
                                 <p><?php echo $donnees['type_utilisateur']; ?></p>
                                 <p><?php echo $donnees['date_evenement']; ?></p>
                             </div>
+=======
+                    <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
+                    <ul class="collectionItem">
+                        <div class="pictureEvent1">
+                            <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                            <p><?php echo $donnees['nom_categorie']; ?></p>
+                        </div>
+                        <div class="pictureEvent">
+                            <div style="display: flex; text-align: right">
+                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                            </div>
+                            <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
+                            <p><?php echo $donnees['type_utilisateur']; ?></p>
+                            <p><?php echo $donnees['date_evenement']; ?></p>
+
+>>>>>>> devCSS:php/userProfil.php
                             <?php
                             if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
                                 $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
@@ -133,6 +161,7 @@ if (isset($_SESSION['username'])) {
 
                         </div>
                     </ul>
+                        </div>
                 </div>
                 <?php
             }
@@ -141,6 +170,7 @@ if (isset($_SESSION['username'])) {
     </div>
 
 </section>
+</div>
 <?php
 require("footer.php");
 ?>

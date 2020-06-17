@@ -2,6 +2,43 @@ body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
     color: whitesmoke;
+    background: url(../images/test.jpg) no-repeat fixed;
+    background-size: cover;
+}
+.body{
+
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 2vw;
+}
+
+.margin_left {
+    font-size: 4rem;
+    color: whitesmoke;
+    margin-right: auto;
+}
+.margin_right1 {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    color: whitesmoke;
+    margin-right: 70%;
+    justify-content: space-around;
+
+}
+.margin_right1 a{
+    text-decoration: none;
+    color: whitesmoke;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color:  rgba(113,113,133,0.3);
+    border-radius: 10px;
 
 }
 
@@ -10,11 +47,7 @@ body {
 }
 .fond {
     display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
     padding: 3%;
-    background: #505050 !important;
-    border-radius: 15px;
     top: 195px;
 }
 .button_sujet input{
@@ -30,11 +63,10 @@ body {
 .fond {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 5%;
-    background : #505050 !important;
-    border-radius: 15px;
     top: 195px;
+    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/plein_air.png) no-repeat fixed;
+    background-size: cover;
+
 }
 .fond div:not(.message) {
     padding: 20px 10px 10px 10px;

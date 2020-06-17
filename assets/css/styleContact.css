@@ -2,6 +2,8 @@ body {
     margin: 0 !important;
     font-family: 'Roboto', sans-serif;
     color: whitesmoke;
+    background: url(../images/test.jpg) no-repeat fixed;
+    background-size: cover;
 
 }
 
@@ -10,8 +12,7 @@ body {
     flex-direction: column;
     margin-left: 5%;
     margin-right: 5%;
-    background : #505050 !important;
-    border-radius: 15px;
+    border-radius: 38px;
     top: 195px;
 }
 .fond div {
@@ -23,7 +24,6 @@ body {
 }
 .contactTitle{
     /*text-align: center;*/
-    background: linear-gradient(#505050, #6f6f6f);
     color: whitesmoke;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
@@ -76,7 +76,6 @@ body {
 .container_contact {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
-    background: linear-gradient(#6f6f6f, #807f7f); !important;
 
     padding: 20px;
     font-size: 18px;

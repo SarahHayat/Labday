@@ -1,17 +1,17 @@
 <?php
 session_start();
-require('../controllers/bdd.php');
+require("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ShareEventTogether - Contact</title>
+    <title>ShareEventTogether - create event</title>
     <link rel="stylesheet" href="../assets/css/forum.css"/>
 </head>
 
 
-<div>
+
 <?php
 // echo "session username : " . $_SESSION['username'];
 
@@ -22,13 +22,26 @@ if (isset($_SESSION['username'])) {
 
 }
 
+
+$articles = $bdd->query('SELECT * FROM sujets_forum as sj LEFT JOIN utilisateurs as u ON sj.id_utilisateur = u.id_utilisateur left join messages as m on sj.id_sujet = m.id_sujet');
+
+if (isset($_GET['search_forum']) and !empty($_GET['search_forum'])) {
+    $search = $_GET['search_forum'];
+    $articles = $bdd->query('SELECT * FROM  sujets_forum as sj LEFT JOIN utilisateurs as u ON sj.id_utilisateur = u.id_utilisateur left join messages as m on sj.id_sujet = m.id_sujet WHERE sj.nom_sujet LIKE "%'.$search.'%" group by sj.id_sujet');
+
+    if ($articles->rowCount() == 0) {
+        $articles = $bdd->query('SELECT * FROM sujets_forum as sj LEFT JOIN utilisateurs as u ON sj.id_utilisateur = u.id_utilisateur left join messages as m on sj.id_sujet = m.id_sujet WHERE sj.nom_sujet LIKE "%'.$search.'%" group by sj.id_sujet');
+    }
+}
 ?>
 <div class="fond">
-<form action="rechercheForum.php" method="get" >
+    <a href="createForum.php"> << Retour</a>
+<form method="post" action="#">
     <input type="search" name="search_forum" placeholder="recherche...">
     <input type="submit" value="entrer">
 </form>
-<form method="post" action="../controllers/forum.php" id="form_forum">
+<form method="post" action="#">
+
     <input type="submit" id="button" value="Créer un sujet" class="button_sujet">
     <div id="chat">
         <label><b>Sujet :</b> <span class="obligatoire">*</span></label>
@@ -39,19 +52,13 @@ if (isset($_SESSION['username'])) {
         <input type="submit" value="Envoyer"/>
     </div>
 
-
     <div class="reponse">
         <?php
 
-        $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj 
-left join utilisateurs as u 
-on sj.id_utilisateur = u.id_utilisateur
-left join messages as m
-on sj.id_sujet = m.id_sujet
-GROUP BY sj.id_sujet
-ORDER BY `m`.`date_message` DESC LIMIT 10");
-        // On affiche chaque entrée une à une
-        while ($donnees = $reponse->fetch()) {
+
+        if ($articles->rowCount() > 0) {
+        while ($donnees = $articles->fetch()) {
+
 
         echo '<div class="container_sujet">';
         echo '<div class="sujet">';
@@ -61,18 +68,25 @@ ORDER BY `m`.`date_message` DESC LIMIT 10");
         echo 'Par ' . '<b>' . $donnees['pseudo'] . '</b>' . ' le ' . $donnees['date_message'];
         echo '</div>';
         echo '<div class="contain_message">';
-        echo '<p class="message">'.$donnees['message'].'</p>';
+        echo '<div class="message">';
+        echo $donnees['message'];
+        echo '</div>';
 
         ?>
         <div class="right_div"><a class="inputListOfEvent"
-                                  href="page_forum.php?id_sujet= <?php echo $donnees['id_sujet']; ?>">lire</a>
+                                  href="discussion.php?id_sujet= <?php echo $donnees['id_sujet']; ?>">lire</a>
         </div>
     </div>
     </div>
     <?php
 
     }
-    $reponse->closeCursor(); // Termine le traitement de la requête
+    }else {
+        ?>
+        Aucun résultat pour : <?= $search ?>...
+
+        <?php
+    }
 
     ?>
 

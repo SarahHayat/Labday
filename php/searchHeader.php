@@ -7,7 +7,7 @@ require("../controllers/bdd.php");
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - create event</title>
-    <link rel="stylesheet" href="../assets/css/sortie.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 
 
@@ -51,7 +51,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
                     <div class="pictureEvent">
 
                         <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                        <p><?php echo "Par " ?> <b><a href="profilUser.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                        <p><?php echo "Par " ?> <b><a href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['lieu']; ?></p>
                         <p><?php echo $donnees['date_evenement']; ?></p>

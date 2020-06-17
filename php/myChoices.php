@@ -7,7 +7,7 @@ require("../controllers/bdd.php");
     <head>
         <meta charset="UTF-8">
         <title>ShareEventTogether - Profil</title>
-        <link rel="stylesheet" href="../assets/css/sortie.css"/>
+        <link rel="stylesheet" href="../assets/css/events.css"/>
     </head>
 <?php
 
@@ -41,22 +41,26 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
     while ($donnees = $sql->fetch()) {
         ?>
         <div class="listOfEvent">
-            <div class="centerH3">
-                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-            </div>
-            <ul class="collectionItem">
+        <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
+        <ul class="collectionItem">
                 <div class="pictureEvent1">
                     <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                     <p><?php echo $donnees['nom_categorie']; ?></p>
 
                 </div>
                 <div class="pictureEvent">
+                    <div style="display: flex; text-align: right">
                     <div class="gauche">
                         <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . $donnees['date_poste'] . '</b>'; ?></p>
                         <p><?php echo $donnees['type_utilisateur']; ?></p>
                         <p><?php echo $donnees['commune'] . " " . $donnees['code_postal']; ?></p>
                         <p><b><?php echo $donnees['date_evenement']; ?></b></p>
                     </div>
+                        <div class="centerH3">
+                            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        </div>
+                    </div>
+
                     <?php
                     if ($_GET['choice'] == "mesEvent") {
                         ?>
@@ -88,7 +92,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                         if ($resultat) {
                             ?>
                             <a class="inputListOfEvent"
-                               href="../controllers/enleverFav.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
+                               href="../controllers/deleteFavorite.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">enlever
                                 favoris</a>
                             <?php
                         }
@@ -98,6 +102,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
 
                 </div>
             </ul>
+        </div>
         </div>
         <script src="../js/securite.js"></script>
         <?php
