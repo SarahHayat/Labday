@@ -1,0 +1,187 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+}
+
+.fond {
+    /*width: 91.66%;
+    height: 70.01%;*/
+    margin-left: 5% ;
+    margin-right: 5%;
+    padding: 10px 10px 10px 10px;
+    background : #505050 !important;
+    border-radius: 15px;
+    top: 195px;
+    height: 800px;
+    width: auto;
+    overflow: scroll;
+}
+
+.profil {
+    justify-content: space-around;
+}
+/*.avatar{*/
+/*    background-color: #EBD1D3;*/
+/*    height: 140px;*/
+/*    width: 140px;*/
+/*    border-radius: 50%;*/
+/*}*/
+.photo {
+    align-self: center;
+    margin-left: 10px;
+}
+
+.photo img {
+    border-radius: 80%;
+}
+
+.avatar a {
+    margin : 10px;
+    font-size: small;
+    color: yellowgreen;
+}
+info{
+    display: block;
+    align-self: center;
+}
+.info input{
+    height: 15px;
+    padding-left: 5px;
+    border-radius: 8px;
+    border: 1px ridge black;
+
+}
+
+.event {
+    min-width: 80%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.titleOfEvent {
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 10px;
+}
+a {
+    text-decoration: none;
+    color: yellowgreen;
+}
+
+.description {
+    background-color: yellowgreen;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 20px;
+    width: fit-content;
+    width: 88%;
+
+}
+
+.event p {
+    margin: 0;
+}
+
+.progress {
+    justify-content: right;
+}
+
+.flex{
+    display: flex;
+    padding: 3px
+}
+#imgTree {
+    width: 150px;
+}
+.pictureEvent1 {
+    width: 25%;
+    text-align: -webkit-center;
+
+}
+.pictureEvent{
+    width: 75%;
+
+
+}
+.centerH3{
+    text-align: -webkit-center;
+}
+
+
+.titleOfEvent {
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 5px;
+    font-size: 2rem;
+    width: 80%;
+    text-align: center;
+    font-family: cursive;
+    text-transform: uppercase;
+}
+
+.collectionItem {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+.collectionItem ul {
+    justify-content: center;
+}
+
+
+.inputListOfEvent {
+    background-color: yellowgreen;
+    border: none;
+    color: #505050;
+    padding: 8px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+.evenement p {
+    margin: 10px;
+}
+
+.button_submit {
+    background-color: yellowgreen;
+    color: whitesmoke;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.button_submit:hover {
+    background-color: whitesmoke;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+}
+
+.modifier {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.photoProfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photoProfil {
+    border-radius: 50%;
+}
+
+.gauche p{
+    padding: 5px;
+}
+
+form {
+    text-align: center;
+}
+

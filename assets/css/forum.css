@@ -1,0 +1,165 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+
+}
+
+#chat{
+    display: none;
+}
+.fond {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 3%;
+    background: #505050 !important;
+    border-radius: 15px;
+    top: 195px;
+}
+.button_sujet input{
+    margin-top: 3% !important;
+    color: whitesmoke;
+}
+
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fond {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    background : #505050 !important;
+    border-radius: 15px;
+    top: 195px;
+}
+.fond div:not(.message) {
+    padding: 20px 10px 10px 10px;
+}
+.contactTitle p {
+    font-size: 1.5em;
+    padding: 0 0 0 10px;
+}
+.contactTitle{
+    /*text-align: center;*/
+    background: #505050 !important;
+    color: whitesmoke;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+}
+.contactTitle h2 {
+    font-size: 4em;
+    /*text-align: center;*/
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.container_contact input[type=text],input[type=password],input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    overflow: hidden;
+    outline: 0;
+    font-size: 18px;
+
+
+}
+
+/* Style the submit button with a specific background color etc */
+.button_sujet {
+    background-color: yellowgreen;
+    color: whitesmoke;
+    /*padding: 12px 20px;*/
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 0 0 40px;
+    width: 50%;
+    height: 50px;
+    outline: 0;
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+    background-color: whitesmoke;
+    border: 1px solid yellowgreen;
+    color: yellowgreen;
+}
+
+/* Add a background color and some padding around the form */
+.container_contact {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: whitesmoke;
+    padding: 20px;
+    font-size: 18px;
+}
+.container_sujet{
+    padding: 2%;
+    margin-bottom: 2%;
+}
+.right_div{
+    text-align: right;
+}
+.contain_message{
+    display: flex;
+justify-content: space-between;
+}
+.sujet{
+    font-size: 2rem;
+}
+.right_div a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.right_div a:hover{
+    color: yellowgreen;
+}
+
+.fond a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.fond a:hover{
+    color: yellowgreen;
+}
+
+input[type=search]{
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+#form_forum{
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    background: yellowgreen;
+    border-radius: 10px;
+    padding: 10px 15px;
+    overflow-wrap: anywhere;
+    width: fit-content;
+}
+.sujet h3{
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px;
+}
+.sujet{
+border-top:solid yellowgreen 1px ;
+border-bottom:solid yellowgreen 1px ;
+}
+

@@ -1,0 +1,121 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+
+}
+
+
+.fond {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px 10px 10px 10px;
+    background: #505050 !important;
+    border-radius: 15px;
+    top: 195px;
+    height: 800px;
+    width: auto;
+    overflow: scroll;
+}
+
+#search {
+    border-radius: 3px;
+}
+
+.fond {
+    display: block;
+}
+
+#imgTree {
+    width: 150px;
+}
+.pictureEvent1 {
+    width: 25%;
+    text-align: -webkit-center;
+
+}
+.pictureEvent{
+    width: 75%;
+
+
+}
+.titleOfEvent {
+    border-bottom: solid 1px yellowgreen;
+    border-top: solid 1px yellowgreen;
+    padding: 5px;
+    font-size: 2rem;
+    width: 80%;
+    text-align: center;
+    font-family: cursive;
+    text-transform: uppercase;
+}
+
+.collectionItem {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+
+}
+.collectionItem ul {
+    justify-content: center;
+}
+
+.description {
+    background-color: yellowgreen;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 20px;
+    width: fit-content;
+    width: 88%;
+
+
+}
+
+.inputListOfEvent {
+    background-color: yellowgreen;
+    border: none;
+    color: #505050;
+    padding: 8px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.evenement{
+   margin: auto;
+}
+
+.filtre {
+    text-align: center;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: yellowgreen;
+}
+
+#mapid {
+    height: 300px;
+    width: 50%;
+}
+
+#map, .centerH3{
+    text-align: -webkit-center;
+}
+
+.gauche{
+    text-align: left;
+}
+.gauche p{
+    padding: 5px;
+}
+
+.filtre-container{
+    padding: 5px;
+}

@@ -1,0 +1,152 @@
+body {
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+
+}
+
+.connect {
+    display: flex;
+}
+
+/*.container {*/
+/*    align-self: center;*/
+/*}*/
+
+.fond {
+    /*width: 91.66%;
+    height: 70.01%;*/
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 30px;
+    background: #505050 !important;
+    border-radius: 15px;
+    top: 195px;
+}
+
+.container_connect {
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+/* Bordered form */
+.container_connect form {
+    width: 100%;
+    padding: 30px;
+    background: #505050 !important;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
+}
+
+.container_connect h1 {
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.container_connect input, textarea, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.container_connect input[type=submit] {
+    background-color: yellowgreen;
+    color: whitesmoke;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.container_connect input[type=submit]:hover {
+    background-color: whitesmoke;
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+}
+
+.search {
+    height: 20px;
+    font-size: large;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    position: relative;
+    top: 10px;
+    outline: 0;
+    background: whitesmoke;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    padding: 0 0 0 0;
+    border-radius: 12px;
+    border: solid 2px;
+}
+
+input[type="radio"]:checked {
+    background: black;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    padding: 0 0 0 0;
+}
+
+input[type="radio"]:checked::before {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    line-height: 12px;
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 1024px) {
+    .container_connect {
+        width: 350px;
+    }
+
+    input[type="radio"] {
+        border-radius: 18px;
+        height: 20px;
+        width: 20px;
+        top: 10px;
+    }
+
+    input[type="radio"]:checked::before {
+        height: 20px;
+        width: 20px;
+        font-size: 18px;
+        line-height: 14px;
+
+    }
+
+    input[type="radio"]:checked {
+        height: 20px;
+        width: 20px;
+    }
+
+
+}
+
+form a {
+    text-decoration: none;
+    color: black;
+}
+
+form a:hover {
+    color: white;
+}
+
+#select_pays::-moz-selection {
+    background-color: yellowgreen;
+}
