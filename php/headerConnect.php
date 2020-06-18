@@ -1,5 +1,7 @@
 <?php
-include ("../controllers/bdd.php")
+include ("../controllers/bdd.php");
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 ?>
 <html>
 <head>
@@ -14,7 +16,8 @@ include ("../controllers/bdd.php")
                 <div class="photo">
                     <?php
                     if (isset($_SESSION['id_name'])) {
-                        $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
+                        $req = $resultat->getUserPicture($bdd, $_SESSION['id_name'] );
+//                        $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                         while ($donnees = $req->fetch()) {
                             $url = $donnees['url'];
                             ?>

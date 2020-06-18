@@ -22,25 +22,27 @@ $type_utilisateur = $_POST["type_utilisateur"];
  * ajout d'un nouveau compte
  */
 if (isset($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe)) {
-    $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
+    $reponse = $resultat->existAccount($bdd, $pseudo, $mail);
+  //  $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
     $donnees = $reponse->fetch();
     if (!$donnees) {
-        $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
-        $req->execute(array(
-            'prenom' => $prenom,
-            'nom' => $nom,
-            'date_naissance' => $date_naissance,
-            'adresse' => $adresse,
-            'code_postale' => $code_postale,
-            'pays' => $pays,
-            'telephone' => $telephone,
-            'mail' => $mail,
-            'pseudo' => $pseudo,
-            'mot_de_passe' => $mot_de_passe,
-            'type_utilisateur' => $type_utilisateur,
-            'ville' => $ville,
-
-        ));
+        $req = $resultat->createAccount($bdd,$prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe, $type_utilisateur, $ville)
+//        $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
+//        $req->execute(array(
+//            'prenom' => $prenom,
+//            'nom' => $nom,
+//            'date_naissance' => $date_naissance,
+//            'adresse' => $adresse,
+//            'code_postale' => $code_postale,
+//            'pays' => $pays,
+//            'telephone' => $telephone,
+//            'mail' => $mail,
+//            'pseudo' => $pseudo,
+//            'mot_de_passe' => $mot_de_passe,
+//            'type_utilisateur' => $type_utilisateur,
+//            'ville' => $ville,
+//
+//        ));
         ?>
         <script>
             alert("Votre compte à bien été crée, veuillez vous connecter");

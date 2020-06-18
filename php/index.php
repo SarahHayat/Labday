@@ -1,6 +1,9 @@
 <?php
 session_start();
 require "../controllers/bdd.php";
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
+
 
 ?>
 <!DOCTYPE html>
@@ -57,12 +60,13 @@ require "../controllers/bdd.php";
             <div class="fond1">
                 <h3> MEILLEURS UTILISATEURS</h3>
                 <?php
-                $req = $bdd->query('SELECT u.*, pu.url
-    FROM utilisateurs as u
-    LEFT JOIN photo_utilisateurs as pu
-    ON u.id_utilisateur = pu.id_utilisateur
-    GROUP BY u.id_utilisateur
-    ORDER by u.karma DESC LIMIT 3');
+                $req = $resultat->getBestUser($bdd);
+//                $req = $bdd->query('SELECT u.*, pu.url
+//    FROM utilisateurs as u
+//    LEFT JOIN photo_utilisateurs as pu
+//    ON u.id_utilisateur = pu.id_utilisateur
+//    GROUP BY u.id_utilisateur
+//    ORDER by u.karma DESC LIMIT 3');
                 $i = 1;
                 while ($donnees = $req->fetch()) {
                     ?>

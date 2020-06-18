@@ -1,5 +1,7 @@
 <?php
 session_start();
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 require("../controllers/bdd.php");
 ?>
     <!DOCTYPE html>
@@ -14,29 +16,35 @@ require("../controllers/bdd.php");
 if (isset($_GET['choice'])) {
 
     if ($_GET['choice'] == "mesEvent") {
+        $sql = $resultat->getEventByUser($bdd, $_SESSION['id_name']);
 
-        $sql = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur 
-        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
+//        $sql = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
+//        on ev.id_utilisateur= ut.id_utilisateur
+//        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
 
     } else if ($_GET['choice'] == "mesInscription") {
+        $sql = $resultat->getEventRegistered($bdd, $_SESSION['id_name']);
 
-        $sql = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement 
-    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
-    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
-    where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
+//        $sql = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement
+//    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur
+//    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie
+//    where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
 
     } else if ($_GET['choice'] == "mesEventPassees") {
+        $sql = $resultat->getEventPassed();
         $sql = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie 
 left join evenements as e on ie.id_evenement = e.id_evenement 
 LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
 left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
 where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < now()');
+
     } else if ($_GET['choice'] == "mesFavoris") {
-        $sql = $bdd->query('SELECT f.* , e.*, u.*, ce.* FROM favoris as f left join evenements as e on f.id_evenement = e.id_evenement 
-    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
-    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie 
-    where f.id_utilisateur ="' . $_SESSION['id_name'] . '"');
+        $sql = $resultat->getFavorite($bdd, $_SESSION['id_name'] );
+//        $sql = $bdd->query('SELECT f.* , e.*, u.*, ce.* FROM favoris as f left join evenements as e on f.id_evenement = e.id_evenement
+//    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur
+//    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie
+//    where f.id_utilisateur ="' . $_SESSION['id_name'] . '"');
+
     }
     while ($donnees = $sql->fetch()) {
         ?>
@@ -71,7 +79,8 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                            href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                         <?php
                     } else if ($_GET['choice'] == "mesEventPassees") {
-                        $req = $bdd->query('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
+                        $req = $resultat->isNoted($bdd, $donnees['id_evenement']);
+//                        $req = $bdd->query('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
 
                         $resultat = $req->fetch();
                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && !$resultat) {
@@ -87,7 +96,8 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                             désincrire</a>
                         <?php
                     } else if ($_GET['choice'] == "mesFavoris") {
-                        $req = $bdd->query('SELECT * FROM favoris WHERE id_evenement = "' . $donnees['id_evenement'] . '" AND id_utilisateur ="' . $_SESSION['id_name'] . '"');
+                        $req = $resultat->isFavorite($bdd, $donnees['id_evenement'] , $_SESSION['id_name']);
+//                        $req = $bdd->query('SELECT * FROM favoris WHERE id_evenement = "' . $donnees['id_evenement'] . '" AND id_utilisateur ="' . $_SESSION['id_name'] . '"');
                         $resultat = $req->fetch();
                         if ($resultat) {
                             ?>
@@ -96,11 +106,12 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                                 favoris</a>
                             <?php
                             if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
-                                $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-                                $req->execute(array(
-                                    'id_utilisateur' => $_SESSION['id_name'],
-                                    'id_evenement' => $donnees['id_evenement'],
-                                ));
+                                $req = $resultat->isRegistered($bdd, $_SESSION['id_name'],$donnees['id_evenement'] );
+//                                $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+//                                $req->execute(array(
+//                                    'id_utilisateur' => $_SESSION['id_name'],
+//                                    'id_evenement' => $donnees['id_evenement'],
+//                                ));
                                 $resultat = $req->fetch();
                                 if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                                     //                            ?>

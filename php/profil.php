@@ -1,5 +1,7 @@
 <?php
 session_start();
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 require("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
@@ -32,7 +34,8 @@ if (isset($_SESSION['username'])) {
             <div class="photo">
                 <?php
                 if (isset($_SESSION['id_name'])) {
-                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
+                    $req = $resultat->getUserPicture($bdd, $_SESSION['id_name']);
+//                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                     while ($donnees = $req->fetch()) {
                         $url = $donnees['url'];
                         ?>
@@ -62,7 +65,8 @@ if (isset($_SESSION['username'])) {
             <div>
                 <?php
                 if (isset($_SESSION['id_name'])) {
-                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                    $req = $resultat->getUser($bdd, $_SESSION['id_name']);
+//                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                     while ($donnees = $req->fetch()) {
                         echo '<p>'. 'type : '  . $donnees['type_utilisateur'] . '</p>';
                     }
@@ -76,7 +80,8 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <?php
                 if (isset($_SESSION['id_name'])) {
-                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
+                    $req = $resultat->getUser($bdd, $_SESSION['id_name']);
+//                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                     while ($donnees = $req->fetch()) {
                         $moyenne = $donnees['karma'];
                     }
@@ -108,10 +113,11 @@ if (isset($_SESSION['username'])) {
             <div id="evenement">
                 <?php
                 require("../controllers/bdd.php");
-                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut 
-        on ev.id_utilisateur= ut.id_utilisateur 
-        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
-                // On affiche chaque entrée une à une
+                $reponse = $resultat->getEventByUser($bdd, $_SESSION['id_name']);
+//                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
+//        on ev.id_utilisateur= ut.id_utilisateur
+//        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
+//                // On affiche chaque entrée une à une
                 while ($donnees = $reponse->fetch()) {
                     ?>
 

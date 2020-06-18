@@ -1,5 +1,7 @@
 <?php
 session_start();
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 require('../controllers/bdd.php');
 ?>
 <!DOCTYPE html>
@@ -45,14 +47,14 @@ require('../controllers/bdd.php');
 
         <div>
             <?php
-
-            $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj 
-left join utilisateurs as u 
-on sj.id_utilisateur = u.id_utilisateur
-left join messages as m
-on sj.id_sujet = m.id_sujet
-GROUP BY sj.id_sujet
-ORDER BY `m`.`date_message` DESC LIMIT 10");
+            $reponse = $resultat->getAllSubjectForum($bdd);
+//            $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj
+//left join utilisateurs as u
+//on sj.id_utilisateur = u.id_utilisateur
+//left join messages as m
+//on sj.id_sujet = m.id_sujet
+//GROUP BY sj.id_sujet
+//ORDER BY `m`.`date_message` DESC LIMIT 10");
             // On affiche chaque entrée une à une
             while ($donnees = $reponse->fetch()) {
             ?>

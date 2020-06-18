@@ -1,5 +1,7 @@
 <?php
 session_start();
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 require("../controllers/bdd.php");
 
 ?>
@@ -78,9 +80,10 @@ if (isset($_SESSION['username'])) {
         </form>
         <?php
         if (isset($_SESSION['id_name'])) {
-            $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
+            $reponse = $resultat->getUser($bdd,$_SESSION['id_name'] );
+           // $reponse = $bdd->query('SELECT * FROM utilisateurs WHERE id_utilisateur = "' . $_SESSION['id_name'] . '" ');
             $donnees = $reponse->fetch();
-            if (isset($_POST['mail']) && isset($_POST['mdpCompte']) && isset($_POST['cMdpCompte'])) {
+            if (isset($_POST['mail'], $_POST['mdpCompte'], $_POST['cMdpCompte'])) {
                 if ( $donnees['mail'] == $_POST['mail'] && $donnees['mot_de_passe'] == $_POST['mdpCompte'] && $donnees['mot_de_passe'] == $_POST['cMdpCompte']) {
                     ini_set('display_errors', 1);
                     error_reporting(E_ALL);

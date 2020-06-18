@@ -1,6 +1,8 @@
 
 <?php
 session_start();
+require ("AllRequest.php");
+$resultat = new AllRequest();
 
 require ("bdd.php");
 
@@ -21,21 +23,22 @@ require ("bdd.php");
         echo "x : " . $x;
         echo "y : " . $y;
 
-        if (isset($_SESSION['id_name']) && isset($description) && isset($date_evenement) && isset($titre) && isset($adresse) && isset($code_postal) && isset($commune) && isset($_SESSION['username']) && isset($categorie)) {
-            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, adresse, code_postal, commune, id_categorie, x, y) VALUES(:utilisateur, :description, :date_evenement, :titre, :adresse, :code_postal, :commune, :categorie, :x, :y)');
-            $req->execute(array(
-                'utilisateur' => $_SESSION['id_name'],
-                'description' => $description,
-                'date_evenement' => $date_evenement,
-                'titre' => $titre,
-                'adresse' => $adresse,
-                'code_postal' => $code_postal,
-                'commune' => $commune,
-                'categorie' => $categorie,
-                'x' => $x,
-                'y' => $y,
-
-            ));
+        if (isset($_SESSION['id_name'], $description, $date_evenement, $titre, $adresse, $code_postal, $commune, $_SESSION['username'], $categorie)) {
+           $req =$resultat->createEvent();
+//            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, adresse, code_postal, commune, id_categorie, x, y) VALUES(:utilisateur, :description, :date_evenement, :titre, :adresse, :code_postal, :commune, :categorie, :x, :y)');
+//            $req->execute(array(
+//                'utilisateur' => $_SESSION['id_name'],
+//                'description' => $description,
+//                'date_evenement' => $date_evenement,
+//                'titre' => $titre,
+//                'adresse' => $adresse,
+//                'code_postal' => $code_postal,
+//                'commune' => $commune,
+//                'categorie' => $categorie,
+//                'x' => $x,
+//                'y' => $y,
+//
+//            ));
             
             header('location: ../php/profil.php');
 

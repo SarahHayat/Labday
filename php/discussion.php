@@ -1,5 +1,7 @@
 <?php
 session_start();
+require ("../controllers/AllRequest.php");
+$resultat = new AllRequest();
 require("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
@@ -22,8 +24,8 @@ if (isset($_SESSION['username'])) {
     require("headerDisconnect.php");
 
 }
-
-$req = $bdd->query('SELECT nom_sujet FROM sujets_forum  WHERE id_sujet ="' . $_GET['id_sujet'] . '" ');
+$req = $resultat->getSubjectById($bdd, $_GET['id_sujet']);
+//$req = $bdd->query('SELECT nom_sujet FROM sujets_forum  WHERE id_sujet ="' . $_GET['id_sujet'] . '" ');
 $donnees = $req->fetch();
 ?>
 <div class="fond">
@@ -33,8 +35,9 @@ $donnees = $req->fetch();
         <h3><?php echo $donnees['nom_sujet'] ?></h3>
     </div>
     <?php
-    $reponse = $bdd->query('SELECT m.id_utilisateur, m.message, sf.nom_sujet, u.pseudo,m.date_message FROM sujets_forum as sf join messages as m on sf.id_sujet = m.id_sujet
-left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_sujet ="' . $_GET['id_sujet'] . '" '); ?>
+    $reponse = $resultat->getMessageBySubject($bdd,$_GET['id_sujet'] );
+//    $reponse = $bdd->query('SELECT m.id_utilisateur, m.message, sf.nom_sujet, u.pseudo,m.date_message FROM sujets_forum as sf join messages as m on sf.id_sujet = m.id_sujet
+//left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_sujet ="' . $_GET['id_sujet'] . '" '); ?>
 
     <?php
     while ($donnees = $reponse->fetch()) {
