@@ -45,28 +45,17 @@ body {
 #chat{
     display: none;
 }
-.fond {
-    display: flex;
-    padding: 3%;
-    top: 195px;
-}
+
 .button_sujet input{
     margin-top: 3% !important;
     color: whitesmoke;
 }
-
-body {
-    margin: 0 !important;
-    font-family: 'Roboto', sans-serif;
-}
-
 .fond {
     display: flex;
+    padding: 3%;
+    width: 100%;
     flex-direction: column;
     top: 195px;
-    background:linear-gradient(120deg, rgba(146, 25, 255, 0.3),rgba(146, 25, 255, 0.3)), url(../images/plein_air.png) no-repeat fixed;
-    background-size: cover;
-
 }
 .fond div:not(.message) {
     padding: 20px 10px 10px 10px;

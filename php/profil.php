@@ -157,7 +157,7 @@ if (isset($_SESSION['username'])) {
 <?php
 require("footer.php");
 ?>
-<script src="../js/securite.js"></script>
+<script src="../js/security.js"></script>
 </body>
 
 

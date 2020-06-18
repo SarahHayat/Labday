@@ -99,7 +99,7 @@ if (isset($_SESSION['username'])) {
 </div>
 
 <script src="../js/dropdownList.js"></script>
-<script src="../js/securite.js"></script>
+<script src="../js/security.js"></script>
 
 
 <?php

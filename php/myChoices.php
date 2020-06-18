@@ -104,7 +104,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
             </ul>
         </div>
         </div>
-        <script src="../js/securite.js"></script>
+        <script src="../js/security.js"></script>
         <?php
     }
 }
