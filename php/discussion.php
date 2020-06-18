@@ -41,7 +41,7 @@ left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_su
     ?>
 
 
-    <form method="post" action="replayDiscussion.php?id_sujet=<?php echo $_GET['id_sujet'] ?>">
+    <form method="post" action="replyDiscussion.php?id_sujet=<?php echo $_GET['id_sujet'] ?>">
 
 
         <div class="listOfEvent">
