@@ -7,11 +7,12 @@ require("../controllers/bdd.php");
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - Profil</title>
-    <link rel="stylesheet" href="../assets/css/profil.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 
 
 <body>
+<div style="display: flex; flex-direction: row">
 <?php
 // echo "session username : " . $_SESSION['username'];
 
@@ -41,25 +42,29 @@ if (isset($_SESSION['username'])) {
                 }
 
                 ?>
-
+                <div class="modifier">
+                    <a href="profilPicture.php">modifier photo</a>
+                </div>
 
             </div>
-            <div class="modifier">
-                <a href="profilPicture.php">modifier photo</a>
+
+
+
+
+            <div class="supp">
+                <input type="submit" onclick="supprimer()" value="supprimer le profil" id="supprimer">
             </div>
         </div>
         <div class="flex event">
             <div>
-                <label>nom d'utilisateur : </label>
-                <p> <?php if (isset($_SESSION['username'])) echo $_SESSION['username'] ?></p>
+                <p> nom d'utilisateur : <?php if (isset($_SESSION['username'])) echo $_SESSION['username'] ?></p>
             </div>
             <div>
-                <label>type : </label>
                 <?php
                 if (isset($_SESSION['id_name'])) {
                     $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                     while ($donnees = $req->fetch()) {
-                        echo '<p>' . $donnees['type_utilisateur'] . '</p>';
+                        echo '<p>'. 'type : '  . $donnees['type_utilisateur'] . '</p>';
                     }
                 }
 
@@ -85,9 +90,7 @@ if (isset($_SESSION['username'])) {
             <!--                    <input type="text" id="username" value="-->
             <?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
             <!--                </div>-->
-            <div class="supp">
-                <input type="submit" onclick="supprimer()" value="supprimer" id="supprimer">
-            </div>
+
 
         </div>
     </div>
@@ -113,15 +116,15 @@ if (isset($_SESSION['username'])) {
                     ?>
 
                     <div class="listOfEvent">
-                        <div class="centerH3">
-                            <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                        </div>
+                        <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
                         <ul class="collectionItem">
                             <div class="pictureEvent1">
-                                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                <img id="imgTree" src="../assets/images/event.png"/>
                                 <p><?php echo $donnees['nom_categorie']; ?></p>
                             </div>
                             <div class="pictureEvent">
+                                <div style="display: flex; text-align: right">
+
                                 <div class="gauche">
                                     <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
                                     <p><?php echo $donnees['type_utilisateur']; ?></p>
@@ -131,9 +134,14 @@ if (isset($_SESSION['username'])) {
                                     <a class="inputListOfEvent"
                                        href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                                 </div>
-
+                                    <div class="centerH3">
+                                        <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                    </div>
+                                </div>
                             </div>
+
                         </ul>
+                        </div>
                     </div>
                     <?php
                 }
@@ -145,6 +153,7 @@ if (isset($_SESSION['username'])) {
 
     </div>
 </section>
+</div>
 <?php
 require("footer.php");
 ?>

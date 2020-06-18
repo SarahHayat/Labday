@@ -13,6 +13,8 @@ require("../controllers/bdd.php");
 
 
 <body>
+<div style="display: flex; flex-direction: row">
+
 <?php
 // echo "session username : " . $_SESSION['username'];
 
@@ -109,7 +111,7 @@ if (isset($_SESSION['username'])) {
 
     </div>
 </section>
-
+</div>
 
 <?php
 require("footer.php");

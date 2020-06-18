@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  sam. 13 juin 2020 à 14:11
+-- Généré le :  jeu. 18 juin 2020 à 12:28
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -181,7 +181,9 @@ INSERT INTO `karma` (`id_karma`, `id_utilisateur`, `note`, `id_evenement`) VALUE
 (34, 10, 8, NULL),
 (40, 32, 5, NULL),
 (41, 10, 1, 47),
-(42, 10, 9, 23);
+(42, 10, 9, 23),
+(43, 33, 5, NULL),
+(44, 33, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -223,7 +225,8 @@ INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `
 (30, 10, 'oui', 6, '2020-05-29 11:44:23'),
 (31, 10, 'j\'aime le code', 7, '2020-05-29 11:44:37'),
 (32, 10, 'oui', 7, '2020-06-05 16:10:16'),
-(33, 10, 'test', 7, '2020-06-07 16:18:23');
+(33, 10, 'test', 7, '2020-06-07 16:18:23'),
+(34, 10, 'test', 7, '2020-06-18 12:12:11');
 
 -- --------------------------------------------------------
 
@@ -301,12 +304,13 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `date_naissance`, `adresse`, `code_postale`, `pays`, `telephone`, `mail`, `pseudo`, `mot_de_passe`, `type_utilisateur`, `ville`, `date_creation_utilisateur`, `karma`) VALUES
-(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'particulier', 'Pontoise', '2020-04-07 00:00:00', '6.14'),
+(2, 'Jonathan', 'Debailleux', '1997-06-21', '2 place de paris', 95000, 'France', 987654321, 'jojo.debailleux@gmail.com', 'jojo', 'JOJO', 'professionnel', 'Pontoise', '2020-04-07 00:00:00', '6.14'),
 (3, 'Marie', 'Tchydemian', '1998-08-06', 'rue de la gare', 95270, 'France', 1357908642, 'marie.tdm@gmail.com', 'marie.tdm', 'MARIE', 'particulier', 'Viarmes', '2020-04-17 00:00:00', '8.00'),
 (10, 'sarah', 'Hayat', '1997-09-15', '49Bis Grande rue', 95270, 'France', 770139965, 'saraahyt@gmail.com', 'sarah', 'SARAH', 'particulier', 'Asnieres-sur-oise', '2020-04-30 10:03:31', '7.33'),
 (14, 'jonathan', 'Debailleux', '1997-11-08', '19 rue des vendanges prochaines', 95800, 'France', 777373735, 'jonathan.debailleux@edu.itescia.fr', 'jonathan', 'JOJO', 'particulier', 'CORMEILLES EN PARISIS', '2020-05-26 14:15:21', '0.00'),
 (15, 'Léna', 'Pancher', '1997-08-04', '49 bis grande rue', 95270, 'France', 648314973, 'lenapancher@gmail.com', 'lenouch', 'coucou', 'particulier', 'Asnières-sur-Oise', '2020-05-27 19:43:40', '5.00'),
-(32, 'test', 'test', '2018-12-02', 'test', 55555, 'Afghanistan', 987654321, 'test@test.com', 'test', 'test', 'particulier', 'test', '2020-05-31 15:35:35', '5.00');
+(32, 'test', 'test', '2018-12-02', 'test', 55555, 'Afghanistan', 987654321, 'test@test.com', 'test', 'test', 'particulier', 'test', '2020-05-31 15:35:35', '5.00'),
+(33, 'prenom', 'nom', '2018-11-29', '1 rue de l\'adresse', 95270, 'Argentine', 102030405, 'nom.prenom@gmail.com', 'nom', 'test', 'particulier', 'Viarmes', '2020-06-17 17:39:27', '5.00');
 
 --
 -- Index pour les tables déchargées
@@ -398,7 +402,7 @@ ALTER TABLE `evenements`
 -- AUTO_INCREMENT pour la table `favoris`
 --
 ALTER TABLE `favoris`
-  MODIFY `id_favoris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_favoris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
@@ -410,13 +414,13 @@ ALTER TABLE `inscription_evenements`
 -- AUTO_INCREMENT pour la table `karma`
 --
 ALTER TABLE `karma`
-  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_karma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
@@ -434,7 +438,7 @@ ALTER TABLE `sujets_forum`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Contraintes pour les tables déchargées

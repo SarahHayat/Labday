@@ -21,7 +21,7 @@ $type_utilisateur = $_POST["type_utilisateur"];
 /**
  * ajout d'un nouveau compte
  */
-if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)) {
+if (isset($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe)) {
     $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
     $donnees = $reponse->fetch();
     if (!$donnees) {

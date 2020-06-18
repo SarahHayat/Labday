@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("../controllers/bdd.php");
+require("../controllers/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,35 +10,33 @@ require ("../controllers/bdd.php");
     <link rel="stylesheet" href="../assets/css/events.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
 </head>
 <body>
-<?php
-if (isset($_SESSION['username'])) {
-    require("headerConnect.php");
-} else {
-    require("headerDisconnect.php");
-}
-
-$req = $bdd->query('SELECT  titre_evenement, x, y, id_evenement FROM evenements');
-$tabMap = array();
-while ($donnee = $req->fetchAll()){
-
-    array_push($tabMap, $donnee);
-}
-
-?>
-<script>
-    var dataPhp= <?php echo json_encode($tabMap); ?>
-
-</script>
-
+<div style="display: flex; flex-direction: row">
+    <?php
+    if (isset($_SESSION['username'])) {
+        require("headerConnect.php");
+    } else {
+        require("headerDisconnect.php");
+    }
+    $req = $bdd->query('SELECT  titre_evenement, x, y, id_evenement FROM evenements');
+    $tabMap = array();
+    while ($donnee = $req->fetchAll()) {
+        array_push($tabMap, $donnee);
+    }
+    ?>
+    <div style="width: 100%">
+        <div>
+    <script>
+        var dataPhp = <?php echo json_encode($tabMap); ?>
+    </script>
     <div id="map">
         <div id="mapid">
         </div>
     </div>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script type="text/javascript" src="../js/mapping.js"></script>
+
     <form method="post" class="filtre" onsubmit="return false;">
         <select name="categorie" id="categorie" class="filtre-container">
             <option value="NULL">Choisir une categorie</option>
@@ -67,6 +65,7 @@ while ($donnee = $req->fetchAll()){
         <input type="range" name="karma" min="0" max="10" id="karma" class="filtre-container">
         <input type="submit" value="chercher" onclick="filtre()" class="filtre-container">
     </form>
+    </div>
 
     <?php
     $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
@@ -75,19 +74,22 @@ while ($donnee = $req->fetchAll()){
         where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
     // On affiche chaque entrée une à une
     $donnees = $reponse->fetchAll();
-    for ($i = 0; $i < sizeof($donnees); $i++) {
-        ?>
-<section class="fond" id="trie">
+    for ($i = 0;
+    $i < sizeof($donnees);
+    $i++) {
+    ?>
+    <section class="fond" id="trie">
         <div class="listOfEvent">
-            <div class="centerH3">
-                <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
-            </div>
+            <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
+
+
             <ul class="collectionItem">
                 <div class="pictureEvent1">
-                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                    <img id="imgTree" src="../assets/images/event.png"/>
                     <p><?php echo $donnees[$i]['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">
+                    <div style="display: flex; text-align: right">
                     <div class="gauche">
                         <p><?php echo "Par " ?> <b><a
                                         href="userProfil.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
@@ -95,7 +97,7 @@ while ($donnee = $req->fetchAll()){
                         <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
                         <p><?php echo $donnees[$i]['commune'] . " " . $donnees[$i]['code_postal']; ?></p>
                         <p><b> <?php echo $donnees[$i]['date_evenement']; ?></b></p>
-                    </div>
+
                     <p class="description"><?php echo $donnees[$i]['description']; ?></p>
 
                     <?php
@@ -126,22 +128,27 @@ while ($donnee = $req->fetchAll()){
                                href="../controllers/addToMyFav.php?id_evenement= <?php echo $donnees[$i]['id_evenement']; ?>">Ajouter
                                 à
                                 mes favoris </a>
-
                             <?php
                         }
                     }
-
-
                     //
                     ?>
+                    </div>
+                        <div class="centerH3">
+                            <h3 class="titleOfEvent"><?php echo $donnees[$i]['titre_evenement']; ?> </h3>
+                        </div>
+                </div>
                 </div>
             </ul>
+            </div>
         </div>
+    </section>
         <?php
     }
     ?>
-    <script src="../js/security.js"></script>
-</section>
+    </div>
+</div>
+<script src="../js/security.js"></script>
 <?php
 require("footer.php");
 ?>

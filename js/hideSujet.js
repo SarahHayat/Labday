@@ -8,4 +8,5 @@ togg1.addEventListener("click", () => {
         togg1.style.display ="none";
 
     }
-})
+});
+

@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
 
 $articles = $bdd->query('SELECT * FROM evenements as e LEFT JOIN utilisateurs as u ON e.id_utilisateur = u.id_utilisateur ORDER BY e.date_evenement DESC');
 
-if (isset($_GET['search']) and !empty($_GET['search'])) {
+if (isset($_GET['search']) AND !empty($_GET['search'])) {
     $search = htmlspecialchars($_GET['search']);
     $articles = $bdd->query('SELECT * FROM evenements as e LEFT JOIN utilisateurs as u ON e.id_utilisateur = u.id_utilisateur WHERE e.titre_evenement LIKE "%' . $search . '%" ORDER BY e.date_evenement DESC');
 
@@ -44,38 +44,30 @@ if (isset($_GET['search']) and !empty($_GET['search'])) {
             ?>
 
             <div class="listOfEvent">
-                <div class="centerH3">
-                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
-                </div>
                 <ul class="collectionItem">
-                    <div class="pictureEvent1">
+                    <div class="pictureEvent">
                         <img id="imgTree" src="../assets/images/arbre_icon.png"/>
                     </div>
                     <div class="pictureEvent">
-                        <div class="gauche">
-                            <p><?php echo "Par " ?> <b><a
-                                            href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
-                                le : <b> <?php echo $donnees['date_poste'] ?></b></p>
-                            <p><?php echo $donnees['type_utilisateur']; ?></p>
-                            <p><?php echo $donnees['commune'] . " " . $donnees['code_postal']; ?></p>
-                            <p><?php echo $donnees['date_evenement']; ?></p>
-                            <p class="description"><?php echo $donnees['description']; ?></p>
-                        </div>
-                        <?php
-                        if (isset($donnees['id_evenement'], $_SESSION['id_name'])) {
-                            $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-                            $req->execute(array(
-                                'id_utilisateur' => $_SESSION['id_name'],
-                                'id_evenement' => $donnees['id_evenement'],
-                            ));
 
-                            $resultat = $req->fetch();
-                            if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
-                                ?>
-                                <a class="inputListOfEvent"
-                                   href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
-                                <?php
-                            }
+                        <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                        <p><?php echo "Par " ?> <b><a href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b> le : <b> <?php echo $donnees['date_poste'] ?></b></p>
+                        <p><?php echo $donnees['type_utilisateur']; ?></p>
+                        <p><?php echo $donnees['lieu']; ?></p>
+                        <p><?php echo $donnees['date_evenement']; ?></p>
+                        <p class="description"><?php echo $donnees['description']; ?></p>
+                        <?php
+                        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                        $req->execute(array(
+                            'id_utilisateur' => $_SESSION['id_name'],
+                            'id_evenement' => $donnees['id_evenement'],
+                        ));
+
+                        $resultat = $req->fetch();
+                        if ($donnees['id_utilisateur'] !== $_SESSION['id_name']  && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
+                            ?>
+                            <a class="inputListOfEvent" href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                            <?php
                         }
                         ?>
                     </div>
