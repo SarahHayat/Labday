@@ -65,10 +65,10 @@ if (isset($_SESSION['username'])) {
             <p><span id="txtpseudo"></span></p>
 
             <label><b>Adresse postale</b> <span class="obligatoire">*</span></label>
-            <input type="text" placeholder="adresse" name="adresse" required>
+            <input type="text" placeholder="adresse (N°, rue)" name="adresse" required>
 
-            <label><b>Code postale</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="code postale" name="code_postale" oninput="if(value.length>5)value=value.slice(0,5)" required>
+            <label><b>Code postal</b> <span class="obligatoire">*</span></label>
+            <input type="text" placeholder="(ex: 95000)"" name="code_postale" maxlength="5" required>
 
             <label><b>Ville</b> <span class="obligatoire">*</span></label>
             <input type="text" placeholder="ville" name="ville" required>
@@ -81,8 +81,7 @@ if (isset($_SESSION['username'])) {
             <p><span id="txtmail"></span></p>
 
             <label><b>Numéro de téléphone</b> <span class="obligatoire">*</span></label>
-            <input type="number" placeholder="numéro de téléphone" name="telephone"
-                   oninput="if(value.length>10)value=value.slice(0,10)" required>
+            <input type="text" placeholder="numéro de téléphone" name="telephone" maxlength="10" required>
 
             <label><b>Date de naissance</b> <span class="obligatoire">*</span></label>
             <input type="date" id="date_naissance" name="date_naissance" min="1940-01-01" max="2018-12-31" required>

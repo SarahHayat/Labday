@@ -2,7 +2,7 @@ function supprimer() {
     var btn_supprimer = document.getElementById("supprimer");
     if (confirm("Vous désirez vraiment supprimer votre compte ?")) {
         console.log("oui")
-        window.location.href = '../controllers/DeleteUser.php';
+        window.location.href = '../controllers/deleteUser.php';
     } else {
         console.log("non")
 
@@ -68,7 +68,6 @@ function filtre() {
     var karma = document.getElementById("karma").value;
     if (karma == "NULL") {
         document.getElementById("trie").innerHTML = this.reponseText;
-        console.log("null" + ordre);
         return;
     } else
     {
@@ -76,13 +75,10 @@ function filtre() {
         xmlhttp.open("GET",'../php/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
-            console.log(this.readyState);
             if (this.readyState == 4) {
                 if(this.status ==200){
-                    console.log("ordre" + ordre + "cat : " + categorie);
                     document.getElementById("trie").innerHTML = this.responseText;
                 }else{
-                    console.log("else");
                 }
             }
         };

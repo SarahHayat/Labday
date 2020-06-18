@@ -4,54 +4,80 @@ require("bdd.php");
 class AllRequest
 
 {
-
+    public $bdd = null;
 
 
     public function __construct()
     {
+        try {
+            $this->bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            // echo "connexion réussi <br/> ";
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
-    public function selectFromBdd($bdd, $table,$champs, $value){
-        return $bdd->query("SELECT * FROM ".$table." WHERE ".$champs."  =  ".$value);
-    }
-    public function verifConnect($bdd)
+
+    public function isAllSet($tab)
     {
+        for ($i = 0; $i < count($tab); $i++) {
+            if (isset($tab[$i])) {
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+//    public function selectFromBdd($table,$champs, $value){
+//        if($champs) {
+//            return "SELECT * FROM " . $table . " WHERE " . $champs . "  =  " . $value;
+//        }else{
+//            return "SELECT * FROM " . $table;
+//        }
+//    }
+//
+//    public function insertToBdd($table, $champs, $value){
+//        return ("INSERT INTO ".$table[($champs)]."VALUES".[$value]);
+//    }
 
-        $_SESSION['username'] = $username;
+    public function verifConnect($bdd, $username, $password)
+    {
         $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
         $req->execute(array(
             'pseudo' => $username,
             'password' => $password
         ));
-
         $resultat = $req->fetch();
-
-        if (!$resultat) {
-            header('Location: ../php/connexion.php');
-        } else {
-            /**
-             * recuperer l'id de l'utilisateur connecté
-             */
-
-
-            $req = $this->selectFromBdd($bdd, "utilisateurs","pseudo", $_SESSION['username']);
-
-            while ($donnees = $req->fetch()) {
-                $id_name = $donnees['id_utilisateur'];
-                $_SESSION['id_name'] = $id_name;
-            }
-
-            $req->closeCursor();
-            $_SESSION['id_name'] = $id_name;
-
-            $_SESSION['username'] = $username;
-            header('Location: ../php/index.php');
-        }
+        return $resultat;
     }
 
-    public function createAccount($bdd)
+    public function getUserId($bdd, $username)
+    {
+        $req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $username . '"');
+        return $req;
+    }
+
+    public function startKarma($bdd, $id_name)
+    {
+        $req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id_utilisateur, :note)');
+        $req->execute(array(
+            'id_utilisateur' => $id_name,
+            'note' => 5,
+        ));
+        return $req;
+    }
+
+    public function averageKarma($bdd, $id_name ){
+        $requete = $bdd->query('SELECT AVG(note) as moyenne FROM karma WHERE id_utilisateur ="' . $id_name. '"');
+        return $requete;
+    }
+
+    public function updateAverageKarma($bdd, $moyenne, $id_name){
+        $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$id_name.'"');
+        return $reponse;
+    }
+
+    public function createAccount()
     {
         $prenom = $_POST["prenom"];
         $nom = $_POST["nom"];
@@ -66,11 +92,14 @@ class AllRequest
         $ville = $_POST["ville"];
         $type_utilisateur = $_POST["type_utilisateur"];
 
+        $tableau = array($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe, $ville, $type_utilisateur);
+
         /**
          * ajout d'un nouveau compte
          */
-        if (isset($prenom) && isset($nom) && isset($date_naissance) && isset($adresse) && isset($code_postale) && isset($pays) && isset($telephone) && isset($mail) && isset($pseudo) && isset($mot_de_passe)) {
-            $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
+        if ($this->isAllSet($tableau)) {
+            $req = $this->insertToBdd($this->bdd, "utilisateurs(['prenom', 'nom', 'date_naissance', 'adresse', code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville])");
+            //$req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
             $req->execute(array(
                 'prenom' => $prenom,
                 'nom' => $nom,
@@ -84,8 +113,6 @@ class AllRequest
                 'mot_de_passe' => $mot_de_passe,
                 'type_utilisateur' => $type_utilisateur,
                 'ville' => $ville,
-
-
             ));
         }
     }
@@ -101,6 +128,7 @@ class AllRequest
             header('Location: ../php/profil.php');
         }
     }
+
 
     public function inscriptionEvent($bdd)
     {
@@ -124,8 +152,9 @@ class AllRequest
         $titre = $_POST["titre"];
         $lieu = $_POST["lieux"];
 
+        $tableau = array($description, $date_evenement, $titre, $lieu, $_SESSION['id_name'], $_SESSION['username']);
 
-        if (isset($_SESSION['id_name']) && isset($description) && isset($date_evenement) && isset($titre) && isset($lieu) && isset($_SESSION['username'])) {
+        if ($this->isAllSet($tableau)) {
             $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, lieu) VALUES(:utilisateur, :description, :date_evenement, :titre, :lieu)');
             $req->execute(array(
                 'utilisateur' => $_SESSION['id_name'],
@@ -174,7 +203,7 @@ class AllRequest
         $id_evenement = $_GET['id_evenement'];
 
 
-        $reponse = $this->selectFromBdd($bdd,"evenements","id_evenement", $id_evenement);
+        $reponse = $this->selectFromBdd($bdd, "evenements", "id_evenement", $id_evenement);
         // On affiche chaque entrée une à une
         while ($donnees = $reponse->fetch()) {
             $description = $donnees['description'];
@@ -212,7 +241,9 @@ class AllRequest
     </form>
         <?php
 
-        if (isset($_POST['description']) && isset($_POST['date_evenement']) && isset($_POST['titre_evenement']) && isset($_POST['lieu']) && isset($id_evenement)) {
+
+        if ($this->isAllSet(array($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['lieu'], $id_evenement))) {
+
             $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
 , titre_evenement = :titre_evenement, lieu = :lieu WHERE id_evenement = "' . $id_evenement . '"');
             $req->execute(array(
