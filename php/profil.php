@@ -119,7 +119,7 @@ if (isset($_SESSION['username'])) {
                         <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
                         <ul class="collectionItem">
                             <div class="pictureEvent1">
-                                <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                <img id="imgTree" src="../assets/images/event.png"/>
                                 <p><?php echo $donnees['nom_categorie']; ?></p>
                             </div>
                             <div class="pictureEvent">

@@ -85,7 +85,7 @@ require("../controllers/bdd.php");
 
             <ul class="collectionItem">
                 <div class="pictureEvent1">
-                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                    <img id="imgTree" src="../assets/images/event.png"/>
                     <p><?php echo $donnees[$i]['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">
