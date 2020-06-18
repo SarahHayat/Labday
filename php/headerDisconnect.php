@@ -1,5 +1,5 @@
 <?php
-include ("../controllers/bdd.php")
+include ("../controllers/bdd.php");
 require ("../controllers/AllRequest.php");
 $resultat = new AllRequest();
 ?>

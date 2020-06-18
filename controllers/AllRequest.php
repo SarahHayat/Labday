@@ -1,6 +1,8 @@
 <?php
 require("bdd.php");
 
+
+
 class AllRequest
 
 {
@@ -167,8 +169,8 @@ where id_evenement = "' . $id_evenement . '"');
             'code_postal' => $code_postal,
             'commune' => $commune,
             'categorie' => $categorie,
-            'x' => $x,
-            'y' => $y,
+            'x' => $y,
+            'y' => $x,
 
         ));
         return $req;
@@ -242,21 +244,15 @@ ORDER BY `m`.`date_message` DESC LIMIT 10");
 
     public function isRegistered($bdd, $id_name, $id_evenement)
     {
-        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-        $req->execute(array(
-            'id_utilisateur' => $id_name,
-            'id_evenement' => $id_evenement,
-        ));
+        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = "'.$id_name.'" AND id_evenement = "'.$id_evenement.'"');
+
         return $req;
     }
 
     public function isFavorite($bdd, $id_evenement, $id_name)
     {
-        $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-        $reponse->execute(array(
-            'id_evenement' => $id_evenement,
-            'id_utilisateur' => $id_name
-        ));
+        $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = "'.$id_name.'" AND id_evenement = "'.$id_evenement.'"');
+
         return $reponse;
     }
 
@@ -285,6 +281,11 @@ left join utilisateurs as u on m.id_utilisateur = u.id_utilisateur WHERE m.id_su
     public function getUserPicture($bdd, $id_name)
     {
         $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $id_name . '" LIMIT 1');
+        return $req;
+    }
+
+    public function deleteUserPicture($bdd, $id_name){
+        $req = $bdd->query('DELETE FROM photo_utilisateurs WHERE id_utilisateur ="' . $id_name. '"');
         return $req;
     }
 
@@ -381,7 +382,7 @@ on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . 
         return $reponse;
     }
 
-    public function updateEvent($bdd, $description, $date, $titre, $adresse, $commune, $code_postal, $categorie)
+    public function updateEvent($bdd, $description, $date, $titre, $adresse, $commune, $code_postal, $categorie, $id_evenement)
     {
         $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
 , titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie WHERE id_evenement = "' . $id_evenement . '"');
@@ -397,3 +398,4 @@ on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . 
         return $req;
     }
 }
+

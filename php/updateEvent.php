@@ -1,7 +1,7 @@
 <?php
 session_start();
-require ("../controllers/AllRequest.php");
-$resultat = new AllRequest();
+//require ("../controllers/AllRequest.php");
+//$resultat = new AllRequest();
 require("../controllers/bdd.php");
 
 ?>
@@ -92,7 +92,7 @@ while ($donnees = $reponse->fetch()) {
  */
 if (isset($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $id_evenement)) {
 
-    $req = $resultat->updateEvent($bdd, $_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'],$_POST['commune'], $_POST['code_postal'], $_POST['categorie'] );
+    $req = $resultat->updateEvent($bdd, $_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'],$_POST['commune'], $_POST['code_postal'], $_POST['categorie'], $id_evenement );
 //    $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
 //, titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie WHERE id_evenement = "' . $id_evenement . '"');
 //    $req->execute(array(

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require ("../controllers/AllRequest.php");
-$resultat = new AllRequest();
+//require ("../controllers/AllRequest.php");
+//$resultat = new AllRequest();
 require("../controllers/bdd.php");
 
 ?>

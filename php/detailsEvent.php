@@ -1,7 +1,7 @@
 <?php
 session_start();
-require ("../controllers/AllRequest.php");
-$resultat = new AllRequest();
+//require ("../controllers/AllRequest.php");
+//$resultat = new AllRequest();
 require ("../controllers/bdd.php");
 require("headerConnect.php");
 
@@ -32,7 +32,7 @@ $id_evenement =$_GET['id_evenement'];
             </div>
             <ul class="collectionItem">
                 <div class="pictureEvent1">
-                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                    <img id="imgTree" src="../assets/images/event.png"/>
                     <p><?php echo $donnees[$i]['nom_categorie']; ?></p>
                 </div>
                 <div class="pictureEvent">

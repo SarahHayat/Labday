@@ -24,7 +24,7 @@ require ("bdd.php");
         echo "y : " . $y;
 
         if (isset($_SESSION['id_name'], $description, $date_evenement, $titre, $adresse, $code_postal, $commune, $_SESSION['username'], $categorie)) {
-           $req =$resultat->createEvent();
+           $req =$resultat->createEvent($bdd, $_SESSION['id_name'], $description, $date_evenement, $titre, $adresse, $code_postal, $commune, $categorie, $x, $y);
 //            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, adresse, code_postal, commune, id_categorie, x, y) VALUES(:utilisateur, :description, :date_evenement, :titre, :adresse, :code_postal, :commune, :categorie, :x, :y)');
 //            $req->execute(array(
 //                'utilisateur' => $_SESSION['id_name'],
