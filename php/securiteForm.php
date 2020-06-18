@@ -95,7 +95,7 @@ order by tri.date_evenement DESC');
                     <div class="pictureEvent">
                         <div class="gauche">
                             <p><?php echo "Par " ?> <b><a
-                                            href="profilUser.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
+                                            href="userProfil.php?id_user= <?php echo $donnees[$i]['id_utilisateur'] ?>"> <?php echo $donnees[$i]['pseudo'] ?></a></b>
                                 le : <?php echo $donnees[$i]['date_poste'] ?></p>
                             <p><?php echo $donnees[$i]['type_utilisateur']; ?></p>
                             <p><?php echo $donnees[$i]['commune'] . " " . $donnees[$i]['code_postal']; ?></p>

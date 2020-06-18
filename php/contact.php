@@ -104,8 +104,9 @@ if (isset($_SESSION['username'])) {
                     ?>
             <script>alert("<?php echo ("Vous n'êtes pas connecté !"); ?>")</script>
             <?php
-//            header('Location : index.php');
+            header('Location:' . $_SERVER['HTTP_REFERER']);
         }
+
         ?>
 
     </div>

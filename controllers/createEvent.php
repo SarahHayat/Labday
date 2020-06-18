@@ -36,6 +36,7 @@ require ("bdd.php");
                 'y' => $y,
 
             ));
+            
             header('location: ../php/profil.php');
 
         }else {

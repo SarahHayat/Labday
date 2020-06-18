@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 05 juin 2020 à 11:49
+-- Généré le :  sam. 13 juin 2020 à 14:11
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -57,34 +57,37 @@ CREATE TABLE `evenements` (
   `adresse` varchar(250) NOT NULL,
   `code_postal` int(5) NOT NULL,
   `commune` varchar(250) NOT NULL,
-  `x` float DEFAULT NULL,
-  `y` float DEFAULT NULL
+  `y` float DEFAULT NULL,
+  `x` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `evenements`
 --
 
-INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `id_categorie`, `adresse`, `code_postal`, `commune`, `x`, `y`) VALUES
-(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, NULL, '', 0, '', 0, 0),
+INSERT INTO `evenements` (`id_evenement`, `id_utilisateur`, `date_poste`, `description`, `date_evenement`, `titre_evenement`, `id_karma`, `id_categorie`, `adresse`, `code_postal`, `commune`, `y`, `x`) VALUES
+(10, 3, '2020-04-29 15:36:22', 'cours de CUISINE POUR JOJO', '2020-12-24 09:00:00', 'cours de CUISINE', NULL, NULL, '83 avenue Henri Barbuss', 95400, 'Arnouville', 0, 0),
 (16, 10, '2020-04-30 10:19:06', 'cours de samba trop bien', '2020-04-30 15:00:00', 'cours de samba POUR LES CHIEN', 25, NULL, '', 0, '', 0, 0),
 (17, 10, '2020-04-30 10:58:40', 'cours passé', '2020-04-30 11:04:00', 'Cours passé', NULL, NULL, '', 0, '', 0, 0),
 (21, 10, '2020-05-03 16:58:55', 'l\'utilisateur ne doit pas pouvoir s\'inscrire', '2020-05-20 15:00:00', 'Nouveau cours', NULL, NULL, '', 0, '', 0, 0),
-(22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', 4, 2, '', 0, '', 0, 0),
+(22, 10, '2020-05-06 17:00:28', 'Apres midi jeux de société a cergy', '2020-06-07 15:00:00', 'Aprem jeux de société', 4, 2, '22 rue de bordeaux', 95400, 'Arnouville', 0, 0),
 (23, 10, '2020-05-21 11:04:01', 'soiree', '2020-05-21 11:05:00', 'soiree', 19, 4, '', 0, '', 0, 0),
-(24, 10, '2020-05-25 09:27:15', 'tour de la ville de tours', '2020-10-01 10:00:00', 'tour de la ville', NULL, 3, '', 0, '', 0, 0),
+(24, 10, '2020-05-25 09:27:15', 'tour de la ville de tours', '2020-10-01 10:00:00', 'tour de la ville', NULL, 3, '21 avenue Camille Daniel', 17390, 'Ronce les Bains', 0, 0),
 (25, 3, '2020-05-25 10:31:14', 'yoga en plein air', '2020-05-25 10:33:00', 'yoga', 23, 1, '', 0, '', 0, 0),
 (27, 10, '2020-05-25 14:40:21', 'promenade chiens dans viarmes c\'est cool !!', '2020-05-25 14:42:00', 'promenade de chien', 26, 1, '', 0, '', 0, 0),
-(29, 15, '2020-05-27 20:00:32', 'Bonjour, venez participer à mon jeu de sarbacane pour mon anniversaire ! Tout le monde est le bienvenue, plus on est de fou, plus on rit ! (n\'oubliez pas de m\'apporter un cadeau merciiii)', '2020-08-04 14:00:00', 'jeu de sarbacane ', NULL, 1, '', 0, '', 0, 0),
+(29, 15, '2020-05-27 20:00:32', 'Bonjour, venez participer à mon jeu de sarbacane pour mon anniversaire ! Tout le monde est le bienvenue, plus on est de fou, plus on rit ! (n\'oubliez pas de m\'apporter un cadeau merciiii)', '2020-08-04 14:00:00', 'jeu de sarbacane ', NULL, 1, '16 impasse bellevue', 72560, 'Changé', 0, 0),
 (32, 10, '2020-05-29 11:29:00', 'pique nique ', '2020-05-29 21:00:00', 'pique nique', NULL, 1, '', 0, '', 0, 0),
 (33, 10, '2020-05-29 14:35:40', 'football', '2020-05-30 15:00:00', 'football', NULL, 1, '', 0, '', 0, 0),
 (34, 10, '2020-06-04 14:20:43', 'scrabble', '2020-06-04 14:21:00', 'scrabble', NULL, 2, '', 0, '', 0, 0),
-(47, 2, '2020-06-04 20:12:19', 'yoga aux champs elysées', '2020-07-12 20:12:00', 'yoga', NULL, 1, '', 0, '', 0, 0),
-(48, 10, '2020-06-04 20:21:45', 'test s\'inscrire', '2020-06-05 20:21:00', 'test s\'inscire', NULL, 4, '', 0, '', 0, 0),
-(49, 2, '2020-06-04 21:09:41', 'monopoly', '2020-06-19 21:09:00', 'monopoly', NULL, 2, '', 0, '', 0, 0),
+(47, 2, '2020-06-04 20:12:19', 'yoga aux champs elysées', '2020-07-12 20:12:00', 'yoga', NULL, 1, '22 rue du douaire', 95570, 'Villaines-sous-Bois', 0, 0),
+(48, 10, '2020-06-04 20:21:45', 'test s\'inscrire', '2020-06-05 20:21:00', 'test s\'inscire', NULL, 4, '14 rue honoré de Balzac', 95270, 'Luzarches', 0, 0),
+(49, 2, '2020-06-04 21:09:41', 'monopoly', '2020-06-19 21:09:00', 'monopoly', NULL, 2, '19 rue des vendanges prochaines', 95800, 'Cergy', 0, 0),
 (50, 10, '2020-06-05 10:01:23', 'Ramenez des chips!', '2020-06-26 10:01:00', 'Monopoly', NULL, 2, '49Bis grande rue', 95270, 'Asnières-sur-Oise', 0, 0),
 (51, 10, '2020-06-05 10:08:36', 'pétanque à la marre aux canard', '2020-06-10 10:08:00', 'Pétanque', NULL, 1, '10 rue Montcel', 95270, 'Viarmes', 0, 0),
-(54, 10, '2020-06-05 10:42:52', 'test', '2020-06-19 10:42:00', 'test', NULL, 1, '18 rue pasteur', 95270, 'Noisy-sur-Oise', 2.32753, 49.1374);
+(54, 10, '2020-06-05 10:42:52', 'test', '2020-06-19 10:42:00', 'test', NULL, 1, '18 rue pasteur', 95270, 'Noisy-sur-Oise', 2.32753, 49.1374),
+(55, 10, '2020-06-13 10:44:49', 'tennis dans ma cuisine', '2020-06-26 10:44:00', 'tennis', NULL, 1, '42 grande rue', 95270, 'Asnières-sur-Oise', 2.35612, 49.1347),
+(56, 10, '2020-06-13 10:58:44', 'visite de chatelet', '2020-06-25 10:58:00', 'visite', NULL, 3, '1 rue de rochechouart', 75009, 'Paris', 2.34429, 48.8766),
+(57, 10, '2020-06-13 11:07:18', 'soirée mousse', '2020-06-24 11:07:00', 'soiree mousse', NULL, 4, '35 boulevard du port', 95000, 'Cergy', 2.07903, 49.0397);
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,6 @@ INSERT INTO `favoris` (`id_favoris`, `id_utilisateur`, `id_evenement`) VALUES
 (66, 3, 22),
 (67, 3, 22),
 (68, 3, 12),
-(71, 10, 10),
 (72, 2, 48);
 
 -- --------------------------------------------------------
@@ -129,14 +131,14 @@ CREATE TABLE `inscription_evenements` (
 
 INSERT INTO `inscription_evenements` (`id_inscription`, `id_utilisateur`, `id_evenement`) VALUES
 (33, 10, 17),
-(44, 2, 10),
-(45, 2, 10),
 (47, 2, 23),
 (58, 15, 22),
 (60, 2, 32),
 (61, 10, 29),
 (63, 15, 32),
-(64, 2, 48);
+(64, 2, 48),
+(65, 10, 49),
+(70, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -219,7 +221,9 @@ INSERT INTO `messages` (`id_message`, `id_utilisateur`, `message`, `id_sujet`, `
 (28, 15, 'es*', 6, '2020-05-27 20:03:41'),
 (29, 15, 'j\'aime les pédales des vélos ', 4, '2020-05-27 20:06:37'),
 (30, 10, 'oui', 6, '2020-05-29 11:44:23'),
-(31, 10, 'j\'aime le code', 7, '2020-05-29 11:44:37');
+(31, 10, 'j\'aime le code', 7, '2020-05-29 11:44:37'),
+(32, 10, 'oui', 7, '2020-06-05 16:10:16'),
+(33, 10, 'test', 7, '2020-06-07 16:18:23');
 
 -- --------------------------------------------------------
 
@@ -241,8 +245,8 @@ CREATE TABLE `photo_utilisateurs` (
 INSERT INTO `photo_utilisateurs` (`id_photo`, `id_utilisateur`, `url`) VALUES
 (14, 2, '../assets/photoProfil/homme.jpg'),
 (20, 3, '../assets/photoProfil/femme.jpg'),
-(30, 10, '../assets/photoProfil/femme.jpg'),
-(31, 15, '../assets/photoProfil/homme_2.jpg');
+(31, 15, '../assets/photoProfil/homme_2.jpg'),
+(33, 10, '../assets/photoProfil/femme.jpg');
 
 -- --------------------------------------------------------
 
@@ -388,19 +392,19 @@ ALTER TABLE `categorie_evenements`
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT pour la table `favoris`
 --
 ALTER TABLE `favoris`
-  MODIFY `id_favoris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_favoris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT pour la table `inscription_evenements`
 --
 ALTER TABLE `inscription_evenements`
-  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_inscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT pour la table `karma`
@@ -412,13 +416,13 @@ ALTER TABLE `karma`
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `photo_utilisateurs`
 --
 ALTER TABLE `photo_utilisateurs`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `sujets_forum`
