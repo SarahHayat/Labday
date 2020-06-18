@@ -6,6 +6,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="leaflet" level="application" />
     <orderEntry type="library" name="leaflet" level="application" />
+<<<<<<< HEAD
     <orderEntry type="library" name="aos" level="application" />
+=======
+    <orderEntry type="library" name="jquery" level="application" />
+>>>>>>> master
   </component>
 </module>
