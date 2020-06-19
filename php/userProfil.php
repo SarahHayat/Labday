@@ -92,7 +92,7 @@ require("../controllers/bdd.php");
                         <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
                             <ul class="collectionItem">
                                 <div class="pictureEvent1">
-                                    <img id="imgTree" src="../assets/images/arbre_icon.png"/>
+                                    <img id="imgTree" src="../assets/images/event.png"/>
                                     <p><?php echo $donnees['nom_categorie']; ?></p>
                                 </div>
                                 <div class="pictureEvent">
@@ -109,12 +109,12 @@ require("../controllers/bdd.php");
                                     </div>
                                     <?php
                                     if (isset($_SESSION['id_name']) && isset($donnees['id_evenement'])) {
-                                        $req = $resultat->isRegistered($bdd, $_SESSION['id_name'], $donnees['id_evenement']);
-//                                        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-//                                        $req->execute(array(
-//                                            'id_utilisateur' => $_SESSION['id_name'],
-//                                            'id_evenement' => $donnees['id_evenement'],
-//                                        ));
+                                     //  $req = $resultat->isRegistered($bdd, $_SESSION['id_name'], $donnees['id_evenement']);
+                                        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                                        $req->execute(array(
+                                            'id_utilisateur' => $_SESSION['id_name'],
+                                            'id_evenement' => $donnees['id_evenement'],
+                                        ));
                                         $resultat = $req->fetch();
                                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                                             ?>

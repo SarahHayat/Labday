@@ -48,12 +48,12 @@ $id_evenement =$_GET['id_evenement'];
 
                     <?php
                     if (isset($_SESSION['id_name']) && isset($donnees[$i]['id_evenement'])) {
-                        $req = $resultat->isRegistered($bdd,$_SESSION['id_name'] , $donnees[$i]['id_evenement']);
-//                        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-//                        $req->execute(array(
-//                            'id_utilisateur' => $_SESSION['id_name'],
-//                            'id_evenement' => $donnees[$i]['id_evenement'],
-//                        ));
+                      //  $req = $resultat->isRegistered($bdd,$_SESSION['id_name'] , $donnees[$i]['id_evenement']);
+                        $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                        $req->execute(array(
+                            'id_utilisateur' => $_SESSION['id_name'],
+                            'id_evenement' => $donnees[$i]['id_evenement'],
+                        ));
                         $resultat = $req->fetch();
                         if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
 //                            ?>
@@ -62,13 +62,14 @@ $id_evenement =$_GET['id_evenement'];
                             <?php
                         }
                     }
-                    if (isset($donnees[$i]['id_utilisateur'], $_SESSION['id_name'])) {
-                        $reponse = $resultat->isFavorite($bdd,$donnees[$i]['id_evenement'], $_SESSION['id_name'] );
-//                        $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-//                        $reponse->execute(array(
-//                            'id_evenement' => $donnees[$i]['id_evenement'],
-//                            'id_utilisateur' => $_SESSION['id_name']
-//                        ));
+
+                    if (isset($donnees[$i]['id_utilisateur']) && isset( $_SESSION['id_name'])) {
+                       // $reponse = $resultat->isFavorite($bdd,$donnees[$i]['id_evenement'], $_SESSION['id_name'] );
+                        $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                        $reponse->execute(array(
+                            'id_evenement' => $donnees[$i]['id_evenement'],
+                            'id_utilisateur' => $_SESSION['id_name']
+                        ));
                         $mesDonnees = $reponse->fetch();
                         if ($donnees[$i]['id_utilisateur'] !== $_SESSION['id_name'] && !$resultat && !$mesDonnees && $_SESSION['type_utilisateur'] == "particulier") {
                             ?>

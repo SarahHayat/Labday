@@ -32,7 +32,7 @@ $resultat = new AllRequest();
                 <h3><?php
                     if (isset($_SESSION['id_name'])) echo $_SESSION['username']; ?></h3>
 
-                <a id="profil" href="profil.php"> Profil </a>
+                <!--<a id="profil" href="profil.php"> Profil </a>-->
                 <a id="deconnect" href="connexion.php"> Connexion </a>
 
             </div>
