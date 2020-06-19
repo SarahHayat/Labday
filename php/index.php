@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../controllers/bdd.php";
+require "../controllers/bdd/bdd.php";
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
 
@@ -18,9 +18,9 @@ require "../controllers/bdd.php";
 <div style="display: flex; flex-direction: row">
     <?php
     if (isset($_SESSION['username'])) {
-    require("headerConnect.php");
+    require("header/headerConnect.php");
     } else {
-    require("headerDisconnect.php");
+    require("header/headerDisconnect.php");
 
     }
     ?>
@@ -66,7 +66,7 @@ require "../controllers/bdd.php";
                     <div class="align_best">
                         <p><?php echo "#" . $i ?></p>
                         <img src="<?php echo $donnees['url'] ?>" id="photo_best_user">
-                        <a href="userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a>
+                        <a href="user/userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a>
                     </div>
                     <?php
                     $i++;
@@ -77,7 +77,7 @@ require "../controllers/bdd.php";
             if (isset($_SESSION['username'])) {
                 ?>
                 <div class="create">
-                    <form action="createEvent.php">
+                    <form action="event/createEvent.php">
                         <input type="submit" value="Creer un évenement"/>
                     </form>
 
@@ -142,6 +142,6 @@ require "../controllers/bdd.php";
 <script src="../js/scroll.js"></script>
 
 <?php
-require("footer.php");
+require("footer/footer.php");
 ?>
 </html>

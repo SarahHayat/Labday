@@ -2,7 +2,7 @@ function supprimer() {
     var btn_supprimer = document.getElementById("supprimer");
     if (confirm("Vous désirez vraiment supprimer votre compte ?")) {
         console.log("oui")
-        window.location.href = '../controllers/deleteUser.php';
+        window.location.href = '../controllers/user/deleteUser.php';
     } else {
         console.log("non")
 
