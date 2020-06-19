@@ -382,10 +382,10 @@ on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . 
         return $reponse;
     }
 
-    public function updateEvent($bdd, $description, $date, $titre, $adresse, $commune, $code_postal, $categorie, $id_evenement)
+    public function updateEvent($bdd, $description, $date, $titre, $adresse, $commune, $code_postal, $categorie, $id_evenement, $x, $y)
     {
         $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
-, titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie WHERE id_evenement = "' . $id_evenement . '"');
+, titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie , x = :x, y = :y WHERE id_evenement = "' . $id_evenement . '"');
         $req->execute(array(
             'description' => $description,
             'date_evenement' => $date,
@@ -394,6 +394,8 @@ on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . 
             'commune' => $commune,
             'code_postal' => $code_postal,
             'categorie' => $categorie,
+            'y' => $x,
+            'x' => $y
         ));
         return $req;
     }

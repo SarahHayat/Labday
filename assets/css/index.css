@@ -296,7 +296,7 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3))
 background:linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3)), url(../images/plein_air.png);
 }
 .background_image_2 .test_card:before{
-background:linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3)), url(../images/tourisme.jpg);
+background:linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(97, 114, 133, 0.3)), url(../images/tourisme.png);
 }
 .test_container .test_card{
 

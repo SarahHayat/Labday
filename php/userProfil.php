@@ -21,7 +21,7 @@ require("../controllers/bdd.php");
         require("headerDisconnect.php");
     }
     ?>
-    <section class="fond">
+    <section class="fond" style="width: 100%">
         <div class="profil flex">
             <div class="avatar ">
                 <div class="photo">
@@ -75,9 +75,7 @@ require("../controllers/bdd.php");
             </div>
         </div>
         <div class="evenement">
-            <div>
-                <h2>Évenements</h2>
-            </div>
+            
             <div class="evenement">
                 <?php
                 require("../controllers/bdd.php");

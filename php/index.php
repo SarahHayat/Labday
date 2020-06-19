@@ -73,34 +73,6 @@ require "../controllers/bdd.php";
                 }
                 ?>
             </div>
-            <!--<div id="slider">-->
-            <!--    <figure>-->
-            <!--        <img src="../assets/images/jeu_societe.jpg" alt>-->
-            <!--        <img src="../assets/images/plein_air.png" alt>-->
-            <!--        <img src="../assets/images/tourisme.jpg" alt>-->
-            <!--        <img src="../assets/images/soiree.jpg" alt>-->
-            <!--    </figure>-->
-            <!--</div>-->
-
-
-            <!--<div class="slideshow-container">-->
-            <!--    <div class="mySlides fade">-->
-            <!--        <img src="../assets/images/jeu_societe.jpg">-->
-            <!--    </div>-->
-            <!--    <div class="mySlides fade">-->
-            <!--        <img src="../assets/images/plein_air.png">-->
-            <!--    </div>-->
-            <!--    <div class="mySlides fade">-->
-            <!--        <img src="../assets/images/tourisme.jpg">-->
-            <!--    </div>-->
-            <!--    <div class="mySlides fade">-->
-            <!--        <img src="../assets/images/soiree.jpg">-->
-            <!--    </div>-->
-            <!--    <span class="dot"></span>-->
-            <!--    <span class="dot"></span>-->
-            <!--    <span class="dot"></span>-->
-            <!--    <span class="dot"></span>-->
-            <!--</div>-->
             <?php
             if (isset($_SESSION['username'])) {
                 ?>
@@ -113,34 +85,7 @@ require "../controllers/bdd.php";
                 <?php
             }
             ?>
-            <!--    <section class="fond flex_column">-->
-            <!--        <div id="carte">-->
-            <!--            <p>QUI SOMMES-NOUS ? </p>-->
-            <!--            <p> Un groupe d'étudiant qui souhaite divertir les gens. Enfaite on aime faire des activités sympas et-->
-            <!--                découvrir-->
-            <!--                de nouvelles choses. On a donc souhaité faire rencontrer les gens avec des activités, aider les gens-->
-            <!--                à-->
-            <!--                sortir autrement. </p>-->
-            <!--        </div>-->
-            <!---->
-            <!--        <div id="carte">-->
-            <!--            <p>POUR QUI ? </p>-->
-            <!--            <p> Ce site est accessible pour les professionnels de l'évènement comme pour les particuliers qui-->
-            <!--                souhaitent-->
-            <!--                promouvoir des évènements ou simplement les utilisateurs qui souhaite participer. </p>-->
-            <!--        </div>-->
-            <!---->
-            <!--        <div id="carte">-->
-            <!--            <p>VOUS SOUHAITEZ ? </p>-->
-            <!--            <p> Faire quelque chose de nouveau ou apprendre?-->
-            <!--                Vous ne savez pas quoi faire avec votre enfant, vote soeur ou bien vos copines pour sortir ? Trouver-->
-            <!--                des-->
-            <!--                évènements, de tous genre, autour de vous, avec des utilisateurs notés grâce à leurs évènements-->
-            <!--                précédents. </p>-->
-            <!--        </div>-->
-            <!---->
-            <!---->
-            <!--    </section>-->
+
             <section class="fond flex_column">
                 <div class="test_container background_image">
                     <div class="test_card">

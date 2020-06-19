@@ -30,7 +30,7 @@ require("../controllers/bdd.php");
      * mettre url de la photo dans bdd
      */
     ?>
-    <div class="fond">
+    <div class="fond" style="width: 100%">
         <form action="#" method="post" class="photoProfil">
             <div>
                 <img src="../assets/photoProfil/femme.jpg" width="150" height="150">
