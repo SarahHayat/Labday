@@ -66,8 +66,8 @@ function filtre() {
     var date_fin = document.getElementById("date_fin").value;
     var lieu = document.getElementById("lieu").value;
     var karma = document.getElementById("karma").value;
-    if (karma == "NULL") {
-        document.getElementById("trie").innerHTML = this.reponseText;
+    if (karma === "NULL") {
+        document.getElementById("filter").innerHTML = "";
         return;
     } else
     {
@@ -77,7 +77,8 @@ function filtre() {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 if(this.status ==200){
-                    document.getElementById("trie").innerHTML = this.responseText;
+                   // document.getElementById("filter").innerHTML = " ";
+                    document.getElementById("filter").innerHTML = this.responseText;
                 }else{
                 }
             }

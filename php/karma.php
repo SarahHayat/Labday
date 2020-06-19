@@ -30,7 +30,7 @@ while ($donnees = $reponse->fetch()) {
     $description = $donnees['description'];
     $date_evenement = $donnees['date_evenement'];
     $titre_evenement = $donnees['titre_evenement'];
-    $lieu = $donnees['lieu'];
+    $lieu = $donnees['commune'];
 
 
 /**

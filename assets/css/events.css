@@ -17,8 +17,8 @@ body {
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     top: 195px;
-    height: 800px;
-    width: 100%;
+    /*height: 800px;*/
+   /* width: 100%;*/
     overflow: scroll;
 }
 
@@ -61,6 +61,7 @@ body {
 }
 .listOfEvent{
 margin-bottom: 10%;
+
 }
 .titleOfEvent {
     border-bottom: solid 1px rgba(255,215, 0,0.7);

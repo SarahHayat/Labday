@@ -47,14 +47,7 @@ require "../controllers/bdd.php";
             <div id="section2"></div>
 
         </section>
-        <?php
-        // echo "session username : " . $_SESSION['username'];
-        if (isset($_SESSION['id_name'])) {
 
-        } else {
-            require("headerDisconnect.php");
-        }
-        ?>
 
         <section id="myID" class="no_back">
             <div class="fond1">

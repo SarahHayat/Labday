@@ -25,6 +25,7 @@ if (isset($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telep
     $reponse = $resultat->existAccount($bdd, $pseudo, $mail);
   //  $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
     $donnees = $reponse->fetch();
+    $mot_de_passe= sha1($mot_de_passe);
     if (!$donnees) {
         $req = $resultat->createAccount($bdd,$prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe, $type_utilisateur, $ville)
 //        $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
@@ -64,6 +65,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 
+
 /**
  * verification connexion
  */
@@ -74,7 +76,8 @@ if (isset($username,$password)) {
 //        'password' => $password
 //    ));
 
-    $result = $resultat->verifConnect($bdd, $username, $password);
+    $password= sha1($password);
+    $result = $resultat->verifConnect($username, $password);
 
     // $resultat = $req->fetch();
 
@@ -114,7 +117,7 @@ if (isset($username,$password)) {
 
           // $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
             $reponse = $resultat->updateAverageKarma($bdd, $moyenne,$_SESSION['id_name'] );
-            header('Location: ../php/index.php');
+            header('Location: ../php/connexion.php');
         }
 
 

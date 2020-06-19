@@ -42,9 +42,9 @@ class AllRequest
 //        return ("INSERT INTO ".$table[($champs)]."VALUES".[$value]);
 //    }
 
-    public function verifConnect($bdd, $username, $password)
+    public function verifConnect($username, $password)
     {
-        $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
+        $req = $this->bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
         $req->execute(array(
             'pseudo' => $username,
             'password' => $password
