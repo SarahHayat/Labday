@@ -2,7 +2,6 @@
 session_start();
 require("../../controllers/bdd/AllRequest.php");
 $resultat = new AllRequest();
-require('../../controllers/bdd/bdd.php');
 
 //$requete = $bdd->query('SELECT * FROM sujets_forum WHERE id_sujet = "'.$_GET['id_sujet'].'"');
 //$donnees = $requete->fetch();
@@ -10,7 +9,7 @@ require('../../controllers/bdd/bdd.php');
 $id_sujet = $_GET['id_sujet'];
 $date = date('Y-m-d H:i:s');
 
-$req = $resultat->addNewMessage($bdd, $date, $_SESSION['id_name'], $_POST['message'], $id_sujet );
+$req = $resultat->addNewMessage($date, $_SESSION['id_name'], $_POST['message'], $id_sujet );
 //$req = $bdd->prepare("INSERT INTO messages(id_utilisateur, message, id_sujet, date_message) VALUES(:id_utilisateur, :message, :id_sujet, :date_message)");
 //$req->execute(array(
 //    'date_message' => $date,

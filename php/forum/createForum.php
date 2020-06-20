@@ -2,7 +2,6 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require('../../controllers/bdd/bdd.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,7 +31,7 @@ require('../../controllers/bdd/bdd.php');
             <input type="search" name="search_forum" placeholder="recherche...">
             <input type="submit" value="entrer">
         </form>
-        <form method="post" action="../../controllers/forum/forum.php" id="form_forum">
+        <form method="post" action=".././controllers/forum/forum.php" id="form_forum">
             <input type="submit" id="button" value="Créer un sujet" class="button_sujet">
             <div id="chat">
                 <label><b>Sujet :</b> <span class="obligatoire">*</span></label>
@@ -47,7 +46,7 @@ require('../../controllers/bdd/bdd.php');
 
         <div>
             <?php
-            $reponse = $resultat->getAllSubjectForum($bdd);
+            $reponse = $resultat->getAllSubjectForum();
 //            $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj
 //left join utilisateurs as u
 //on sj.id_utilisateur = u.id_utilisateur

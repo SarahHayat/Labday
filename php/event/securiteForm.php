@@ -1,12 +1,12 @@
 <?php
 session_start();
 require("../../controllers/bdd/AllRequest.php");
-$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
+require ('../../controllers/bdd/bdd.php');
 
+$resultat = new AllRequest();
 
 if (isset($_GET['pseudo'])) {
-    $sql = $resultat->getPseudo($bdd, $_GET['pseudo']);
+    $sql = $resultat->getPseudo($_GET['pseudo']);
 //    $sql = $bdd->query('SELECT * FROM utilisateurs WHERE pseudo ="' . $_GET['pseudo'] . '"');
 
     while ($result = $sql->fetch()) {
@@ -17,7 +17,7 @@ if (isset($_GET['pseudo'])) {
     }
 }
 if (isset($_GET['mail'])) {
-    $req = $resultat->getMail($bdd, $_GET['mail']);
+    $req = $resultat->getMail($_GET['mail']);
 //    $req = $bdd->query('SELECT * FROM utilisateurs WHERE mail ="' . $_GET['mail'] . '"');
 
     while ($result = $req->fetch()) {

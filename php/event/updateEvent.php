@@ -2,7 +2,6 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
 
 ?>
     <!DOCTYPE html>
@@ -28,7 +27,7 @@ require("../../controllers/bdd/bdd.php");
      */
     $id_evenement = $_GET['id_evenement'];
 
-    $reponse = $resultat->getEventForUpdate($bdd, $id_evenement);
+    $reponse = $resultat->getEventForUpdate($id_evenement);
     //$reponse = $bdd->query('SELECT * FROM evenements as e join categorie_evenements as ce
     //on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . '"');
     // On affiche chaque entrée une à une
@@ -101,7 +100,7 @@ include("../footer/footer.php");
  */
 if (isset($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $id_evenement, $_POST['x'],$_POST['y'] )) {
 
-    $req = $resultat->updateEvent($bdd, $_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $_POST['categorie'], $id_evenement,  $_POST['x'], $_POST['y']);
+    $req = $resultat->updateEvent($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $_POST['categorie'], $id_evenement,  $_POST['x'], $_POST['y']);
 //    $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
 //, titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie WHERE id_evenement = "' . $id_evenement . '"');
 //    $req->execute(array(

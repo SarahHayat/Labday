@@ -1,7 +1,6 @@
 <?php
 session_start();
-require('../controllers/bdd.php');
-
+require ('../../controllers/bdd/bdd.php');
 $reponse = $bdd->prepare("INSERT INTO sujets_forum(id_utilisateur, nom_sujet) VALUES(:id_utilisateur, :sujet)");
 $reponse->execute(array(
     'id_utilisateur' => $_SESSION['id_name'],

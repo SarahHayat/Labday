@@ -2,7 +2,7 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
+require ('../../controllers/bdd/bdd.php');
 
 
 $id_evenement = $_GET['id_evenement'];
@@ -27,7 +27,7 @@ $id_evenement = $_GET['id_evenement'];
 
 
     <?php
-    $reponse = $resultat->getEvent($bdd, $id_evenement);
+    $reponse = $resultat->getEvent($id_evenement);
     //    $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
     //    ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut
     //    on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie

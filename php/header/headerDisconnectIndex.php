@@ -1,12 +1,12 @@
 <?php
-require("../../controllers/bdd/AllRequest.php");
+require(".././controllers/bdd/AllRequest.php");
 $resultat = new AllRequest();
 ?>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether</title>
-    <link rel="stylesheet" href="../../assets/css/headerConnect.css"/>
+    <link rel="stylesheet" href=".././assets/css/headerConnect.css"/>
 </head>
 
 <header style="background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));" id="menu-none">

@@ -3,8 +3,6 @@ session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
 
-require("../../controllers/bdd/bdd.php");
-
 
 // echo "session username : " . $_SESSION['username'];
 
@@ -21,7 +19,7 @@ if (isset($_SESSION['username'])) {
  */
 $id_evenement = $_GET['id_evenement'];
 $id_utilisateur = $_GET['id_utilisateur'];
-$reponse = $resultat->getKarmaByEvent($bdd , $id_evenement);
+$reponse = $resultat->getKarmaByEvent($id_evenement);
 //$reponse = $bdd->query('SELECT e.*, ce.* FROM evenements as e left join categorie_evenements as ce
 //on e.id_categorie = ce.id_categorie
 //where id_evenement = "' . $id_evenement . '"');
@@ -82,7 +80,7 @@ while ($donnees = $reponse->fetch()) {
 
 echo "id evenement : " . $id_evenement;
 if (isset($_POST['note']) && isset($id_utilisateur)) {
-    $req = $resultat->addKarma($bdd, $_POST['note'], $id_utilisateur, $id_evenement);
+    $req = $resultat->addKarma($_POST['note'], $id_utilisateur, $id_evenement);
 //    $req = $bdd->prepare('INSERT INTO karma(note, id_utilisateur, id_evenement) VALUES(:note, :id_utilisateur, :id_evenement)');
 //    $req->execute(array(
 //        'note' => $_POST['note'],
@@ -91,11 +89,11 @@ if (isset($_POST['note']) && isset($id_utilisateur)) {
 //
 //    ));
 
-    $requete = $resultat->averageKarma($bdd, $id_utilisateur);
+    $requete = $resultat->averageKarma($id_utilisateur);
  //   $requete =$bdd->query('SELECT ROUND(AVG(note)) as moyenne FROM karma WHERE id_utilisateur ="'.$id_utilisateur.'"');
     $donnees= $requete->fetch();
     $moyenne = $donnees['moyenne'];
-    $reponse = $resultat->updateAverageKarma($bdd, $moyenne, $id_utilisateur);
+    $reponse = $resultat->updateAverageKarma($moyenne, $id_utilisateur);
  //   $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$id_utilisateur.'"');
 
     header('Location: profil.php');

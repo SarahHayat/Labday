@@ -1,8 +1,9 @@
 <?php
 session_start();
 require("../../controllers/bdd/AllRequest.php");
+require ('../../controllers/bdd/bdd.php');
+
 $resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -16,14 +17,14 @@ require("../../controllers/bdd/bdd.php");
 if (isset($_GET['choice'])) {
 
     if ($_GET['choice'] == "mesEvent") {
-        $sql = $resultat->getEventByUser($bdd, $_SESSION['id_name']);
+        $sql = $resultat->getEventByUser($_SESSION['id_name']);
 
 //        $sql = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
 //        on ev.id_utilisateur= ut.id_utilisateur
 //        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
 
     } else if ($_GET['choice'] == "mesInscription") {
-        $sql = $resultat->getEventRegistered($bdd, $_SESSION['id_name']);
+        $sql = $resultat->getEventRegistered($_SESSION['id_name']);
 
 //        $sql = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie left join evenements as e on ie.id_evenement = e.id_evenement
 //    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur
@@ -31,7 +32,7 @@ if (isset($_GET['choice'])) {
 //    where ie.id_utilisateur ="' . $_SESSION['id_name'] . '"');
 
     } else if ($_GET['choice'] == "mesEventPassees") {
-        $sql = $resultat->getEventPassed($bdd, $_SESSION['id_name']);
+        $sql = $resultat->getEventPassed($_SESSION['id_name']);
         $sql = $bdd->query('SELECT ie.* , e.*, u.*, ce.* FROM inscription_evenements as ie 
 left join evenements as e on ie.id_evenement = e.id_evenement 
 LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur 
@@ -39,7 +40,7 @@ left join categorie_evenements as ce on ce.id_categorie = e.id_categorie
 where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < now()');
 
     } else if ($_GET['choice'] == "mesFavoris") {
-        $sql = $resultat->getFavorite($bdd, $_SESSION['id_name'] );
+        $sql = $resultat->getFavorite($_SESSION['id_name'] );
 //        $sql = $bdd->query('SELECT f.* , e.*, u.*, ce.* FROM favoris as f left join evenements as e on f.id_evenement = e.id_evenement
 //    LEFT join utilisateurs as u on e.id_utilisateur = u.id_utilisateur
 //    left join categorie_evenements as ce on ce.id_categorie = e.id_categorie
@@ -79,7 +80,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
                            href="updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
                         <?php
                     } else if ($_GET['choice'] == "mesEventPassees") {
-                        $req = $resultat->isNoted($bdd, $donnees['id_evenement']);
+                        $req = $resultat->isNoted($donnees['id_evenement']);
 //                        $req = $bdd->query('SELECT id_karma, id_evenement FROM karma WHERE id_evenement = "' . $donnees['id_evenement'] . '"');
 
                         $resultat = $req->fetch();

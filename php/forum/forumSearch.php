@@ -1,6 +1,7 @@
 <?php
 session_start();
-require("../../controllers/bdd/bdd.php");
+require ('../../controllers/bdd/bdd.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,6 +35,7 @@ if (isset($_GET['search_forum']) and !empty($_GET['search_forum'])) {
     }
 }
 ?>
+<body>
 <div class="fond">
     <a href="createForum.php"> << Retour</a>
 <form method="post" action="#">
@@ -93,7 +95,6 @@ if (isset($_GET['search_forum']) and !empty($_GET['search_forum'])) {
     </div>
 </form>
 </div>
-</body>
 <?php
 
 require("../footer/footer.php");

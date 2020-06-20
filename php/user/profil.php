@@ -2,7 +2,6 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,12 +33,12 @@ require("../../controllers/bdd/bdd.php");
                 <div class="photo">
                     <?php
                     if (isset($_SESSION['id_name'])) {
-                        $req = $resultat->getUserPicture($bdd, $_SESSION['id_name']);
+                        $req = $resultat->getUserPicture($_SESSION['id_name']);
 //                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                         while ($donnees = $req->fetch()) {
                             $url = $donnees['url'];
                             ?>
-                            <img src="<?php echo $url ?>" height="150px" width="150px">
+                            <img src="<?php echo '../'.$url ?>" height="150px" width="150px">
                             <?php
                         }
                     }
@@ -63,7 +62,7 @@ require("../../controllers/bdd/bdd.php");
                 <div>
                     <?php
                     if (isset($_SESSION['id_name'])) {
-                        $req = $resultat->getUser($bdd, $_SESSION['id_name']);
+                        $req = $resultat->getUser($_SESSION['id_name']);
 //                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                         while ($donnees = $req->fetch()) {
                             echo '<p>' . 'type : ' . $donnees['type_utilisateur'] . '</p>';
@@ -78,7 +77,7 @@ require("../../controllers/bdd/bdd.php");
                     </div>
                     <?php
                     if (isset($_SESSION['id_name'])) {
-                        $req = $resultat->getUser($bdd, $_SESSION['id_name']);
+                        $req = $resultat->getUser($_SESSION['id_name']);
 //                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                         while ($donnees = $req->fetch()) {
                             $moyenne = $donnees['karma'];
@@ -110,8 +109,7 @@ require("../../controllers/bdd/bdd.php");
 
                 <div id="evenement">
                     <?php
-                    require("../../controllers/bdd/bdd.php");
-                    $reponse = $resultat->getEventByUser($bdd, $_SESSION['id_name']);
+                    $reponse = $resultat->getEventByUser($_SESSION['id_name']);
                     //                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
                     //        on ev.id_utilisateur= ut.id_utilisateur
                     //        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');

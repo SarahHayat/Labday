@@ -2,7 +2,6 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -59,14 +58,14 @@ require("../../controllers/bdd/bdd.php");
          * supprimer photo d'avant
          */
 
-        $req = $resultat->deleteUserPicture($bdd, $_SESSION['id_name']);
+        $req = $resultat->deleteUserPicture($_SESSION['id_name']);
 //        $req = $bdd->query('DELETE FROM photo_utilisateurs WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
 
 
         /**
          * ajouter nouvelle photo
          */
-        $req = $resultat->addNewUserPicture($bdd, $_SESSION['id_name'], $_POST['photo']);
+        $req = $resultat->addNewUserPicture($_SESSION['id_name'], $_POST['photo']);
 //        $req = $bdd->prepare('INSERT INTO photo_utilisateurs(id_utilisateur, url) VALUES(:id_utilisateur, :url)');
 //        $req->execute(array(
 //            'id_utilisateur' => $_SESSION['id_name'],

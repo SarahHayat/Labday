@@ -1,5 +1,4 @@
 <?php
-include("../../controllers/bdd/bdd.php");
 require("../../controllers/bdd/AllRequest.php");
 $resultat = new AllRequest();
 ?>
@@ -16,12 +15,12 @@ $resultat = new AllRequest();
                 <div class="photo">
                     <?php
                     if (isset($_SESSION['id_name'])) {
-                        $req = $resultat->getUserPicture($bdd, $_SESSION['id_name'] );
+                        $req = $resultat->getUserPicture($_SESSION['id_name'] );
 //                        $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                         while ($donnees = $req->fetch()) {
                             $url = $donnees['url'];
                             ?>
-                            <img src="<?php echo $url ?>" height="70%" width="70%">
+                            <img src="<?php echo '../'.$url ?>" height="70%" width="70%">
                             <?php
                         }
                     }
@@ -44,9 +43,9 @@ $resultat = new AllRequest();
             <div class="menu-div-bas">
                 <p>MENU</p>
                 <ul>
-                    <li><a href=../index.php>Accueil</a></li>
+                    <li><a href="../index.php">Accueil</a></li>
                     <li><a href="../forum/createForum.php">Forum</a></li>
-                    <li><a href="events.php"> Sorties</a></li>
+                    <li><a href="../event/events.php"> Sorties</a></li>
                     <li><a href="../contact/contact.php"> Contact</a></li>
 
                 </ul>

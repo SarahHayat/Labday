@@ -1,6 +1,5 @@
 <?php
 session_start();
-require "../controllers/bdd/bdd.php";
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
 
@@ -18,9 +17,9 @@ require "../controllers/bdd/bdd.php";
 <div style="display: flex; flex-direction: row">
     <?php
     if (isset($_SESSION['username'])) {
-    require("header/headerConnect.php");
+    require("header/headerConnectIndex.php");
     } else {
-    require("header/headerDisconnect.php");
+    require("header/headerDisconnectIndex.php");
 
     }
     ?>
@@ -53,7 +52,7 @@ require "../controllers/bdd/bdd.php";
             <div class="fond1">
                 <h3> MEILLEURS UTILISATEURS</h3>
                 <?php
-                $req = $resultat->getBestUser($bdd);
+                $req = $resultat->getBestUser();
 //                $req = $bdd->query('SELECT u.*, pu.url
 //    FROM utilisateurs as u
 //    LEFT JOIN photo_utilisateurs as pu
@@ -142,6 +141,6 @@ require "../controllers/bdd/bdd.php";
 <script src="../js/scroll.js"></script>
 
 <?php
-require("footer/footer.php");
+require("footer/footerIndex.php");
 ?>
 </html>

@@ -2,7 +2,8 @@
 session_start();
 //require ("../controllers/AllRequest.php");
 //$resultat = new AllRequest();
-require("../../controllers/bdd/bdd.php");
+require ('../../controllers/bdd/bdd.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,12 +27,12 @@ require("../../controllers/bdd/bdd.php");
             <div class="avatar ">
                 <div class="photo">
                     <?php
-                    $req = $resultat->getUserPicture($bdd, $_GET['id_user'] );
+                    $req = $resultat->getUserPicture($_GET['id_user'] );
 //                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '" LIMIT 1');
                     while ($donnees = $req->fetch()) {
                         $url = $donnees['url'];
                         ?>
-                        <img src="<?php echo $url ?>" height="150px" width="150px">
+                        <img src="<?php echo '../'.$url ?>" height="150px" width="150px">
                         <?php
                     }
                     ?>
@@ -40,7 +41,7 @@ require("../../controllers/bdd/bdd.php");
             <div class="flex event">
                 <div>
                     <?php
-                    $req = $resultat->getUser($bdd, $_GET['id_user'] );
+                    $req = $resultat->getUser($_GET['id_user'] );
 //                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                     while ($donnees = $req->fetch()) {
                         ?>
@@ -51,7 +52,7 @@ require("../../controllers/bdd/bdd.php");
                 </div>
                 <div>
                     <?php
-                    $req = $resultat->getUser($bdd, $_GET['id_user'] );
+                    $req = $resultat->getUser($_GET['id_user'] );
 
 //                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                     while ($donnees = $req->fetch()) {
@@ -64,7 +65,7 @@ require("../../controllers/bdd/bdd.php");
                         <label>niveau de validité : </label>
                     </div>
                     <?php
-                    $req = $resultat->getUser($bdd, $_GET['id_user'] );
+                    $req = $resultat->getUser($_GET['id_user'] );
 //                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_GET['id_user'] . '"');
                     while ($donnees = $req->fetch()) {
                         $moyenne = $donnees['karma'];
@@ -78,8 +79,7 @@ require("../../controllers/bdd/bdd.php");
 
             <div class="evenement">
                 <?php
-                require("../../controllers/bdd/bdd.php");
-                $reponse = $resultat->getEventByUser($bdd, $_GET['id_user'] );
+                $reponse = $resultat->getEventByUser($_GET['id_user'] );
 //                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
 //        on ev.id_utilisateur= ut.id_utilisateur
 //        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_GET['id_user'] . '"');
@@ -117,7 +117,7 @@ require("../../controllers/bdd/bdd.php");
                                         if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
                                             ?>
                                             <a class="inputListOfEvent"
-                                               href="../controllers/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                                               href="../../controllers/event/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
                                             <?php
                                         }
                                     }

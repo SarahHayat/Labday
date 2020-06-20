@@ -1,12 +1,12 @@
 function supprimer() {
     var btn_supprimer = document.getElementById("supprimer");
     if (confirm("Vous désirez vraiment supprimer votre compte ?")) {
-        console.log("oui")
+        console.log("oui");
         window.location.href = '../controllers/user/deleteUser.php';
     } else {
-        console.log("non")
+        console.log("non");
 
-        btn_supprimer.href = "profil.php";
+        btn_supprimer.href = "../user/profil.php";
     }
 }
 /*
@@ -36,7 +36,7 @@ function isPseudoExist(pseudo) {
                 document.getElementById("txtpseudo").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET",'../php/securiteForm.php?pseudo='+pseudo,true);
+        xmlhttp.open("GET",'../event/securiteForm.php?pseudo='+pseudo,true);
         xmlhttp.send();
     }
 }
@@ -51,7 +51,7 @@ function isMailExist(mail) {
                 document.getElementById("txtmail").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET",'../php/securiteForm.php?mail='+mail,true);
+        xmlhttp.open("GET",'../event/securiteForm.php?mail='+mail,true);
         xmlhttp.send();
     }
 }
@@ -59,7 +59,7 @@ function isMailExist(mail) {
 
 
 function filtre() {
-
+    console.log('filtre');
     var categorie = document.getElementById("categorie").value;
     var ordre = document.getElementById("ordre").value;
     var date_debut = document.getElementById("date_debut").value;
@@ -72,7 +72,7 @@ function filtre() {
     } else
     {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET",'../php/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
+        xmlhttp.open("GET",'../event/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
@@ -105,7 +105,7 @@ function myChoices(choice) {
                 }
             }
         };
-        xmlhttp.open("GET",'../php/myChoices.php?choice='+choice,true);
+        xmlhttp.open("GET",'../event/myChoices.php?choice='+choice,true);
         xmlhttp.send();
     }
 }

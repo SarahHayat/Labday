@@ -1,12 +1,12 @@
 <?php
-require("../../controllers/bdd/AllRequest.php");
+require(".././controllers/bdd/AllRequest.php");
 $resultat = new AllRequest();
 ?>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether</title>
-    <link rel="stylesheet" href="../../assets/css/headerConnect.css"/>
+    <link rel="stylesheet" href=".././assets/css/headerConnect.css"/>
 </head>
 
 <header style="background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));" id="menu-none">
@@ -15,8 +15,8 @@ $resultat = new AllRequest();
             <div class="photo">
                 <?php
                 if (isset($_SESSION['id_name'])) {
-                    $req = $resultat->getUserPicture($_SESSION['id_name']);
-//                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
+                    $req = $resultat->getUserPicture($_SESSION['id_name'] );
+//                        $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                     while ($donnees = $req->fetch()) {
                         $url = $donnees['url'];
                         ?>
@@ -31,8 +31,8 @@ $resultat = new AllRequest();
                 <h3><?php
                     if (isset($_SESSION['id_name'])) echo $_SESSION['username']; ?></h3>
 
-                <!--<a id="profil" href="profil.php"> Profil </a>-->
-                <a id="deconnect" href="../connexion/connexion.php"> Connexion </a>
+                <a id="profil" href="user/profil.php"> Profil </a>
+                <a id="deconnect" href="connexion/logOut.php"> Deconnexion </a>
 
             </div>
         </div>
@@ -43,10 +43,10 @@ $resultat = new AllRequest();
         <div class="menu-div-bas">
             <p>MENU</p>
             <ul>
-                <li><a href="../index.php">Accueil</a></li>
-                <li><a href="../forum/createForum.php">Forum</a></li>
-                <li><a href="../event/events.php"> Sorties</a></li>
-                <li><a href="../contact/contact.php"> Contact</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="forum/createForum.php">Forum</a></li>
+                <li><a href="event/events.php"> Sorties</a></li>
+                <li><a href="contact/contact.php"> Contact</a></li>
 
             </ul>
             </ul>
@@ -67,5 +67,5 @@ $resultat = new AllRequest();
 
 <div style=" margin-bottom: 150px;"></div>
 </html>
-<script src="../../js/index.js"></script>
-<script src="../../js/displayNone.js"></script>
+<script src=".././js/index.js"></script>
+<script src=".././js/displayNone.js"></script>
