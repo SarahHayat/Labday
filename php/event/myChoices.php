@@ -47,6 +47,7 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
 //    where f.id_utilisateur ="' . $_SESSION['id_name'] . '"');
 
     }
+    if($sql ->rowCount() > 0){
     while ($donnees = $sql->fetch()) {
         ?>
         <div class="listOfEvent">
@@ -132,6 +133,9 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
         </div>
         <script src="../../js/security.js"></script>
         <?php
+    }}
+    else{
+        echo '<div style="height: 50%">'."Pas d'événements".'</div>';
     }
 }
 ?>

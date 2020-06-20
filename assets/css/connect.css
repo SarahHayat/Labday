@@ -10,6 +10,17 @@ body {
     display: flex;
 }
 
+#enregistrer span{
+    padding: 2%;
+    background: #FFD700;
+    border-radius: 5px;
+
+}
+#enregistrer span:hover{
+    background: #505050;
+    border: solid 2px #FFD700;
+}
+
 /*.container {*/
 /*    align-self: center;*/
 /*}*/

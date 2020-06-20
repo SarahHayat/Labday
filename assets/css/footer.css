@@ -55,7 +55,7 @@ ul{
     align-self: center;
 }
 .logo{
-    color:yellowgreen;
+    color:rgb(220, 204, 42);
     font-weight:700;
     font-size:15px;
 }
@@ -103,7 +103,7 @@ ul{
     background-color: #505050;
 }
 .menu span, .address span{
-    color: yellowgreen;
+    color: rgb(220, 204, 42);
 }
 
 .address{

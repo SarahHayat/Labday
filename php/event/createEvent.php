@@ -61,7 +61,7 @@ session_start();
 
         //    ?>
 
-        <div id='enregistrer' onclick="sendGeocodage(); map()">
+        <div id='enregistrer' onclick="sendGeocodage();">
             <span>ENREGISTRER</span>
         </div>
 

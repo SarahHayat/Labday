@@ -40,6 +40,8 @@ session_start();
         $adresse = $donnees["adresse"];
         $commune = $donnees["commune"];
         $code_postal = $donnees["code_postal"];
+        $x = $donnees["x"];
+        $y = $donnees["y"];
 
     }
 
@@ -48,12 +50,12 @@ session_start();
      */
     ?>
 
-    <form id="create-event-form" action="#" method="post" class="container fond container_connect">
+    <form id="create-event-form" action="../user/profil.php" method="post" class="container fond container_connect">
         <a href="../user/profil.php"><< Retour</a>
         <h1> Modification Evenement</h1>
 
         <label><b>Catégorie</b></label>
-        <select name="categorie">
+        <select name="categorie" id="categorie">
             <option value="<?php echo $id_categorie ?>"><?php echo $nom_categorie ?></option>
             <!--        <option>Selectionnez une catégorie</option>-->
             <option value="1">Plein air</option>
@@ -63,7 +65,7 @@ session_start();
         </select> </br>
 
         <label><b>Titre</b></label>
-        <input type="text" placeholder="titre" name="titre_evenement" required value="<?php echo $titre_evenement ?>">
+        <input id="title" type="text" placeholder="titre" name="titre_evenement" required value="<?php echo $titre_evenement ?>">
 
         <label><b>Adresse</b> <span class="obligatoire">*</span></label>
         <input type="text" name="adresse" id="adresse" value="<?php echo $adresse ?>" required>
@@ -76,28 +78,25 @@ session_start();
         <input type="text" name="commune" id="commune" value="<?php echo $commune ?>" required>
 
         <label><b>Date de l'évenement</b></label>
-        <input type="datetime" name="date_evenement" value="<?php echo $date_evenement ?>" required>
+        <input id="dateEvent" type="datetime" name="date_evenement" value="<?php echo $date_evenement ?>" required>
 
         <label><b>Description</b></label></br>
-        <textarea name="description" required><?php echo $description ?></textarea>
+        <textarea id="desc" name="description" required><?php echo $description ?></textarea>
 
-        <input type="hidden" name="x" id="coordinates-x">
-        <input type="hidden" name="y" id="coordinates-y">
+        <input type="hidden" name="x" id="coordinates-x" value="<?php echo $x?>">
+        <input type="hidden" name="y" id="coordinates-y" value="<?php echo $y?>">
 
-        <div id='enregistrer' onclick="sendGeocodage(); map()">
+        <div id='enregistrer' onclick="sendGeocode();">
             <span>ENREGISTRER</span>
         </div>
     </form>
 </div>
-<?php
-include("../footer/footer.php");
-?>
-</body>
-<script src="../../js/geocodage.js"></script>
+
 <?php
 /**
  * Modifie l'événement
  */
+
 if (isset($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $id_evenement, $_POST['x'],$_POST['y'] )) {
 
     $req = $resultat->updateEvent($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $_POST['categorie'], $id_evenement,  $_POST['x'], $_POST['y']);
@@ -114,9 +113,10 @@ if (isset($_POST['description'], $_POST['date_evenement'], $_POST['titre_eveneme
 //
 //
 //    ));
-
-    header('Location: ../user/profil.php');
 }
 
 
+include("../footer/footer.php");
 ?>
+</body>
+<script src="../../js/geocodage.js"></script>

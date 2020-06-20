@@ -49,7 +49,12 @@ $resultat = new AllRequest();
                 <li><a href="contact/contact.php"> Contact</a></li>
 
             </ul>
-            </ul>
+            <div>
+                <form action="../event/createEvent.php">
+                    <input style="width:100%;text-decoration:none; padding-top: 10%; padding-bottom: 10%;background: #FFD700; text-transform: uppercase" type="submit" value="Creer un évenement"/>
+                </form>
+
+            </div>
         </div>
 
 

@@ -38,7 +38,7 @@ session_start();
                         while ($donnees = $req->fetch()) {
                             $url = $donnees['url'];
                             ?>
-                            <img src="<?php echo '../'.$url ?>" height="150px" width="150px">
+                            <img src="<?php echo '../' . $url ?>" height="150px" width="150px">
                             <?php
                         }
                     }
@@ -114,37 +114,44 @@ session_start();
                     //        on ev.id_utilisateur= ut.id_utilisateur
                     //        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
                     //                // On affiche chaque entrée une à une
-                    while ($donnees = $reponse->fetch()) {
-                        ?>
+                    if ($reponse ->rowCount() > 0) {
+                        while ($donnees = $reponse->fetch()) {
 
-                        <div class="listOfEvent">
-                            <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
-                                <ul class="collectionItem">
-                                    <div class="pictureEvent1">
-                                        <img id="imgTree" src="../../assets/images/event.png"/>
-                                        <p><?php echo $donnees['nom_categorie']; ?></p>
-                                    </div>
-                                    <div class="pictureEvent">
-                                        <div style="display: flex; text-align: right">
+                            ?>
 
-                                            <div class="gauche">
-                                                <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
-                                                <p><?php echo $donnees['type_utilisateur']; ?></p>
-                                                <p><?php echo $donnees['date_evenement']; ?></p>
-                                                <a class="inputListOfEvent"
-                                                   href="../../controllers/event/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
-                                                <a class="inputListOfEvent"
-                                                   href="../event/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
-                                            </div>
-                                            <div class="centerH3">
-                                                <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                            <div class="listOfEvent">
+                                <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
+                                    <ul class="collectionItem">
+                                        <div class="pictureEvent1">
+                                            <img id="imgTree" src="../../assets/images/event.png"/>
+                                            <p><?php echo $donnees['nom_categorie']; ?></p>
+                                        </div>
+                                        <div class="pictureEvent">
+                                            <div style="display: flex; text-align: right">
+
+                                                <div class="gauche">
+                                                    <p><?php echo "Par " . '<b>' . $donnees['pseudo'] . '</b>' . " le : " . '<b>' . $donnees['date_poste'] . '</b>'; ?></p>
+                                                    <p><?php echo $donnees['type_utilisateur']; ?></p>
+                                                    <p><?php echo $donnees['date_evenement']; ?></p>
+                                                    <a class="inputListOfEvent"
+                                                       href="../../controllers/event/deleteEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">supprimer</a>
+                                                    <a class="inputListOfEvent"
+                                                       href="../event/updateEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">modifier</a>
+                                                </div>
+                                                <div class="centerH3">
+                                                    <h3 class="titleOfEvent"><?php echo $donnees['titre_evenement']; ?> </h3>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <?php
+                            <?php
+
+                        }
+                    } else
+                        {
+                        echo '<div>' . 'no event' . '</div>';
                     }
                     ?>
                 </div>
