@@ -10,7 +10,7 @@ class AllRequest
     public function __construct()
     {
         try {
-            $this->bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
