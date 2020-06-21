@@ -1,4 +1,5 @@
 <?php
+require("../../controllers/bdd/bdd.php");
 require("../../controllers/bdd/AllRequest.php");
 $resultat = new AllRequest();
 ?>
