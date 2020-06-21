@@ -9,21 +9,7 @@ function supprimer() {
         btn_supprimer.href = "../user/profil.php";
     }
 }
-/*
 
-function supprimerEvent(){
-    var btn_supprimerEvent = document.getElementById("supprimerEvent");
-    console.log("test : " + btn_supprimerEvent);
-    if (confirm("Vous désirez vraiment supprimer votre événement ?")) {
-        console.log("oui")
-        window.location.href = '../controllers/deleteEvent.php';
-    } else {
-        console.log("non")
-
-        btn_supprimer.href = "profil.php";
-    }
-}
-*/
 
 function isPseudoExist(pseudo) {
     if (pseudo == "") {
@@ -72,7 +58,7 @@ function filtre() {
     } else
     {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET",'../event/securiteForm.php?categorie='+categorie+'&ordre='+ordre+'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
+        xmlhttp.open("GET",'../event/securiteForm.php?categorie='+categorie+'&ordre='+ordre +'&date_debut='+date_debut+'&date_fin='+date_fin+'&lieu='+lieu+'&karma='+karma,true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4) {

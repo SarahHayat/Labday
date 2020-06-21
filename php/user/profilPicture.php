@@ -1,7 +1,6 @@
 <?php
 session_start();
-//require ("../controllers/AllRequest.php");
-//$resultat = new AllRequest();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,7 +14,6 @@ session_start();
 <body>
 <div style="display: flex; flex-direction: row">
     <?php
-    // echo "session username : " . $_SESSION['username'];
 
     if (isset($_SESSION['username'])) {
         require("../header/headerConnect.php");
@@ -59,19 +57,13 @@ session_start();
          */
 
         $req = $resultat->deleteUserPicture($_SESSION['id_name']);
-//        $req = $bdd->query('DELETE FROM photo_utilisateurs WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
 
 
         /**
          * ajouter nouvelle photo
          */
         $req = $resultat->addNewUserPicture($_SESSION['id_name'], $_POST['photo']);
-//        $req = $bdd->prepare('INSERT INTO photo_utilisateurs(id_utilisateur, url) VALUES(:id_utilisateur, :url)');
-//        $req->execute(array(
-//            'id_utilisateur' => $_SESSION['id_name'],
-//            'url' => $_POST['photo'],
-//
-//        ));
+
         header('Location: profil.php');
     }
     ?>

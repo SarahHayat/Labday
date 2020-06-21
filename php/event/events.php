@@ -1,7 +1,6 @@
 <?php
 session_start();
-//require ("../controllers/AllRequest.php");
-//$resultat = new AllRequest();
+
 require ('../../controllers/bdd/bdd.php');
 
 ?>
@@ -49,7 +48,6 @@ require ('../../controllers/bdd/bdd.php');
                     <option value="4">Soirée</option>
                 </select>
                 <select name="ordre" id="ordre" class="filtre-container">
-                    // onchange="trier(this.value)"
                     <option value="DESC">Date croissant</option>
                     <option value="ASC">Date décroissant</option>
                 </select>
@@ -72,11 +70,7 @@ require ('../../controllers/bdd/bdd.php');
 
         <?php
         $reponse = $resultat->getAllEvent();
-        //    $reponse = $bdd->query('SELECT ut.* ,ev.id_evenement, ev.titre_evenement, ev.id_utilisateur,  ev.adresse, ev.code_postal, ev.commune,  ev.date_evenement,DATE(ev.date_poste) as date_poste
-        // ,ev.description, ce.* FROM evenements as ev left join utilisateurs as ut
-        //        on ev.id_utilisateur= ut.id_utilisateur left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie
-        //        where DATE(ev.date_evenement) >= DATE(now()) order by DATE(ev.date_evenement) ASC');
-        // On affiche chaque entrée une à une
+
         $donnees = $reponse->fetchAll();
         for ($i = 0; $i < sizeof($donnees); $i++) {
             ?>
@@ -103,7 +97,6 @@ require ('../../controllers/bdd/bdd.php');
 
                                             <?php
                                             if (isset($_SESSION['id_name']) && isset($donnees[$i]['id_evenement'])) {
-                                                //  $req = $resultat->isRegistered($bdd,$_SESSION['id_name'],$donnees[$i]['id_evenement'] );
                                                 $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
                                                 $req->execute(array(
                                                     'id_utilisateur' => $_SESSION['id_name'],
@@ -118,7 +111,6 @@ require ('../../controllers/bdd/bdd.php');
                                                 }
                                             }
                                             if (isset($donnees[$i]['id_utilisateur'], $_SESSION['id_name'])) {
-                                                //  $reponse = $resultat->isFavorite($bdd, $donnees[$i]['id_evenement'], $_SESSION['id_name']);
                                                 $reponse = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM favoris where id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
                                                 $reponse->execute(array(
                                                     'id_evenement' => $donnees[$i]['id_evenement'],
@@ -134,7 +126,6 @@ require ('../../controllers/bdd/bdd.php');
                                                     <?php
                                                 }
                                             }
-                                            //
                                             ?>
                                         </div>
                                         <div class="centerH3">

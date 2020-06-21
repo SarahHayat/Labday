@@ -7,7 +7,6 @@ $resultat = new AllRequest();
 
 if (isset($_GET['pseudo'])) {
     $sql = $resultat->getPseudo($_GET['pseudo']);
-//    $sql = $bdd->query('SELECT * FROM utilisateurs WHERE pseudo ="' . $_GET['pseudo'] . '"');
 
     while ($result = $sql->fetch()) {
         if ($result) {
@@ -18,7 +17,6 @@ if (isset($_GET['pseudo'])) {
 }
 if (isset($_GET['mail'])) {
     $req = $resultat->getMail($_GET['mail']);
-//    $req = $bdd->query('SELECT * FROM utilisateurs WHERE mail ="' . $_GET['mail'] . '"');
 
     while ($result = $req->fetch()) {
         if ($result) {
@@ -76,12 +74,6 @@ order by tri.date_evenement DESC');
     }
 
 
-    ?>
-    <!--    <script>-->
-    <!--        var fond = document.getElementById("listOfEvent").style.display = "none";-->
-    <!--    </script>-->
-    <?php
-
     $donnees = $req->fetchAll();
     if ($donnees) {
         for ($i = 0; $i < sizeof($donnees); $i++) {
@@ -111,7 +103,6 @@ order by tri.date_evenement DESC');
 
                                     <?php
                                     if (isset($_SESSION['id_name']) && isset($donnees[$i]['id_evenement'])) {
-                                        //  $req = $resultat->isRegistered($bdd,  $_SESSION['id_name'], $donnees[$i]['id_evenement']);
                                         $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
                                         $req->execute(array(
                                             'id_utilisateur' => $_SESSION['id_name'],
@@ -125,7 +116,6 @@ order by tri.date_evenement DESC');
                                             <?php
                                         }
                                     }
-                                    //
                                     ?>
 
                                 </div>

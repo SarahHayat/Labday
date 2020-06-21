@@ -13,8 +13,6 @@ session_start();
 <body>
 <div style="display: flex; flex-direction: row">
     <?php
-    // echo "session username : " . $_SESSION['username'];
-
     if (isset($_SESSION['username'])) {
         require("../header/headerConnect.php");
     } else {
@@ -57,9 +55,7 @@ session_start();
 
         <input type="hidden" name="x" id="coordinates-x">
         <input type="hidden" name="y" id="coordinates-y">
-        <!--    --><?php
 
-        //    ?>
 
         <div id='enregistrer' onclick="sendGeocodage();">
             <span>ENREGISTRER</span>

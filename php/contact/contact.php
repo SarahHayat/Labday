@@ -1,7 +1,6 @@
 <?php
 session_start();
-//require ("../controllers/AllRequest.php");
-//$resultat = new AllRequest();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +15,6 @@ session_start();
 <div style="display: flex; flex-direction: row">
 
 <?php
-// echo "session username : " . $_SESSION['username'];
 
 if (isset($_SESSION['username'])) {
     require("../header/headerConnect.php");

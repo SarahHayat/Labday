@@ -22,33 +22,15 @@ $type_utilisateur = $_POST["type_utilisateur"];
  */
 if (isset($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe)) {
     $reponse = $resultat->existAccount($pseudo, $mail);
-  //  $reponse = $bdd->query('SELECT pseudo from utilisateurs where pseudo = "' . $pseudo . '" OR mail = "' . $mail . '"');
-    $donnees = $reponse->fetch();
-    $mot_de_passe= sha1($mot_de_passe);
-    if (!$donnees) {
-        $req = $resultat->createAccount($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone, $mail, $pseudo, $mot_de_passe, $type_utilisateur, $ville)
-//        $req = $bdd->prepare('INSERT INTO utilisateurs(prenom, nom, date_naissance, adresse, code_postale, pays, telephone, mail, pseudo, mot_de_passe, type_utilisateur, ville) VALUES(:prenom, :nom, :date_naissance, :adresse, :code_postale, :pays, :telephone, :mail, :pseudo, :mot_de_passe, :type_utilisateur, :ville)');
-//        $req->execute(array(
-//            'prenom' => $prenom,
-//            'nom' => $nom,
-//            'date_naissance' => $date_naissance,
-//            'adresse' => $adresse,
-//            'code_postale' => $code_postale,
-//            'pays' => $pays,
-//            'telephone' => $telephone,
-//            'mail' => $mail,
-//            'pseudo' => $pseudo,
-//            'mot_de_passe' => $mot_de_passe,
-//            'type_utilisateur' => $type_utilisateur,
-//            'ville' => $ville,
-//
-//        ));
-        ?>
-        <script>
-            alert("Votre compte à bien été crée, veuillez vous connecter");
 
-        </script>
-        <?php
+    $donnees = $reponse->fetch();
+
+    $mot_de_passe= sha1($mot_de_passe);
+
+    if (!$donnees) {
+        $req = $resultat->createAccount($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telephone,
+                                            $mail, $pseudo, $mot_de_passe, $type_utilisateur, $ville);
+
         header('Location: ../../php/index.php');
 
     } else {
@@ -56,7 +38,6 @@ if (isset($prenom, $nom, $date_naissance, $adresse, $code_postale, $pays, $telep
         header('Location: ../../php/connexion/connexion.php');
 
     }
-
 }
 
 
@@ -69,19 +50,13 @@ $password = $_POST["password"];
  * verification connexion
  */
 if (isset($username,$password)) {
-//    $req = $bdd->prepare('SELECT pseudo, mot_de_passe FROM utilisateurs WHERE pseudo = :pseudo AND mot_de_passe = :password');
-//    $req->execute(array(
-//        'pseudo' => $username,
-//        'password' => $password
-//    ));
+
 
     $password= sha1($password);
     $result = $resultat->verifConnect($username, $password);
 
-    // $resultat = $req->fetch();
 
     if (!$result) {
-        // header('Location: ../php/connexion.php');
         header('Location:' . $_SERVER['HTTP_REFERER']);
 
     } else {
@@ -90,7 +65,6 @@ if (isset($username,$password)) {
          */
         $_SESSION['username'] = $username;
 
-         //$req = $bdd->query('SELECT * from utilisateurs where pseudo="' . $_SESSION['username'] . '"');
             $req = $resultat->getUserId($_SESSION['username']);
         while ($donnees = $req->fetch()) {
             $id_name = $donnees['id_utilisateur'];
@@ -98,23 +72,14 @@ if (isset($username,$password)) {
             $type = $donnees['type_utilisateur'];
             $_SESSION['type_utilisateur'] = $type;
 
-            echo " karma : " . $donnees['karma'] . " utilisateur : " . $donnees['id_utilisateur'];
             if ($donnees['karma'] == 0.00) {
 
-                //$req = $bdd->prepare('INSERT INTO karma(id_utilisateur, note) VALUES(:id_utilisateur, :note)');
-               // $req->execute(array(
-               //     'id_utilisateur' => $id_name,
-               //     'note' => 5,
-               // ));
                 $req = $resultat->startKarma($id_name);
             }
-           // $requete = $bdd->query('SELECT AVG(note) as moyenne FROM karma WHERE id_utilisateur ="' . $_SESSION['id_name'] . '"');
            $requete = $resultat->averageKarma($_SESSION['id_name']);
             $donnees = $requete->fetch();
             $moyenne = $donnees['moyenne'];
-            echo "moyenne : " . $moyenne;
 
-          // $reponse = $bdd->query('UPDATE utilisateurs SET karma="'.$moyenne.'" WHERE id_utilisateur ="'.$_SESSION['id_name'].'"');
             $reponse = $resultat->updateAverageKarma($moyenne,$_SESSION['id_name'] );
             header('Location: ../../php/connexion/connexion.php');
         }

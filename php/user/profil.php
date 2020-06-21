@@ -1,7 +1,6 @@
 <?php
 session_start();
-//require ("../controllers/AllRequest.php");
-//$resultat = new AllRequest();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,7 +14,6 @@ session_start();
 <body>
 <div style="display: flex; flex-direction: row">
     <?php
-    // echo "session username : " . $_SESSION['username'];
 
     if (isset($_SESSION['username'])) {
         require("../header/headerConnect.php");
@@ -34,7 +32,6 @@ session_start();
                     <?php
                     if (isset($_SESSION['id_name'])) {
                         $req = $resultat->getUserPicture($_SESSION['id_name']);
-//                    $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                         while ($donnees = $req->fetch()) {
                             $url = $donnees['url'];
                             ?>
@@ -63,7 +60,6 @@ session_start();
                     <?php
                     if (isset($_SESSION['id_name'])) {
                         $req = $resultat->getUser($_SESSION['id_name']);
-//                    $req = $bdd->query('SELECT * FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                         while ($donnees = $req->fetch()) {
                             echo '<p>' . 'type : ' . $donnees['type_utilisateur'] . '</p>';
                         }
@@ -78,7 +74,6 @@ session_start();
                     <?php
                     if (isset($_SESSION['id_name'])) {
                         $req = $resultat->getUser($_SESSION['id_name']);
-//                    $req = $bdd->query('SELECT karma FROM utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '"');
                         while ($donnees = $req->fetch()) {
                             $moyenne = $donnees['karma'];
                         }
@@ -88,10 +83,6 @@ session_start();
                     <progress id="jauge" min="0" max="10" value="<?php echo $moyenne ?>"></progress>
 
                 </div>
-                <!--                <div class="f-50">-->
-                <!--                    <input type="text" id="username" value="-->
-                <?php //if (isset($_SESSION['username']))echo $_SESSION['username'] ?><!-- ">-->
-                <!--                </div>-->
 
 
             </div>
@@ -110,11 +101,8 @@ session_start();
                 <div id="evenement">
                     <?php
                     $reponse = $resultat->getEventByUser($_SESSION['id_name']);
-                    //                $reponse = $bdd->query('SELECT ut.* , ev.*, ce.* FROM evenements as ev left join utilisateurs as ut
-                    //        on ev.id_utilisateur= ut.id_utilisateur
-                    //        left join categorie_evenements as ce on ce.id_categorie = ev.id_categorie where ut.id_utilisateur = "' . $_SESSION['id_name'] . '"');
-                    //                // On affiche chaque entrée une à une
-                    if ($reponse ->rowCount() > 0) {
+
+                    if ($reponse->rowCount() > 0) {
                         while ($donnees = $reponse->fetch()) {
 
                             ?>
@@ -149,8 +137,7 @@ session_start();
                             <?php
 
                         }
-                    } else
-                        {
+                    } else {
                         echo '<div>' . 'no event' . '</div>';
                     }
                     ?>

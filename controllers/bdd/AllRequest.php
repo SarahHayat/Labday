@@ -10,35 +10,12 @@ class AllRequest
     public function __construct()
     {
         try {
-            $this->bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            // echo "connexion réussi <br/> ";
+            $this->bdd = new PDO('mysql:host=localhost;dbname=ShareEventTogether', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
     }
 
-    public function isAllSet($tab)
-    {
-        for ($i = 0; $i < count($tab); $i++) {
-            if (isset($tab[$i])) {
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-//    public function selectFromBdd($table,$champs, $value){
-//        if($champs) {
-//            return "SELECT * FROM " . $table . " WHERE " . $champs . "  =  " . $value;
-//        }else{
-//            return "SELECT * FROM " . $table;
-//        }
-//    }
-//
-//    public function insertToBdd($table, $champs, $value){
-//        return ("INSERT INTO ".$table[($champs)]."VALUES".[$value]);
-//    }
 
     public function verifConnect($username, $password)
     {

@@ -28,16 +28,7 @@ session_start();
             <div class="margin_left">
                 <p class="margin_left">ShareEventTogether</p>
                 <div class="margin_right1" id="display">
-                    <ul>
-<!--                        <li><a>Menu -></a></li>-->
-                        <!--                <ul>-->
-                        <!--                    <li><a href=index.php>Accueil</a></li>-->
-                        <!--                    <li><a href="minichat.php">Forum</a></li>-->
-                        <!--                    <li><a href="sortieAPrevoir.php"> Sorties</a></li>-->
-                        <!--                    <li><a href="contact.php"> Contact</a></li>-->
-                        <!---->
-                        <!--                </ul>-->
-                    </ul>
+
                 </div>
             </div>
             <div class="img_arrow">
@@ -53,12 +44,7 @@ session_start();
                 <h3> MEILLEURS UTILISATEURS</h3>
                 <?php
                 $req = $resultat->getBestUser();
-//                $req = $bdd->query('SELECT u.*, pu.url
-//    FROM utilisateurs as u
-//    LEFT JOIN photo_utilisateurs as pu
-//    ON u.id_utilisateur = pu.id_utilisateur
-//    GROUP BY u.id_utilisateur
-//    ORDER by u.karma DESC LIMIT 3');
+
                 $i = 1;
                 while ($donnees = $req->fetch()) {
                     ?>

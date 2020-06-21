@@ -16,7 +16,6 @@ $resultat = new AllRequest();
                 <?php
                 if (isset($_SESSION['id_name'])) {
                     $req = $resultat->getUserPicture($_SESSION['id_name'] );
-//                        $req = $bdd->query('SELECT * FROM photo_utilisateurs where id_utilisateur= "' . $_SESSION['id_name'] . '" LIMIT 1');
                     while ($donnees = $req->fetch()) {
                         $url = $donnees['url'];
                         ?>

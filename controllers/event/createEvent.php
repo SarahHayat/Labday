@@ -22,20 +22,7 @@ $resultat = new AllRequest();
 
         if (isset($_SESSION['id_name'], $description, $date_evenement, $titre, $adresse, $code_postal, $commune, $_SESSION['username'], $categorie)) {
            $req =$resultat->createEvent($_SESSION['id_name'], $description, $date_evenement, $titre, $adresse, $code_postal, $commune, $categorie, $x, $y);
-//            $req = $bdd->prepare('INSERT INTO evenements(id_utilisateur, description, date_evenement, titre_evenement, adresse, code_postal, commune, id_categorie, x, y) VALUES(:utilisateur, :description, :date_evenement, :titre, :adresse, :code_postal, :commune, :categorie, :x, :y)');
-//            $req->execute(array(
-//                'utilisateur' => $_SESSION['id_name'],
-//                'description' => $description,
-//                'date_evenement' => $date_evenement,
-//                'titre' => $titre,
-//                'adresse' => $adresse,
-//                'code_postal' => $code_postal,
-//                'commune' => $commune,
-//                'categorie' => $categorie,
-//                'x' => $x,
-//                'y' => $y,
-//
-//            ));
+
             
             header('location: ../../php/user/profil.php');
 

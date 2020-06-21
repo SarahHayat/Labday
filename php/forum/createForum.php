@@ -1,7 +1,6 @@
 <?php
 session_start();
-//require ("../controllers/AllRequest.php");
-//$resultat = new AllRequest();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,7 +13,6 @@ session_start();
 <div style="display: flex; flex-direction: row">
 
     <?php
-    // echo "session username : " . $_SESSION['username'];
 
     if (isset($_SESSION['username'])) {
         require("../header/headerConnect.php");
@@ -47,14 +45,7 @@ session_start();
         <div>
             <?php
             $reponse = $resultat->getAllSubjectForum();
-//            $reponse = $bdd->query("SELECT sj.nom_sujet, m.message, sj.id_sujet, u.pseudo,m.date_message FROM sujets_forum as sj
-//left join utilisateurs as u
-//on sj.id_utilisateur = u.id_utilisateur
-//left join messages as m
-//on sj.id_sujet = m.id_sujet
-//GROUP BY sj.id_sujet
-//ORDER BY `m`.`date_message` DESC LIMIT 10");
-            // On affiche chaque entrée une à une
+
             while ($donnees = $reponse->fetch()) {
             ?>
             <div>
@@ -79,7 +70,7 @@ session_start();
                 <?php
 
             }
-            $reponse->closeCursor(); // Termine le traitement de la requête
+            $reponse->closeCursor();
 
             ?>
         </div>

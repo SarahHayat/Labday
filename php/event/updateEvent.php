@@ -28,9 +28,7 @@ session_start();
     $id_evenement = $_GET['id_evenement'];
 
     $reponse = $resultat->getEventForUpdate($id_evenement);
-    //$reponse = $bdd->query('SELECT * FROM evenements as e join categorie_evenements as ce
-    //on e.id_categorie = ce.id_categorie where e.id_evenement = "' . $id_evenement . '"');
-    // On affiche chaque entrée une à une
+
     while ($donnees = $reponse->fetch()) {
         $id_categorie = $donnees['id_categorie'];
         $nom_categorie = $donnees['nom_categorie'];
@@ -57,7 +55,6 @@ session_start();
         <label><b>Catégorie</b></label>
         <select name="categorie" id="categorie">
             <option value="<?php echo $id_categorie ?>"><?php echo $nom_categorie ?></option>
-            <!--        <option>Selectionnez une catégorie</option>-->
             <option value="1">Plein air</option>
             <option value="2">Jeux de société</option>
             <option value="3">Tourisme</option>
@@ -100,19 +97,7 @@ session_start();
 if (isset($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $id_evenement, $_POST['x'],$_POST['y'] )) {
 
     $req = $resultat->updateEvent($_POST['description'], $_POST['date_evenement'], $_POST['titre_evenement'], $_POST['adresse'], $_POST['commune'], $_POST['code_postal'], $_POST['categorie'], $id_evenement,  $_POST['x'], $_POST['y']);
-//    $req = $bdd->prepare('UPDATE evenements SET description = :description, date_evenement = :date_evenement
-//, titre_evenement = :titre_evenement, adresse = :adresse, commune = :commune, code_postal = :code_postal, id_categorie = :categorie WHERE id_evenement = "' . $id_evenement . '"');
-//    $req->execute(array(
-//        'description' => $_POST['description'],
-//        'date_evenement' => $_POST['date_evenement'],
-//        'titre_evenement' => $_POST['titre_evenement'],
-//        'adresse' => $_POST['adresse'],
-//        'commune' => $_POST['commune'],
-//        'code_postal' => $_POST['code_postal'],
-//        'categorie' => $_POST['categorie'],
-//
-//
-//    ));
+
 }
 
 

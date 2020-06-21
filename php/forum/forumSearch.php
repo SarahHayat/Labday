@@ -14,7 +14,6 @@ require ('../../controllers/bdd/bdd.php');
 
 
 <?php
-// echo "session username : " . $_SESSION['username'];
 
 if (isset($_SESSION['username'])) {
     require("../header/headerConnect.php");
