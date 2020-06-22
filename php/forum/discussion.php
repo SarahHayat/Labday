@@ -13,6 +13,7 @@ session_start();
 
 
 <body>
+<div style="display: flex; flex-direction: row">
 <?php
 
 if (isset($_SESSION['username'])) {
@@ -59,6 +60,7 @@ $donnees = $req->fetch();
 </div>
 </form>
 </div>
+
 <?php
 require("../footer/footer.php");
 ?>

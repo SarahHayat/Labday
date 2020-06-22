@@ -35,7 +35,7 @@ $resultat = new AllRequest();
 
             </div>
         </div>
-        <form action="searchHeader.php" method="get" class="search" style="text-align: center;margin-top: 7%">
+        <form action="../searchHeader.php" method="get" class="search" style="text-align: center;margin-top: 7%">
             <input class="input-search" type="search" name="search" placeholder="recherche...">
             <input type="submit" value="valider">
         </form>
@@ -45,7 +45,6 @@ $resultat = new AllRequest();
                 <li><a href="../index.php">Accueil</a></li>
                 <li><a href="../forum/createForum.php">Forum</a></li>
                 <li><a href="../event/events.php"> Sorties</a></li>
-                <li><a href="../contact/contact.php"> Contact</a></li>
 
             </ul>
             </ul>

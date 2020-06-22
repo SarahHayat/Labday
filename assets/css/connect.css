@@ -8,6 +8,7 @@ body {
 
 .connect {
     display: flex;
+    width: 100%;
 }
 
 #enregistrer span{

@@ -27,22 +27,22 @@ session_start();
      * mettre url de la photo dans bdd
      */
     ?>
-    <div class="fond" style="width: 100%">
+    <div class="fond" style="width: 100%; margin-top: 20%;height: 50%; margin-bottom: 20%;">
         <form action="#" method="post" class="photoProfil">
             <div>
-                <img src="../../assets/photoProfil/femme.jpg" width="150" height="150">
+                <label for="femme"><img src="../../assets/photoProfil/femme.jpg" width="150" height="150" ></label>
                 <input type="radio" name="photo" value="../assets/photoProfil/femme.jpg" id="femme">
             </div>
             <div>
-                <img src="../../assets/photoProfil/femme_2.jpg" width="150" height="150">
+                <label for="femme_2"><img src="../../assets/photoProfil/femme_2.jpg" width="150" height="150"></label>
                 <input type="radio" name="photo" value="../assets/photoProfil/femme_2.jpg" id="femme_2">
             </div>
             <div>
-                <img src="../../assets/photoProfil/homme.jpg" width="150" height="150">
+                <label for="homme"><img src="../../assets/photoProfil/homme.jpg" width="150" height="150"></label>
                 <input type="radio" name="photo" value="../assets/photoProfil/homme.jpg" id="homme">
             </div>
             <div>
-                <img src="../../assets/photoProfil/homme_2.jpg" width="150" height="150">
+                <label for="homme_2"><img src="../../assets/photoProfil/homme_2.jpg" width="150" height="150"></label>
                 <input type="radio" name="photo" value="../assets/photoProfil/homme_2.jpg" id="homme_2">
             </div>
             <input type="submit" value="Envoyer">

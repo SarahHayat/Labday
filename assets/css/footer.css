@@ -1,6 +1,6 @@
 footer{
     display: flex;
-    background-color: #505050;
+    background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ;
     margin-top: 3%;
     bottom: 0;
     width: 100%;
@@ -100,10 +100,14 @@ ul{
     margin-top: 10px;
     padding-top:10px ;
     text-align: center;
-    background-color: #505050;
+    /*background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ;*/
 }
 .menu span, .address span{
     color: rgb(220, 204, 42);
+}
+
+.menu p{
+    font-size: 1.5em;
 }
 
 .address{

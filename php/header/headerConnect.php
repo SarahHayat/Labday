@@ -36,7 +36,7 @@ $resultat = new AllRequest();
 
                 </div>
             </div>
-            <form action="searchHeader.php" method="get" class="search" style="text-align: center;margin-top: 7%">
+            <form action="../searchHeader.php" method="get" class="search" style="text-align: center;margin-top: 7%">
                 <input class="input-search" type="search" name="search" placeholder="recherche...">
                 <input type="submit" value="valider">
             </form>

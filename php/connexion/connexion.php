@@ -11,6 +11,7 @@ session_start();
 
 
 <body>
+<div style="display: flex; flex-direction: row">
 <?php
 
 if (isset($_SESSION['username'])) {
@@ -96,14 +97,12 @@ if (isset($_SESSION['username'])) {
     </div>
 </div>
 
-<script src="../../js/dropdownList.js"></script>
-<script src="../../js/security.js"></script>
 
-
+</div>
 <?php
 require("../footer/footer.php");
 ?>
-
 </body>
-
+<script src="../../js/dropdownList.js"></script>
+<script src="../../js/security.js"></script>
 </html>

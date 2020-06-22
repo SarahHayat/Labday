@@ -118,7 +118,9 @@ where ie.id_utilisateur ="' . $_SESSION['id_name'] . '" AND e.date_evenement < n
         <?php
     }}
     else{
-        echo '<div style="height: 50%">'."Pas d'événements".'</div>';
+        ?>
+        <div style="height: 200px; padding-top: 50px">Pas d'événements</div>
+    <?php
     }
 }
 ?>

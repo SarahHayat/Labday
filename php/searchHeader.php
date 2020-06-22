@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ('../../controllers/bdd/bdd.php');
+require('../controllers/bdd/bdd.php');
 
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ require ('../../controllers/bdd/bdd.php');
 <head>
     <meta charset="UTF-8">
     <title>ShareEventTogether - create event</title>
-    <link rel="stylesheet" href="../../assets/css/events.css"/>
+    <link rel="stylesheet" href="../assets/css/events.css"/>
 </head>
 
 
@@ -18,9 +18,9 @@ require ('../../controllers/bdd/bdd.php');
     // echo "session username : " . $_SESSION['username'];
 
     if (isset($_SESSION['username'])) {
-        require("headerConnect.php");
+        require("header/headerConnectIndex.php");
     } else {
-        require("headerDisconnect.php");
+        require("header/headerDisconnectIndex.php");
 
     }
 
@@ -54,32 +54,34 @@ require ('../../controllers/bdd/bdd.php');
                         <div style="background: linear-gradient(-45deg, rgb(33,33,33), rgba(97, 114, 133, 1)) ; border-radius: 10px; padding-bottom: 8px">
                             <ul class="collectionItem">
                                 <div class="pictureEvent1">
-                                    <img id="imgTree" src="../../assets/images/event.png"/>
+                                    <img id="imgTree" src="../assets/images/event.png"/>
                                 </div>
                                 <div class="pictureEvent">
                                     <div style="display: flex; text-align: right">
                                         <div class="gauche">
 
                                             <p><?php echo "Par " ?> <b><a
-                                                            href="../user/userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
+                                                            href="user/userProfil.php?id_user= <?php echo $donnees['id_utilisateur'] ?>"> <?php echo $donnees['pseudo'] ?></a></b>
                                                 le : <b> <?php echo $donnees['date_poste'] ?></b></p>
                                             <p><?php echo $donnees['type_utilisateur']; ?></p>
                                             <p><?php echo $donnees['commune'] . " " . $donnees['code_postal']; ?></p>
                                             <p><?php echo $donnees['date_evenement']; ?></p>
                                             <p class="description"><?php echo $donnees['description']; ?></p>
                                             <?php
-                                            $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
-                                            $req->execute(array(
-                                                'id_utilisateur' => $_SESSION['id_name'],
-                                                'id_evenement' => $donnees['id_evenement'],
-                                            ));
+                                            if (isset($_SESSION['id_name'], $donnees['id_evenement'])) {
+                                                $req = $bdd->prepare('SELECT id_utilisateur, id_evenement FROM inscription_evenements WHERE id_utilisateur = :id_utilisateur AND id_evenement = :id_evenement');
+                                                $req->execute(array(
+                                                    'id_utilisateur' => $_SESSION['id_name'],
+                                                    'id_evenement' => $donnees['id_evenement'],
+                                                ));
 
-                                            $resultat = $req->fetch();
-                                            if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
-                                                ?>
-                                                <a class="inputListOfEvent"
-                                                   href="../../controllers/event/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
-                                                <?php
+                                                $resultat = $req->fetch();
+                                                if ($donnees['id_utilisateur'] !== $_SESSION['id_name'] && $_SESSION['type_utilisateur'] == "particulier" && !$resultat) {
+                                                    ?>
+                                                    <a class="inputListOfEvent"
+                                                       href="../controllers/event/subscribeEvent.php?id_evenement= <?php echo $donnees['id_evenement']; ?>">s'inscrire</a>
+                                                    <?php
+                                                }
                                             }
                                             ?>
                                         </div>
@@ -103,7 +105,7 @@ require ('../../controllers/bdd/bdd.php');
 
 </div>
 <?php
-require("../footer/footer.php");
+require("footer/footerIndex.php");
 ?>
 </body>
 </html>
